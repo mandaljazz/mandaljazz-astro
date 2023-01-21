@@ -7,7 +7,10 @@ import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
+import mdx from "@astrojs/mdx";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://mandaljazz.github.io",
-  integrations: [tailwind(), sitemap(), prefetch(), robotsTxt()]
+  integrations: [tailwind(), sitemap(), prefetch(), robotsTxt(), mdx()]
 });
