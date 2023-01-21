@@ -78,6 +78,13 @@
     uvu "^0.5.0"
     vfile-message "^3.0.0"
 
+"@astrojs/prefetch@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/prefetch/-/prefetch-0.1.1.tgz#3e61a8d1cd918744e6adbff648c00c4b9631a23a"
+  integrity sha512-+XZcjivPHTo9thQshDWKnnORHJ1dE6odIzhmKHac2ptwla092eohkiJw7Y31+PYmuJkc3Jp+3AawuCvfqCnQ2Q==
+  dependencies:
+    throttles "^1.0.1"
+
 "@astrojs/prism@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@astrojs/prism/-/prism-1.0.2.tgz#f01cad9007a46dc006d129d99653bd1652657ecf"
@@ -3262,6 +3269,11 @@ tailwindcss@^3.0.24:
     postcss-value-parser "^4.2.0"
     quick-lru "^5.1.1"
     resolve "^1.22.1"
+
+throttles@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/throttles/-/throttles-1.0.1.tgz#3abdcde28df88d5eddf7e57cad8da35bd403ddd0"
+  integrity sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==
 
 tiny-glob@^0.2.9:
   version "0.2.9"
