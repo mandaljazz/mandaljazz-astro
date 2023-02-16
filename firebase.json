@@ -1,0 +1,28 @@
+{
+  "hosting": {
+    "public": "functions",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "function": "handler"
+      },
+      {
+        "source": "/artist/1",
+        "function": "handler"
+      },
+      {
+        "source": "/artist/2",
+        "function": "handler"
+      },
+      {
+        "source": "/blogg/bare-litt-info",
+        "function": "handler"
+      }
+    ]
+  }
+}
