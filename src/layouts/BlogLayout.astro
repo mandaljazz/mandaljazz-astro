@@ -1,16 +1,18 @@
 ---
+import Layout from "./Layout.astro";
+
 const { frontmatter } = Astro.props;
 ---
 
-<html>
-  <h1 class="text-4xl">{frontmatter.title}</h1>
-  <h2>Skrevet av: {frontmatter.author}</h2>
-  <p>
-    {frontmatter.description}
-  </p>
-  <article class="prose">
-    <slot />
-  </article>
-
-
-</html>
+<Layout title="Blogg // Mandaljazz 2023">
+  <main>
+    <h1 class="text-4xl">{frontmatter.title}</h1>
+    <h2>Tekst: {frontmatter.author}</h2>
+    <p>
+      {frontmatter.description}
+    </p>
+    <article class="prose">
+      <slot />
+    </article>
+  </main>
+</Layout>

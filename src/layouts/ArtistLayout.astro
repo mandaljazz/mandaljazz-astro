@@ -1,18 +1,35 @@
 ---
 import Layout from "./Layout.astro";
 
-const { frontmatter } = Astro.props;
+const {
+  frontmatter: { spotifyUrl, title, author, tagline },
+} = Astro.props;
 ---
 
-<Layout title="Mandaljazz 2023">
+<Layout title={`${title} // Mandaljazz 2023`}>
   <main>
-    <h1 class="text-4xl">{frontmatter.title}</h1>
-    <h2>Tekst: {frontmatter.author}</h2>
+    <h1 class="text-4xl">{title}</h1>
+    <h2>Tekst: {author}</h2>
     <p>
-      {frontmatter.tagline}
+      {tagline}
     </p>
     <article class="prose">
       <slot />
     </article>
+    {
+      spotifyUrl && (
+        <iframe
+          class="rounded border-0 max-w-md"
+          src={`https://open.spotify.com/embed/artist/${
+            spotifyUrl.match(/\/artist\/(.*?)\?si/)?.[1]
+          }?utm_source=generator`}
+          width="100%"
+          height="352"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        />
+      )
+    }
   </main>
 </Layout>
