@@ -1,13 +1,19 @@
 ---
 import Sponsors from "./Sponsors.astro";
+// @ts-ignore
+import { Icon } from "astro-icon";
 ---
 
 <section>
-  <Sponsors />
-  <ul role="list">
-    <li class="">
-      <a href="https://www.facebook.com/mandaljazz"> Facebook</a>
-      <a href="https://www.instagram.com/mandaljazz/">Instagram</a>
+  <!-- <Sponsors /> -->
+  <ul role="list" class="flex flex-row justify-center">
+    <li class="inline-flex">
+      <a href="https://www.facebook.com/mandaljazz">
+        <Icon pack="ion" name="logo-facebook" size={48} /></a
+      >
+      <a href="https://www.instagram.com/mandaljazz/"
+        ><Icon pack="ion" name="logo-instagram" size={48} /></a
+      >
     </li>
   </ul>
 </section>

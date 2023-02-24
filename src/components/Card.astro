@@ -2,14 +2,21 @@
 export interface Props {
   title: string;
   href: string;
+  id: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, id } = Astro.props;
 ---
 
-<li class="rounded shadow-xl w-fit h-24 border">
-  <a href={href}>
-    <h2>
+<li
+  class="rounded-xl w-full h-96 sm:h-72 bg-cover bg-center bg-no-repeat hover:scale-105 transition-transform"
+  style={`background-image: url(artist/${id}.png)`}
+>
+  <a href={href} class="block h-full w-full">
+    <h2
+      class="text-xl text-white text-center"
+      style="text-shadow: 0 2px 5px black;"
+    >
       {title}
     </h2>
   </a>

@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import "../styles/fonts.css";
 
 export interface Props {
   title: string;
@@ -17,8 +18,8 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="white">
-    <nav>
+  <body class="bg-stone-100 text-black">
+    <!-- <nav>
       <a href="/">Artister</a>
       <a href="/program">Program</a>
       <a href="/praktisk">Praktisk</a>
@@ -26,7 +27,7 @@ const { title } = Astro.props;
       <a href="/historikk">Historikk</a>
       <a href="/frivillig">Frivillig</a>
       <a href="/blogg">Blogg</a>
-    </nav>
+    </nav> -->
     <slot />
     <Footer />
   </body>
