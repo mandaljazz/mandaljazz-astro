@@ -1,19 +1,30 @@
 ---
 import Sponsors from "./Sponsors.astro";
-// @ts-ignore
 import { Icon } from "astro-icon";
 ---
 
 <section>
   <!-- <Sponsors /> -->
-  <ul role="list" class="flex flex-row justify-center">
-    <li class="inline-flex">
-      <a href="https://www.facebook.com/mandaljazz">
-        <Icon pack="ion" name="logo-facebook" size={48} /></a
-      >
-      <a href="https://www.instagram.com/mandaljazz/"
-        ><Icon pack="ion" name="logo-instagram" size={48} /></a
-      >
-    </li>
-  </ul>
+  <div class="py-32 bg-dark-blue text-white">
+    <div class="px-4 sm:px-24 md:px-48 lg:px-64 space-y-4">
+      <a href="mailto:post@mandaljazz.no">post@mandaljazz.no</a>
+      <ul role="list" class="flex flex-row gap-4">
+        <li class="inline-flex">
+          <a
+            href="https://www.facebook.com/mandaljazz"
+            class="hover:scale-105 transition-transform"
+          >
+            <Icon pack="ion" name="logo-facebook" size={48} /></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/mandaljazz/"
+            class="hover:scale-105 transition-transform"
+            ><Icon pack="ion" name="logo-instagram" size={48} /></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>

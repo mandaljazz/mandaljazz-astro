@@ -1,40 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const artists = await Astro.glob("../pages/artist/*.mdx");
 ---
 
 <Layout title="mandaljazz 2023">
-  <main class="space-y-24 pt-12">
+  <main class="space-y-24 px-4 sm:px-24 md:px-48 lg:px-64">
     <div class="px-4 mx-auto max-w-3xl flex flex-col items-center">
-      <!-- <img
-        src="profile/lp.png"
-        class="max-w-full w-[620px] h-fit rounded-t-3xl"
-      /> -->
-      <h1 class="px-4 text-6xl font-display text-center leading-snug">
-        mandaljazz 2023
-      </h1>
-      <div class="max-w-full w-[620px] h-2 bg-blue"></div>
+      <div class="flex flex-col items-center gap-4 w-full">
+        <img
+          src="profile/Jazzlaug04.png"
+          class="max-w-2xl w-full h-fit"
+        />
+        <h1 class="px-4 text-5xl sm:text-6xl font-display text-center leading-snug">
+          mandaljazz 2023
+        </h1>
+      </div>
+      <!-- <div class="max-w-full w-[620px] h-2 bg-blue"></div>
       <div class="max-w-full w-[620px] h-2 bg-yellow"></div>
       <div class="max-w-full w-[620px] h-2 bg-orange"></div>
       <div class="max-w-full w-[620px] h-2 bg-pink"></div>
       <div class="max-w-full w-[620px] h-2 bg-indigo"></div>
-      <div class="max-w-full w-[620px] h-2 bg-dark-blue"></div>
+      <div class="max-w-full w-[620px] h-2 bg-dark-blue"></div> -->
     </div>
 
     <ul
       role="list"
       class="px-4 mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
     >
-      <Card
-        href="/artist/anja-lauvdal"
-        title="Anja Lauvdal"
-        id="anja-lauvdal"
-      />
-      <Card
-        href="/artist/veslemoy-narvesen"
-        title="Veslemøy Narvesen"
-        id="veslemoy-narvesen"
-      />
+      {
+        artists.map((artist) => {
+          const {
+            frontmatter: { title, id },
+          } = artist;
+          return <Card href={`/artist/${id}`} title={title} id={id} />;
+        })
+      }
     </ul>
   </main>
 </Layout>

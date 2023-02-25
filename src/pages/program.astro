@@ -1,14 +1,38 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+
+const artists = await Astro.glob("../pages/artist/*.mdx");
 ---
 
 <Layout title="Program | Mandaljazz 2023">
   <main>
-    <h1>Program</h1>
-    <ul role="list" class="grid-cols-3">
-      <Card href="/artist/anja-lauvdal" title="Anja Lauvdal" />
-      <Card href="/artist/veslemoy-narvesen" title="Veslemæøy Narvesen" />
-    </ul>
+    <h1 class="font-display text-5xl">Program</h1>
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Venue</th>
+          <th>Når</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          artists.map((artist) => {
+            const {
+              frontmatter: { title, id, venue, concertStartAt },
+            } = artist;
+            return (
+              <tr>
+                <td>
+                  <a href={`/artist/${id}`}>{title}</a>
+                </td>
+                <td>{venue}</td>
+                <td>{concertStartAt}</td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
   </main>
 </Layout>
