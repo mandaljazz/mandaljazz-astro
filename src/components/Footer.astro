@@ -1,10 +1,8 @@
 ---
-import Sponsors from "./Sponsors.astro";
 import { Icon } from "astro-icon";
 ---
 
 <section>
-  <!-- <Sponsors /> -->
   <div class="py-32 bg-dark-blue text-white">
     <div class="px-4 sm:px-24 md:px-48 lg:px-64 space-y-4">
       <a href="mailto:post@mandaljazz.no">post@mandaljazz.no</a>
@@ -17,7 +15,7 @@ import { Icon } from "astro-icon";
             <Icon pack="ion" name="logo-facebook" size={48} /></a
           >
         </li>
-        <li>
+        <li class="inline-flex">
           <a
             href="https://www.instagram.com/mandaljazz/"
             class="hover:scale-105 transition-transform"
