@@ -6,16 +6,27 @@ export interface Props {
 }
 
 const { href, title, id } = Astro.props;
+
+const randomBackgroundColor = () => {
+  const colors = [
+    "bg-blue",
+    "bg-dark-blue",
+    "bg-indigo",
+    "bg-orange",
+    "bg-pink",
+    "bg-black",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
 ---
 
 <li
   class="rounded-xl w-full h-96 sm:h-72 bg-cover bg-center bg-no-repeat hover:scale-105 transition-transform"
   style={`background-image: url(artist/${id}.png)`}
 >
-  <a href={href} class="block h-full w-full">
+  <a href={href} class="relative block h-full w-full">
     <h2
-      class="text-xl text-white text-center"
-      style="text-shadow: 0 2px 5px black;"
+      class={`absolute -translate-y-4 w-full bottom-0 right-0 translate-x-4 text-xl text-white text-center p-4 rounded-md ${randomBackgroundColor()}`}
     >
       {title}
     </h2>

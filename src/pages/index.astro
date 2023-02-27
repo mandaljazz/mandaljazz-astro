@@ -8,7 +8,7 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
 <Layout title="mandaljazz 2023">
   <main class="space-y-24 px-4 sm:px-24 md:px-48 lg:px-64">
     <div class="px-4 mx-auto max-w-3xl flex flex-col items-center">
-      <div class="flex flex-col items-center gap-4 w-full">
+      <div class="flex flex-col items-center gap-8 w-full">
         <img
           src="profile/Jazzlaug04.png"
           class="max-w-2xl w-full h-fit"
@@ -17,17 +17,11 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
           mandaljazz 2023
         </h1>
       </div>
-      <!-- <div class="max-w-full w-[620px] h-2 bg-blue"></div>
-      <div class="max-w-full w-[620px] h-2 bg-yellow"></div>
-      <div class="max-w-full w-[620px] h-2 bg-orange"></div>
-      <div class="max-w-full w-[620px] h-2 bg-pink"></div>
-      <div class="max-w-full w-[620px] h-2 bg-indigo"></div>
-      <div class="max-w-full w-[620px] h-2 bg-dark-blue"></div> -->
     </div>
 
     <ul
       role="list"
-      class="px-4 mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+      class="px-4 mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
     >
       {
         artists.map((artist) => {

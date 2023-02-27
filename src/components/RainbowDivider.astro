@@ -1,0 +1,16 @@
+---
+export interface Props {
+  class: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div>
+  <div class={`h-0.5 mx-auto bg-blue ${className}`}></div>
+  <div class={`h-0.5 mx-auto bg-yellow ${className}`}></div>
+  <div class={`h-0.5 mx-auto bg-orange ${className}`}></div>
+  <div class={`h-0.5 mx-auto bg-pink ${className}`}></div>
+  <div class={`h-0.5 mx-auto bg-indigo ${className}`}></div>
+  <div class={`h-0.5 mx-auto bg-dark-blue ${className}`}></div>
+</div>

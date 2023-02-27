@@ -1,36 +1,81 @@
 ---
 import Layout from "./Layout.astro";
+import { Icon } from "astro-icon";
+import RainbowDivider from "../components/RainbowDivider.astro";
 
 const {
-  frontmatter: { spotifyUrl, title, author, tagline, id },
+  frontmatter: {
+    spotifyUrl,
+    title,
+    author,
+    tagline,
+    id,
+    concertStartAt,
+    venue,
+  },
 } = Astro.props;
+
+const randomHandSrc = `/profile/hand0${Math.floor(
+  Math.random() * (6 - 1) + 1
+)}.png`;
 ---
 
 <Layout title={`${title} // Mandaljazz 2023`}>
-  <main>
-    <h1 class="text-4xl">{title}</h1>
-    <h2>Tekst: {author}</h2>
-    <p>
-      {tagline}
-    </p>
-    <img src={`${id}.png`} alt={title} class="rounded max-w-2xl" />
-    <article class="prose">
-      <slot />
-    </article>
-    {
-      spotifyUrl && (
-        <iframe
-          class="rounded border-0 max-w-md"
-          src={`https://open.spotify.com/embed/artist/${
-            spotifyUrl.match(/\/artist\/(.*?)\?si/)?.[1]
-          }?utm_source=generator`}
-          width="100%"
-          height="352"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        />
-      )
-    }
+  <main class="sm:px-24 md:px-48 lg:px-64">
+    <div class="px-4 space-y-24 mx-auto max-w-3xl">
+      <div class="space-y-4">
+        <div class="space-y-4">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-display">{title}</h1>
+          <div class="flex flex-row w-full">
+            <div class="flex-1 space-y-8">
+              <p class="text-3xl italic">
+                {tagline}
+              </p>
+              <div>
+                <p>Tekst: {author}</p>
+                <!-- <p>{concertStartAt}</p>
+                <p>{venue}</p> -->
+              </div>
+            </div>
+            <div class="flex-none relative">
+              <img
+                src={randomHandSrc}
+                class="w-40 h-40 place-end rotate-2 translate-y-8"
+                alt="Fargerik hånd som peker på tittelen ovenfor"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div
+            class="bg-no-repeat bg-cover bg-center w-full h-[520px] rounded"
+            style={`background-image: url(${id}.png);`}
+          >
+          </div>
+        </div>
+      </div>
+
+      <article class="prose">
+        <slot />
+      </article>
+      <RainbowDivider class="w-1/3" />
+      {
+        spotifyUrl && (
+          <iframe
+            class="rounded border-0 w-full"
+            src={`${spotifyUrl.replace(
+              "https://open.spotify.com/",
+              "https://open.spotify.com/embed/"
+            )}?utm_source=generator`}
+            width="100%"
+            height="352"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        )
+      }
+    </div>
   </main>
 </Layout>
