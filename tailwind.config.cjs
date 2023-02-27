@@ -19,6 +19,9 @@ module.exports = {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
         display: ["Libre Baskerville"],
       },
+      scale: {
+        "-100": "-1",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
