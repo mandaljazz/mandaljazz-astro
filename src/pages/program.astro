@@ -19,8 +19,13 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
         {
           artists.map((artist) => {
             const {
-              frontmatter: { title, id, venue, concertStartAt },
+              frontmatter: { title, id, venue, concertStartAt, hidden },
             } = artist;
+
+            if (hidden) {
+              return null;
+            }
+
             return (
               <tr>
                 <td>

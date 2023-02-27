@@ -25,8 +25,13 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
       {
         artists.map((artist) => {
           const {
-            frontmatter: { title, id, tagline },
+            frontmatter: { title, id, tagline, hidden },
           } = artist;
+
+          if (hidden) {
+            return null;
+          }
+
           return (
             <Card
               href={`/artist/${id}`}
