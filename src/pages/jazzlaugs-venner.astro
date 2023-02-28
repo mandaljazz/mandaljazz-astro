@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const artists = await Astro.glob("../pages/artist/*.mdx");
+---
+
+<Layout title="Jazzlaugs Venner | Mandaljazz 2023">
+  <main class="px-4 sm:px-24 md:px-48 lg:px-64">
+    <img src="/sponsor/jazzlaugs-venner.png" alt="Jazzlaugs Venner" class="w-1/2 mx-auto my-8" />
+    <ul role="list" class="list-disc mx-auto w-fit text-xl leading-10">
+      <li>Aurebekk Gartneri</li>
+      <li>Buen Kulturhus</li>
+      <li>Kjøkkensenteret Mandal</li>
+      <li>NorEngros</li>
+      <li>Nødings Delikatesse</li>
+      <li>Maren AS</li>
+    </ul>
+  </main>
+</Layout>
