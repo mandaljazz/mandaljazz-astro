@@ -1,0 +1,42 @@
+---
+export interface Props {
+  size: "small" | "medium" | "large";
+  sponsors: {
+    name: string;
+    image: string;
+    url: string;
+  }[];
+}
+
+const { size, sponsors } = Astro.props;
+
+const imageSize = {
+  large: "w-72 h-72",
+  medium: "w-48 h-24",
+  small: "w-28 h-12",
+};
+---
+
+<ul
+  role="list"
+  class="w-full flex flex-row flex-wrap gap-8 items-center justify-center"
+>
+  {
+    sponsors.map(({ name, image, url }) => (
+      <li>
+        <a
+          href={url}
+          title={name}
+          rel="noopener nofollow"
+          target="_blank"
+          class="block hover:scale-105 transition-transform"
+        >
+          <div
+            style={`background-image: url(/sponsors/${image}`}
+            class={`${imageSize[size]} bg-no-repeat bg-contain bg-center`}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

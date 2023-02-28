@@ -1,8 +1,195 @@
-<section>
-  <ul role="list">
-    <li class="">
-      <a href="https://www.facebook.com/mandaljazz">Sponsor 1</a>
-      <a href="https://www.instagram.com/mandaljazz/">Sponsor 2</a>
-    </li>
-  </ul>
+---
+import SponsorList from "./SponsorList.astro";
+
+const mainSponsors = [
+  {
+    name: "Sparebanken Sør",
+    url: "https://www.sor.no/",
+    image: "sparebanken-sor.png",
+  },
+];
+
+const regularSponsors = [
+  {
+    name: "Larsen Optikk",
+    url: "https://larsenoptikk.no/",
+    image: "larsen-optikk.png",
+  },
+  {
+    name: "Hr. Redaktør!",
+    url: "https://red.no/",
+    image: "hr-redaktor.png",
+  },
+  {
+    name: "WHY Connect",
+    url: "https://whyconnect.no/",
+    image: "whyconnect.png",
+  },
+];
+
+const supporterSponsors = [
+  {
+    name: "Jazzlaugs Venner",
+    url: "/jazzlaugs-venner",
+    image: "jazzlaugs-venner.png",
+  },
+  {
+    name: "Tess Teknisk Faghandel",
+    url: "https://tess.no/",
+    image: "tess.png",
+  },
+  {
+    name: "Lindesnes Avis",
+    url: "https://www.l-a.no/",
+    image: "lindesnes-avis.png",
+  },
+  {
+    name: "Sørlandets Elektro",
+    url: "https://www.seeas.no/",
+    image: "sorlandets-elektro.png",
+  },
+  {
+    name: "Gullsmed Danielsen",
+    url: "https://www.gullsmeddanielsen.no",
+    image: "gullsmed-danielsen.png",
+  },
+  {
+    name: "Revisorsenteret Mandal",
+    url: "https://revisorsenteretmandal.no/",
+    image: "revisorsenteret-mandal.png",
+  },
+  {
+    name: "Mandal Hotel",
+    url: "https://mandalhotel.no/",
+    image: "mandal-hotel.png",
+  },
+  {
+    name: "Kjøbmandsgaarden Hotel",
+    url: "https://kjobmandsgaarden.no/",
+    image: "kjobmandsgaarden.png",
+  },
+  {
+    name: "Tor Fasseland",
+    url: "https://www.tor-fasseland.no/",
+    image: "tor-fasseland.png",
+  },
+  { name: "Mandals AS", url: "https://mandals.com/", image: "mandals.png" },
+  { name: "Veidekke", url: "http://www.veidekke.no/", image: "veidekke.jpg" },
+  {
+    name: "Brekke & Strand Akustikk",
+    url: "https://brekkestrand.no/",
+    image: "brekke-strand.png",
+  },
+  { name: "Nøsted", url: "https://www.nosted.com/", image: "nosted.png" },
+  {
+    name: "Egeland Rør",
+    url: "https://www.egeland.no/",
+    image: "egeland-ror.png",
+  },
+  {
+    name: "Marnar Bruk",
+    url: "https://marnarbruk.no/",
+    image: "marnar-bruk.png",
+  },
+  {
+    name: "Sjøsanden Grafiske",
+    url: "https://www.sjograf.no/",
+    image: "sjosanden-grafiske.png",
+  },
+  {
+    name: "Jobzone Mandal",
+    url: "https://jobzone.no/avdelinger/mandal/",
+    image: "jobzone.gif",
+  },
+  {
+    name: "Enøk Total",
+    url: "https://www.enoktotal.no/",
+    image: "enok-total.png",
+  },
+  {
+    name: "Mandal Musikkforening",
+    url: "https://mmf.no/",
+    image: "mandal-musikkforening.png",
+  },
+  {
+    name: "Corado Coffee Roasters",
+    url: "https://coradocoffeeroasters.com/",
+    image: "corado.png",
+  },
+];
+
+const publicSponsors = [
+  {
+    name: "Agder Fylkeskommune",
+    url: "https://agderfk.no/",
+    image: "agder-fylkeskommune.png",
+  },
+  {
+    name: "Lindesnes kommune",
+    url: "https://www.lindesnes.kommune.no/",
+    image: "lindesnes-kommune.png",
+  },
+  {
+    name: "Sør-Norsk Jazzsenter",
+    url: "https://sornorsk.jazzinorge.no/",
+    image: "sor-norsk-jazzsenter.png",
+  },
+  {
+    name: "Nordisk kulturfond",
+    url: "https://www.nordiskkulturfond.org/en",
+    image: "nordisk-kulturfond.png",
+  },
+  {
+    name: "Kulturrådet",
+    url: "https://www.kulturradet.no/",
+    image: "kulturraadet.png",
+  },
+];
+
+const partners = [
+  { name: "Keychange", url: "https://keychange.eu/", image: "keychange.png" },
+];
+---
+
+<section class="px-4 sm:px-24 md:px-48 lg:px-64 flex flex-col gap-24 mt-48">
+  <div class="space-y-8">
+    <h1
+      class="font-display text-4xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+    >
+      Hovedsponsor 2022
+    </h1>
+    <SponsorList size="large" sponsors={mainSponsors} />
+  </div>
+  <div class="space-y-8">
+    <h1
+      class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+    >
+      Sponsorer 2022
+    </h1>
+    <SponsorList size="medium" sponsors={regularSponsors} />
+  </div>
+  <div class="space-y-8">
+    <h1
+      class="font-display text-md p-4 bg-pink text-white mx-auto w-fit rounded-md"
+    >
+      Støttespillere 2022
+    </h1>
+    <SponsorList size="small" sponsors={supporterSponsors} />
+  </div>
+  <div class="space-y-8">
+    <h1
+      class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+    >
+      Offentlig støtte 2022
+    </h1>
+    <SponsorList size="medium" sponsors={publicSponsors} />
+  </div>
+  <div class="space-y-8">
+    <h1
+      class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+    >
+      Samarbeidspartnere 2022
+    </h1>
+    <SponsorList size="medium" sponsors={partners} />
+  </div>
 </section>

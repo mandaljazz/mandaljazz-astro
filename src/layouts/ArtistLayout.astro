@@ -28,7 +28,7 @@ const randomHandSrc = `/profile/hand0${Math.floor(
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-display">{title}</h1>
           <div class="flex flex-row w-full">
             <div class="flex-1 space-y-8">
-              <p class="text-3xl italic">
+              <p class="text-3xl">
                 {tagline}
               </p>
               <div>
@@ -59,7 +59,7 @@ const randomHandSrc = `/profile/hand0${Math.floor(
       <article class="prose">
         <slot />
       </article>
-      <RainbowDivider class="w-1/3" />
+      <RainbowDivider containerClass="w-1/3 mx-auto" />
       {
         spotifyUrl && (
           <iframe
