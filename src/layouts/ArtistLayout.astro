@@ -20,7 +20,11 @@ const randomHandSrc = `/profile/hand0${Math.floor(
 )}.png`;
 ---
 
-<Layout title={`${title} // Mandaljazz 2023`}>
+<Layout
+  title={`${title} // Mandaljazz 2023`}
+  description={`${title} på Mandaljazz! ${tagline}`}
+  image={`/artist/${id}.png`}
+>
   <main class="sm:px-24 md:px-48 lg:px-64">
     <div class="px-4 space-y-24 mx-auto max-w-3xl">
       <div class="space-y-4">
