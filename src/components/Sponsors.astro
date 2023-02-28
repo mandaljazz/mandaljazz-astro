@@ -176,20 +176,22 @@ const partners = [
     </h1>
     <SponsorList size="small" sponsors={supporterSponsors} />
   </div>
-  <div class="space-y-8">
-    <h1
-      class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
-    >
-      Offentlig støtte 2022
-    </h1>
-    <SponsorList size="medium" sponsors={publicSponsors} />
-  </div>
-  <div class="space-y-8">
-    <h1
-      class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
-    >
-      Samarbeidspartnere 2022
-    </h1>
-    <SponsorList size="medium" sponsors={partners} />
+  <div class="grid grid-cols-2 gap-12">
+    <div class="space-y-8 col-span-1">
+      <h1
+        class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+      >
+        Offentlig støtte 2022
+      </h1>
+      <SponsorList size="medium" sponsors={publicSponsors} />
+    </div>
+    <div class="space-y-8">
+      <h1
+        class="font-display text-2xl p-4 bg-pink text-white mx-auto w-fit rounded-md"
+      >
+        Samarbeidspartnere 2022
+      </h1>
+      <SponsorList size="medium" sponsors={partners} />
+    </div>
   </div>
 </section>
