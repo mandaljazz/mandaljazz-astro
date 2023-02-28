@@ -1,8 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
+
+const byOrder = (a, b) => {
+  const aOrder = a.frontmatter.order || 0;
+  const bOrder = b.frontmatter.order || 0;
+  if (aOrder > bOrder) {
+    return -1;
+  } else if (aOrder < bOrder) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
 ---
 
 <Layout title="mandaljazz 2023">
@@ -23,7 +35,7 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
       class="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
     >
       {
-        artists.map((artist) => {
+        artists.sort(byOrder).map((artist) => {
           const {
             frontmatter: { title, id, tagline, hidden },
           } = artist;
