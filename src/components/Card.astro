@@ -14,7 +14,6 @@ const randomFromList = (values: string[]) => {
 
 const randomBackgroundColor = () => {
   return randomFromList([
-    "bg-blue",
     "bg-dark-blue",
     "bg-indigo",
     "bg-orange",
@@ -25,7 +24,7 @@ const randomBackgroundColor = () => {
 ---
 
 <li
-  class={`rounded-xl w-full h-96 sm:h-72 bg-cover bg-center bg-no-repeat transition-transform group hover:rotate-1`}
+  class={`rounded-xl w-full h-96 sm:h-72 bg-cover bg-bottom sm:bg-center bg-no-repeat transition-transform group hover:rotate-1`}
   style={`background-image: url('/artist/${id}.png')`}
 >
   <a href={href} class="relative block h-full w-full">
