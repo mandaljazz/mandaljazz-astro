@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const accomodations = [
+  { name: "Kjøbmandsgården Hotell", url: "https://www.kjobmandsgaarden.no/" },
+  { name: "Sjøsanden Feriesenter", url: "https://topcamp.no/nb/sjosanden" },
+  { name: "Sjøsanden Ferietun", url: "https://www.ferietun.no/" },
+  { name: "Tregde Feriesenter", url: "https://tregdeferie.no/" },
+  { name: "Hald Pensjonat", url: "https://haldpensjonat.no/" },
+  {
+    name: "Hatholmen Fyr",
+    url: "https://www.facebook.com/groups/147772328588662",
+  },
+  { name: "Mandal Hotell", url: "https://mandalhotel.no/" },
+  {
+    name: "Ryvingen Fyr",
+    url: "https://www.ryvingensvenner.no/minorg/ryvenner/web.nsf/index?opennavigator",
+  },
+  {
+    name: "Airbnb",
+    url: "https://www.airbnb.no/s/Mandal/homes?refinement_paths%5B%5D=%2Fhomes&allow_override%5B%5D=&checkin=2020-06-25&checkout=2020-06-28&s_tag=04tZdMNA",
+  },
+  { name: "Skap Sommerhostell", url: "https://skapfhs.no/sommerhostel/" },
+];
+---
+
+<Layout
+  title="Praktisk info // mandaljazz 2023"
+  description="Praktisk info om mandaljazz 2023"
+>
+  <main class="px-4 sm:px-24 md:px-48 lg:px-64 py-12 sm:py-24">
+    <div class="mx-auto space-y-8">
+      <h1 class="font-display text-5xl">Praktisk info</h1>
+      <!-- <VenueMap /> -->
+      <p>
+        <a
+          href="https://goo.gl/maps/faFwNkmTR28gCYRA6"
+          rel="noopener nofollow"
+          target="_blank"
+        >
+          Keiser Nicolaus gate 8–12, 4515 Mandal
+        </a>
+      </p>
+      <h2 class="font-display text-3xl">Reise</h2>
+      <p>
+        Finn reisen til Mandaljazz med <a href="https://entur.no">Entur</a>.
+      </p>
+      <iframe
+        title="Entur-widget"
+        class="block w-full lg:w-3/4 h-[400px]"
+        src="https://widget.entur.no/compact?filters=bus%2Crail&showResult=internal&defaultLang=nob&toName=Mandal&toPlace=NSR%3AGroupOfStopPlaces%3A85&toCoords=58.029357%2C7.460864"
+      ></iframe>
+      <p>
+        Ellers kan du for eksempel reise med{" "}
+        <a
+          href="https://lavprisekspressen.no/"
+          rel="noopener nofollow"
+          target="_blank">Lavprisekspressen</a
+        >.
+      </p>
+
+      <p>
+        Spørsmål om transport?
+        <a
+          href="mailto:post@mandaljazz.no"
+          title="post@mandaljazz.no"
+          rel="noopener nofollow"
+          target="_blank"
+        >
+          Kontakt oss
+        </a>
+        gjerne!
+      </p>
+
+      <h2 class="font-display text-2xl">Overnatting</h2>
+      <p>
+        Det finnes flere overnattingsmuligheter i Mandal. Sjekk ut disse for mer
+        info.
+      </p>
+
+      <ul
+        role="list"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+        {
+          accomodations.map(({ name, url }) => (
+            <li class="">
+              <a
+                class="bg-yellow p-4 rounded h-full block hover:-rotate-1 transition-transform"
+                target="_blank"
+                rel="noopener nofollow"
+                href={url}
+              >
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 class="font-display text-3xl">Universell utforming</h2>
+      <p>
+        De fleste av konsertene skjer på vårt festivalområdet eller i vårt
+        festivaltelt på Kulturfabrikken.
+      </p>
+      <p>
+        Kulturfabrikken har to handicap-toaletter i første etasje. Det er
+        montert rampe for å enkelt komme inn i bygget med rullestol. Utendørs i
+        bakgården er det grus, så det kan kanskje være litt mer krevende å komme
+        til med rullestol enn på asfalt eller andre underlag, men vi har alltid
+        frivillige på jobb som kan bistå ved behov slik at rullestolbrukere fint
+        skal komme seg inn i teltet eller rundt på området.
+      </p>
+      <p>
+        Vi arrangerer også noen konserter i kulturhuset Buen. Her er det heis og
+        handicap-toaletter.
+      </p>
+    </div>
+  </main>
+</Layout>
