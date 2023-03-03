@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/tikkio-overrides.css";
+
+const jobs = [
+  {
+    title: "Artistvertskap",
+    description:
+      "Som artistvert er du med på å gi artistene en hyggelig opplevelse på festivalen. Denne gjengen tar i mot artistene og sørger for at de får mat, drikke og svar på det de lurer på.",
+  },
+  {
+    title: "Bar og servering",
+    description:
+      "Denne gjengen står i baren i teltet eller serverer mat på festivalområdet.",
+  },
+  {
+    title: "Billett og merch",
+    description: "Denne gjengen selger billetter og merch under festivalen.",
+  },
+  {
+    title: "Foto/film",
+    description:
+      "Både før og under festivalen trenger vi fotografer og filmfotografer. Det er ønskelig med noe erfaring og interesse.",
+  },
+  {
+    title: "Kokk",
+    description:
+      "Liker du å lage mat? Da kan du bli med å lage maten som serveres under festivalen, til både publikum, frivillige og artister.",
+  },
+  {
+    title: "Kos og forpleining",
+    description:
+      "Denne gjengen sørger for at det er hyggelig å være frivillig. Det innebærer å lage mat til de frivillige, særlig i sjaueuka før festivalen, og arrangere hyggelige sosiale aktiviteter for de frivillige!",
+  },
+  {
+    title: "Sjauing og område",
+    description:
+      "Denne gjengen har ansvar for å sette opp og rigge ned festivalteltet, gjøre festivalområdet fint, og rigge klart til festival. Bli med enten du er glad i løfte og bære, snekre, har estetisk sans, eller bare ønsker å være med i en hyggelig og sosial gjeng! Det er særlig behov for folk som har mulighet til å være med i uka før festivalen.",
+  },
+  {
+    title: "Teknikk",
+    description:
+      "Som teknisk sjauer jobber man på scenen med rigging under lydprøver og konserter. Noe teknisk erfaring er ønskelig.",
+  },
+  {
+    title: "Transport",
+    description:
+      "Bli med som sjåfør hvis du kan tenke deg å kjøre artister til og fra flyplassen (Kristiansand lufthavn, Kjevik), og frakte folk og utstyr rundt omkring. Du må ha førerkort, men trenger ikke nødvendigvis ha egen bil.",
+  },
+  {
+    title: "Vakt",
+    description:
+      "Vaktene passer på at publikum og frivillige har det hyggelig og ikke bryter sjenkereglene, og har et ekstra øye for at avstandsregler og smittevern blir etterfulgt.",
+  },
+];
+---
+
+<Layout
+  title="Frivillig // mandaljazz 2023"
+  description="Ja, bli frivillig på mandaljazz 2023 du også!"
+>
+  <main class="px-4 sm:px-24 md:px-48 lg:px-64 py-12 sm:py-24">
+    <div class="mx-auto max-w-6xl space-y-8">
+      <h1 class="font-display text-5xl">Frivillig</h1>
+      <video autoplay playsinline muted class="w-full" loop>
+        <source src="promo.mp4" type="video/mp4" />
+        Beklager, her skulle det egentlig vært en video, men nettleseren din støtter
+        ikke innebygde videoer :(
+      </video>
+      <p>
+        Som frivillig på Mandaljazz får du oppleve massevis av god musikk og mye
+        morro sammen med en herlig gjeng sosiale, hyggelige og åpne folk.
+        Kanskje lærer du også noe nytt?
+      </p>
+      <p>Hvilken frivilliggruppe vil du være med i?</p>
+      <div class="space-y-2">
+        {
+          jobs.map(({ title, description }) => (
+            <>
+              <button class="collapsible bg-dark-blue text-white text-left p-4 w-full rounded-t">
+                {title}
+              </button>
+              <p class="bg-dark-blue/20 rounded-b transition-all px-4 h-0 overflow-y-hidden">
+                {description}
+              </p>
+            </>
+          ))
+        }
+      </div>
+      <!-- TODO: Volunteer images and quotes, and registration schema -->
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const collapsibles = document.querySelectorAll("button.collapsible");
+
+  collapsibles.forEach((collapsible) => {
+    collapsible.addEventListener("click", () => {
+      collapsible.nextElementSibling.classList.toggle("h-0");
+      collapsible.nextElementSibling.classList.toggle("h-auto");
+      collapsible.nextElementSibling.classList.toggle("py-4");
+    });
+  });
+</script>
