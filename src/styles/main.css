@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .link {
-  background: linear-gradient(to top, theme('colors.yellow') 80%, transparent 80%);
+  background: linear-gradient(
+    to top,
+    theme("colors.pink") 80%,
+    transparent 80%
+  );
   text-decoration: none;
   cursor: pointer;
   transform-style: preserve-3d;
@@ -11,9 +15,22 @@
   background-position: 0% 14%;
   background-size: 100% 1200%;
 }
-.link:hover {
+.link.nav {
+  background: linear-gradient(
+    to top,
+    theme("colors.dark-blue") 80%,
+    transparent 80%
+  );
+  background-position: 0% 14%;
+  background-size: 100% 1200%;
+}
+.link.nav[aria-current="page"] {
   background-position: 0 22%;
-  color: theme('colors.black');
+}
+.link:hover,
+.link.nav:hover {
+  background-position: 0 22%;
+  color: theme("colors.white");
 }
 
 @layer utilities {

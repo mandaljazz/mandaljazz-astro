@@ -5,12 +5,40 @@ import Link from "../components/Link.astro";
 
 <footer class="relative mt-32">
   <div class="py-32 bg-dark-blue text-white z-10 relative">
-    <div class="px-4 sm:px-24 md:px-48 lg:px-64 space-y-4">
-      <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
-        post@mandaljazz.no
-      </Link>
-      <ul role="list" class="flex flex-row gap-4">
-        <li class="inline-flex">
+    <div
+      class="px-4 sm:px-24 md:px-48 lg:px-64 grid grid-cols-1 md:grid-cols-2 gap-4"
+    >
+      <address class="not-italic space-y-8">
+        <h3 class="font-display text-lg">Booking og spørsmål</h3>
+        <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
+          post@mandaljazz.no
+        </Link>
+        <div>
+          <h3 class="font-display text-lg">Eirik Kristensen (festivalsjef)</h3>
+          <ul>
+            <li>
+              <Link href="tel:+4748225190" title="+47 482 25 190">
+                +47 482 25 190
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="mailto:eirik@mandaljazz.no"
+                title="eirik@mandaljazz.no"
+              >
+                eirik@mandaljazz.no
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <h3 class="font-display text-lg">Adresse</h3>
+        Mandaljazz, Neseveien 11<br />
+        4514 Mandal<br />
+        Norge
+      </address>
+
+      <ul role="list" class="flex flex-row md:justify-end gap-4">
+        <li class="inline-flex h-fit">
           <a
             href="https://www.facebook.com/mandaljazz"
             class="hover:scale-105 transition-transform"
@@ -18,7 +46,7 @@ import Link from "../components/Link.astro";
             <Icon pack="ion" name="logo-facebook" size={48} /></a
           >
         </li>
-        <li class="inline-flex">
+        <li class="inline-flex h-fit">
           <a
             href="https://www.instagram.com/mandaljazz/"
             class="hover:scale-105 transition-transform"

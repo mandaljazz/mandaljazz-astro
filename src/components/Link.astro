@@ -3,18 +3,28 @@ export interface Props {
   href: string;
   title: string;
   external?: boolean;
+  nav?: boolean;
 }
 
-const { href, external } = Astro.props;
+const { href, external, nav } = Astro.props;
 ---
 
 {
   external ? (
-    <a href={href} class="link" rel="noopener nofollow" target="_blank">
+    <a
+      href={href}
+      class={nav ? "nav link" : "link"}
+      rel="noopener nofollow"
+      target="_blank"
+    >
       <slot />
     </a>
   ) : (
-    <a href={href} class="link">
+    <a
+      href={href}
+      class={nav ? "nav link p-2" : "link"}
+      aria-current={Astro.url.pathname === href ? "page" : undefined}
+    >
       <slot />
     </a>
   )
