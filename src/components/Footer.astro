@@ -1,11 +1,14 @@
 ---
 import { Icon } from "astro-icon";
+import Link from "../components/Link.astro";
 ---
 
 <footer class="relative mt-32">
   <div class="py-32 bg-dark-blue text-white z-10 relative">
     <div class="px-4 sm:px-24 md:px-48 lg:px-64 space-y-4">
-      <a href="mailto:post@mandaljazz.no">post@mandaljazz.no</a>
+      <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
+        post@mandaljazz.no
+      </Link>
       <ul role="list" class="flex flex-row gap-4">
         <li class="inline-flex">
           <a

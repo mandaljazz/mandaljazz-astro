@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
 
 const accomodations = [
   { name: "Kjøbmandsgården Hotell", url: "https://www.kjobmandsgaarden.no/" },
@@ -33,13 +34,13 @@ const accomodations = [
       <h1 class="font-display text-5xl">Praktisk info</h1>
       <!-- <VenueMap /> -->
       <p>
-        <a
+        <Link
           href="https://goo.gl/maps/faFwNkmTR28gCYRA6"
-          rel="noopener nofollow"
-          target="_blank"
+          external
+          title="Keiser Nicolaus gate 8–12, 4515 Mandal"
         >
           Keiser Nicolaus gate 8–12, 4515 Mandal
-        </a>
+        </Link>
       </p>
       <h2 class="font-display text-3xl">Reise</h2>
       <p>
@@ -52,68 +53,70 @@ const accomodations = [
       ></iframe>
       <p>
         Ellers kan du for eksempel reise med{" "}
-        <a
+        <Link
           href="https://lavprisekspressen.no/"
-          rel="noopener nofollow"
-          target="_blank">Lavprisekspressen</a
-        >.
-      </p>
-
-      <p>
-        Spørsmål om transport?
-        <a
-          href="mailto:post@mandaljazz.no"
-          title="post@mandaljazz.no"
-          rel="noopener nofollow"
-          target="_blank"
+          external
+          title="Lavprisekspressen"
         >
-          Kontakt oss
-        </a>
-        gjerne!
-      </p>
+          Lavprisekspressen
+        </Link>.
 
-      <h2 class="font-display text-2xl">Overnatting</h2>
-      <p>
-        Det finnes flere overnattingsmuligheter i Mandal. Sjekk ut disse for mer
-        info.
-      </p>
+        <p>
+          Spørsmål om transport?
+          <Link
+            href="mailto:post@mandaljazz.no"
+            title="post@mandaljazz.no"
+            external
+          >
+            Kontakt oss
+          </Link>
+          gjerne!
+        </p>
 
-      <ul
-        role="list"
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
-        {
-          accomodations.map(({ name, url }) => (
-            <li class="">
-              <a
-                class="bg-yellow p-4 rounded h-full block hover:-rotate-1 transition-transform"
-                target="_blank"
-                rel="noopener nofollow"
-                href={url}
-              >
-                {name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+        <h2 class="font-display text-2xl">Overnatting</h2>
+        <p>
+          Det finnes flere overnattingsmuligheter i Mandal. Sjekk ut disse for
+          mer info.
+        </p>
 
-      <h2 class="font-display text-2xl">Universell utforming</h2>
-      <p>
-        De fleste av konsertene skjer på vårt festivalområdet eller i vårt
-        festivaltelt på Kulturfabrikken.
-      </p>
-      <p>
-        Kulturfabrikken har to handicap-toaletter i første etasje. Det er
-        montert rampe for å enkelt komme inn i bygget med rullestol. Utendørs i
-        bakgården er det grus, så det kan kanskje være litt mer krevende å komme
-        til med rullestol enn på asfalt eller andre underlag, men vi har alltid
-        frivillige på jobb som kan bistå ved behov slik at rullestolbrukere fint
-        skal komme seg inn i teltet eller rundt på området.
-      </p>
-      <p>
-        Vi arrangerer også noen konserter i kulturhuset Buen. Her er det heis og
-        handicap-toaletter.
+        <ul
+          role="list"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {
+            accomodations.map(({ name, url }) => (
+              <li class="">
+                <a
+                  class="bg-yellow p-4 rounded h-full block hover:-rotate-1 transition-transform"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  href={url}
+                >
+                  {name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h2 class="font-display text-2xl">Universell utforming</h2>
+        <p>
+          De fleste av konsertene skjer på vårt festivalområdet eller i vårt
+          festivaltelt på Kulturfabrikken.
+        </p>
+        <p>
+          Kulturfabrikken har to handicap-toaletter i første etasje. Det er
+          montert rampe for å enkelt komme inn i bygget med rullestol. Utendørs
+          i bakgården er det grus, så det kan kanskje være litt mer krevende å
+          komme til med rullestol enn på asfalt eller andre underlag, men vi har
+          alltid frivillige på jobb som kan bistå ved behov slik at
+          rullestolbrukere fint skal komme seg inn i teltet eller rundt på
+          området.
+        </p>
+        <p>
+          Vi arrangerer også noen konserter i kulturhuset Buen. Her er det heis
+          og handicap-toaletter.
+        </p>
       </p>
     </div>
   </main>

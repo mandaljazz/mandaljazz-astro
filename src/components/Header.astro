@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import Link from "./Link.astro";
 ---
 
 <header class="relative">
@@ -12,13 +13,13 @@ import { Icon } from "astro-icon";
       ><img src="/jazzlaug-white.png" class="w-12 h-auto" /></a
     >
     <div class="w-full flex flex-row gap-4 sm:gap-8 items-center">
-      <a href="/">Hjem</a>
-      <!-- <a href="/program">Program</a> -->
-      <a href="/praktisk">Praktisk</a>
-      <a href="/billetter">Billetter</a>
-      <a href="/frivillig">Frivillig</a>
-      <!-- <a href="/historikk">Historikk</a> -->
-      <!-- <a href="/blogg">Blogg</a> -->
+      <Link href="/" title="Hjem">Hjem</Link>
+      <!-- <Link href="/program" title="Program">Program</Link> -->
+      <Link href="/praktisk" title="Praktisk">Praktisk</Link>
+      <Link href="/billetter" title="Billetter">Billetter</Link>
+      <Link href="/frivillig" title="Frivillig">Frivillig</Link>
+      <!-- <Link href="/historikk" title="Historikk">Historikk</Link> -->
+      <!-- <Link href="/blogg" title="Blogg">Blogg</Link> -->
     </div>
   </nav>
 </header>

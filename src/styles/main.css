@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.link {
+  background: linear-gradient(to top, theme('colors.yellow') 80%, transparent 80%);
+  text-decoration: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: background-position 0.2s ease, color 0.2s ease;
+  background-position: 0% 14%;
+  background-size: 100% 1200%;
+}
+.link:hover {
+  background-position: 0 22%;
+  color: theme('colors.black');
+}
+
 @layer utilities {
   .animate-pause {
     animation-play-state: paused;
