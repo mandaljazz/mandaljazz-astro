@@ -1,4 +1,5 @@
 ---
+import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
 
@@ -10,25 +11,30 @@ const jobs = [
   },
   {
     title: "Bar og servering",
+    image: "/frivillig/agathe-tapper-ol.jpg",
     description:
       "Denne gjengen står i baren i teltet eller serverer mat på festivalområdet.",
   },
   {
     title: "Billett og merch",
     description: "Denne gjengen selger billetter og merch under festivalen.",
+    image: "/frivillig/merch-slag-subtilt.jpg",
   },
   {
     title: "Foto/film",
+    image: "/frivillig/person-blaser-sapeboble-saksofonist-i-bakgrunnen.jpg",
     description:
       "Både før og under festivalen trenger vi fotografer og filmfotografer. Det er ønskelig med noe erfaring og interesse.",
   },
   {
     title: "Kokk",
+    image: "/frivillig/tonje-lager-crepe.jpg",
     description:
       "Liker du å lage mat? Da kan du bli med å lage maten som serveres under festivalen, til både publikum, frivillige og artister.",
   },
   {
     title: "Kos og forpleining",
+    image: "/frivillig/morgenmote-folk-rekker-opp-handa.jpg",
     description:
       "Denne gjengen sørger for at det er hyggelig å være frivillig. Det innebærer å lage mat til de frivillige, særlig i sjaueuka før festivalen, og arrangere hyggelige sosiale aktiviteter for de frivillige!",
   },
@@ -53,6 +59,14 @@ const jobs = [
       "Vaktene passer på at publikum og frivillige har det hyggelig og ikke bryter sjenkereglene, og har et ekstra øye for at avstandsregler og smittevern blir etterfulgt.",
   },
 ];
+
+const fellesbilder = [
+  { year: "2022", image: "/frivillig/fellesbilde-2022.jpg" },
+  { year: "2019", image: "/frivillig/fellesbilde-2019.jpg" },
+  { year: "2018", image: "/frivillig/fellesbilde-2018.jpg" },
+  { year: "2016", image: "/frivillig/fellesbilde-2016.jpg" },
+  { year: "2014", image: "/frivillig/fellesbilde-2014.jpg" },
+];
 ---
 
 <Layout
@@ -75,19 +89,24 @@ const jobs = [
       <p>Hvilken frivilliggruppe vil du være med i?</p>
       <div class="space-y-2">
         {
-          jobs.map(({ title, description }) => (
-            <>
+          jobs.map(({ title, description, image }) => (
+            <div>
               <button class="collapsible bg-dark-blue text-white text-left p-4 w-full rounded-t">
                 {title}
               </button>
-              <p class="bg-dark-blue/20 rounded-b transition-all px-4 h-0 overflow-y-hidden">
-                {description}
-              </p>
-            </>
+              <div class="bg-dark-blue/10 rounded-b transition-all px-4 h-0 overflow-y-hidden space-y-8">
+                <p>{description}</p>
+                {image && <img src={image} class="w-full" />}
+              </div>
+            </div>
           ))
         }
       </div>
-      <!-- TODO: Volunteer images and quotes, and registration schema -->
+      {
+        fellesbilder.map(({ year, image }) => (
+          <ImageWithCaption src={image} caption={`Frivilliggjengen ${year}`} />
+        ))
+      }
     </div>
   </main>
 </Layout>
@@ -99,7 +118,7 @@ const jobs = [
     collapsible.addEventListener("click", () => {
       collapsible.nextElementSibling.classList.toggle("h-0");
       collapsible.nextElementSibling.classList.toggle("h-auto");
-      collapsible.nextElementSibling.classList.toggle("py-4");
+      collapsible.nextElementSibling.classList.toggle("py-8");
     });
   });
 </script>
