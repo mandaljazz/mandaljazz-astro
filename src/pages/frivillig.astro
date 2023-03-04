@@ -1,4 +1,5 @@
 ---
+import Blockquote from "../components/Blockquote.astro";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
@@ -59,14 +60,6 @@ const jobs = [
       "Vaktene passer på at publikum og frivillige har det hyggelig og ikke bryter sjenkereglene, og har et ekstra øye for at avstandsregler og smittevern blir etterfulgt.",
   },
 ];
-
-const fellesbilder = [
-  { year: "2022", image: "/frivillig/fellesbilde-2022.jpg" },
-  { year: "2019", image: "/frivillig/fellesbilde-2019.jpg" },
-  { year: "2018", image: "/frivillig/fellesbilde-2018.jpg" },
-  { year: "2016", image: "/frivillig/fellesbilde-2016.jpg" },
-  { year: "2014", image: "/frivillig/fellesbilde-2014.jpg" },
-];
 ---
 
 <Layout
@@ -102,11 +95,71 @@ const fellesbilder = [
           ))
         }
       </div>
-      {
-        fellesbilder.map(({ year, image }) => (
-          <ImageWithCaption src={image} caption={`Frivilliggjengen ${year}`} />
-        ))
-      }
+      <ImageWithCaption
+        src="/frivillig/fellesbilde-2022.jpg"
+        caption={`Frivilliggjengen ${2022}`}
+      />
+      <Blockquote author="Håvard (bar og servering)">
+        <p>
+          Hadde det ikke vært for at man måtte okkupere den beste plassen i
+          teltet, høre på det siste skriket innen jazz, omgås sprudlende
+          fornøyde festivaldeltakere, catche opp med nye og gamle bekjente,
+          servere de mest tålmodige av gjester, og å jobbe omringet av de mest
+          fantastiske og entusiastiske folkene Norge har å by på – ja, så hadde
+          det faktisk vært helt greit å jobbe i baren; det er nemlig ganske
+          chill å tappe øl!
+        </p>
+      </Blockquote>
+      <ImageWithCaption
+        src="/frivillig/fellesbilde-2019.jpg"
+        caption={`Frivilliggjengen ${2019}`}
+      />
+      <Blockquote author="Marte (sjau og område)">
+        <p>
+          Sjauen er en blanding av løfting og bæring og svette og snekring og en
+          heil haug med dårlige vitser. På en bra måte! Derfor er sjau bare
+          dritgøy.
+        </p>
+      </Blockquote>
+      <ImageWithCaption
+        src="/frivillig/fellesbilde-2018.jpg"
+        caption={`Frivilliggjengen ${2018}`}
+      />
+      <Blockquote author="Helga (billett og merch)">
+        <p>
+          Som frivillig i billettcrewet blir du med i en gjeng med mye moro og
+          godt samhold. Du blir kjent med masse kjekke folk og du kjenner at du
+          bidrar med noe positivt for byen og nærmiljøet.
+        </p>
+        <p>
+          Vi har mange forskjellige og gøyale oppgaver og ingen vakt er lik!
+        </p>
+      </Blockquote>
+      <ImageWithCaption
+        src="/frivillig/fellesbilde-2016.jpg"
+        caption={`Frivilliggjengen ${2016}`}
+      />
+      <Blockquote author="Mari Marie (transport)">
+        <p>
+          For en mulighet til å bli kjent med masse forskjellige folk på
+          kjøretur!
+        </p>
+        <p>
+          Det å få tid i en bil med interessante, rare, sære, kule,
+          kunstneriske, motiverende og hyggelige musikere er jo ikke noe man får
+          hver dag. Og på veien for å hente artister kan du få litt pustetid og
+          blæste noe musikk!
+        </p>
+        <p>
+          Kjøretidene er ofte veldig greie som gjør at du er ledig under mange
+          av konsertene. Og veldig mye mer chill fysisk hvis du ikke er så fan
+          av å bære tungt eller stå lenge.
+        </p>
+      </Blockquote>
+      <ImageWithCaption
+        src="/frivillig/fellesbilde-2014.jpg"
+        caption={`Frivilliggjengen ${2014}`}
+      />
     </div>
   </main>
 </Layout>
