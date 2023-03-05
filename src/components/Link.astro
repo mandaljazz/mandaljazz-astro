@@ -13,7 +13,7 @@ const { href, external, nav } = Astro.props;
   external ? (
     <a
       href={href}
-      class={nav ? "nav link" : "link"}
+      class={nav ? "nav link inline-block" : "link inline-block"}
       rel="noopener nofollow"
       target="_blank"
     >
@@ -22,7 +22,7 @@ const { href, external, nav } = Astro.props;
   ) : (
     <a
       href={href}
-      class={nav ? "nav link px-4 py-2" : "link"}
+      class={nav ? "nav link inline-block px-4 py-2" : "link inline-block"}
       aria-current={Astro.url.pathname === href ? "page" : undefined}
     >
       <slot />

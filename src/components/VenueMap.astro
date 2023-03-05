@@ -3,7 +3,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "../styles/mapbox-overrides.css";
 ---
 
-<div id="map" class="w-full h-96"></div>
+<div id="map" class="w-full h-96 md:h-[480px]"></div>
 
 <script>
   import mapboxgl from "mapbox-gl";
@@ -61,7 +61,7 @@ import "../styles/mapbox-overrides.css";
     container: "map",
     style: "mapbox://styles/mapbox/streets-v12",
     center,
-    zoom: 13.75,
+    zoom: 14,
   });
 
   map.addControl(navigationControl, "top-left");
