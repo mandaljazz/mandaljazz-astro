@@ -1,46 +1,92 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import format from "date-fns/format";
+import setDefaultOptions from "date-fns/setDefaultOptions";
+import { nb } from "date-fns/locale";
+import sortBy from "lodash/sortBy";
+import groupBy from "lodash/groupBy";
+import capitalize from "lodash/capitalize";
+import Link from "../components/Link.astro";
 
-const artists = await Astro.glob("../pages/artist/*.mdx");
+setDefaultOptions({ locale: nb });
+
+const artistsPages = await Astro.glob("../pages/artist/*.mdx");
+
+const formatTime = (date: string) => {
+  try {
+    return format(new Date(date), "HH:mm");
+  } catch (error) {
+    return date;
+  }
+};
+
+const formatDate = (date: string) => {
+  try {
+    return format(new Date(date), "EEEE d. MMMM");
+  } catch (error) {
+    return date;
+  }
+};
+
+const concertsGroupedByDay = Object.entries(
+  groupBy(
+    sortBy(
+      artistsPages.filter(({ frontmatter: { hidden } }) => !hidden),
+      "frontmatter.concertStartAt"
+    ),
+    (artistPage) => formatDate(artistPage.frontmatter.concertStartAt)
+  )
+);
 ---
 
 <Layout
   title="Program // mandaljazz 2023"
   description="Programmet til mandaljazz 2023"
 >
-  <main>
-    <h1 class="font-display text-5xl">Program</h1>
-    <table class="table-auto">
-      <thead>
-        <tr>
-          <th>Artist</th>
-          <th>Venue</th>
-          <th>Når</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          artists.map((artist) => {
-            const {
-              frontmatter: { title, id, venue, concertStartAt, hidden },
-            } = artist;
+  <main class="px-4 sm:px-24 md:px-48 lg:px-64 py-12 sm:py-24">
+    <div class="mx-auto max-w-5xl space-y-8">
+      <h1 class="font-display text-5xl">Program</h1>
+      {
+        concertsGroupedByDay.map(([day, artists]) => {
+          return (
+            <>
+              <h2 class="font-display text-3xl">{capitalize(day)}</h2>
+              <table class="table-auto w-full">
+                <thead>
+                  <tr class="text-left border-b border-orange">
+                    <th class="p-4 font-normal">Artist</th>
+                    <th class="p-4 font-normal">Scene</th>
+                    <th class="p-4 font-normal">Tid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {artists.map((artist) => {
+                    const {
+                      frontmatter: { title, id, venue, concertStartAt, hidden },
+                    } = artist;
 
-            if (hidden) {
-              return null;
-            }
+                    if (hidden) {
+                      return null;
+                    }
 
-            return (
-              <tr>
-                <td>
-                  <a href={`/artist/${id}`}>{title}</a>
-                </td>
-                <td>{venue}</td>
-                <td>{concertStartAt}</td>
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
+                    return (
+                      <tr>
+                        <td class="p-4">
+                          <Link href={`/artist/${id}`} title={title}>
+                            {title}
+                          </Link>
+                        </td>
+                        <td class="p-4">{venue}</td>
+                        <td class="p-4">{formatTime(concertStartAt)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </>
+          );
+        })
+      }
+    </div>
   </main>
 </Layout>
