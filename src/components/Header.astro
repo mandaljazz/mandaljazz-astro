@@ -1,25 +1,18 @@
 ---
 import { Icon } from "astro-icon";
 import Link from "./Link.astro";
+import MobileMenu from "./MobileMenu.astro";
+import DesktopMenu from "./DesktopMenu.astro";
+
+const navItems = [
+  { href: "/", title: "Hjem" },
+  { href: "/praktisk", title: "Praktisk" },
+  { href: "/billetter", title: "Billetter" },
+  { href: "/frivillig", title: "Frivillig" },
+];
 ---
 
 <header class="relative">
-  <div
-    class="absolute w-64 h-64 top-0 -left-32 sm:left-20 md:left-32 lg:left-40 -translate-y-1/2 bg-pink rounded-full"
-  >
-  </div>
-  <nav class="p-4 flex gap-10 sticky top-0 bg-pink text-white z-10">
-    <a href="/" class="ml-2 hover:-rotate-6 transition-transform"
-      ><img src="/jazzlaug-white.png" class="w-12 h-auto" /></a
-    >
-    <div class="w-full flex flex-row gap-4 sm:gap-8 items-center">
-      <Link nav href="/" title="Hjem">Hjem</Link>
-      <!-- <Link nav href="/program" title="Program">Program</Link> -->
-      <Link nav href="/praktisk" title="Praktisk">Praktisk</Link>
-      <Link nav href="/billetter" title="Billetter">Billetter</Link>
-      <Link nav href="/frivillig" title="Frivillig">Frivillig</Link>
-      <!-- <Link nav href="/historikk" title="Historikk">Historikk</Link> -->
-      <!-- <Link nav href="/blogg" title="Blogg">Blogg</Link> -->
-    </div>
-  </nav>
+  <MobileMenu class="block md:hidden" navItems={navItems} />
+  <DesktopMenu class="hidden md:block" navItems={navItems} />
 </header>
