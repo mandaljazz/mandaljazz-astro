@@ -51,11 +51,8 @@ const { class: extraClasses, navItems } = Astro.props;
   const offScreenNavItemsList = document.querySelector(".off-screen-nav-items");
 
   hamburger.addEventListener("click", () => {
-    console.log({ offScreenNavItemsList });
-    [
-      "-translate-y-full",
-      "translate-y-16",
-      "translate-x-0",
-    ].map((c) => offScreenNavItemsList.classList.toggle(c));
+    ["-translate-y-full", "translate-y-16", "translate-x-0"].map((c) =>
+      offScreenNavItemsList.classList.toggle(c)
+    );
   });
 </script>
