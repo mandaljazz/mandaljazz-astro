@@ -26,6 +26,7 @@
 }
 .link.nav[aria-current="page"] {
   background-position: 0 22%;
+  border-radius: 0.5rem;
 }
 .link:hover,
 .link.nav:hover {

@@ -1,5 +1,9 @@
 ---
 import { SEO } from "astro-seo";
+import setDefaultOptions from "date-fns/setDefaultOptions";
+import { nb } from "date-fns/locale";
+
+setDefaultOptions({ locale: nb });
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
