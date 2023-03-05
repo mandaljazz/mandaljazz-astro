@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
 
+import VenueMap from "../components/VenueMap.astro";
+
 const accomodations = [
   { name: "Kjøbmandsgården Hotell", url: "https://www.kjobmandsgaarden.no/" },
   { name: "Sjøsanden Feriesenter", url: "https://topcamp.no/nb/sjosanden" },
@@ -32,8 +34,8 @@ const accomodations = [
   <main class="px-4 sm:px-24 md:px-48 lg:px-64 py-12 sm:py-24">
     <div class="mx-auto max-w-5xl space-y-8">
       <h1 class="font-display text-5xl">Praktisk info</h1>
-      <!-- <VenueMap /> -->
-      <p>
+      <VenueMap />
+      <address class="not-italic">
         <Link
           href="https://goo.gl/maps/faFwNkmTR28gCYRA6"
           external
@@ -41,7 +43,7 @@ const accomodations = [
         >
           Keiser Nicolaus gate 8–12, 4515 Mandal
         </Link>
-      </p>
+      </address>
       <h2 class="font-display text-3xl">Reise</h2>
       <p>
         Finn reisen til Mandaljazz med <a href="https://entur.no">Entur</a>.
