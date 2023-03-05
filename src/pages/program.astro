@@ -60,27 +60,36 @@ const concertsGroupedByDay = Object.entries(
                   </tr>
                 </thead>
                 <tbody>
-                  {artists.map((artist) => {
-                    const {
-                      frontmatter: { title, id, venue, concertStartAt, hidden },
-                    } = artist;
+                  {
+                    // @ts-ignore - This is the list of artistPages grouped by day
+                    artists.map((artist) => {
+                      const {
+                        frontmatter: {
+                          title,
+                          id,
+                          venue,
+                          concertStartAt,
+                          hidden,
+                        },
+                      } = artist;
 
-                    if (hidden) {
-                      return null;
-                    }
+                      if (hidden) {
+                        return null;
+                      }
 
-                    return (
-                      <tr>
-                        <td class="p-4">
-                          <Link href={`/artist/${id}`} title={title}>
-                            {title}
-                          </Link>
-                        </td>
-                        <td class="p-4">{venue}</td>
-                        <td class="p-4">{formatTime(concertStartAt)}</td>
-                      </tr>
-                    );
-                  })}
+                      return (
+                        <tr>
+                          <td class="p-4">
+                            <Link href={`/artist/${id}`} title={title}>
+                              {title}
+                            </Link>
+                          </td>
+                          <td class="p-4">{venue}</td>
+                          <td class="p-4">{formatTime(concertStartAt)}</td>
+                        </tr>
+                      );
+                    })
+                  }
                 </tbody>
               </table>
             </>
