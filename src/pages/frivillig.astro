@@ -1,4 +1,5 @@
 ---
+import Accordion from "../components/Accordion.astro";
 import Blockquote from "../components/Blockquote.astro";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Layout from "../layouts/Layout.astro";
@@ -83,15 +84,12 @@ const jobs = [
       <div class="space-y-2">
         {
           jobs.map(({ title, description, image }) => (
-            <div>
-              <button class="collapsible bg-dark-blue text-white text-left p-4 w-full rounded-t">
-                {title}
-              </button>
-              <div class="bg-dark-blue/10 rounded-b transition-all px-4 h-0 overflow-y-hidden space-y-8">
+            <Accordion title={title}>
+              <>
                 <p>{description}</p>
                 {image && <img src={image} class="w-full" />}
-              </div>
-            </div>
+              </>
+            </Accordion>
           ))
         }
       </div>
@@ -163,15 +161,3 @@ const jobs = [
     </div>
   </main>
 </Layout>
-
-<script>
-  const collapsibles = document.querySelectorAll("button.collapsible");
-
-  collapsibles.forEach((collapsible) => {
-    collapsible.addEventListener("click", () => {
-      collapsible.nextElementSibling.classList.toggle("h-0");
-      collapsible.nextElementSibling.classList.toggle("h-auto");
-      collapsible.nextElementSibling.classList.toggle("py-8");
-    });
-  });
-</script>
