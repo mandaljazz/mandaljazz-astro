@@ -6,9 +6,9 @@ import Link from "../components/Link.astro";
 <footer class="relative mt-32">
   <div class="py-32 bg-dark-blue text-white z-10 relative">
     <div
-      class="px-4 sm:px-24 md:px-48 lg:px-64 grid grid-cols-1 md:grid-cols-2 gap-4"
+      class="px-4 sm:px-24 md:px-48 lg:px-64 grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-16"
     >
-      <address class="not-italic space-y-8">
+      <address class="not-italic space-y-8 row-start-2 md:row-start-1">
         <h3 class="font-display text-lg">Booking og spørsmål</h3>
         <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
           post@mandaljazz.no
@@ -37,7 +37,7 @@ import Link from "../components/Link.astro";
         Norge
       </address>
 
-      <ul role="list" class="flex flex-row md:justify-end gap-4">
+      <ul role="list" class="flex flex-row md:justify-end gap-4 row-start-1">
         <li class="inline-flex h-fit">
           <a
             href="https://www.facebook.com/mandaljazz"
