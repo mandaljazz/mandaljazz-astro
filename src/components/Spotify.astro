@@ -1,14 +1,15 @@
 ---
 export interface Props {
   src: string;
+  iframeClass?: string;
 }
 
-const { src } = Astro.props;
+const { src, iframeClass } = Astro.props;
 ---
 
-<div class="max-w-lg mx-auto">
+<div class="w-full max-w-lg mx-auto">
   <iframe
-    class="rounded-lg h-[500px]"
+    class={`rounded-lg h-[500px] ${iframeClass}`}
     src={`${src?.replace(
       "https://open.spotify.com/",
       "https://open.spotify.com/embed/"

@@ -32,7 +32,9 @@ const randomHandSrc = `/profil/hand0${Math.floor(
     <div class="px-4 space-y-24 mx-auto max-w-5xl">
       <div class="space-y-4">
         <div class="space-y-4">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-display">{title}</h1>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-display">
+            {title}
+          </h1>
           <div class="flex flex-row w-full">
             <div class="flex-1 space-y-8">
               <p class="text-3xl">
@@ -62,12 +64,17 @@ const randomHandSrc = `/profil/hand0${Math.floor(
           </div>
         </div>
       </div>
-
-      <article class="prose">
-        <slot />
-      </article>
-      <RainbowDivider containerClass="w-1/3 mx-auto" />
-      {spotifyUrl && <Spotify src={spotifyUrl} />}
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <div class="col-span-2">
+          <article class="prose">
+            <slot />
+          </article>
+          <RainbowDivider containerClass="w-1/3 mx-auto" />
+        </div>
+        <div class="col-span-1 grid grid-cols-1 gap-4">
+          {spotifyUrl && <Spotify src={spotifyUrl} iframeClass="xl:h-full" />}
+        </div>
+      </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
     </div>
   </main>
