@@ -2,10 +2,13 @@
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon";
 import RainbowDivider from "../components/RainbowDivider.astro";
+import Spotify from "../components/Spotify.astro";
+import YouTube from "../components/YouTube.astro";
 
 const {
   frontmatter: {
     spotifyUrl,
+    youtubeUrl,
     title,
     author,
     tagline,
@@ -64,21 +67,8 @@ const randomHandSrc = `/profil/hand0${Math.floor(
         <slot />
       </article>
       <RainbowDivider containerClass="w-1/3 mx-auto" />
-      {
-        spotifyUrl && (
-          <iframe
-            class="rounded border-0 w-full"
-            src={`${spotifyUrl.replace(
-              "https://open.spotify.com/",
-              "https://open.spotify.com/embed/"
-            )}?utm_source=generator`}
-            width="100%"
-            height="352"
-            allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          />
-        )
-      }
+      {spotifyUrl && <Spotify src={spotifyUrl} />}
+      {youtubeUrl && <YouTube src={youtubeUrl} />}
     </div>
   </main>
 </Layout>

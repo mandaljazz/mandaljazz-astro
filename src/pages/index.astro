@@ -1,6 +1,6 @@
 ---
 import Card from "../components/Card.astro";
-import Playlist from "../components/Playlist.astro";
+import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
@@ -55,6 +55,8 @@ const byOrder = (a, b) => {
         })
       }
     </ul>
-    <Playlist />
+    <Spotify
+      src="https://open.spotify.com/playlist/3390Fw5R6RjQ7pYgIvTLgr?si=c3193c64b9eb460b"
+    />
   </main>
 </Layout>
