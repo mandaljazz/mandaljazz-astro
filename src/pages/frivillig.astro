@@ -9,33 +9,34 @@ const jobs = [
   {
     title: "Artistvertskap",
     description:
-      "Som artistvert er du med på å gi artistene en hyggelig opplevelse på festivalen. Denne gjengen tar i mot artistene og sørger for at de får mat, drikke og svar på det de lurer på.",
+      "Som artistvert er du blant annet med på å gi artistene en hyggelig opplevelse på festivalen. Denne gjengen tar i mot artistene og sørger for at de får mat, drikke og svar på det de lurer på.",
   },
   {
     title: "Bar og servering",
     image: "/frivillig/agathe-tapper-ol.jpg",
     description:
-      "Denne gjengen står i baren i teltet eller serverer mat på festivalområdet.",
+      "Her betjener du baren i teltet eller serverer mat på festivalområdet. Som bartender får du den beste utsikten til konsertene!",
   },
   {
     title: "Billett og merch",
-    description: "Denne gjengen selger billetter og merch under festivalen.",
+    description:
+      "Her får du et hyggelig møte med alle gjestene på festivalen, når de skal veksle inn sin billett i et armbånd eller stempel. Du selger også blant annet t-skjorter og handlenett.",
     image: "/frivillig/merch-slag-subtilt.jpg",
   },
   {
     title: "Foto/film",
     image: "/frivillig/person-blaser-sapeboble-saksofonist-i-bakgrunnen.jpg",
     description:
-      "Både før og under festivalen trenger vi fotografer og filmfotografer. Det er ønskelig med noe erfaring og interesse.",
+      "Både før og under festivalen trenger vi fotografer og filmfotografer. Det er ønskelig med noe erfaring.",
   },
   {
     title: "Kokk",
     image: "/frivillig/tonje-lager-crepe.jpg",
     description:
-      "Liker du å lage mat? Da kan du bli med å lage maten som serveres under festivalen, til både publikum, frivillige og artister.",
+      "Liker du å lage mat? Da kan du bli med å lage maten som serveres under festivalen, til både publikum, frivillige og artister. I matgruppa er det alltid veldig god stemning!",
   },
   {
-    title: "Kos og forpleining",
+    title: "Forpleining og hygge",
     image: "/frivillig/morgenmote-folk-rekker-opp-handa.jpg",
     description:
       "Denne gjengen sørger for at det er hyggelig å være frivillig. Det innebærer å lage mat til de frivillige, særlig i sjaueuka før festivalen, og arrangere hyggelige sosiale aktiviteter for de frivillige!",
@@ -43,22 +44,12 @@ const jobs = [
   {
     title: "Sjauing og område",
     description:
-      "Denne gjengen har ansvar for å sette opp og rigge ned festivalteltet, gjøre festivalområdet fint, og rigge klart til festival. Bli med enten du er glad i løfte og bære, snekre, har estetisk sans, eller bare ønsker å være med i en hyggelig og sosial gjeng! Det er særlig behov for folk som har mulighet til å være med i uka før festivalen.",
+      "Denne gjengen har ansvar for å sette opp og rigge ned festivalteltet, gjøre festivalområdet fint, og rigge klart til festival. Bli med enten du er glad i løfte og bære, snekre, har estetisk sans, eller bare ønsker å være med i en hyggelig og sosial gjeng! Det er særlig behov for folk som har mulighet til å være med i uken før festivalen.",
   },
   {
     title: "Teknikk",
     description:
       "Som teknisk sjauer jobber man på scenen med rigging under lydprøver og konserter. Noe teknisk erfaring er ønskelig.",
-  },
-  {
-    title: "Transport",
-    description:
-      "Bli med som sjåfør hvis du kan tenke deg å kjøre artister til og fra flyplassen (Kristiansand lufthavn, Kjevik), og frakte folk og utstyr rundt omkring. Du må ha førerkort, men trenger ikke nødvendigvis ha egen bil.",
-  },
-  {
-    title: "Vakt",
-    description:
-      "Vaktene passer på at publikum og frivillige har det hyggelig og ikke bryter sjenkereglene, og har et ekstra øye for at avstandsregler og smittevern blir etterfulgt.",
   },
 ];
 ---
@@ -75,12 +66,21 @@ const jobs = [
         Beklager, her skulle det egentlig vært en video, men nettleseren din støtter
         ikke innebygde videoer :(
       </video>
+      <h2 class="font-display text-3xl">
+        Vi vil gjerne ha deg med som frivillig på Mandaljazz!
+      </h2>
       <p>
         Som frivillig på Mandaljazz får du oppleve massevis av god musikk og mye
-        morro sammen med en herlig gjeng sosiale, hyggelige og åpne folk.
-        Kanskje lærer du også noe nytt?
+        moro sammen med en herlig gjeng sosiale, hyggelige og åpne folk. På
+        Mandaljazz er alle velkommen, og vi har frivilligroller som kan passe de
+        fleste – alt fra bartender til bygging av telt eller ta imot artistene
+        som kommer.
       </p>
-      <p>Hvilken frivilliggruppe vil du være med i?</p>
+      <p>
+        Vi er på utkikk etter engasjerte mennesker som ønsker å være med på å
+        arrangere festivalen i 2023. Her kan du lese litt om de ulike gruppene
+        du kan være med i som frivillig.
+      </p>
       <div class="space-y-2">
         {
           jobs.map(({ title, description, image }) => (
