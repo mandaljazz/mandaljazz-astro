@@ -100,31 +100,31 @@ const concertsGroupedByDay = Object.entries(
                 </div>
                 {
                   // @ts-ignore - This is the list of artistPages grouped by day
-                  artists.map((artist) => {
-                    const {
+                  artists.map(
+                    ({
                       frontmatter: { title, id, venue, concertStartAt, hidden },
-                    } = artist;
+                    }) => {
+                      if (hidden) {
+                        return null;
+                      }
 
-                    if (hidden) {
-                      return null;
-                    }
-
-                    return (
-                      <div class="grid grid-cols-4 col-span-4">
-                        <div class="col-span-4 md:col-span-2 text-xl md:text-lg">
-                          {id ? (
-                            <Link href={`/artist/${id}`} title={title}>
-                              {title}
-                            </Link>
-                          ) : (
-                            title
-                          )}
+                      return (
+                        <div class="grid grid-cols-4 col-span-4">
+                          <div class="col-span-4 md:col-span-2 text-xl md:text-lg">
+                            {id ? (
+                              <Link href={`/artist/${id}`} title={title}>
+                                {title}
+                              </Link>
+                            ) : (
+                              title
+                            )}
+                          </div>
+                          <div class="col-span-3 md:col-span-1">{venue}</div>
+                          <div class="">{formatTime(concertStartAt)}</div>
                         </div>
-                        <div class="col-span-3 md:col-span-1">{venue}</div>
-                        <div class="">{formatTime(concertStartAt)}</div>
-                      </div>
-                    );
-                  })
+                      );
+                    }
+                  )
                 }
               </div>
             </div>
