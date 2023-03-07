@@ -5,19 +5,21 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
 ---
 
 <Layout title="Jazzlaugs Venner // mandaljazz 2023">
-  <main class="px-4 sm:px-24 md:px-48 lg:px-64">
-    <img
-      src="/sponsor/jazzlaugs-venner.png"
-      alt="Jazzlaugs Venner"
-      class="w-96 max-w-full mx-auto my-8"
-    />
-    <ul role="list" class="list-disc mx-auto w-fit text-xl leading-10">
-      <li>Aurebekk Gartneri</li>
-      <li>Buen Kulturhus</li>
-      <li>Kjøkkensenteret Mandal</li>
-      <li>NorEngros</li>
-      <li>Nødings Delikatesse</li>
-      <li>Maren AS</li>
-    </ul>
+  <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
+    <div class="max-w-5xl mx-auto">
+      <img
+        src="/sponsor/jazzlaugs-venner.png"
+        alt="Jazzlaugs Venner"
+        class="w-96 max-w-full mx-auto my-8"
+      />
+      <ul role="list" class="list-disc mx-auto w-fit text-xl leading-10">
+        <li>Aurebekk Gartneri</li>
+        <li>Buen Kulturhus</li>
+        <li>Kjøkkensenteret Mandal</li>
+        <li>NorEngros</li>
+        <li>Nødings Delikatesse</li>
+        <li>Maren AS</li>
+      </ul>
+    </div>
   </main>
 </Layout>
