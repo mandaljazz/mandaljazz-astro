@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  letter-spacing: 0.05em;
+}
+
 .link {
   background: linear-gradient(
     to top,
@@ -15,21 +19,7 @@
   background-position: 0% 14%;
   background-size: 100% 1200%;
 }
-.link.nav {
-  background: linear-gradient(
-    to top,
-    theme("colors.dark-blue") 80%,
-    transparent 80%
-  );
-  background-position: 0% 14%;
-  background-size: 100% 1200%;
-}
-.link.nav[aria-current="page"] {
-  background-position: 0 22%;
-  border-radius: 0.5rem;
-}
-.link:hover,
-.link.nav:hover {
+.link:hover {
   background-position: 0 22%;
   color: theme("colors.white");
 }

@@ -24,9 +24,14 @@ const { class: extraClasses, navItems } = Astro.props;
     <div class="w-full flex flex-row gap-4 sm:gap-8 items-center">
       {
         navItems.map(({ href, title }) => (
-          <Link nav href={href} title={title}>
-            {title}
-          </Link>
+          <div class="relative hover:-rotate-6 transition-transform">
+            {Astro.url.pathname === href ? (
+              <div class="absolute -top-1.5 -right-3 bg-yellow w-3 h-3 rounded-full" />
+            ) : null}
+            <a href={href} title={title} class={`relative z-10`}>
+              {title}
+            </a>
+          </div>
         ))
       }
     </div>
