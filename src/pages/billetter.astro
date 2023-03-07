@@ -1,4 +1,5 @@
 ---
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
 ---
@@ -8,54 +9,61 @@ import "../styles/tikkio-overrides.css";
   description="Kjøp billetter til mandaljazz 2023"
 >
   <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-12 sm:py-24">
-    <div class="max-w-5xl mx-auto space-y-8">
-      <h1 class="font-display text-5xl">Billetter</h1>
-      <div
-        class="tikkio-widget-events w-full"
-        w-id="8421"
-        w-token="4efdcf75df448b769aff666e9e9bdb31faed809c"
-        w-target="blank"
-      >
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="col-span-3 space-y-8">
+          <h1 class="font-display text-5xl">Billetter</h1>
+          <!-- <div
+            class="tikkio-widget-events w-full"
+            w-id="8421"
+            w-token="4efdcf75df448b769aff666e9e9bdb31faed809c"
+            w-target="blank"
+          >
+          </div>
+          <script is:inline src="https://a.tikkio.com/static/1.0.1463/js/widgets.js"
+          ></script> -->
+          <article class="prose">
+            <p>
+              mandaljazz tilbyr enkeltbilletter, dagspass og festivalpass til
+              publikum.
+            </p>
+
+            <h2 class="font-display text-3xl">Festivalpass og dagspass</h2>
+            <p>Gir inngang til alle konserter.</p>
+
+            <h2 class="font-display text-3xl">Enkeltbilletter</h2>
+            <p>Gir inngang til den aktuelle konserten.</p>
+
+            <h2 class="font-display text-3xl">
+              Studenter og ungdom under 26 år
+            </h2>
+            <p>
+              mandaljazz tilbyr rabatterte billetter til studenter og ungdom
+              under 26 år. Studenter inkluderer også elever på videregående,
+              ungdoms- og barneskoler.
+            </p>
+
+            <h2 class="font-display text-3xl">Barnekonsert</h2>
+            <p>Barnekonserten er gratis for alle, både barn og voksne!</p>
+
+            <h2 class="font-display text-3xl">
+              Funksjonshemmede med ledsagerbevis
+            </h2>
+            <p>
+              Innehavere av ledsagerbevis for funksjonshemmede gis gratis
+              billett til sin ledsager.
+            </p>
+
+            <h2 class="font-display text-3xl">Annen info</h2>
+            <p>
+              Ved konserter i Buen er det begrenset kapasitet. Innehavere av
+              dags- og festivalpass bes møte tidlig for å sikre seg plass. Alle
+              konserter starter presis.
+            </p>
+          </article>
+        </div>
+        <BuyTicketsButton class="sticky bottom-4 mx-auto w-fit md:w-fit md:sticky md:top-4 h-fit col-span-2" />
       </div>
-      <script is:inline src="https://a.tikkio.com/static/1.0.1463/js/widgets.js"
-      ></script>
-      <article class="prose">
-        <p>
-          mandaljazz tilbyr enkeltbilletter, dagspass og festivalpass til
-          publikum.
-        </p>
-
-        <h2 class="font-display text-3xl">Festivalpass og dagspass</h2>
-        <p>Gir inngang til alle konserter.</p>
-
-        <h2 class="font-display text-3xl">Enkeltbilletter</h2>
-        <p>Gir inngang til den aktuelle konserten.</p>
-
-        <h2 class="font-display text-3xl">Studenter og ungdom under 26 år</h2>
-        <p>
-          mandaljazz tilbyr rabatterte billetter til studenter og ungdom under
-          26 år. Studenter inkluderer også elever på videregående, ungdoms- og
-          barneskoler.
-        </p>
-
-        <h2 class="font-display text-3xl">Barnekonsert</h2>
-        <p>Barnekonserten er gratis for alle, både barn og voksne!</p>
-
-        <h2 class="font-display text-3xl">
-          Funksjonshemmede med ledsagerbevis
-        </h2>
-        <p>
-          Innehavere av ledsagerbevis for funksjonshemmede gis gratis billett
-          til sin ledsager.
-        </p>
-
-        <h2 class="font-display text-3xl">Annen info</h2>
-        <p>
-          Ved konserter i Buen er det begrenset kapasitet. Innehavere av dags-
-          og festivalpass bes møte tidlig for å sikre seg plass. Alle konserter
-          starter presis.
-        </p>
-      </article>
     </div>
   </main>
 </Layout>

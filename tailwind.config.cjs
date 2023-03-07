@@ -22,6 +22,10 @@ module.exports = {
       scale: {
         "-100": "-1",
       },
+      boxShadow: {
+        solid: "-6px 6px 0px 0px rgb(0 0 0 / 80%);",
+        "solid-hover": "-10px 10px 0px 0px rgb(0 0 0 / 80%)",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
