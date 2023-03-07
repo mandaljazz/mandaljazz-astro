@@ -19,42 +19,14 @@
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Black.ttf) format("truetype");
-  font-weight: 900;
+  font-family: "Raleway";
+  src: local("Raleway"),
+    url(/fonts/Raleway/Raleway-VariableFont_wght.ttf) format("truetype");
   font-style: normal;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Bold.ttf) format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-SemiBold.ttf) format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Italic.ttf) format("truetype");
-  font-weight: normal;
+  font-family: "Raleway";
+  src: local("Raleway"),
+    url(/fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf) format("truetype");
   font-style: italic;
 }
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Light.ttf) format("truetype");
-  font-weight: 300;
-}
-/* TODO: Add more styles of the font if neccessary, otherwise delete them from assets/fonts/ folder */

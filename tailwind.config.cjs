@@ -16,7 +16,7 @@ module.exports = {
         white: "#f1f1f1",
       },
       fontFamily: {
-        sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
+        sans: ["Raleway", ...defaultTheme.fontFamily.sans],
         display: ["Libre Baskerville"],
       },
       scale: {
