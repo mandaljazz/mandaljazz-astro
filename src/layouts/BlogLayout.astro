@@ -4,7 +4,7 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title="Blogg // mandaljazz 2023">
+<Layout title="Blogg // mandaljazz 2023" description="Mandaljazzbloggen">
   <main>
     <h1 class="text-4xl">{frontmatter.title}</h1>
     <h2>Tekst: {frontmatter.author}</h2>
