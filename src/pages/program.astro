@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import format from "date-fns/format/index.js";
 import sortBy from "lodash/sortBy";
 import groupBy from "lodash/groupBy";
 import capitalize from "lodash/capitalize";
 import Link from "../components/Link.astro";
+import { formatDate, formatTime } from "../utils/date";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
 const tbaArtists = [
@@ -59,22 +59,6 @@ const tbaArtists = [
     concertStartAt: "2023-07-01T22:00",
   },
 ];
-
-const formatTime = (date: string) => {
-  try {
-    return format(new Date(date), "HH:mm");
-  } catch (error) {
-    return date;
-  }
-};
-
-const formatDate = (date: string) => {
-  try {
-    return format(new Date(date), "EEEE d. MMMM");
-  } catch (error) {
-    return date;
-  }
-};
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
