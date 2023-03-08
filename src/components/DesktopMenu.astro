@@ -12,7 +12,7 @@ export interface Props {
 const { class: extraClasses, navItems } = Astro.props;
 ---
 
-<header class={`relative ${extraClasses}`}>
+<div class={`relative ${extraClasses}`}>
   <div
     class="absolute w-64 h-64 top-0 -left-32 sm:left-20 md:left-32 lg:left-40 -translate-y-1/2 bg-pink rounded-full"
   >
@@ -37,4 +37,4 @@ const { class: extraClasses, navItems } = Astro.props;
       }
     </div>
   </nav>
-</header>
+</div>
