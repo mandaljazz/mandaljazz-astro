@@ -26,7 +26,8 @@ console.log({ Astro });
       {
         navItems.map(({ href, title }) => (
           <div class="relative hover:-rotate-3 transition-transform">
-            {Astro.request.url === href ? (
+            {Astro.url.pathname === href ||
+            Astro.url.pathname === `${href}/` ? (
               <div class="absolute -top-1.5 -right-3 bg-yellow w-3 h-3 rounded-full" />
             ) : null}
             <a href={href} title={title} class={`relative z-10`}>
