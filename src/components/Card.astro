@@ -1,26 +1,14 @@
 ---
+import { randomBackgroundColor } from '../utils/colors';
+
 export interface Props {
   title: string;
-  subtitle?: string;
   href: string;
   id: string;
 }
 
-const { href, title, subtitle, id } = Astro.props;
+const { href, title, id } = Astro.props;
 
-const randomFromList = (values: string[]) => {
-  return values[Math.floor(Math.random() * values.length)];
-};
-
-const randomBackgroundColor = () => {
-  return randomFromList([
-    "bg-dark-blue",
-    "bg-indigo",
-    "bg-orange",
-    "bg-pink",
-    "bg-black",
-  ]);
-};
 ---
 
 <li
@@ -29,7 +17,8 @@ const randomBackgroundColor = () => {
 >
   <a href={href} class="relative block h-full w-full">
     <h2
-      class={`absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4  text-xl text-white text-center p-4 rounded-xl transition-transform group-hover:-rotate-2 ${randomBackgroundColor()}`}
+      class={`absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4  text-xl text-white text-center
+      p-4 rounded-xl transition-transform group-hover:-rotate-2 ${randomBackgroundColor()}`}
     >
       {title}
     </h2>
