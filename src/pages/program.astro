@@ -85,7 +85,7 @@ const concertsGroupedByDay = Object.entries(
         concertsGroupedByDay.map(([day, artists]) => {
           return (
             <div class="space-y-4">
-              <h2 class="font-display text-3xl p-4 bg-pink text-white rounded-lg w-fit">
+              <h2 class="font-display text-2xl p-4 bg-pink text-white rounded-lg w-fit">
                 {capitalize(day)}
               </h2>
               <div class="grid grid-cols-4 gap-y-4 w-full text-lg">
@@ -131,6 +131,24 @@ const concertsGroupedByDay = Object.entries(
           );
         })
       }
+      <p>
+        <em
+          >*TBA betyr «To be anounced». Artisten er altså ikke sluppet ennå.
+          Følg med på <Link
+            href="https://www.facebook.com/mandaljazz"
+            title="Facebook"
+            external
+          >
+            Facebook
+          </Link> eller <Link
+            href="https://www.instagram.com/mandaljazz/"
+            title="Instagram"
+            external
+          >
+            Instagram
+          </Link> for rykende ferske artistslipp.</em
+        >
+      </p>
     </div>
   </main>
 </Layout>
