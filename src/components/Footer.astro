@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 import Link from "../components/Link.astro";
+import BuyTicketsButton from "./BuyTicketsButton.astro";
 ---
 
 <footer class="relative mt-32">
@@ -37,23 +38,26 @@ import Link from "../components/Link.astro";
         Norge
       </address>
 
-      <ul role="list" class="flex flex-row md:justify-end gap-4 row-start-1">
-        <li class="inline-flex h-fit">
-          <a
-            href="https://www.facebook.com/mandaljazz"
-            class="hover:-rotate-6 transition-transform"
-          >
-            <Icon pack="ion" name="logo-facebook" size={48} /></a
-          >
-        </li>
-        <li class="inline-flex h-fit">
-          <a
-            href="https://www.instagram.com/mandaljazz/"
-            class="hover:-rotate-6 transition-transform"
-            ><Icon pack="ion" name="logo-instagram" size={48} /></a
-          >
-        </li>
-      </ul>
+      <div class="row-start-1 space-y-8 flex flex-col md:items-end">
+        <ul role="list" class="flex flex-row md:justify-end gap-4">
+          <li class="inline-flex h-fit">
+            <a
+              href="https://www.facebook.com/mandaljazz"
+              class="hover:-rotate-6 transition-transform"
+            >
+              <Icon pack="ion" name="logo-facebook" size={48} /></a
+            >
+          </li>
+          <li class="inline-flex h-fit">
+            <a
+              href="https://www.instagram.com/mandaljazz/"
+              class="hover:-rotate-6 transition-transform"
+              ><Icon pack="ion" name="logo-instagram" size={48} /></a
+            >
+          </li>
+        </ul>
+        <BuyTicketsButton class="w-fit" />
+      </div>
     </div>
   </div>
   <div
