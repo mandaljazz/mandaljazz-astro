@@ -61,7 +61,6 @@ const { class: extraClasses, navItems } = Astro.props;
   let ticking = false;
 
   function setMenuHeight(scrollPos) {
-    console.log(scrollPos);
     const menu = document.querySelector(".menu .jazzlaug");
     if (scrollPos > 100) {
       menu.classList.add("w-6");
