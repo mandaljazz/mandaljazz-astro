@@ -1,53 +1,59 @@
 ---
-import Accordion from "../components/Accordion.astro";
-import Blockquote from "../components/Blockquote.astro";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
+import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
-import "../styles/tikkio-overrides.css";
 
 const jobs = [
   {
     title: "Artistvertskap",
+    id: "artistvertskap",
     description:
       "Som artistvert er du blant annet med på å gi artistene en hyggelig opplevelse på festivalen. Denne gjengen tar i mot artistene og sørger for at de får mat, drikke og svar på det de lurer på.",
   },
   {
     title: "Bar og servering",
+    id: "bar-og-servering",
     image: "/frivillig/agathe-tapper-ol.jpg",
     description:
       "Her betjener du baren i teltet eller serverer mat på festivalområdet. Som bartender får du den beste utsikten til konsertene!",
   },
   {
     title: "Billett og merch",
+    id: "billett-og-merch",
     description:
       "Her får du et hyggelig møte med alle gjestene på festivalen, når de skal veksle inn sin billett i et armbånd eller stempel. Du selger også blant annet t-skjorter og handlenett.",
     image: "/frivillig/merch-slag-subtilt.jpg",
   },
   {
     title: "Foto/film",
+    id: "foto-film",
     image: "/frivillig/person-blaser-sapeboble-saksofonist-i-bakgrunnen.jpg",
     description:
       "Både før og under festivalen trenger vi fotografer og filmfotografer. Det er ønskelig med noe erfaring.",
   },
   {
     title: "Kokk",
+    id: "kokk",
     image: "/frivillig/tonje-lager-crepe.jpg",
     description:
       "Liker du å lage mat? Da kan du bli med å lage maten som serveres under festivalen, til både publikum, frivillige og artister. I matgruppa er det alltid veldig god stemning!",
   },
   {
     title: "Forpleining og hygge",
+    id: "forpleining-og-hygge",
     image: "/frivillig/morgenmote-folk-rekker-opp-handa.jpg",
     description:
       "Denne gjengen sørger for at det er hyggelig å være frivillig. Det innebærer å lage mat til de frivillige, særlig i sjaueuka før festivalen, og arrangere hyggelige sosiale aktiviteter for de frivillige!",
   },
   {
     title: "Sjauing og område",
+    id: "sjauing-og-omrade",
     description:
       "Denne gjengen har ansvar for å sette opp og rigge ned festivalteltet, gjøre festivalområdet fint, og rigge klart til festival. Bli med enten du er glad i løfte og bære, snekre, har estetisk sans, eller bare ønsker å være med i en hyggelig og sosial gjeng! Det er særlig behov for folk som har mulighet til å være med i uken før festivalen.",
   },
   {
     title: "Teknikk",
+    id: "teknikk",
     description:
       "Som teknisk sjauer jobber man på scenen med rigging under lydprøver og konserter. Noe teknisk erfaring er ønskelig.",
   },
@@ -81,83 +87,56 @@ const jobs = [
         arrangere festivalen i 2023. Her kan du lese litt om de ulike gruppene
         du kan være med i som frivillig.
       </p>
-      <div class="space-y-2">
+      <ul class="space-y-2">
         {
-          jobs.map(({ title, description, image }) => (
-            <Accordion title={title}>
-              <>
-                <p>{description}</p>
-                {image && <img src={image} class="w-full" />}
-              </>
-            </Accordion>
+          jobs.map(({ title, id }) => (
+            <li>
+              <Link href={`#${id}`} title={title}>
+                {title}
+              </Link>
+            </li>
           ))
         }
+      </ul>
+      <div class="space-y-8">
+        {
+          jobs.map(({ id, title, description, image }, index) => (
+            <div id={id} class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div class="space-y-4">
+                <h2 class="font-display text-2xl">{title}</h2>
+                <p>{description}</p>
+              </div>
+              {image && <img src={image} class="w-full rounded-lg" />}
+            </div>
+          ))
+        }
+        <h2 class="font-display text-3xl">Tidligere frivilliggjenger</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2022.jpg"
+            caption={`Frivilliggjengen ${2022}`}
+          />
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2019.jpg"
+            caption={`Frivilliggjengen ${2019}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2018.jpg"
+            caption={`Frivilliggjengen ${2018}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2016.jpg"
+            caption={`Frivilliggjengen ${2016}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2014.jpg"
+            caption={`Frivilliggjengen ${2014}`}
+          />
+        </div>
       </div>
-      <ImageWithCaption
-        src="/frivillig/fellesbilde-2022.jpg"
-        caption={`Frivilliggjengen ${2022}`}
-      />
-      <Blockquote author="Håvard (bar og servering)">
-        <p>
-          Hadde det ikke vært for at man måtte okkupere den beste plassen i
-          teltet, høre på det siste skriket innen jazz, omgås sprudlende
-          fornøyde festivaldeltakere, catche opp med nye og gamle bekjente,
-          servere de mest tålmodige av gjester, og å jobbe omringet av de mest
-          fantastiske og entusiastiske folkene Norge har å by på – ja, så hadde
-          det faktisk vært helt greit å jobbe i baren; det er nemlig ganske
-          chill å tappe øl!
-        </p>
-      </Blockquote>
-      <ImageWithCaption
-        src="/frivillig/fellesbilde-2019.jpg"
-        caption={`Frivilliggjengen ${2019}`}
-      />
-      <Blockquote author="Marte (sjau og område)">
-        <p>
-          Sjauen er en blanding av løfting og bæring og svette og snekring og en
-          heil haug med dårlige vitser. På en bra måte! Derfor er sjau bare
-          dritgøy.
-        </p>
-      </Blockquote>
-      <ImageWithCaption
-        src="/frivillig/fellesbilde-2018.jpg"
-        caption={`Frivilliggjengen ${2018}`}
-      />
-      <Blockquote author="Helga (billett og merch)">
-        <p>
-          Som frivillig i billettcrewet blir du med i en gjeng med mye moro og
-          godt samhold. Du blir kjent med masse kjekke folk og du kjenner at du
-          bidrar med noe positivt for byen og nærmiljøet.
-        </p>
-        <p>
-          Vi har mange forskjellige og gøyale oppgaver og ingen vakt er lik!
-        </p>
-      </Blockquote>
-      <ImageWithCaption
-        src="/frivillig/fellesbilde-2016.jpg"
-        caption={`Frivilliggjengen ${2016}`}
-      />
-      <Blockquote author="Mari Marie (transport)">
-        <p>
-          For en mulighet til å bli kjent med masse forskjellige folk på
-          kjøretur!
-        </p>
-        <p>
-          Det å få tid i en bil med interessante, rare, sære, kule,
-          kunstneriske, motiverende og hyggelige musikere er jo ikke noe man får
-          hver dag. Og på veien for å hente artister kan du få litt pustetid og
-          blæste noe musikk!
-        </p>
-        <p>
-          Kjøretidene er ofte veldig greie som gjør at du er ledig under mange
-          av konsertene. Og veldig mye mer chill fysisk hvis du ikke er så fan
-          av å bære tungt eller stå lenge.
-        </p>
-      </Blockquote>
-      <ImageWithCaption
-        src="/frivillig/fellesbilde-2014.jpg"
-        caption={`Frivilliggjengen ${2014}`}
-      />
     </div>
   </main>
 </Layout>
