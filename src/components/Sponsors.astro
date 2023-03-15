@@ -1,7 +1,7 @@
 ---
 import SponsorList from "./SponsorList.astro";
 
-const mainSponsors = [
+const generalSponsors = [
   {
     name: "Sparebanken Sør",
     url: "https://www.sor.no/",
@@ -9,7 +9,7 @@ const mainSponsors = [
   },
 ];
 
-const regularSponsors = [
+const mainSponsors = [
   {
     name: "Larsen Optikk",
     url: "https://larsenoptikk.no/",
@@ -21,10 +21,19 @@ const regularSponsors = [
     image: "hr-redaktor.png",
   },
   {
+    name: "Lindesnes Avis",
+    url: "https://www.l-a.no/",
+    image: "lindesnes-avis.png",
+  },
+];
+
+const regularSponsors = [
+  {
     name: "WHY Connect",
     url: "https://whyconnect.no/",
     image: "whyconnect.png",
   },
+  { name: "Nøsted", url: "https://www.nosted.com/", image: "nosted.png" },
 ];
 
 const supporterSponsors = [
@@ -32,16 +41,6 @@ const supporterSponsors = [
     name: "Jazzlaugs Venner",
     url: "/jazzlaugs-venner",
     image: "jazzlaugs-venner.png",
-  },
-  {
-    name: "Tess Teknisk Faghandel",
-    url: "https://tess.no/",
-    image: "tess.png",
-  },
-  {
-    name: "Lindesnes Avis",
-    url: "https://www.l-a.no/",
-    image: "lindesnes-avis.png",
   },
   {
     name: "Sørlandets Elektro",
@@ -73,14 +72,12 @@ const supporterSponsors = [
     url: "https://www.tor-fasseland.no/",
     image: "tor-fasseland.png",
   },
-  { name: "Mandals AS", url: "https://mandals.com/", image: "mandals.png" },
   { name: "Veidekke", url: "http://www.veidekke.no/", image: "veidekke.jpg" },
   {
     name: "Brekke & Strand Akustikk",
     url: "https://brekkestrand.no/",
     image: "brekke-strand.png",
   },
-  { name: "Nøsted", url: "https://www.nosted.com/", image: "nosted.png" },
   {
     name: "Egeland Rør",
     url: "https://www.egeland.no/",
@@ -135,11 +132,6 @@ const publicSponsors = [
     image: "sor-norsk-jazzsenter.png",
   },
   {
-    name: "Nordisk kulturfond",
-    url: "https://www.nordiskkulturfond.org/en",
-    image: "nordisk-kulturfond.png",
-  },
-  {
     name: "Kulturrådet",
     url: "https://www.kulturradet.no/",
     image: "kulturraadet.png",
@@ -153,38 +145,44 @@ const partners = [
 
 <section class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
   <div class="max-w-5xl mx-auto flex flex-col gap-12">
-    <div class="grid sm:grid-cols-2 gap-24 sm:gap-8">
-      <div class="space-y-8">
+    <div class="space-y-8">
+      <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
+        Generalsponsor
+      </h1>
+      <SponsorList size="xl" sponsors={generalSponsors} />
+    </div>
+    <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
+      <div class="space-y-8 sm:col-span-3">
         <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
-          Hovedsponsor 2022
+          Hovedsponsorer
         </h1>
-        <SponsorList size="large" sponsors={mainSponsors} />
+        <SponsorList size="lg" sponsors={mainSponsors} />
       </div>
-      <div class="space-y-8">
+      <div class="space-y-8 sm:col-span-2">
         <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
-          Sponsorer 2022
+          Sponsorer
         </h1>
-        <SponsorList size="medium" sponsors={regularSponsors} />
+        <SponsorList size="md" sponsors={regularSponsors} />
       </div>
     </div>
     <div class="space-y-8">
       <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
-        Støttespillere 2022
+        Støttespillere
       </h1>
-      <SponsorList size="small" sponsors={supporterSponsors} />
+      <SponsorList size="sm" sponsors={supporterSponsors} />
     </div>
-    <div class="grid sm:grid-cols-2 gap-24 sm:gap-8">
-      <div class="space-y-8">
+    <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
+      <div class="space-y-8 sm:col-span-3">
         <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
-          Offentlig støtte 2022
+          Offentlig støtte
         </h1>
-        <SponsorList size="medium" sponsors={publicSponsors} />
+        <SponsorList size="md" sponsors={publicSponsors} />
       </div>
-      <div class="space-y-8">
+      <div class="space-y-8 sm:col-span-2">
         <h1 class="font-display text-xl p-4 bg-blue mx-auto w-fit rounded-xl">
-          Samarbeidspartnere 2022
+          Samarbeidspartnere
         </h1>
-        <SponsorList size="medium" sponsors={partners} />
+        <SponsorList size="md" sponsors={partners} />
       </div>
     </div>
   </div>
