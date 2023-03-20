@@ -24,6 +24,10 @@ body {
   color: theme("colors.white");
 }
 
+.hyphens-auto {
+  hyphens: auto;
+}
+
 @layer utilities {
   .animate-pause {
     animation-play-state: paused;
