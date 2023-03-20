@@ -92,7 +92,14 @@ const concertsGroupedByDay = Object.entries(
                   // @ts-ignore - This is the list of artistPages grouped by day
                   artists.map(
                     ({
-                      frontmatter: { title, id, venue, concertStartAt, hidden },
+                      frontmatter: {
+                        title,
+                        shortTitle,
+                        id,
+                        venue,
+                        concertStartAt,
+                        hidden,
+                      },
                     }) => {
                       if (hidden) {
                         return null;
@@ -103,7 +110,7 @@ const concertsGroupedByDay = Object.entries(
                           <div class="col-span-4 md:col-span-2 text-xl md:text-lg">
                             {id ? (
                               <Link href={`/artist/${id}`} title={title}>
-                                {title}
+                                {shortTitle || title}
                               </Link>
                             ) : (
                               title

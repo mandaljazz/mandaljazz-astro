@@ -34,8 +34,8 @@ const randomHandSrc = `/profil/hand0${Math.floor(
           <h1 class="text-5xl md:text-7xl font-display">
             {title}
           </h1>
-          <div class="flex flex-row w-full items-end">
-            <div class="flex-1 space-y-8">
+          <div class="grid grid-cols-5 flex-nowrap w-full items-end">
+            <div class="col-span-3 space-y-8">
               <p class="text-3xl hyphens-auto">
                 {tagline}
               </p>
@@ -45,10 +45,10 @@ const randomHandSrc = `/profil/hand0${Math.floor(
                 <p>{venue}</p>
               </div>
             </div>
-            <div class="flex-none relative">
+            <div class="col-span-2 relative">
               <img
                 src={randomHandSrc}
-                class="w-40 h-40 place-end rotate-2 translate-y-8"
+                class="w-30 h-30 md:w-40 md:h-40 lg:w-56 lg:h-56 place-end rotate-2 translate-y-8"
                 alt="Fargerik hånd som peker på tittelen ovenfor"
               />
             </div>
