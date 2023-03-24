@@ -11,16 +11,19 @@ export interface Props {
   };
 }
 
-const { previousArtist, nextArtist } = Astro.props;
+const {
+  previousArtist: {
+    frontmatter: { id: prevId, shortTitle: prevShortTitle, title: prevTitle },
+  },
+  nextArtist: {
+    frontmatter: { id: nextId, shortTitle: nextShortTitle, title: nextTitle },
+  },
+} = Astro.props;
 ---
 
 <div class="flex flex-column gap-4 sm:flex-row sm:justify-between">
   <div class="self-start sm:self-auto flex flex-row gap-1 items-center">
-    <Link
-      href={`/artist/${previousArtist.frontmatter.id}`}
-      title={previousArtist.frontmatter.shortTitle ||
-        previousArtist.frontmatter.title}
-    >
+    <Link href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}>
       <span class="flex flex-row items-center gap-2">
         <Icon
           class="icon group-hover:-translate-y-0.5 transition-transform"
@@ -28,28 +31,24 @@ const { previousArtist, nextArtist } = Astro.props;
           name="play-back-outline"
           size={28}
         />
-        {
-          previousArtist.frontmatter.shortTitle ||
-            previousArtist.frontmatter.title
-        }</span
+        {prevShortTitle || prevTitle}</span
       >
     </Link>
     <img
-      src={`/artist/${previousArtist.frontmatter.id}.png`}
+      src={`/artist/${prevId}.png`}
+      alt={prevShortTitle || prevTitle}
       class="w-7 h-7 rounded-full"
     />
   </div>
   <div class="self-end sm:self-auto flex flex-row gap-1 items-center">
     <img
-      src={`/artist/${nextArtist.frontmatter.id}.png`}
+      src={`/artist/${nextId}.png`}
+      alt={nextShortTitle || nextTitle}
       class="w-7 h-7 rounded-full"
     />
-    <Link
-      href={`/artist/${nextArtist.frontmatter.id}`}
-      title={nextArtist.frontmatter.shortTitle || nextArtist.frontmatter.title}
-    >
+    <Link href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}>
       <span class="flex flex-row items-center gap-2"
-        >{nextArtist.frontmatter.shortTitle || nextArtist.frontmatter.title}
+        >{nextShortTitle || nextTitle}
         <Icon
           class="icon group-hover:-translate-y-0.5 transition-transform"
           pack="ion"
