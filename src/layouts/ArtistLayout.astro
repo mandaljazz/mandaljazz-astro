@@ -14,6 +14,7 @@ const {
     id,
     concertStartAt,
     venue,
+    sponsoredByBergesenstiftelsen,
   },
 } = Astro.props;
 
@@ -63,14 +64,42 @@ const randomHandSrc = `/profil/hand0${Math.floor(
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
         <div class="col-span-2">
           <article class="prose">
             <slot />
           </article>
         </div>
-        <div class="col-span-1 grid grid-cols-1 gap-4">
-          {spotifyUrl && <Spotify src={spotifyUrl} iframeClass="lg:h-full" />}
+        <div class="col-span-1 flex flex-col gap-y-8">
+          {
+            spotifyUrl && (
+              <div class="flex-1">
+                <Spotify src={spotifyUrl} iframeClass="lg:h-full" />
+              </div>
+            )
+          }
+          {
+            sponsoredByBergesenstiftelsen && (
+              <div class="flex flex-col lg:items-end gap-y-1">
+                <p class="text-xs lg:text-right">
+                  Konserten er støttet av{" "}
+                  <span class="hidden">Bergesenstiftelsen</span>
+                </p>
+                <a
+                  href={"https://bergesenstiftelsen.no/"}
+                  title={"Bergesenstiftelsen"}
+                  rel="noopener nofollow"
+                  target="_blank"
+                  class="block hover:-rotate-2 transition-transform"
+                >
+                  <div
+                    style={`background-image: url(/sponsor/bergesenstiftelsen.png);`}
+                    class={`w-32 h-12 bg-no-repeat bg-contain bg-left`}
+                  />
+                </a>
+              </div>
+            )
+          }
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
