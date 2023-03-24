@@ -1,9 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import sortBy from "lodash/sortBy";
-import groupBy from "lodash/groupBy";
 import capitalize from "lodash/capitalize";
+import groupBy from "lodash/groupBy";
+import sortBy from "lodash/sortBy";
+
 import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
 import { formatDate, formatTime } from "../utils/date";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");

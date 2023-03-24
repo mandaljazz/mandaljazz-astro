@@ -1,8 +1,15 @@
 ---
+import first from "lodash/first";
+import last from "lodash/last";
+import sortBy from "lodash/sortBy";
+
 import Layout from "./Layout.astro";
 import Spotify from "../components/Spotify.astro";
+import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import YouTube from "../components/YouTube.astro";
 import { formatHumanDateTime } from "../utils/date";
+import IconAndLabel from "../components/IconAndLabel.astro";
+import ImageAndLabel from "../components/ImageAndLabel.astro";
 
 const {
   frontmatter: {
@@ -10,6 +17,7 @@ const {
     youtubeUrl,
     title,
     author,
+    authorImage,
     tagline,
     id,
     concertStartAt,
@@ -17,6 +25,23 @@ const {
     sponsoredByBergesenstiftelsen,
   },
 } = Astro.props;
+
+const artistsPages = await Astro.glob("../pages/artist/*.mdx");
+const sortedArtistsPages = sortBy(
+  [...artistsPages.filter(({ frontmatter: { hidden } }) => !hidden)],
+  "frontmatter.concertStartAt"
+);
+const indexOfThisArtist = sortedArtistsPages.findIndex(
+  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id
+);
+const previousArtist =
+  indexOfThisArtist === 0
+    ? last(sortedArtistsPages)
+    : sortedArtistsPages[indexOfThisArtist - 1];
+const nextArtist =
+  indexOfThisArtist === sortedArtistsPages.length - 1
+    ? first(sortedArtistsPages)
+    : sortedArtistsPages[indexOfThisArtist + 1];
 
 const randomHandSrc = `/profil/hand0${Math.floor(
   Math.random() * (6 - 1) + 1
@@ -40,11 +65,16 @@ const randomHandSrc = `/profil/hand0${Math.floor(
               <p class="text-3xl hyphens-auto">
                 {tagline}
               </p>
-              <div>
-                <p>Tekst: {author}</p>
-                <p>{formatHumanDateTime(concertStartAt)}</p>
-                <p>{venue}</p>
+              <div class="space-y-2">
+                <IconAndLabel icon="time-outline">
+                  {formatHumanDateTime(concertStartAt)}
+                </IconAndLabel>
+                <IconAndLabel icon="location-outline">{venue}</IconAndLabel>
               </div>
+              <ArtistNavigationLinks
+                previousArtist={previousArtist}
+                nextArtist={nextArtist}
+              />
             </div>
             <div class="col-span-2 relative">
               <img
@@ -65,7 +95,10 @@ const randomHandSrc = `/profil/hand0${Math.floor(
         </div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
-        <div class="col-span-2">
+        <div class="col-span-2 space-y-4">
+          <ImageAndLabel image={`/author/${authorImage}`}>
+            Tekst: {author}
+          </ImageAndLabel>
           <article class="prose">
             <slot />
           </article>
@@ -103,6 +136,10 @@ const randomHandSrc = `/profil/hand0${Math.floor(
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
+      <ArtistNavigationLinks
+        previousArtist={previousArtist}
+        nextArtist={nextArtist}
+      />
     </div>
   </main>
 </Layout>

@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  icon: string;
+  pack?: string;
+}
+
+const { icon, pack } = Astro.props;
+---
+
+<span class="flex flex-row gap-2 items-center text-lg"
+  ><Icon
+    class="icon group-hover:-translate-y-0.5 transition-transform"
+    pack={pack || "ion"}
+    name={icon}
+    size={32}
+  /><slot /></span
+>
