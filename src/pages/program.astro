@@ -107,8 +107,15 @@ const concertsGroupedByDay = Object.entries(
                       }
 
                       return (
-                        <div class="grid grid-cols-4 col-span-4">
-                          <div class="col-span-4 md:col-span-2 text-xl md:text-lg">
+                        <div class="grid grid-cols-4 gap-y-1 col-span-4">
+                          <div class="col-span-4 flex flex-row gap-2 md:col-span-2 text-xl md:text-lg">
+                            {id ? (
+                              <img
+                                src={`/artist/${id}.png`}
+                                alt={shortTitle || title}
+                                class="w-8 h-8 rounded-lg"
+                              />
+                            ) : null}
                             {id ? (
                               <Link href={`/artist/${id}`} title={title}>
                                 {shortTitle || title}

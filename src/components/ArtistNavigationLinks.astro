@@ -37,14 +37,14 @@ const {
     <img
       src={`/artist/${prevId}.png`}
       alt={prevShortTitle || prevTitle}
-      class="w-7 h-7 rounded-full"
+      class="w-7 h-7 rounded-lg"
     />
   </div>
   <div class="self-end sm:self-auto flex flex-row gap-1 items-center">
     <img
       src={`/artist/${nextId}.png`}
       alt={nextShortTitle || nextTitle}
-      class="w-7 h-7 rounded-full"
+      class="w-7 h-7 rounded-lg"
     />
     <Link href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}>
       <span class="flex flex-row items-center gap-2"
