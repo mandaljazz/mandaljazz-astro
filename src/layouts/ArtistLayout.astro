@@ -71,10 +71,14 @@ const randomHandSrc = `/profil/hand0${Math.floor(
                 </IconAndLabel>
                 <IconAndLabel icon="location-outline">{venue}</IconAndLabel>
               </div>
-              <ArtistNavigationLinks
-                previousArtist={previousArtist}
-                nextArtist={nextArtist}
-              />
+              {
+                previousArtist && nextArtist ? (
+                  <ArtistNavigationLinks
+                    previousArtist={previousArtist}
+                    nextArtist={nextArtist}
+                  />
+                ) : null
+              }
             </div>
             <div class="col-span-2 relative">
               <img
@@ -139,10 +143,14 @@ const randomHandSrc = `/profil/hand0${Math.floor(
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
-      <ArtistNavigationLinks
-        previousArtist={previousArtist}
-        nextArtist={nextArtist}
-      />
+      {
+        previousArtist && nextArtist ? (
+          <ArtistNavigationLinks
+            previousArtist={previousArtist}
+            nextArtist={nextArtist}
+          />
+        ) : null
+      }
     </div>
   </main>
 </Layout>
