@@ -10,6 +10,7 @@ import YouTube from "../components/YouTube.astro";
 import { formatHumanDateTime } from "../utils/date";
 import IconAndLabel from "../components/IconAndLabel.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 const {
   frontmatter: {
@@ -119,28 +120,31 @@ const randomHandSrc = `/profil/hand0${Math.floor(
               </div>
             )
           }
-          {
-            sponsoredByBergesenstiftelsen && (
-              <div class="flex flex-col lg:items-end gap-y-1">
-                <p class="text-xs lg:text-right">
-                  Konserten er støttet av{" "}
-                  <span class="hidden">Bergesenstiftelsen</span>
-                </p>
-                <a
-                  href={"https://bergesenstiftelsen.no/"}
-                  title={"Bergesenstiftelsen"}
-                  rel="noopener nofollow"
-                  target="_blank"
-                  class="block hover:-rotate-2 transition-transform"
-                >
-                  <div
-                    style={`background-image: url(/sponsor/bergesenstiftelsen.png);`}
-                    class={`w-32 h-12 bg-no-repeat bg-contain bg-left`}
-                  />
-                </a>
-              </div>
-            )
-          }
+          <div class="flex flex-row justify-between">
+            <BuyTicketsButton class="flex-0 w-fit h-fit" />
+            {
+              sponsoredByBergesenstiftelsen && (
+                <div class="flex flex-col lg:items-end gap-y-1">
+                  <p class="text-xs lg:text-right">
+                    Konserten er støttet av{" "}
+                    <span class="hidden">Bergesenstiftelsen</span>
+                  </p>
+                  <a
+                    href={"https://bergesenstiftelsen.no/"}
+                    title={"Bergesenstiftelsen"}
+                    rel="noopener nofollow"
+                    target="_blank"
+                    class="block hover:-rotate-2 transition-transform"
+                  >
+                    <div
+                      style={`background-image: url(/sponsor/bergesenstiftelsen.png);`}
+                      class={`w-32 h-12 bg-no-repeat bg-contain bg-left`}
+                    />
+                  </a>
+                </div>
+              )
+            }
+          </div>
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}

@@ -7,6 +7,6 @@ export interface Props {
 const { image, alt } = Astro.props;
 ---
 
-<span class="flex flex-row gap-2 items-center text-lg"
+<span class="flex flex-row gap-2 items-center"
   ><img src={image} alt={alt} class="w-12 h-12 rounded-lg" /><slot /></span
 >
