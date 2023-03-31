@@ -11,6 +11,6 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mandaljazz.github.io",
-  integrations: [tailwind(), sitemap(), prefetch(), robotsTxt(), mdx()]
+  site: "https://mandaljazz.no",
+  integrations: [tailwind(), sitemap(), prefetch(), robotsTxt(), mdx()],
 });
