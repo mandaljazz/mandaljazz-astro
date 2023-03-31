@@ -10,6 +10,7 @@ export interface Props {
     frontmatter: { id: string; shortTitle?: string; title: string };
   };
   class?: string;
+  compact?: boolean;
 }
 
 const {
@@ -20,11 +21,14 @@ const {
     frontmatter: { id: nextId, shortTitle: nextShortTitle, title: nextTitle },
   },
   class: extraClasses,
+  compact,
 } = Astro.props;
 ---
 
 <div
-  class={`flex flex-col gap-4 sm:flex-row sm:justify-between ${extraClasses}`}
+  class={`flex ${
+    compact ? "justify-between" : "flex-col"
+  } gap-4 sm:flex-row sm:justify-between ${extraClasses}`}
 >
   <div class="self-start sm:self-auto flex flex-row gap-1 items-center">
     <Link href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}>
@@ -35,7 +39,9 @@ const {
           name="play-back-outline"
           size={28}
         />
-        {prevShortTitle || prevTitle}</span
+        <span class={compact ? "hidden lg:block" : ""}
+          >{prevShortTitle || prevTitle}</span
+        ></span
       >
     </Link>
     <img
@@ -52,7 +58,9 @@ const {
     />
     <Link href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}>
       <span class="flex flex-row items-center gap-2"
-        >{nextShortTitle || nextTitle}
+        ><span class={compact ? "hidden lg:block" : ""}
+          >{nextShortTitle || nextTitle}</span
+        >
         <Icon
           class="icon group-hover:-translate-y-0.5 transition-transform"
           pack="ion"
