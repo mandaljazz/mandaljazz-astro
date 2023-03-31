@@ -31,13 +31,13 @@ const { title, description, image } = Astro.props;
     <SEO
       title={title}
       description={description}
+      canonical={Astro.url.toString()}
       openGraph={{
         basic: {
           title: `${title} `,
           type: "website",
           image:
-            "https://mandaljazz.no" +
-            (image ? image : "/profil/header.png"),
+            "https://mandaljazz.no" + (image ? image : "/profil/header.png"),
           url: Astro.request.url,
         },
         image: {
