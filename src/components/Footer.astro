@@ -7,91 +7,94 @@ import BuyTicketsButton from "./BuyTicketsButton.astro";
 <footer class="relative mt-32">
   <div class="py-32 bg-dark-blue text-white z-10 relative">
     <div
-      class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-16"
+      class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 space-y-8"
     >
-      <address class="not-italic space-y-8 row-start-2 md:row-start-1">
-        <div>
-          <h3 class="font-display text-lg">Booking og spørsmål</h3>
-          <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
-            post@mandaljazz.no
-          </Link>
-        </div>
-        <div class="grid grid-cols-2 gap-12">
+      <h2 id="kontakt" class="font-display text-3xl">Kontakt</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-16">
+        <address class="not-italic space-y-8 row-start-2 md:row-start-1">
           <div>
-            <h3 class="font-display text-lg">Eirik Kristensen</h3>
-            <p class="text-xs">Festivalsjef</p>
-            <ul>
-              <li>
-                <Link href="tel:+4748225190" title="+47 482 25 190">
-                  +47 482 25 190
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="mailto:eirik@mandaljazz.no"
-                  title="eirik@mandaljazz.no"
-                >
-                  eirik@mandaljazz.no
-                </Link>
-              </li>
-            </ul>
+            <h3 class="font-display text-lg">Booking og spørsmål</h3>
+            <Link href="mailto:post@mandaljazz.no" title="post@mandaljazz.no">
+              post@mandaljazz.no
+            </Link>
           </div>
-          <img
-            src={"/people/eirik-kristensen.jpg"}
-            alt={"Eirik Kristensen"}
-            class="w-24 h-24 rounded-lg md:hover:scale-[3] transition-transform origin-right z-10"
-          />
-          <div>
-            <h3 class="font-display text-lg">Mari Marie Øinæs Nyvoll</h3>
-            <p class="text-xs">Nestleder</p>
-            <ul>
-              <li>
-                <Link href="tel:+4790118181" title="+47 901 18 181">
-                  +47 901 18 181
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="mailto:marimarie@mandaljazz.no"
-                  title="marimarie@mandaljazz.no"
-                >
-                  marimarie@mandaljazz.no
-                </Link>
-              </li>
-            </ul>
+          <div class="grid grid-cols-2 gap-12">
+            <div>
+              <h3 class="font-display text-lg">Eirik Kristensen</h3>
+              <p class="text-xs">Festivalsjef</p>
+              <ul>
+                <li>
+                  <Link href="tel:+4748225190" title="+47 482 25 190">
+                    +47 482 25 190
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="mailto:eirik@mandaljazz.no"
+                    title="eirik@mandaljazz.no"
+                  >
+                    eirik@mandaljazz.no
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <img
+              src={"/people/eirik-kristensen.jpg"}
+              alt={"Eirik Kristensen"}
+              class="w-24 h-24 rounded-lg md:hover:scale-[3] transition-transform origin-right z-10"
+            />
+            <div>
+              <h3 class="font-display text-lg">Mari Marie Øinæs Nyvoll</h3>
+              <p class="text-xs">Nestleder</p>
+              <ul>
+                <li>
+                  <Link href="tel:+4790118181" title="+47 901 18 181">
+                    +47 901 18 181
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="mailto:marimarie@mandaljazz.no"
+                    title="marimarie@mandaljazz.no"
+                  >
+                    marimarie@mandaljazz.no
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </address>
-
-      <div class="row-start-1 space-y-8 flex flex-col md:items-end">
-        <ul role="list" class="flex flex-row md:justify-end gap-4">
-          <li class="inline-flex h-fit">
-            <a
-              href="https://www.facebook.com/mandaljazz"
-              class="hover:-rotate-[366deg] transition-transform duration-500"
-              rel="noopener nofollow"
-              target="_blank"
-            >
-              <Icon pack="ion" name="logo-facebook" size={48} /></a
-            >
-          </li>
-          <li class="inline-flex h-fit">
-            <a
-              href="https://www.instagram.com/mandaljazz/"
-              class="hover:-rotate-[366deg] transition-transform duration-500"
-              rel="noopener nofollow"
-              target="_blank"
-              ><Icon pack="ion" name="logo-instagram" size={48} /></a
-            >
-          </li>
-        </ul>
-        <BuyTicketsButton class="w-fit" />
-        <address class="not-italic space-y-8 md:text-right">
-          <h3 class="font-display text-lg">Adresse</h3>
-          Mandaljazz, Neseveien 11<br />
-          4514 Mandal<br />
-          Norge
         </address>
+
+        <div class="row-start-1 space-y-8 flex flex-col md:items-end">
+          <ul role="list" class="flex flex-row md:justify-end gap-4">
+            <li class="inline-flex h-fit">
+              <a
+                href="https://www.facebook.com/mandaljazz"
+                class="hover:-rotate-[366deg] transition-transform duration-500"
+                rel="noopener nofollow"
+                target="_blank"
+              >
+                <Icon pack="ion" name="logo-facebook" size={48} /></a
+              >
+            </li>
+            <li class="inline-flex h-fit">
+              <a
+                href="https://www.instagram.com/mandaljazz/"
+                class="hover:-rotate-[366deg] transition-transform duration-500"
+                rel="noopener nofollow"
+                target="_blank"
+                ><Icon pack="ion" name="logo-instagram" size={48} /></a
+              >
+            </li>
+          </ul>
+          <BuyTicketsButton class="w-fit" />
+          <address class="not-italic space-y-8 md:text-right">
+            <h3 class="font-display text-lg">Adresse</h3>
+            Mandaljazz, Neseveien 11<br />
+            4514 Mandal<br />
+            Norge
+          </address>
+        </div>
       </div>
     </div>
   </div>

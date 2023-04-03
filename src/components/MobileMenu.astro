@@ -34,7 +34,7 @@ const { class: extraClasses, navItems } = Astro.props;
           {Astro.url.pathname === href || Astro.url.pathname === `${href}/` ? (
             <div class="absolute top-1.5 -left-5 bg-yellow w-3 h-3 rounded-full" />
           ) : null}
-          <a href={href} title={title} class={`relative z-10`}>
+          <a href={href} title={title} class={`mobile-nav-link relative z-10`}>
             {title}
           </a>
         </div>
@@ -62,11 +62,22 @@ const { class: extraClasses, navItems } = Astro.props;
   const hamburger = document.querySelector("button.hamburger");
   const offScreenNavItemsList = document.querySelector(".off-screen-nav-items");
 
-  hamburger.addEventListener("click", () => {
+  const toggleMobileMenu = () => {
     const menu = document.querySelector(".menu");
     menu.classList.toggle("shadow-lg");
     ["-translate-y-full", "translate-y-12", "translate-x-0"].map((c) =>
       offScreenNavItemsList.classList.toggle(c)
     );
+  };
+
+  hamburger.addEventListener("click", () => {
+    toggleMobileMenu();
+  });
+
+  const navLinks = document.querySelectorAll(".mobile-nav-link");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      toggleMobileMenu();
+    });
   });
 </script>
