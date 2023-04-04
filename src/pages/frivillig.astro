@@ -1,6 +1,7 @@
 ---
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Link from "../components/Link.astro";
+import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
 
 const jobs = [
@@ -87,6 +88,10 @@ const jobs = [
         arrangere festivalen i 2023. Her kan du lese litt om de ulike gruppene
         du kan være med i som frivillig.
       </p>
+      <Link href="#registreringsskjema" title="Til registreingsskjema">
+        Til registreringsskjema
+      </Link>
+      <h2 class="font-display text-3xl">Les litt om de ulike gruppene</h2>
       <ul class="space-y-2">
         {
           jobs.map(({ title, id }) => (
@@ -100,16 +105,20 @@ const jobs = [
       </ul>
       <div class="space-y-8">
         {
-          jobs.map(({ id, title, description, image }, index) => (
-            <div id={id} class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          jobs.map(({ id, title, description, image }) => (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div class="space-y-4">
-                <h2 class="font-display text-2xl">{title}</h2>
+                <div id={id} class="invisible -translate-y-16" />
+                <h3 class="font-display text-xl">{title}</h3>
                 <p>{description}</p>
               </div>
               {image && <img src={image} class="w-full rounded-lg" />}
             </div>
           ))
         }
+        <div class="invisiible -translate-y-16" id="registreringsskjema"></div>
+        <h2 class="font-display text-3xl">Registrering</h2>
+        <VolunteerForm />
         <h2 class="font-display text-3xl">Tidligere frivilliggjenger</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <ImageWithCaption
