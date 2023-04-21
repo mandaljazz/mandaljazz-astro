@@ -21,14 +21,18 @@ const tbaArtists = [
     concertStartAt: "2023-06-29T20:00",
   },
   {
+    id: "jam",
     title: "Jam",
     venue: "SMOI",
     concertStartAt: "2023-06-29T23:59",
+    isPlaceholder: true,
   },
   {
+    id: "jam",
     title: "Jam",
     venue: "SMOI",
     concertStartAt: "2023-06-30T23:59",
+    isPlaceholder: true,
   },
   {
     title: "TBA",
@@ -61,9 +65,11 @@ const tbaArtists = [
     concertStartAt: "2023-07-01T20:00",
   },
   {
+    id: "jam",
     title: "Jam",
     venue: "SMOI",
     concertStartAt: "2023-07-01T23:59",
+    isPlaceholder: true,
   },
 ];
 
@@ -116,6 +122,7 @@ const concertsGroupedByDay = Object.entries(
                         venue,
                         concertStartAt,
                         hidden,
+                        isPlaceholder,
                       },
                     }) => {
                       if (hidden) {
@@ -133,7 +140,7 @@ const concertsGroupedByDay = Object.entries(
                               />
                             ) : null}
                             <p class="truncate">
-                              {id ? (
+                              {id && !isPlaceholder ? (
                                 <Link href={`/artist/${id}`} title={title}>
                                   {shortTitle || title}
                                 </Link>
