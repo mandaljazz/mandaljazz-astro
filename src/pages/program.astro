@@ -13,17 +13,27 @@ const tbaArtists = [
   {
     title: "TBA",
     venue: "TBA",
+    concertStartAt: "2023-06-29T18:00",
+  },
+  {
+    title: "TBA",
+    venue: "TBA",
     concertStartAt: "2023-06-29T20:00",
   },
   {
-    title: "TBA",
-    venue: "TBA",
-    concertStartAt: "2023-06-30T23:30",
+    title: "Jam",
+    venue: "SMOI",
+    concertStartAt: "2023-06-29T23:59",
+  },
+  {
+    title: "Jam",
+    venue: "SMOI",
+    concertStartAt: "2023-06-30T23:59",
   },
   {
     title: "TBA",
     venue: "TBA",
-    concertStartAt: "2023-07-01T11:30",
+    concertStartAt: "2023-07-01T11:00",
   },
   {
     title: "TBA",
@@ -38,7 +48,22 @@ const tbaArtists = [
   {
     title: "TBA",
     venue: "TBA",
+    concertStartAt: "2023-07-01T14:30",
+  },
+  {
+    title: "TBA",
+    venue: "TBA",
+    concertStartAt: "2023-07-01T15:00",
+  },
+  {
+    title: "TBA",
+    venue: "TBA",
     concertStartAt: "2023-07-01T20:00",
+  },
+  {
+    title: "Jam",
+    venue: "SMOI",
+    concertStartAt: "2023-07-01T23:59",
   },
 ];
 
@@ -107,13 +132,15 @@ const concertsGroupedByDay = Object.entries(
                                 class="w-8 h-8 rounded-lg"
                               />
                             ) : null}
-                            {id ? (
-                              <Link href={`/artist/${id}`} title={title}>
-                                {shortTitle || title}
-                              </Link>
-                            ) : (
-                              title
-                            )}
+                            <p class="truncate">
+                              {id ? (
+                                <Link href={`/artist/${id}`} title={title}>
+                                  {shortTitle || title}
+                                </Link>
+                              ) : (
+                                title
+                              )}
+                            </p>
                           </div>
                           <div class="col-span-3 md:col-span-1">{venue}</div>
                           <div class="">{formatTime(concertStartAt)}</div>
