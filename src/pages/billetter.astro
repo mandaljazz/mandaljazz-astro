@@ -3,6 +3,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Lottie from "../components/Lottie.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
+import { randomHandSrc } from "../utils/images";
 ---
 
 <Layout
@@ -12,17 +13,9 @@ import "../styles/tikkio-overrides.css";
   <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
     <div class="max-w-5xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div class="col-span-3 space-y-8">
+        <div class="md:col-span-3 space-y-8">
           <h1 class="font-display text-5xl md:text-7xl">Billetter</h1>
-          <!-- <div
-            class="tikkio-widget-events w-full"
-            w-id="8421"
-            w-token="4efdcf75df448b769aff666e9e9bdb31faed809c"
-            w-target="blank"
-          >
-          </div>
-          <script is:inline src="https://a.tikkio.com/static/1.0.1463/js/widgets.js"
-          ></script> -->
+
           <article class="prose">
             <p>
               mandaljazz tilbyr enkeltbilletter, dagspass og festivalpass til
@@ -35,9 +28,12 @@ import "../styles/tikkio-overrides.css";
             <h2 class="font-display text-3xl">Enkeltbilletter</h2>
             <p>Gir inngang til den aktuelle konserten.</p>
 
+            <img src="/profil/fugl.png" class="max-w-xs w-full" />
+
             <h2 class="font-display text-3xl">
               Studenter og ungdom under 26 år
             </h2>
+
             <p>
               mandaljazz tilbyr rabatterte billetter til studenter og ungdom
               under 26 år. Studenter inkluderer også elever på videregående,
@@ -64,7 +60,7 @@ import "../styles/tikkio-overrides.css";
           </article>
         </div>
         <div
-          class="sticky bottom-4 translate-x-3 md:translate-x-0 w-full md:top-24 h-fit col-span-2 space-y-4"
+          class="sticky bottom-4 md:top-24 w-full h-fit md:col-span-2 space-y-4"
         >
           <BuyTicketsButton class="w-fit mx-auto" />
           <Lottie
@@ -72,6 +68,7 @@ import "../styles/tikkio-overrides.css";
             class="hidden md:block"
           />
         </div>
+        <Lottie name="jazzlaug-med-armer-ut-av-hodet" class="block md:hidden" />
       </div>
     </div>
   </main>
