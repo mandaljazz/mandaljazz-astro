@@ -1,5 +1,6 @@
 ---
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import Lottie from "../components/Lottie.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
 ---
@@ -62,7 +63,15 @@ import "../styles/tikkio-overrides.css";
             </p>
           </article>
         </div>
-        <BuyTicketsButton class="sticky bottom-4 mx-auto translate-x-3 md:translate-x-0 w-fit md:w-fit md:sticky md:top-24 h-fit col-span-2" />
+        <div
+          class="sticky bottom-4 translate-x-3 md:translate-x-0 w-full md:top-24 h-fit col-span-2 space-y-4"
+        >
+          <BuyTicketsButton class="w-fit mx-auto" />
+          <Lottie
+            name="jazzlaug-med-armer-ut-av-hodet"
+            class="hidden md:block transition-transform duration-1000 hover:scale-105"
+          />
+        </div>
       </div>
     </div>
   </main>
