@@ -11,6 +11,7 @@ import { formatHumanDateTime } from "../utils/date";
 import IconAndLabel from "../components/IconAndLabel.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import { randomHandSrc } from "../utils/images";
 
 const {
   frontmatter: {
@@ -43,10 +44,6 @@ const nextArtist =
   indexOfThisArtist === sortedArtistsPages.length - 1
     ? first(sortedArtistsPages)
     : sortedArtistsPages[indexOfThisArtist + 1];
-
-const randomHandSrc = `/profil/hand0${Math.floor(
-  Math.random() * (6 - 1) + 1
-)}.png`;
 ---
 
 <Layout
