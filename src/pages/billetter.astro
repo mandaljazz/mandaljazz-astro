@@ -1,9 +1,9 @@
 ---
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Lottie from "../components/Lottie.astro";
+import TitleWithHand from "../components/TitleWithHand.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/tikkio-overrides.css";
-import { randomHandSrc } from "../utils/images";
 ---
 
 <Layout
@@ -22,36 +22,52 @@ import { randomHandSrc } from "../utils/images";
               publikum.
             </p>
 
-            <h2 class="font-display text-3xl">Festivalpass og dagspass</h2>
+            <TitleWithHand
+              client:load
+              title="Festivalpass og dagspass"
+              type="yellow"
+            />
             <p>Gir inngang til alle konserter.</p>
 
-            <h2 class="font-display text-3xl">Enkeltbilletter</h2>
+            <TitleWithHand
+              client:load
+              title="Enkeltbilletter"
+              type="orange"
+              flip
+            />
+
             <p>Gir inngang til den aktuelle konserten.</p>
 
-            <img src="/profil/fugl.png" class="max-w-xs w-full" />
-
-            <h2 class="font-display text-3xl">
-              Studenter og ungdom under 26 år
-            </h2>
-
+            <TitleWithHand
+              client:load
+              title="Studenter og ungdom under 26 år"
+              type="blue"
+            />
             <p>
               mandaljazz tilbyr rabatterte billetter til studenter og ungdom
               under 26 år. Studenter inkluderer også elever på videregående,
               ungdoms- og barneskoler.
             </p>
 
-            <h2 class="font-display text-3xl">Barnekonsert</h2>
+            <TitleWithHand
+              client:load
+              title="Barnekonsert"
+              type="yellow"
+              flip
+            />
             <p>Barnekonserten er gratis for alle, både barn og voksne!</p>
 
-            <h2 class="font-display text-3xl">
-              Funksjonshemmede med ledsagerbevis
-            </h2>
+            <TitleWithHand
+              client:load
+              title="Funksjonshemmede med ledsagerbevis"
+              type="orange"
+            />
             <p>
               Innehavere av ledsagerbevis for funksjonshemmede gis gratis
               billett til sin ledsager.
             </p>
 
-            <h2 class="font-display text-3xl">Annen info</h2>
+            <TitleWithHand client:load title="Annen info" type="blue" flip />
             <p>
               Ved konserter i Buen er det begrenset kapasitet. Innehavere av
               dags- og festivalpass bes møte tidlig for å sikre seg plass. Alle
