@@ -46,10 +46,10 @@ const byOrder = (a, b) => {
       {
         artists.sort(byOrder).map((artist) => {
           const {
-            frontmatter: { title, id, tagline, hidden },
+            frontmatter: { title, id, tagline, hideFromArtistList },
           } = artist;
 
-          if (hidden) {
+          if (hideFromArtistList) {
             return null;
           }
 

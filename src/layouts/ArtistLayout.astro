@@ -30,7 +30,7 @@ const {
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
-  [...artistsPages.filter(({ frontmatter: { hidden } }) => !hidden)],
+  [...artistsPages.filter(({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList)],
   "frontmatter.concertStartAt"
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(

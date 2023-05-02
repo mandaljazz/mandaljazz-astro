@@ -72,7 +72,7 @@ const concertsGroupedByDay = Object.entries(
   groupBy(
     sortBy(
       [
-        ...artistsPages.filter(({ frontmatter: { hidden } }) => !hidden),
+        ...artistsPages.filter(({ frontmatter: { hideFromProgram } }) => !hideFromProgram),
         ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
       ],
       "frontmatter.concertStartAt"
@@ -116,11 +116,11 @@ const concertsGroupedByDay = Object.entries(
                         id,
                         venue,
                         concertStartAt,
-                        hidden,
+                        hideFromProgram,
                         isPlaceholder,
                       },
                     }) => {
-                      if (hidden) {
+                      if (hideFromProgram) {
                         return null;
                       }
 
