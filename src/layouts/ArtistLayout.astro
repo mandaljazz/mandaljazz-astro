@@ -25,6 +25,7 @@ const {
     concertStartAt,
     venue,
     sponsoredByBergesenstiftelsen,
+    isFree
   },
 } = Astro.props;
 
@@ -118,7 +119,7 @@ const nextArtist =
             )
           }
           <div class="flex flex-row justify-between">
-            <BuyTicketsButton class="flex-0 w-fit h-fit" />
+            {!isFree && <BuyTicketsButton class="flex-0 w-fit h-fit" />}
             {
               sponsoredByBergesenstiftelsen && (
                 <div class="flex flex-col lg:items-end gap-y-1">
