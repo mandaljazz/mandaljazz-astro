@@ -7,6 +7,11 @@ body {
   hyphenate-character: "-";
 }
 
+::selection {
+  background: theme("colors.pink");
+  color: theme("colors.white");
+}
+
 .link {
   background: linear-gradient(
     to top,
