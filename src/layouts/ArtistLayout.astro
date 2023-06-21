@@ -9,6 +9,7 @@ import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import YouTube from "../components/YouTube.astro";
 import { formatHumanDateTime } from "../utils/date";
 import IconAndLabel from "../components/IconAndLabel.astro";
+import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import { randomHandSrc } from "../utils/images";
@@ -25,13 +26,18 @@ const {
     concertStartAt,
     venue,
     sponsoredByBergesenstiftelsen,
-    isFree
+    isFree,
+    requiresFreeTicket,
   },
 } = Astro.props;
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
-  [...artistsPages.filter(({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList)],
+  [
+    ...artistsPages.filter(
+      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList
+    ),
+  ],
   "frontmatter.concertStartAt"
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
@@ -56,7 +62,9 @@ const nextArtist =
     <div class="max-w-5xl mx-auto space-y-24">
       <div class="space-y-4">
         <div class="space-y-4">
-          <h1 class="text-4xl leading-snug md:text-7xl md:leading-tight font-display hyphens-auto md:hyphens-none">
+          <h1
+            class="text-4xl leading-snug md:text-7xl md:leading-tight font-display hyphens-auto md:hyphens-none"
+          >
             {title}
           </h1>
           <div class="grid grid-cols-5 flex-nowrap w-full items-end">
@@ -118,8 +126,26 @@ const nextArtist =
               </div>
             )
           }
+          {
+            isFree && !requiresFreeTicket && (
+              <InfoBox>Konserten er gratis!</InfoBox>
+            )
+          }
+          {
+            isFree && requiresFreeTicket && (
+              <InfoBox>
+                Konserten er gratis, men du må reservere plass med en
+                gratisbillett.
+              </InfoBox>
+            )
+          }
           <div class="flex flex-row justify-between">
             {!isFree && <BuyTicketsButton class="flex-0 w-fit h-fit" />}
+            {
+              isFree && requiresFreeTicket && (
+                <BuyTicketsButton class="flex-0 w-fit h-fit" isFree />
+              )
+            }
             {
               sponsoredByBergesenstiftelsen && (
                 <div class="flex flex-col lg:items-end gap-y-1">

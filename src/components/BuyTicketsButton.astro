@@ -1,9 +1,10 @@
 ---
 export interface Props {
   class?: string;
+  isFree?: boolean;
 }
 
-const { class: extraClasses = "" } = Astro.props;
+const { class: extraClasses = "", isFree } = Astro.props;
 ---
 
 <a
@@ -11,5 +12,5 @@ const { class: extraClasses = "" } = Astro.props;
   transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover ${extraClasses}`}
   href="https://tikkio.com/tickets/34261-mandaljazz-2023"
   rel="noopener nofollow"
-  target="_blank">Kjøp billetter</a
+  target="_blank">{isFree ? "Reserver gratisbillett" : "Kjøp billetter"}</a
 >
