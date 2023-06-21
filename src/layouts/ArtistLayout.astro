@@ -67,17 +67,21 @@ const nextArtist =
           >
             {title}
           </h1>
-          <div class="grid grid-cols-5 flex-nowrap w-full items-end">
-            <div class="col-span-3 space-y-8">
+          <div class="grid grid-cols-5 gap-8 flex-nowrap w-full items-end">
+            <div class="col-span-5 md:col-span-3 space-y-8">
               <p class="text-3xl hyphens-auto">
                 {tagline}
               </p>
-              <div class="space-y-2">
-                <IconAndLabel icon="time-outline">
+              <div class="space-y-8">
+                <IconAndLabel icon="time-outline" type="yellow">
                   {formatHumanDateTime(concertStartAt)}
                 </IconAndLabel>
-                <IconAndLabel icon="location-outline">{venue}</IconAndLabel>
+                <IconAndLabel icon="location-outline" type="blue" flip>
+                  {venue}
+                </IconAndLabel>
               </div>
+            </div>
+            <div class="col-span-3">
               {
                 previousArtist && nextArtist ? (
                   <ArtistNavigationLinks
@@ -91,7 +95,7 @@ const nextArtist =
             <div class="col-span-2 relative">
               <img
                 src={randomHandSrc}
-                class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 place-end rotate-2 translate-y-8"
+                class="absolute bottom-0 left-0 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rotate-2 translate-y-8"
                 alt="Fargerik hånd som peker på tittelen ovenfor"
               />
             </div>
