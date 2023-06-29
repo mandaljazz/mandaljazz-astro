@@ -26,6 +26,19 @@ module.exports = {
         solid: "-6px 6px 0px 0px #ffbd00;",
         "solid-hover": "-10px 10px 0px 0px #ffbd00",
       },
+      animation: {
+        orbit: "orbit-right 10s linear infinite",
+      },
+      keyframes: {
+        "orbit-right": {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "20%": { transform: "translate3d(10px, -10px, 0)" },
+          "40%": { transform: "translate3d(20px, 0, 0)" },
+          "60%": { transform: "translate3d(20px, 20px, 0)" },
+          "80%": { transform: "translate3d(10px, 10px, 0)" },
+          "90%": { transform: "translate3d(0, 20px, 0)" },
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
