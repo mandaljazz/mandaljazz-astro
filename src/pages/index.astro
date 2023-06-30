@@ -1,10 +1,19 @@
 ---
+import partition from "lodash/partition";
+
 import Card from "../components/Card.astro";
 import Lottie from "../components/Lottie.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
+const [upcomingArtists, pastArtists] = partition(artists, (artist) => {
+  const {
+    frontmatter: { concertStartAt },
+  } = artist;
+
+  return new Date(concertStartAt) > new Date();
+});
 
 const byOrder = (a, b) => {
   const aOrder = a.frontmatter.order || 0;
@@ -44,17 +53,19 @@ const byOrder = (a, b) => {
       class="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
     >
       {
-        artists.sort(byOrder).map((artist) => {
-          const {
-            frontmatter: { title, id, tagline, hideFromArtistList },
-          } = artist;
+        [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
+          (artist) => {
+            const {
+              frontmatter: { title, id, hideFromArtistList },
+            } = artist;
 
-          if (hideFromArtistList) {
-            return null;
+            if (hideFromArtistList) {
+              return null;
+            }
+
+            return <Card href={`/artist/${id}`} title={title} id={id} />;
           }
-
-          return <Card href={`/artist/${id}`} title={title} id={id} />;
-        })
+        )
       }
     </ul>
     <Spotify
