@@ -39,37 +39,57 @@ const byOrder = (a, b) => {
             name="jazzlaug-med-armer-ut-av-hodet"
             class="absolute max-w-xs w-full h-fit translate-y-[16px] scale-[1.11]"
           />
-          <img src="/profil/Jazzlaug04.png" class="max-w-xs w-full" />
+          <img
+            src="/profil/Jazzlaug04.png"
+            class="max-w-xs w-full transition-opacity lottie-placeholder"
+          />
         </div>
         <h1
           class="p-6 text-2xl sm:text-4xl font-display text-center leading-snug bg-pink text-white rounded-xl"
         >
-          29. juni – 1. juli 2023
+          27.–29. juni 2024
         </h1>
+        <h2 class="font-display text-2xl text-center p-6">
+          Mandaljazz feirer <div class="inline-block skew-y-2 p-2 bg-blue">
+            <div class="inline-block -skew-y-2 text-4xl">10 år</div>
+          </div>
+        </h2>
       </div>
     </div>
-    <ul
-      role="list"
-      class="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-    >
-      {
-        [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
-          (artist) => {
-            const {
-              frontmatter: { title, id, hideFromArtistList },
-            } = artist;
+    <div class="mx-auto max-w-5xl space-y-4">
+      <h3 class="font-display text-3xl">Artister 2023</h3>
+      <ul
+        role="list"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {
+          [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
+            (artist) => {
+              const {
+                frontmatter: { title, id, hideFromArtistList },
+              } = artist;
 
-            if (hideFromArtistList) {
-              return null;
+              if (hideFromArtistList) {
+                return null;
+              }
+
+              return <Card href={`/artist/${id}`} title={title} id={id} />;
             }
-
-            return <Card href={`/artist/${id}`} title={title} id={id} />;
-          }
-        )
-      }
-    </ul>
+          )
+        }
+      </ul>
+    </div>
     <Spotify
       src="https://open.spotify.com/playlist/3390Fw5R6RjQ7pYgIvTLgr?si=c3193c64b9eb460b"
     />
   </main>
 </Layout>
+
+<script>
+  document.addEventListener("astro-lottie-loaded", (e) => {
+    // Hide Lottie placeholder images when Lottie has loaded
+    document.querySelectorAll(".lottie-placeholder").forEach((placeholder) => {
+      placeholder.classList.toggle("opacity-0");
+    });
+  });
+</script>
