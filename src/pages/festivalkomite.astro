@@ -1,0 +1,136 @@
+---
+import ImageWithCaption from "../components/ImageWithCaption.astro";
+import Link from "../components/Link.astro";
+import FestivalCommitteeForm from "../components/FestivalCommitteeForm.astro";
+import Layout from "../layouts/Layout.astro";
+import FestivalCommitteeLayout from "../layouts/FestivalCommitteeLayout.astro";
+
+const positions = await Astro.glob("../content/festivalkomite/*.mdx");
+---
+
+<Layout
+  title="Festivalkomite // mandaljazz 2024"
+  description="Ja, bli med i festivalkomiteen til mandaljazz 2024!"
+>
+  <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
+    <div class="max-w-5xl mx-auto space-y-16">
+      <h1 class="font-display text-4xl md:text-7xl">Festivalkomite</h1>
+      <div class="grid md:grid-cols-5 gap-16 items-center">
+        <div class="md:col-span-3 space-y-4">
+          <p>
+            Hver høst setter vi sammen en festivalkomité som har ansvar for å
+            planlegge neste sommers festival. Festivalkomiteen består av
+            festivalsjef og nestleder, samt flere ansvarsroller som er beskrevet
+            under.
+          </p>
+          <p>
+            Det er forskjellig fra år til år om det er mange nye eller gamle med
+            i festivalkomiteen. Det er veldig lov å melde seg selv om du også
+            var med i fjor, eller for flere år siden - og det er veldig
+            velkomment med nye tilskudd!
+          </p>
+          <p>
+            Du trenger ikke noe erfaring – men vi ønsker folk som er engasjerte
+            og som ønsker å være med å sette sitt preg på festivalen!
+          </p>
+        </div>
+        <img
+          src="/festivalkomite/solnedgang.jpg"
+          alt="Festivalkomiteen"
+          class="md:col-span-2 rounded-lg shadow-lg"
+        />
+        <img
+          src="/festivalkomite/norsk-jazzforum.jpg"
+          alt="Festivalkomiteen"
+          class="row-start-4 md:row-start-auto md:col-span-2 rounded-lg shadow-lg"
+        />
+        <div class="md:col-span-3 space-y-4">
+          <p>
+            Komiteen møtes et par-tre helger i løpet av året for å jobbe og
+            brainstorme. Da gjør vi også alltid noe hyggelig, alt fra å spise
+            god mat sammen, dra på konsert, til å reise på hyttetur.
+          </p>
+          <p>
+            Utenom dette har vi kanskje et par kortere møter, enten digitalt
+            eller fysisk, og jobber en del på egen hånd mens vi kommuniserer via
+            mail/chat.
+          </p>
+          <p>
+            De ulike ansvarsrollene krever ulik mengde jobb og tid, og det er
+            derfor forskjellige symbolske summer man får for de forskjellige
+            vervene. I tillegg til en symbolsk sum, er også godene som turer,
+            måltider eller andre aktiviteter stort sett inkludert.
+          </p>
+          <p>
+            Dette kommer selvfølgelig i tillegg til de samme godene som alle
+            andre frivillige får under selve festivalen som å komme gratis inn
+            på hele festivalen, måltider, festival t-skjorte og sosiale
+            sammenkomster.
+          </p>
+        </div>
+        <p class="md:col-span-3 md:col-start-2">
+          Vi håper du har lyst til å være med å forme mandaljazz, komme med
+          ideer som du selv kan være med på å sette til liv, lære nye ting, få
+          erfaringer innen arrangørvirksomhet og ledelse, og generelt bli en del
+          av en skikkelig hyggelig gjeng!
+        </p>
+      </div>
+      <!-- <Link href="#registreringsskjema" title="Til registreingsskjema">
+        Til registreringsskjema
+      </Link> -->
+      <div class="space-y-8">
+        <h2 class="font-display text-2xl md:text-3xl">
+          Les litt om de ulike stillingene
+        </h2>
+        <div class="md:grid md:grid-cols-5 gap-2">
+          <div class="sticky top-[58px] md:col-span-1">
+            <ul
+              class="sticky top-[58px] z-10 flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 overflow-x-auto"
+            >
+              {
+                positions.map((position) => {
+                  const {
+                    frontmatter: { title, id },
+                  } = position;
+                  return (
+                    <li>
+                      <Link href={`#${id}`} title={title}>
+                        {title}
+                      </Link>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+          <div class="md:col-span-4 space-y-12">
+            {
+              positions.map((position) => {
+                const { Content } = position;
+                return (
+                  <div class="space-y-16">
+                    <Content />
+                    <hr />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </div>
+      <p class="mx-auto max-w-2xl">
+        Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
+        kanskje interessert i å bli med i festivalkomiteen? Hvis du er det, kan
+        du sende en mail til festivalsjef Eirik og melde din interesse!
+      </p>
+      <a
+        class={`sticky bottom-4 block w-fit mx-auto py-4 px-4 text-center bg-indigo text-white rounded-lg text-sm md:text-xl duration-500
+  transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover`}
+        rel="noopener nofollow"
+        href="mailto:eirik@mandaljazz.no"
+        title="eirik@mandaljazz.no"
+        target="_blank">Meld din interesse</a
+      >
+    </div>
+  </main>
+</Layout>
