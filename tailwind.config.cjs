@@ -14,6 +14,7 @@ module.exports = {
         yellow: "#ffbd00",
         black: "#121212",
         white: "#f1f1f1",
+        "chalk-white": "#ffffff",
       },
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],

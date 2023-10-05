@@ -38,7 +38,7 @@ const { class: extraClasses, navItems } = Astro.props;
         class="jazzlaug transition-all w-12 h-auto duration-700"
       /></a
     >
-    <div class="w-full flex flex-row gap-4 sm:gap-8 items-center">
+    <nav class="w-full flex flex-row gap-4 sm:gap-8 items-center">
       {
         navItems.map(({ href, title }) => (
           <div class="relative hover:-rotate-3 transition-transform">
@@ -52,7 +52,7 @@ const { class: extraClasses, navItems } = Astro.props;
           </div>
         ))
       }
-    </div>
+    </nav>
   </nav>
 </div>
 
