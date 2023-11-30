@@ -22,6 +22,7 @@ const {
     authorImage,
     tagline,
     id,
+    imageAttribution,
     concertStartAt,
     venue,
     sponsoredByBergesenstiftelsen,
@@ -101,12 +102,19 @@ const nextArtist =
           </div>
         </div>
 
-        <div class="relative">
+        <div class="relative grid gap-1">
           <div
             class="bg-no-repeat bg-cover bg-center w-full h-[520px] rounded"
             style={`background-image: url('/artist/${id}.png');`}
           >
           </div>
+          {
+            imageAttribution && (
+              <div class="text-sm justify-self-end">
+                Foto: {imageAttribution}
+              </div>
+            )
+          }
         </div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
