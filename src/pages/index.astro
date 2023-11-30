@@ -3,8 +3,9 @@ import partition from "lodash/partition";
 
 import Card from "../components/Card.astro";
 import Lottie from "../components/Lottie.astro";
-import Spotify from "../components/Spotify.astro";
+// import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
+import PlaceholderCard from "../components/PlaceholderCard.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
 const [upcomingArtists, pastArtists] = partition(artists, (artist) => {
@@ -77,6 +78,11 @@ const byOrder = (a, b) => {
             }
           )
         }
+        <PlaceholderCard title="Kul artist" />
+        <PlaceholderCard title="Hippe greier" />
+        <PlaceholderCard title="Fine ting" />
+        <PlaceholderCard title="Mer jazz" />
+        <PlaceholderCard title="Er det jazz da?" />
       </ul>
     </div>
     <!-- <Spotify
