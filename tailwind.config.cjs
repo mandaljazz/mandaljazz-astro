@@ -20,6 +20,14 @@ module.exports = {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
         display: ["Libre Baskerville"],
       },
+      typography: {
+        "quoteless-blockquotes": {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
+      },
       scale: {
         "-100": "-1",
       },
