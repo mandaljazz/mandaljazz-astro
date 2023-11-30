@@ -73,12 +73,20 @@ const nextArtist =
                 {tagline}
               </p>
               <div class="space-y-8">
-                <IconAndLabel icon="time-outline" type="blue">
-                  {formatHumanDateTime(concertStartAt)}
-                </IconAndLabel>
-                <IconAndLabel icon="location-outline" type="yellow" flip>
-                  {venue}
-                </IconAndLabel>
+                {
+                  concertStartAt && (
+                    <IconAndLabel icon="time-outline" type="blue">
+                      {formatHumanDateTime(concertStartAt)}
+                    </IconAndLabel>
+                  )
+                }
+                {
+                  venue && (
+                    <IconAndLabel icon="location-outline" type="yellow" flip>
+                      {venue}
+                    </IconAndLabel>
+                  )
+                }
               </div>
             </div>
             <div class="col-span-3 md:col-span-4">
@@ -121,13 +129,17 @@ const nextArtist =
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
         <div class="col-span-2 space-y-4">
-          <ImageAndLabel
-            image={`/people/${authorImage}`}
-            alt={`Bilde av ${author}`}
-          >
-            Tekst: {author}
-          </ImageAndLabel>
-          <article class="prose">
+          {
+            author && (
+              <ImageAndLabel
+                image={`/people/${authorImage}`}
+                alt={`Bilde av ${author}`}
+              >
+                Tekst: {author}
+              </ImageAndLabel>
+            )
+          }
+          <article class="prose prose-quoteless-blockquotes">
             <slot />
           </article>
         </div>
