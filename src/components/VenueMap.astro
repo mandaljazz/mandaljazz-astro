@@ -50,6 +50,12 @@ import "../styles/mapbox-overrides.css";
       name: "Hestetroa",
       coordinates: [7.455256960080562, 58.027854579180655],
     },
+    {
+      id: "hekkholmen",
+      directionsLink: "https://maps.app.goo.gl/BPpfGRV2btB3VaMM8",
+      name: "Hekkholmen",
+      coordinates: [7.421073, 58.016544],
+    },
   ];
 
   const center = [7.45436325431531, 58.02442355659143];
@@ -61,7 +67,7 @@ import "../styles/mapbox-overrides.css";
     container: "map",
     style: "mapbox://styles/mapbox/streets-v12",
     center,
-    zoom: 14,
+    zoom: 13,
   });
 
   map.addControl(navigationControl, "top-left");
