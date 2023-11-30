@@ -1,5 +1,5 @@
-import format from "date-fns/format/index.js";
-import capitalize from "lodash/capitalize";
+import { isThisYear, format } from "date-fns";
+import { capitalize } from "lodash";
 
 export const formatTime = (date: string) => {
   try {
@@ -19,6 +19,9 @@ export const formatDate = (date: string) => {
 
 export const formatHumanDateTime = (date: string) => {
   try {
+    if (!isThisYear(new Date(date))) {
+      return capitalize(format(new Date(date), "EEEE dd.MM.yyyy HH:mm"));
+    }
     return capitalize(format(new Date(date), "EEEE d. MMMM HH:mm"));
   } catch (error) {
     return date;
