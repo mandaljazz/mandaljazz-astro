@@ -77,7 +77,7 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
                     frontmatter: { title, id },
                   } = group;
                   return (
-                    <li>
+                    <li class="whitespace-nowrap">
                       <Link href={`#${id}`} title={title}>
                         {title}
                       </Link>
@@ -102,44 +102,53 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
           </div>
         </div>
       </div>
-      <h2 class="font-display text-3xl">Tidligere frivilliggjenger</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2023.jpg"
-          caption={`Frivilliggjengen ${2023}`}
-        />
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2022.jpg"
-          caption={`Frivilliggjengen ${2022}`}
-        />
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2019.jpg"
-          caption={`Frivilliggjengen ${2019}`}
-        />
-
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2018.jpg"
-          caption={`Frivilliggjengen ${2018}`}
-        />
-
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2016.jpg"
-          caption={`Frivilliggjengen ${2016}`}
-        />
-
-        <ImageWithCaption
-          src="/frivillig/fellesbilde-2014.jpg"
-          caption={`Frivilliggjengen ${2014}`}
-        />
-      </div>
-      <!-- <p class="mx-auto max-w-2xl">
+      <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
-        kanskje interessert i å bli med som frivillig på mandaljazz? Hvis du er
-        det kan du sende melde interesse i skjemaet rett under her!
+        kanskje interessert i å bli med som frivillig på mandaljazz? Det blir
+        mulig å melde seg som frivillig i løpet av våren 2024 via et skjema, men
+        hvis du ikke klarer å vente kan du sende en e-post til <Link
+          href="mailto:eirik@mandaljazz.no"
+          title="eirik@mandaljazz.no"
+          external
+        >
+          eirik@mandaljazz.no
+        </Link>!
       </p>
-      <div class="invisible -translate-y-16" id="registreringsskjema"></div>
+      <!-- <div class="invisible -translate-y-16" id="registreringsskjema"></div>
       <h2 class="font-display text-3xl">Registrering</h2>
       <VolunteerForm /> -->
+      <div class="space-y-8">
+        <h2 class="font-display text-3xl">Tidligere frivilliggjenger</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2023.jpg"
+            caption={`Frivilliggjengen ${2023}`}
+          />
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2022.jpg"
+            caption={`Frivilliggjengen ${2022}`}
+          />
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2019.jpg"
+            caption={`Frivilliggjengen ${2019}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2018.jpg"
+            caption={`Frivilliggjengen ${2018}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2016.jpg"
+            caption={`Frivilliggjengen ${2016}`}
+          />
+
+          <ImageWithCaption
+            src="/frivillig/fellesbilde-2014.jpg"
+            caption={`Frivilliggjengen ${2014}`}
+          />
+        </div>
+      </div>
     </div>
   </main>
 </Layout>
