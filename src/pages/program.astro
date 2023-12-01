@@ -2,6 +2,7 @@
 import capitalize from "lodash/capitalize";
 import groupBy from "lodash/groupBy";
 import sortBy from "lodash/sortBy";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
@@ -106,6 +107,7 @@ const concertsGroupedByDay = Object.entries(
           );
         })
       }
+      <BuyTicketsButton class="w-fit mx-auto" />
     </div>
   </main>
 </Layout>

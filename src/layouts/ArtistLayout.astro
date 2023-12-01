@@ -11,6 +11,7 @@ import { formatHumanDateTime } from "../utils/date";
 import IconAndLabel from "../components/IconAndLabel.astro";
 import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import { randomHandSrc } from "../utils/images";
 
 const {
@@ -165,6 +166,12 @@ const nextArtist =
             )
           }
           <div class="flex flex-row justify-between">
+            {!isFree && <BuyTicketsButton class="flex-0 w-fit h-fit" />}
+            {
+              isFree && requiresFreeTicket && (
+                <BuyTicketsButton class="flex-0 w-fit h-fit" isFree />
+              )
+            }
             {
               sponsoredByBergesenstiftelsen && (
                 <div class="flex flex-col lg:items-end gap-y-1">
