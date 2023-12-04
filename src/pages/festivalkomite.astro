@@ -1,4 +1,5 @@
 ---
+import { sortBy } from "lodash";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -85,11 +86,15 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
               class="sticky top-[58px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 overflow-x-auto"
             >
               {
-                positions.map((position) => {
+                sortBy(positions, "frontmatter.filled").map((position) => {
                   const {
-                    frontmatter: { title, id },
+                    frontmatter: { title, id, filled },
                   } = position;
-                  return (
+                  return filled ? (
+                    <li>
+                      <span class="line-through">{title}</span>&nbsp;✅
+                    </li>
+                  ) : (
                     <li>
                       <Link href={`#${id}`} title={title}>
                         {title}
@@ -103,8 +108,11 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
           <div class="md:col-span-4 space-y-12">
             {
               positions.map((position) => {
-                const { Content } = position;
-                return (
+                const {
+                  Content,
+                  frontmatter: { filled },
+                } = position;
+                return filled ? null : (
                   <div class="space-y-16">
                     <Content />
                     <hr />
