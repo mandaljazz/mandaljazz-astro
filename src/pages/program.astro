@@ -6,7 +6,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
-import { formatDate, formatTime } from "../utils/date";
+import { formatHumanDate, formatTime } from "../utils/date";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
 const tbaArtists = [
@@ -28,7 +28,7 @@ const concertsGroupedByDay = Object.entries(
       ],
       "frontmatter.concertStartAt"
     ),
-    (artistPage) => formatDate(artistPage.frontmatter.concertStartAt)
+    (artistPage) => formatHumanDate(artistPage.frontmatter.concertStartAt)
   )
 );
 ---

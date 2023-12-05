@@ -12,6 +12,14 @@ export const formatTime = (date: string) => {
 
 export const formatDate = (date: string) => {
   try {
+    return format(new Date(date), "dd.MM.yyyy");
+  } catch (error) {
+    return date;
+  }
+};
+
+export const formatHumanDate = (date: string) => {
+  try {
     return format(new Date(date), "EEEE d. MMMM");
   } catch (error) {
     return date;
