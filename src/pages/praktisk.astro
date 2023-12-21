@@ -7,8 +7,8 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 const accomodations = [
   { name: "Kjøbmandsgården Hotell", url: "https://www.kjobmandsgaarden.no/" },
+  { name: "SKAP Hostel Mandal", url: "https://skapfhs.no/sommerhostel/" },
   { name: "Sjøsanden Feriesenter", url: "https://topcamp.no/nb/sjosanden" },
-  { name: "Skap Sommerhostell", url: "https://skapfhs.no/sommerhostel/" },
   { name: "Sjøsanden Ferietun", url: "https://www.ferietun.no/" },
   { name: "Tregde Feriesenter", url: "https://tregdeferie.no/" },
   { name: "Hald Pensjonat", url: "https://haldpensjonat.no/" },
@@ -90,7 +90,7 @@ const accomodations = [
             >
               {
                 accomodations.map(({ name, url }) => (
-                  <li class="">
+                  <li>
                     <a
                       class="bg-yellow p-4 rounded h-full block hover:-rotate-1 transition-transform"
                       target="_blank"
