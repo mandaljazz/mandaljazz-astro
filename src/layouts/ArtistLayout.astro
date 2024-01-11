@@ -52,6 +52,9 @@ const nextArtist =
   indexOfThisArtist === sortedArtistsPages.length - 1
     ? first(sortedArtistsPages)
     : sortedArtistsPages[indexOfThisArtist + 1];
+
+const showPrevAndNextArtistNavigationLinks =
+  sortedArtistsPages.length > 1 && previousArtist && nextArtist;
 ---
 
 <Layout
@@ -92,9 +95,7 @@ const nextArtist =
             </div>
             <div class="col-span-3 md:col-span-4">
               {
-                sortedArtistsPages.length > 1 &&
-                previousArtist &&
-                nextArtist ? (
+                showPrevAndNextArtistNavigationLinks ? (
                   <ArtistNavigationLinks
                     previousArtist={previousArtist}
                     nextArtist={nextArtist}
@@ -199,7 +200,7 @@ const nextArtist =
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
       {
-        sortedArtistsPages.length > 1 && previousArtist && nextArtist ? (
+        showPrevAndNextArtistNavigationLinks ? (
           <ArtistNavigationLinks
             previousArtist={previousArtist}
             nextArtist={nextArtist}
