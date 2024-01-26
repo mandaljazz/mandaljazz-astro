@@ -1,4 +1,6 @@
 ---
+import type { MarkdownLayoutProps } from "astro";
+import classnames from "classnames";
 import first from "lodash/first";
 import last from "lodash/last";
 import sortBy from "lodash/sortBy";
@@ -29,10 +31,34 @@ const {
     sponsoredByBergesenstiftelsen,
     isFree,
     requiresFreeTicket,
+    overrideImagePosition,
   },
 } = Astro.props;
 
-const artistsPages = await Astro.glob("../pages/artist/*.mdx");
+type ArtistProps = {
+  frontmatter: {
+    layout?: string;
+    id: string;
+    imageAttribution?: string;
+    overrideImagePosition?: string;
+    title: string;
+    author?: string;
+    authorImage?: string;
+    tagline?: string;
+    venue?: string;
+    concertStartAt?: string;
+    spotifyUrl?: string;
+    youtubeUrl?: string;
+    sponsoredByBergesenstiftelsen?: string;
+    hideFromProgram?: boolean;
+    hideFromArtistList?: boolean;
+    isFree?: boolean;
+    requiresFreeTicket?: boolean;
+    order?: string;
+  };
+};
+
+const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
   [
     ...artistsPages.filter(
@@ -116,7 +142,10 @@ const showPrevAndNextArtistNavigationLinks =
 
         <div class="relative grid gap-1">
           <div
-            class="bg-no-repeat bg-cover bg-center w-full h-[520px] rounded"
+            class={classnames(
+              "bg-no-repeat bg-cover bg-center w-full h-[520px] rounded",
+              { [overrideImagePosition]: overrideImagePosition }
+            )}
             style={`background-image: url('/artist/${id}.jpg');`}
           >
           </div>
