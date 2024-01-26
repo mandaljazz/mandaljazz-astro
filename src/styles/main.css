@@ -27,6 +27,7 @@ body {
 }
 .link:hover {
   background-position: 0 22%;
+  color: theme("colors.black");
 }
 
 @layer utilities {
