@@ -35,13 +35,14 @@ const {
   },
 } = Astro.props;
 
-type ArtistProps = {
+export type ArtistProps = {
   frontmatter: {
     layout?: string;
     id: string;
     imageAttribution?: string;
     overrideImagePosition?: string;
     title: string;
+    shortTitle?: string;
     author?: string;
     authorImage?: string;
     tagline?: string;
@@ -53,6 +54,7 @@ type ArtistProps = {
     hideFromProgram?: boolean;
     hideFromArtistList?: boolean;
     isFree?: boolean;
+    isPlaceholder?: boolean;
     requiresFreeTicket?: boolean;
     order?: string;
   };

@@ -32,8 +32,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: "-6px 6px 0px 0px #ffbd00;",
-        "solid-hover": "-10px 10px 0px 0px #ffbd00",
+        solid: "-6px 6px 0px 0px #8bc5ff",
+        "solid-hover": "-10px 10px 0px 0px #8bc5ff",
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",

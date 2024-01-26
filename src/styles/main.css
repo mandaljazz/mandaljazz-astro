@@ -8,14 +8,14 @@ body {
 }
 
 ::selection {
-  background: theme("colors.pink");
-  color: theme("colors.white");
+  background: theme("colors.yellow");
+  color: theme("colors.black");
 }
 
 .link {
   background: linear-gradient(
     to top,
-    theme("colors.pink") 80%,
+    theme("colors.blue") 80%,
     transparent 80%
   );
   text-decoration: none;
@@ -27,7 +27,6 @@ body {
 }
 .link:hover {
   background-position: 0 22%;
-  color: theme("colors.white");
 }
 
 @layer utilities {

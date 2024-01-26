@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: "yellow" | "orange" | "blue";
+  type: "dark-blue" | "blue";
   title: string;
   flip?: boolean;
 }
@@ -8,15 +8,18 @@ export interface Props {
 const { type, title, flip } = Astro.props;
 
 const backgroundColor = {
-  yellow: "bg-yellow",
-  orange: "bg-orange",
+  "dark-blue": "bg-dark-blue",
   blue: "bg-blue",
 }[type];
 
+const fontColor = {
+  "dark-blue": "text-white",
+  blue: "text-black",
+}[type];
+
 const imageType = {
-  blue: "1",
-  yellow: "2",
-  orange: "3",
+  blue: "2",
+  "dark-blue": "3",
 }[type];
 ---
 
@@ -26,7 +29,9 @@ const imageType = {
   } w-fit flex flex-row ${backgroundColor} mt-16`}
 >
   <h2
-    class={`${flip ? "skew-y-2" : "-skew-y-2"} font-display text-3xl p-4 my-2`}
+    class={`${
+      flip ? "skew-y-2" : "-skew-y-2"
+    } font-display text-3xl p-4 my-2 ${fontColor}`}
   >
     {title}
   </h2>
