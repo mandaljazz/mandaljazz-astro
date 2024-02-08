@@ -4,28 +4,27 @@ export interface Props {
   title: string;
   external?: boolean;
   class?: string;
+  unstyled?: boolean;
 }
 
-const { href, external, class: extraClasses } = Astro.props;
+const { href, external, class: extraClasses, unstyled } = Astro.props;
 ---
 
 {
   external ? (
     <a
       href={href}
-      class={"link inline-block"}
+      class:list={["inline-block", unstyled ? undefined : "link", extraClasses]}
       rel="noopener nofollow"
       target="_blank"
-      class={extraClasses}
     >
       <slot />
     </a>
   ) : (
     <a
       href={href}
-      class={"link inline-block"}
+      class:list={["inline-block", unstyled ? undefined : "link", extraClasses]}
       aria-current={Astro.url.pathname === href ? "page" : undefined}
-      class={extraClasses}
     >
       <slot />
     </a>
