@@ -53,8 +53,6 @@ const { class: extraClasses, navItems } = Astro.props;
   const offScreenNavItemsList = document.querySelector(".off-screen-nav-items");
 
   const toggleMobileMenu = () => {
-    const menu = document.querySelector(".menu");
-    menu.classList.toggle("shadow-lg");
     ["-translate-y-full", "translate-y-10", "translate-x-0"].map((c) =>
       offScreenNavItemsList.classList.toggle(c)
     );
