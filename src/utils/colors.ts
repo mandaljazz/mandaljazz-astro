@@ -3,5 +3,5 @@ const randomFromList = (values: string[]) => {
 };
 
 export const randomBackgroundColor = () => {
-  return randomFromList(["bg-indigo", "bg-pink"]);
+  return randomFromList(["bg-blue", "bg-yellow"]);
 };
