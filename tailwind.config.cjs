@@ -37,9 +37,11 @@ module.exports = {
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",
-        "sideways-right": "sideways-right 30s ease-in-out infinite",
+        "sideways-right-fast": "sideways-right 10s ease-in-out infinite",
+        "sideways-right-medium": "sideways-right 30s ease-in-out infinite",
         "sideways-right-slow": "sideways-right 53s ease-in-out infinite",
-        "sideways-left": "sideways-left 30s ease-in-out infinite",
+        "sideways-left-fast": "sideways-left 10s ease-in-out infinite",
+        "sideways-left-medium": "sideways-left 30s ease-in-out infinite",
         "sideways-left-slow": "sideways-left 53s ease-in-out infinite",
       },
       keyframes: {
