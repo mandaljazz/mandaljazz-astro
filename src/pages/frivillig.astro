@@ -67,9 +67,9 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
           Les litt om de ulike gruppene
         </h2>
         <div class="md:grid md:grid-cols-5 gap-2">
-          <div class="sticky top-[58px] z-10 md:col-span-1">
+          <div class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-1 -mx-4 md:mx-0">
             <ul
-              class="sticky top-[58px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 overflow-x-auto"
+              class="sticky top-[52px] md:top-[56px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 px-4 md:px-0 overflow-x-auto"
             >
               {
                 groups.map((group) => {
@@ -87,7 +87,7 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
               }
             </ul>
           </div>
-          <div class="md:col-span-4 space-y-12">
+          <div class="md:col-span-3 lg:col-span-4 space-y-12">
             {
               groups.map((group) => {
                 const { Content } = group;

@@ -81,9 +81,9 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
           Les litt om de ulike stillingene
         </h2>
         <div class="md:grid md:grid-cols-5 gap-2">
-          <div class="sticky top-[58px] z-10 md:col-span-1">
+          <div class="sticky top-[52px] md:top-[56px] z-10 md:col-span-1 -mx-4">
             <ul
-              class="sticky top-[58px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 overflow-x-auto"
+              class="sticky top-[52px] md:top-[56px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 px-4 overflow-x-auto"
             >
               {
                 sortBy(positions, "frontmatter.filled").map((position) => {
