@@ -37,6 +37,10 @@ module.exports = {
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",
+        "sideways-right": "sideways-right 30s ease-in-out infinite",
+        "sideways-right-slow": "sideways-right 53s ease-in-out infinite",
+        "sideways-left": "sideways-left 30s ease-in-out infinite",
+        "sideways-left-slow": "sideways-left 53s ease-in-out infinite",
       },
       keyframes: {
         "orbit-right": {
@@ -46,6 +50,16 @@ module.exports = {
           "60%": { transform: "translate3d(20px, 20px, 0)" },
           "80%": { transform: "translate3d(10px, 10px, 0)" },
           "90%": { transform: "translate3d(0, 20px, 0)" },
+        },
+        "sideways-right": {
+          "0%": { transform: "translateX(0)" },
+          "60%": { transform: "translateX(50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "sideways-left": {
+          "0%": { transform: "translateX(0)" },
+          "60%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },
