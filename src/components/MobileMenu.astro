@@ -16,7 +16,7 @@ const { class: extraClasses, navItems } = Astro.props;
 <div class={`relative ${extraClasses}`}>
   <MovingSquares />
   <nav
-    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24 shadow-lg"
+    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24"
   >
     {
       navItems.map(({ href, title }) => (
