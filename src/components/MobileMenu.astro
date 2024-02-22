@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import TopArt from "./TopArt.astro";
+import MovingSquares from "./MovingSquares.astro";
 
 export interface Props {
   class?: string;
@@ -14,7 +14,7 @@ const { class: extraClasses, navItems } = Astro.props;
 ---
 
 <div class={`relative ${extraClasses}`}>
-  <TopArt />
+  <MovingSquares />
   <nav
     class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24 shadow-lg"
   >
