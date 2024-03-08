@@ -67,7 +67,9 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
           Les litt om de ulike gruppene
         </h2>
         <div class="md:grid md:grid-cols-5 gap-2">
-          <div class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-1 -mx-4 md:mx-0">
+          <div
+            class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-1 -mx-4 md:mx-0"
+          >
             <ul
               class="sticky top-[52px] md:top-[56px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 px-4 md:px-0 overflow-x-auto"
             >
@@ -104,15 +106,8 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
       </div>
       <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
-        kanskje interessert i å bli med som frivillig på mandaljazz? Det blir
-        mulig å melde seg som frivillig i løpet av våren 2024 via et skjema, men
-        hvis du ikke klarer å vente kan du sende en e-post til <Link
-          href="mailto:eirik@mandaljazz.no"
-          title="eirik@mandaljazz.no"
-          external
-        >
-          eirik@mandaljazz.no
-        </Link>!
+        kanskje interessert i å bli med som frivillig på mandaljazz? Da er det
+        bare å melde seg på i skjemaet nedenfor!
       </p>
       <div class="space-y-4">
         <div class="invisible -translate-y-16" id="registreringsskjema"></div>
