@@ -9,13 +9,7 @@ import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
-const tbaArtists = [
-  {
-    title: "Jazzparade med SNUS",
-    venue: "Gierts Karis Plass",
-    concertStartAt: "2023-07-01T14:30",
-  },
-];
+const tbaArtists = [];
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
