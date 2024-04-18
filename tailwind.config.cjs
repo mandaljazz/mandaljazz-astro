@@ -43,6 +43,12 @@ module.exports = {
         "sideways-left-fast": "sideways-left 10s ease-in-out infinite",
         "sideways-left-medium": "sideways-left 30s ease-in-out infinite",
         "sideways-left-slow": "sideways-left 53s ease-in-out infinite",
+        "up-down-fast": "up-down 8s ease-in-out infinite",
+        "up-down-medium": "up-down 20s ease-in-out infinite",
+        "up-down-slow": "up-down 33s ease-in-out infinite",
+        "down-up-fast": "down-up 8s ease-in-out infinite",
+        "down-up-medium": "down-up 20s ease-in-out infinite",
+        "down-up-slow": "down-up 33s ease-in-out infinite",
       },
       keyframes: {
         "orbit-right": {
@@ -62,6 +68,16 @@ module.exports = {
           "0%": { transform: "translateX(0)" },
           "60%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
+        },
+        "up-down": {
+          "0%": { transform: "translateY(0)" },
+          "60%": { transform: "translateY(30%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "down-up": {
+          "0%": { transform: "translateY(0)" },
+          "60%": { transform: "translateY(-30%)" },
+          "100%": { transform: "translateY(0)" },
         },
       },
     },
