@@ -23,17 +23,7 @@ const tbaArtists = [
   {
     title: "TBA",
     venue: "TBA",
-    concertStartAt: "2024-06-28T10:00",
-  },
-  {
-    title: "TBA",
-    venue: "TBA",
     concertStartAt: "2024-06-28T14:00",
-  },
-  {
-    title: "TBA",
-    venue: "TBA",
-    concertStartAt: "2024-06-29T10:00",
   },
   {
     title: "Jazzparade (med Sørnorsk ungdomsstorband)",
@@ -117,7 +107,7 @@ const concertsGroupedByDay = Object.entries(
                               <img
                                 src={`/artist/${id}.jpg`}
                                 alt={shortTitle || title}
-                                class="w-8 h-8 rounded-lg"
+                                class="w-8 h-8 rounded-lg object-cover"
                               />
                             ) : null}
                             <p class="truncate">
