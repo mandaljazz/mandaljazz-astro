@@ -35,7 +35,7 @@ const { title } = Astro.props;
     accordion.addEventListener("click", () => {
       accordion.querySelector(".icon").classList.toggle("rotate-180");
       ["h-0", "h-auto", "py-8"].map((c) =>
-        accordion.nextElementSibling.classList.toggle(c)
+        accordion.nextElementSibling.classList.toggle(c),
       );
     });
   });

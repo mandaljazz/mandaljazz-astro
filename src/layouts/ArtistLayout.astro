@@ -64,13 +64,13 @@ const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
   [
     ...artistsPages.filter(
-      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList
+      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],
-  "frontmatter.concertStartAt"
+  "frontmatter.concertStartAt",
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
-  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id
+  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id,
 );
 const previousArtist =
   indexOfThisArtist === 0
@@ -146,7 +146,7 @@ const showPrevAndNextArtistNavigationLinks =
           <div
             class={classnames(
               "bg-no-repeat bg-cover bg-center w-full h-[520px] rounded",
-              { [overrideImagePosition]: overrideImagePosition }
+              { [overrideImagePosition]: overrideImagePosition },
             )}
             style={`background-image: url('/artist/${id}.jpg');`}
           >

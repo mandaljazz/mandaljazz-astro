@@ -1,33 +1,38 @@
 @font-face {
   font-family: "Libre Baskerville";
-  src: local("Libre Baskerville"),
+  src:
+    local("Libre Baskerville"),
     url(/fonts/LibreBaskerville/LibreBaskerville-Bold.ttf) format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Libre Baskerville";
-  src: local("Libre Baskerville"),
+  src:
+    local("Libre Baskerville"),
     url(/fonts/LibreBaskerville/LibreBaskerville-Italic.ttf) format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: "Libre Baskerville";
-  src: local("Libre Baskerville"),
+  src:
+    local("Libre Baskerville"),
     url(/fonts/LibreBaskerville/LibreBaskerville-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Raleway";
-  src: local("Raleway"),
+  src:
+    local("Raleway"),
     url(/fonts/Raleway/Raleway-VariableFont_wght.ttf) format("truetype");
   font-style: normal;
   font-weight: 500;
 }
 @font-face {
   font-family: "Raleway";
-  src: local("Raleway"),
+  src:
+    local("Raleway"),
     url(/fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf) format("truetype");
   font-style: italic;
   font-weight: 500;

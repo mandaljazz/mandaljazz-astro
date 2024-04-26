@@ -12,7 +12,7 @@ const { src, iframeClass } = Astro.props;
     class={`rounded-lg h-[500px] ${iframeClass}`}
     src={`${src?.replace(
       "https://open.spotify.com/",
-      "https://open.spotify.com/embed/"
+      "https://open.spotify.com/embed/",
     )}?utm_source=generator`}
     width="100%"
     height="500"

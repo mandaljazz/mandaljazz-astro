@@ -20,7 +20,7 @@ export interface Props {
 const { title, description, image } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
   <head>
     <meta charset="utf-8" />
@@ -37,7 +37,8 @@ const { title, description, image } = Astro.props;
           title: `${title} `,
           type: "website",
           image:
-            "https://mandaljazz.no" + (image ? image : "/profil/inviterer-til-10-aar.png"),
+            "https://mandaljazz.no" +
+            (image ? image : "/profil/inviterer-til-10-aar.png"),
           url: Astro.request.url,
         },
         image: {
