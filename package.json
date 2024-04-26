@@ -22,7 +22,7 @@
     "astro-robots-txt": "1.0.0",
     "astro-seo": "0.8.3",
     "classnames": "2.5.1",
-    "date-fns": "2.29.3",
+    "date-fns": "3.6.0",
     "lodash": "4.17.21",
     "lottie-web": "5.12.2",
     "mapbox-gl": "3.3.0",
