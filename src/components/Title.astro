@@ -16,11 +16,6 @@ const fontColor = {
   "dark-blue": "text-white",
   blue: "text-black",
 }[type];
-
-const imageType = {
-  blue: "2",
-  "dark-blue": "3",
-}[type];
 ---
 
 <div
@@ -36,9 +31,9 @@ const imageType = {
     {title}
   </h2>
   <img
-    src={`/profil/hand0${imageType}-cut.png`}
+    src={`/profil/trompet.png`}
     class={`hidden xl:block absolute w-20 ${
-      flip ? "-right-28 -scale-x-100 -rotate-45" : "-left-28 rotate-45"
+      flip ? "-left-24" : "-right-24 -scale-x-100"
     }`}
     alt="Fargerik hånd som peker på tittelen ved siden av"
   />
