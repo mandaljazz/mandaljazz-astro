@@ -156,14 +156,16 @@ const showPrevAndNextArtistNavigationLinks =
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
         <div class="col-span-2 space-y-4">
           {
-            author && (
+            author && authorImage ? (
               <ImageAndLabel
                 image={`/people/${authorImage}`}
                 alt={`Bilde av ${author}`}
               >
                 Tekst: {author}
               </ImageAndLabel>
-            )
+            ) : author ? (
+              <>Tekst: {author}</>
+            ) : null
           }
           <article class="prose prose-quoteless-blockquotes">
             <slot />
