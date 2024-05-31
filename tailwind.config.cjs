@@ -1,21 +1,23 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
+const colors = {
+  blue: "rgb(139 186 208)",
+  "dark-blue": "rgb(48 64 112)",
+  indigo: "rgb(158, 0, 89)",
+  orange: "rgb(253 165 58)",
+  pink: "rgb(238 113 148)",
+  yellow: "rgb(253 211 104)",
+  black: "rgb(18, 18, 18)",
+  white: "rgb(241, 241, 241)",
+  "chalk-white": "rgb(255, 255, 255)",
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
-      colors: {
-        blue: "rgb(139, 197, 255)",
-        "dark-blue": "rgb(1, 90, 143)",
-        indigo: "rgb(158, 0, 89)",
-        orange: "rgb(255, 84, 0)",
-        pink: "rgb(255, 0, 84)",
-        yellow: "rgb(247, 205, 107)",
-        black: "rgb(18, 18, 18)",
-        white: "rgb(241, 241, 241)",
-        "chalk-white": "rgb(255, 255, 255)",
-      },
+      colors,
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
         display: ["Libre Baskerville"],
@@ -32,8 +34,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: "-6px 6px 0px 0px rgb(139, 197, 255)",
-        "solid-hover": "-10px 10px 0px 0px rgb(139, 197, 255)",
+        solid: `-6px 6px 0px 0px ${colors.blue}`,
+        "solid-hover": `-10px 10px 0px 0px ${colors["dark-blue"]}`,
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",
