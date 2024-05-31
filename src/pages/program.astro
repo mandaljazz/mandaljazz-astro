@@ -75,12 +75,17 @@ const concertsGroupedByDay = Object.entries(
                         title,
                         shortTitle,
                         id,
+                        imageType,
                         venue,
                         concertStartAt,
                         hideFromProgram,
                         isPlaceholder,
                       },
                     }) => {
+                      const image = imageType
+                        ? `${id}.${imageType}`
+                        : `${id}.jpg`;
+
                       if (hideFromProgram) {
                         return null;
                       }
@@ -90,7 +95,7 @@ const concertsGroupedByDay = Object.entries(
                           <div class="col-span-4 flex flex-row gap-2 md:col-span-2 text-xl md:text-lg">
                             {id ? (
                               <img
-                                src={`/artist/${id}.jpg`}
+                                src={`/artist/${image}`}
                                 alt={shortTitle || title}
                                 class="w-8 h-8 rounded-lg object-cover"
                               />

@@ -1,5 +1,4 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
 import classnames from "classnames";
 import first from "lodash/first";
 import last from "lodash/last";
@@ -25,6 +24,7 @@ const {
     authorImage,
     tagline,
     id,
+    imageType,
     imageAttribution,
     concertStartAt,
     venue,
@@ -39,6 +39,7 @@ export type ArtistProps = {
   frontmatter: {
     layout?: string;
     id: string;
+    imageType?: "jpg" | "png";
     imageAttribution?: string;
     overrideImagePosition?: string;
     title: string;
@@ -83,12 +84,14 @@ const nextArtist =
 
 const showPrevAndNextArtistNavigationLinks =
   sortedArtistsPages.length > 1 && previousArtist && nextArtist;
+
+const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
 ---
 
 <Layout
   title={`${title} // mandaljazz 2024`}
   description={`${title} på mandaljazz! ${tagline}`}
-  image={`/artist/${id}.jpg`}
+  image={`/artist/${image}`}
 >
   <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
     <div class="max-w-5xl mx-auto space-y-24">
@@ -141,7 +144,7 @@ const showPrevAndNextArtistNavigationLinks =
               "bg-no-repeat bg-cover bg-center w-full h-[520px] rounded",
               { [overrideImagePosition]: overrideImagePosition }
             )}
-            style={`background-image: url('/artist/${id}.jpg');`}
+            style={`background-image: url('/artist/${image}');`}
           >
           </div>
           {

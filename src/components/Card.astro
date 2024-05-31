@@ -5,14 +5,17 @@ export interface Props {
   title: string;
   href: string;
   id: string;
+  imageType?: string;
 }
 
-const { href, title, id } = Astro.props;
+const { href, title, id, imageType } = Astro.props;
+
+const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
 ---
 
 <li
   class={`rounded-xl w-full h-96 sm:h-72 bg-cover bg-bottom sm:bg-center bg-no-repeat transition-transform group hover:rotate-1`}
-  style={`background-image: url('/artist/${id}.jpg')`}
+  style={`background-image: url('/artist/${image}')`}
 >
   <a href={href} class="relative block h-full w-full">
     <h2
