@@ -14,6 +14,7 @@ import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import { randomHandSrc } from "../utils/images";
+import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 
 const {
   frontmatter: {
@@ -137,25 +138,11 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
         </div>
 
         <div class="relative grid gap-1">
-          <div
-            class="relative h-[320px] sm:h-[520px] lg:h-[620px] overflow-clip"
-          >
-            <div
-              class={classnames(
-                "absolute -z-10 bg-no-repeat bg-cover bg-center w-full h-full rounded"
-              )}
-              style={`background-image: url('/artist/${image}');`}
-            >
-              <div class="backdrop-blur-md w-full h-full rounded"></div>
-            </div>
-            <div
-              class={classnames(
-                "bg-no-repeat bg-contain bg-center w-full h-full rounded shadow-2xl"
-              )}
-              style={`background-image: url('/artist/${image}');`}
-            >
-            </div>
-          </div>
+          <ImageWithBlurredBackground
+            src={`/artist/${image}`}
+            alt={title}
+            className="h-[320px] sm:h-[520px] lg:h-[620px]"
+          />
           {
             imageAttribution && (
               <div class="text-sm justify-self-end">
