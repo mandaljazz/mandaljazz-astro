@@ -16,7 +16,7 @@ const { class: extraClasses, navItems } = Astro.props;
 <div class={`relative ${extraClasses}`}>
   <MovingSquares />
   <nav
-    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24"
+    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24 bg-grainy"
   >
     {
       navItems.map(({ href, title }) => (
@@ -32,7 +32,7 @@ const { class: extraClasses, navItems } = Astro.props;
     }
   </nav>
   <nav
-    class="menu fixed w-full top-0 px-4 flex items-center justify-between gap-10 bg-dark-blue rounded-b-lg text-white z-10 duration-500"
+    class="menu fixed w-full top-0 px-4 flex items-center justify-between gap-10 rounded-b-lg text-white z-10 duration-500 bg-dark-blue bg-grainy"
   >
     <a href="/" class="m-3"
       ><img src="/profil/logo/tertiary/white.svg" class="w-7 h-auto" /></a
@@ -53,8 +53,8 @@ const { class: extraClasses, navItems } = Astro.props;
   const offScreenNavItemsList = document.querySelector(".off-screen-nav-items");
 
   const toggleMobileMenu = () => {
-    ["-translate-y-full", "translate-y-10", "translate-x-0"].map((c) =>
-      offScreenNavItemsList.classList.toggle(c),
+    ["-translate-y-full", "translate-y-0", "translate-x-0"].map((c) =>
+      offScreenNavItemsList.classList.toggle(c)
     );
   };
 

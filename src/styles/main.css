@@ -32,6 +32,20 @@ body {
   color: theme("colors.black");
 }
 
+.bg-grainy-dark-blue-gradient {
+  background: linear-gradient(
+      120deg,
+      theme("colors.dark-blue / 50%"),
+      theme("colors.dark-blue") 40%
+    ),
+    url("/profil/noise.svg");
+  background-blend-mode: normal;
+}
+.bg-grainy {
+  background-image: url("/profil/noise.svg");
+  background-blend-mode: overlay;
+}
+
 @layer utilities {
   .animate-pause {
     animation-play-state: paused;

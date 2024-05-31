@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue: "#8bc5ff",
-        "dark-blue": "#015a8f",
-        indigo: "#9e0059",
-        orange: "#ff5400",
-        pink: "#ff0054",
-        yellow: "#f7cd6b",
-        black: "#121212",
-        white: "#f1f1f1",
-        "chalk-white": "#ffffff",
+        blue: "rgb(139, 197, 255)",
+        "dark-blue": "rgb(1, 90, 143)",
+        indigo: "rgb(158, 0, 89)",
+        orange: "rgb(255, 84, 0)",
+        pink: "rgb(255, 0, 84)",
+        yellow: "rgb(247, 205, 107)",
+        black: "rgb(18, 18, 18)",
+        white: "rgb(241, 241, 241)",
+        "chalk-white": "rgb(255, 255, 255)",
       },
       fontFamily: {
         sans: ["Raleway", ...defaultTheme.fontFamily.sans],
@@ -32,8 +32,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: "-6px 6px 0px 0px #8bc5ff",
-        "solid-hover": "-10px 10px 0px 0px #8bc5ff",
+        solid: "-6px 6px 0px 0px rgb(139, 197, 255)",
+        "solid-hover": "-10px 10px 0px 0px rgb(139, 197, 255)",
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",
