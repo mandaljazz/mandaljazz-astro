@@ -138,17 +138,24 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
 
         <div class="relative grid gap-1">
           <div
-            class={classnames(
-              "absolute -z-10 bg-no-repeat bg-cover bg-center w-full h-[520px] rounded"
-            )}
-            style={`background-image: url('/artist/${image}');`}
+            class="relative h-[320px] sm:h-[520px] lg:h-[620px] overflow-clip"
           >
-            <div class="backdrop-blur-md w-full h-full rounded"></div>
+            <div
+              class={classnames(
+                "absolute -z-10 bg-no-repeat bg-cover bg-center w-full h-full rounded"
+              )}
+              style={`background-image: url('/artist/${image}');`}
+            >
+              <div class="backdrop-blur-md w-full h-full rounded"></div>
+            </div>
+            <div
+              class={classnames(
+                "bg-no-repeat bg-contain bg-center w-full h-full rounded shadow-2xl"
+              )}
+              style={`background-image: url('/artist/${image}');`}
+            >
+            </div>
           </div>
-          <img
-            class={classnames("mx-auto w-auto h-[520px] rounded shadow-2xl")}
-            src={`/artist/${image}`}
-          />
           {
             imageAttribution && (
               <div class="text-sm justify-self-end">
