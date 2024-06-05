@@ -27,10 +27,10 @@ import "../styles/mapbox-overrides.css";
       coordinates: [7.456102489810863, 58.025413017347816],
     },
     {
-      id: "sjoboden",
-      directionsLink: "https://goo.gl/maps/Zckod9cgSsvwETBi7",
-      name: "Sjøboden",
-      coordinates: [7.451948, 58.025868],
+      id: "dynamitten",
+      directionsLink: "https://maps.app.goo.gl/6Xg1GqjQRNGNcQSz9",
+      name: "Dynamitten",
+      coordinates: [7.457231669041564, 58.02783419221465],
     },
     {
       id: "piren",
@@ -50,12 +50,12 @@ import "../styles/mapbox-overrides.css";
       name: "Hestetroa",
       coordinates: [7.455256960080562, 58.027854579180655],
     },
-    {
-      id: "hekkholmen",
-      directionsLink: "https://maps.app.goo.gl/BPpfGRV2btB3VaMM8",
-      name: "Hekkholmen",
-      coordinates: [7.421073, 58.016544],
-    },
+    // {
+    //   id: "gierts-karis-plass",
+    //   directionsLink: "",
+    //   name: "Gierts Karis Plass",
+    //   coordinates: [],
+    // },
   ];
 
   const center = [7.45436325431531, 58.02442355659143];
@@ -78,7 +78,7 @@ import "../styles/mapbox-overrides.css";
     // Insert the layer beneath any symbol layer.
     const layers = map.getStyle().layers;
     const labelLayerId = layers.find(
-      ({ type, layout }) => type === "symbol" && layout["text-field"],
+      ({ type, layout }) => type === "symbol" && layout["text-field"]
     ).id;
 
     // The 'building' layer in the Mapbox Streets
@@ -99,7 +99,7 @@ import "../styles/mapbox-overrides.css";
           "fill-extrusion-opacity": 0.6,
         },
       },
-      labelLayerId,
+      labelLayerId
     );
 
     // Define a source before using it to create a new layer
@@ -119,7 +119,7 @@ import "../styles/mapbox-overrides.css";
               type: "Point",
               coordinates: coordinates,
             },
-          }),
+          })
         ),
       },
     });
@@ -161,7 +161,7 @@ import "../styles/mapbox-overrides.css";
             `<div><a class="link" href=${directionsLink}>Åpne i Google Maps</a></div>`
           }
         </div>
-        `,
+        `
       )
       .setLngLat(coordinates)
       .addTo(map);
