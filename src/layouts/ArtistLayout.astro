@@ -13,7 +13,6 @@ import IconAndLabel from "../components/IconAndLabel.astro";
 import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import { randomHandSrc } from "../utils/images";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 
 const {
@@ -172,13 +171,6 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
         </div>
         <div class="col-span-1 flex flex-col gap-y-8">
           {
-            spotifyUrl && (
-              <div class="flex-1">
-                <Spotify src={spotifyUrl} iframeClass="lg:h-full" />
-              </div>
-            )
-          }
-          {
             isFree && !requiresFreeTicket && (
               <InfoBox>Konserten er gratis!</InfoBox>
             )
@@ -221,6 +213,13 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
               )
             }
           </div>
+          {
+            spotifyUrl && (
+              <div class="flex-1">
+                <Spotify src={spotifyUrl} iframeClass="lg:h-full" />
+              </div>
+            )
+          }
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}

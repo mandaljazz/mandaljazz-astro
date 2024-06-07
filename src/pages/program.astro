@@ -14,16 +14,19 @@ const tbaArtists = [
     title: "Jazzlaugs gebursdag m/M. Rexen solo",
     venue: "Bakgården",
     concertStartAt: "2024-06-27T18:00",
+    isFree: true,
   },
   {
     title: "Nachspiel",
     venue: "Dynamitten",
     concertStartAt: "2024-06-27T23:59",
+    isFree: true,
   },
   {
     title: "Jazzparade (med SNUS)",
     venue: "Gierts Karis Plass",
     concertStartAt: "2024-06-29T13:30",
+    isFree: true,
   },
 ];
 
@@ -80,6 +83,7 @@ const concertsGroupedByDay = Object.entries(
                         concertStartAt,
                         hideFromProgram,
                         isPlaceholder,
+                        isFree,
                       },
                     }) => {
                       const image = imageType
@@ -91,7 +95,7 @@ const concertsGroupedByDay = Object.entries(
                       }
 
                       return (
-                        <div class="grid grid-cols-4 gap-y-1 col-span-4">
+                        <div class="grid grid-cols-4 gap-y-1 gap-2 col-span-4">
                           <div class="col-span-4 flex flex-row gap-2 md:col-span-2 text-xl md:text-lg">
                             {id ? (
                               <img
@@ -100,15 +104,25 @@ const concertsGroupedByDay = Object.entries(
                                 class="w-8 h-8 rounded-lg object-cover"
                               />
                             ) : null}
-                            <p class="truncate">
+                            <div class="flex flex-row gap-2 items-start">
                               {id && !isPlaceholder ? (
-                                <Link href={`/artist/${id}`} title={title}>
+                                <Link
+                                  class="truncate"
+                                  href={`/artist/${id}`}
+                                  title={title}
+                                >
                                   {shortTitle || title}
                                 </Link>
                               ) : (
-                                title
+                                <div title={title}>{title}</div>
                               )}
-                            </p>
+
+                              {isFree && (
+                                <div class="bg-pink -rotate-6 text-xs mt-1 px-1 rounded">
+                                  Gratis!
+                                </div>
+                              )}
+                            </div>
                           </div>
                           <div class="col-span-3 md:col-span-1">{venue}</div>
                           <div class="">{formatTime(concertStartAt)}</div>
