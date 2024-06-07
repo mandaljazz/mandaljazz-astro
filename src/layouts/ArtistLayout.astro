@@ -122,18 +122,16 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                 }
               </div>
             </div>
-            <div class="col-span-3 md:col-span-4">
-              {
-                showPrevAndNextArtistNavigationLinks ? (
-                  <ArtistNavigationLinks
-                    previousArtist={previousArtist}
-                    nextArtist={nextArtist}
-                    compact
-                  />
-                ) : null
-              }
-            </div>
           </div>
+          {
+            showPrevAndNextArtistNavigationLinks ? (
+              <ArtistNavigationLinks
+                previousArtist={previousArtist}
+                nextArtist={nextArtist}
+                compact
+              />
+            ) : null
+          }
         </div>
 
         <div class="relative grid gap-1">
