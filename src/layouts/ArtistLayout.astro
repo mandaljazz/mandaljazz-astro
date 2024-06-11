@@ -8,7 +8,7 @@ import Layout from "./Layout.astro";
 import Spotify from "../components/Spotify.astro";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import YouTube from "../components/YouTube.astro";
-import { formatHumanDateTime } from "../utils/date";
+import { formatHumanDateTime, formatTime } from "../utils/date";
 import IconAndLabel from "../components/IconAndLabel.astro";
 import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
@@ -27,6 +27,7 @@ const {
     imageType,
     imageAttribution,
     concertStartAt,
+    concertEndAt,
     venue,
     sponsoredByBergesenstiftelsen,
     isFree,
@@ -47,6 +48,7 @@ export type ArtistProps = {
     tagline?: string;
     venue?: string;
     concertStartAt?: string;
+    concertEndAt?: string;
     spotifyUrl?: string;
     youtubeUrl?: string;
     sponsoredByBergesenstiftelsen?: string;
@@ -109,7 +111,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                 {
                   concertStartAt && (
                     <IconAndLabel icon="time-outline" type="blue">
-                      {formatHumanDateTime(concertStartAt)}
+                      {`${formatHumanDateTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}
                     </IconAndLabel>
                   )
                 }

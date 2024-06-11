@@ -81,6 +81,7 @@ const concertsGroupedByDay = Object.entries(
                         imageType,
                         venue,
                         concertStartAt,
+                        concertEndAt,
                         hideFromProgram,
                         isPlaceholder,
                         isFree,
@@ -125,7 +126,7 @@ const concertsGroupedByDay = Object.entries(
                             </div>
                           </div>
                           <div class="col-span-3 md:col-span-1">{venue}</div>
-                          <div class="">{formatTime(concertStartAt)}</div>
+                          <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
                         </div>
                       );
                     }
