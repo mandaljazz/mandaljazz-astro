@@ -15,6 +15,7 @@ const tbaArtists = [
     venue: "Bakgården",
     concertStartAt: "2024-06-27T18:30",
     isFree: true,
+    externalLink: "https://www.facebook.com/events/334325382874540/",
   },
   {
     title: "Nachspiel",
@@ -135,7 +136,7 @@ const concertsGroupedByDay = Object.entries(
                               )}
 
                               {isFree && (
-                                <div class="bg-pink -rotate-6 text-xs mt-1 px-1 rounded">
+                                <div class="bg-pink/70 -rotate-6 text-xs mt-1 px-1 rounded">
                                   Gratis
                                 </div>
                               )}
