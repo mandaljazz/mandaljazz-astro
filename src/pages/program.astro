@@ -28,6 +28,13 @@ const tbaArtists = [
     concertStartAt: "2024-06-29T13:30",
     isFree: true,
   },
+  {
+    title: "Afterwork",
+    venue: "Bakgården",
+    concertStartAt: "2024-06-28T16:00",
+    isFree: true,
+    externalLink: "https://www.facebook.com/events/444193931498788/",
+  },
 ];
 
 const concertsGroupedByDay = Object.entries(
@@ -85,6 +92,7 @@ const concertsGroupedByDay = Object.entries(
                         hideFromProgram,
                         isPlaceholder,
                         isFree,
+                        externalLink,
                       },
                     }) => {
                       const image = imageType
@@ -113,6 +121,14 @@ const concertsGroupedByDay = Object.entries(
                                   title={title}
                                 >
                                   {shortTitle || title}
+                                </Link>
+                              ) : externalLink ? (
+                                <Link
+                                  href={externalLink}
+                                  external
+                                  title={title}
+                                >
+                                  {title}
                                 </Link>
                               ) : (
                                 <div title={title}>{title}</div>
