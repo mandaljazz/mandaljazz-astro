@@ -29,7 +29,7 @@ body {
 }
 .link:hover {
   background-position: 0 22%;
-  color: theme("colors.black");
+  color: theme("colors.white");
 }
 
 .bg-grainy-dark-blue-gradient {

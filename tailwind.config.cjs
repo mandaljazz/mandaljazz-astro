@@ -1,12 +1,15 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const colors = {
-  blue: "rgb(139 186 208)",
-  "dark-blue": "rgb(48 64 112)",
-  indigo: "rgb(158, 0, 89)",
-  orange: "rgb(253 165 58)",
-  pink: "rgb(238 113 148)",
-  yellow: "rgb(253 211 104)",
+  blue: "#0e9ead",
+  "dark-blue": "#005f65",
+  beige: "#ecd4b9",
+  indigo: "#288885",
+  orange: "#db7b3d",
+  pink: "#db8a95",
+  green: "#4b774a",
+  yellow: "#e8c973",
+  red: "#cd584a",
   black: "rgb(18, 18, 18)",
   white: "rgb(241, 241, 241)",
   "chalk-white": "rgb(255, 255, 255)",
@@ -34,8 +37,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: `-6px 6px 0px 0px ${colors.blue}`,
-        "solid-hover": `-10px 10px 0px 0px ${colors["dark-blue"]}`,
+        solid: `-6px 6px 0px 0px ${colors.beige}`,
+        "solid-hover": `-10px 10px 0px 0px ${colors["beige"]}`,
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",
