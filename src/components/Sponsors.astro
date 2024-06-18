@@ -185,58 +185,60 @@ const partners = [
 ];
 ---
 
-<section class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
-  <div class="max-w-5xl mx-auto flex flex-col gap-12">
-    <div class="space-y-8">
-      <h1
-        class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
-      >
-        Generalsponsor
-      </h1>
-      <SponsorList size="xl" sponsors={generalSponsors} />
-    </div>
-    <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
-      <div class="space-y-8 sm:col-span-3">
+<section class="bg-yellow/20 py-24 shadow-inner">
+  <div class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32">
+    <div class="max-w-5xl mx-auto flex flex-col gap-12">
+      <div class="space-y-8">
         <h1
-          class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
+          class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
         >
-          Hovedsponsorer
+          Generalsponsor
         </h1>
-        <SponsorList size="lg" sponsors={mainSponsors} />
+        <SponsorList size="xl" sponsors={generalSponsors} />
       </div>
-      <div class="space-y-8 sm:col-span-2">
-        <h1
-          class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
-        >
-          Sponsorer
-        </h1>
-        <SponsorList size="md" sponsors={regularSponsors} />
+      <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
+        <div class="space-y-8 sm:col-span-3">
+          <h1
+            class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
+          >
+            Hovedsponsorer
+          </h1>
+          <SponsorList size="lg" sponsors={mainSponsors} />
+        </div>
+        <div class="space-y-8 sm:col-span-2">
+          <h1
+            class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
+          >
+            Sponsorer
+          </h1>
+          <SponsorList size="md" sponsors={regularSponsors} />
+        </div>
       </div>
-    </div>
-    <div class="space-y-8">
-      <h1
-        class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
-      >
-        Støttespillere
-      </h1>
-      <SponsorList size="sm" sponsors={supporterSponsors} />
-    </div>
-    <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
-      <div class="space-y-8 sm:col-span-3">
+      <div class="space-y-8">
         <h1
-          class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
+          class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
         >
-          Offentlig støtte
+          Støttespillere
         </h1>
-        <SponsorList size="sm" sponsors={publicSponsors} />
+        <SponsorList size="sm" sponsors={supporterSponsors} />
       </div>
-      <div class="space-y-8 sm:col-span-2">
-        <h1
-          class="font-display text-md px-4 py-2 bg-blue/50 bg-grainy mx-auto w-fit rounded-lg"
-        >
-          Samarbeidspartnere
-        </h1>
-        <SponsorList size="sm" sponsors={partners} />
+      <div class="grid sm:grid-cols-5 gap-24 sm:gap-8">
+        <div class="space-y-8 sm:col-span-3">
+          <h1
+            class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
+          >
+            Offentlig støtte
+          </h1>
+          <SponsorList size="sm" sponsors={publicSponsors} />
+        </div>
+        <div class="space-y-8 sm:col-span-2">
+          <h1
+            class="font-display text-md px-4 py-2 bg-yellow bg-grainy mx-auto w-fit rounded-lg"
+          >
+            Samarbeidspartnere
+          </h1>
+          <SponsorList size="sm" sponsors={partners} />
+        </div>
       </div>
     </div>
   </div>

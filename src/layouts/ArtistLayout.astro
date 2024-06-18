@@ -153,18 +153,12 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
         <div class="col-span-2 space-y-4">
-          {
-            author && authorImage ? (
-              <ImageAndLabel
-                image={`/people/${authorImage}`}
-                alt={`Bilde av ${author}`}
-              >
-                Tekst: {author}
-              </ImageAndLabel>
-            ) : author ? (
-              <span>Tekst: {author}</span>
-            ) : null
-          }
+          <ImageAndLabel
+            image={`/people/${authorImage || "placeholder.png"}`}
+            alt={`Bilde av ${author || "Presseskriv"}`}
+          >
+            Tekst: {author || "Presseskriv"}
+          </ImageAndLabel>
           <article class="prose prose-quoteless-blockquotes">
             <slot />
           </article>
