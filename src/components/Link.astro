@@ -15,7 +15,7 @@ const { href, external, class: extraClasses, unstyled } = Astro.props;
   external ? (
     <a
       href={href}
-      class:list={["inline-block", unstyled ? undefined : "link", extraClasses]}
+      class:list={["inline", unstyled ? undefined : "link", extraClasses]}
       rel="noopener nofollow"
       target="_blank"
     >
@@ -25,7 +25,7 @@ const { href, external, class: extraClasses, unstyled } = Astro.props;
   ) : (
     <a
       href={href}
-      class:list={["inline-block", unstyled ? undefined : "link", extraClasses]}
+      class:list={["inline", unstyled ? undefined : "link", extraClasses]}
       aria-current={Astro.url.pathname === href ? "page" : undefined}
     >
       <slot />

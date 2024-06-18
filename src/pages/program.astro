@@ -116,11 +116,7 @@ const concertsGroupedByDay = Object.entries(
                             ) : null}
                             <div class="flex flex-row gap-2 items-start">
                               {id && !isPlaceholder ? (
-                                <Link
-                                  class="truncate"
-                                  href={`/artist/${id}`}
-                                  title={title}
-                                >
+                                <Link href={`/artist/${id}`} title={title}>
                                   {shortTitle || title}
                                 </Link>
                               ) : externalLink ? (
