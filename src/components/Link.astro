@@ -4,23 +4,36 @@ export interface Props {
   href: string;
   title: string;
   external?: boolean;
+  openInNewTab?: boolean;
   class?: string;
   unstyled?: boolean;
 }
 
-const { href, external, class: extraClasses, unstyled } = Astro.props;
+const {
+  href,
+  external,
+  openInNewTab,
+  class: extraClasses,
+  unstyled,
+} = Astro.props;
 ---
 
 {
-  external ? (
+  openInNewTab || external ? (
     <a
       href={href}
       class:list={["inline", unstyled ? undefined : "link", extraClasses]}
       rel="noopener nofollow"
       target="_blank"
     >
-      <slot />
-      <Icon class="inline icon mb-1" pack="ion" name="ios-link" size={24} />
+      {external ? (
+        <>
+          <slot />
+          <Icon class="inline icon mb-1" pack="ion" name="ios-link" size={24} />
+        </>
+      ) : (
+        <slot />
+      )}
     </a>
   ) : (
     <a

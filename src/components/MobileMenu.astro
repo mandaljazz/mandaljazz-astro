@@ -14,7 +14,7 @@ const { class: extraClasses, navItems } = Astro.props;
 
 <div class={`relative ${extraClasses}`}>
   <nav
-    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24 bg-grainy"
+    class="fixed w-full text-2xl top-0 left-0 transition-transform duration-500 ease-in-out -translate-y-full bg-dark-blue text-white rounded-lg off-screen-nav-items flex flex-col gap-4 items-center py-24 bg-grainy shadow-xl"
   >
     {
       navItems.map(({ href, title }) => (
@@ -30,7 +30,7 @@ const { class: extraClasses, navItems } = Astro.props;
     }
   </nav>
   <nav
-    class="menu fixed w-full top-0 px-4 flex items-center justify-between gap-10 rounded-b-lg text-white z-10 duration-500 bg-dark-blue bg-grainy"
+    class="menu fixed w-full top-0 px-4 flex items-center justify-between gap-10 rounded-b-lg text-white z-10 duration-500 bg-dark-blue bg-grainy shadow-xl"
   >
     <a href="/" class="m-3"
       ><img src="/profil/logo/tertiary/white.svg" class="w-7 h-auto" /></a

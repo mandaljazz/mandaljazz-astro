@@ -14,6 +14,7 @@ import InfoBox from "../components/InfoBox.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
+import Icon from "astro-icon";
 
 const {
   frontmatter: {
@@ -107,19 +108,37 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
               <p class="text-3xl hyphens-auto">
                 {tagline}
               </p>
-              <div class="space-y-8">
+              <div
+                class="grid grid-cols-1 gap-2 max-w-sm rounded-md rounded-tl-none p-4 clip shadow bg-beige"
+              >
                 {
                   concertStartAt && (
-                    <IconAndLabel icon="time-outline" type="blue">
+                    <span
+                      class={`flex flex-row gap-2 items-center text-lg md:text-xl`}
+                    >
+                      <Icon
+                        class="icon group-hover:-translate-y-0.5 transition-transform"
+                        pack={"ion"}
+                        name={"time-outline"}
+                        size={48}
+                      />
                       {`${formatHumanDateTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}
-                    </IconAndLabel>
+                    </span>
                   )
                 }
                 {
                   venue && (
-                    <IconAndLabel icon="location-outline" type="yellow" flip>
+                    <span
+                      class={`flex flex-row gap-2 items-center text-lg md:text-xl`}
+                    >
+                      <Icon
+                        class="icon group-hover:-translate-y-0.5 transition-transform"
+                        pack={"ion"}
+                        name={"location-outline"}
+                        size={48}
+                      />
                       {venue}
-                    </IconAndLabel>
+                    </span>
                   )
                 }
               </div>

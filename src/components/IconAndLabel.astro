@@ -5,27 +5,28 @@ export interface Props {
   icon: string;
   flip?: boolean;
   pack?: string;
-  type: "yellow" | "orange" | "blue";
+  type: "yellow" | "orange" | "blue" | "beige";
+  fluid?: boolean;
 }
 
-const { icon, pack, flip, type } = Astro.props;
+const { icon, pack, flip, fluid, type } = Astro.props;
 
 const backgroundColor = {
   yellow: "bg-yellow",
   orange: "bg-orange",
   blue: "bg-blue",
+  beige: "bg-beige",
 }[type];
 ---
 
 <div
-  class={`relative ${
-    flip ? "-skew-y-2" : "skew-y-2"
-  } w-fit flex flex-row ${backgroundColor} bg-grainy`}
+  class:list={[
+    `relative w-fit flex flex-row ${backgroundColor} bg-grainy rounded-lg`,
+    fluid ? "w-full" : undefined,
+  ]}
 >
   <span
-    class={`${
-      flip ? "skew-y-2" : "-skew-y-2"
-    } py-2 px-4 my-2 flex flex-row gap-2 items-center text-lg md:text-xl`}
+    class={`py-2 px-4 my-2 flex flex-row gap-2 items-center text-lg md:text-xl`}
     ><Icon
       class="icon group-hover:-translate-y-0.5 transition-transform"
       pack={pack || "ion"}

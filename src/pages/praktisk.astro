@@ -56,72 +56,60 @@ const accomodations = [
             class="block w-full h-[400px]"
             src="https://widget.entur.no/compact?filters=bus%2Crail&showResult=internal&defaultLang=nob&toName=Mandal&toPlace=NSR%3AGroupOfStopPlaces%3A85&toCoords=58.029357%2C7.460864"
           ></iframe>
+
           <p>
-            Ellers kan du for eksempel reise med{" "}
+            Spørsmål om transport?
             <Link
-              href="https://lavprisekspressen.no/"
-              external
-              title="Lavprisekspressen"
+              href="mailto:post@mandaljazz.no"
+              title="post@mandaljazz.no"
+              openInNewTab>Kontakt oss</Link
             >
-              Lavprisekspressen
-            </Link>.
+            gjerne!
+          </p>
 
-            <p>
-              Spørsmål om transport?
-              <Link
-                href="mailto:post@mandaljazz.no"
-                title="post@mandaljazz.no"
-                external
-              >
-                Kontakt oss
-              </Link>
-              gjerne!
-            </p>
+          <h2 class="font-display text-2xl">Overnatting</h2>
+          <p>
+            Det finnes flere overnattingsmuligheter i Mandal. Sjekk ut disse for
+            mer info.
+          </p>
 
-            <h2 class="font-display text-2xl">Overnatting</h2>
-            <p>
-              Det finnes flere overnattingsmuligheter i Mandal. Sjekk ut disse
-              for mer info.
-            </p>
+          <ul
+            role="list"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {
+              accomodations.map(({ name, url }) => (
+                <li>
+                  <a
+                    class="bg-blue bg-grainy px-6 py-8 rounded h-full flex hover:-rotate-1 transition-all hover:bg-blue/70 shadow-inner"
+                    target="_blank"
+                    rel="noopener nofollow"
+                    href={url}
+                  >
+                    <div class="m-auto">{name}</div>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
 
-            <ul
-              role="list"
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {
-                accomodations.map(({ name, url }) => (
-                  <li>
-                    <a
-                      class="bg-blue bg-grainy p-4 rounded h-full block hover:-rotate-1 transition-transform"
-                      target="_blank"
-                      rel="noopener nofollow"
-                      href={url}
-                    >
-                      {name}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-
-            <h2 class="font-display text-2xl">Universell utforming</h2>
-            <p>
-              De fleste av konsertene skjer på vårt festivalområdet eller i vårt
-              festivaltelt på Kulturfabrikken.
-            </p>
-            <p>
-              Kulturfabrikken har to handicap-toaletter i første etasje. Det er
-              montert rampe for å enkelt komme inn i bygget med rullestol.
-              Utendørs i bakgården er det grus, så det kan kanskje være litt mer
-              krevende å komme til med rullestol enn på asfalt eller andre
-              underlag, men vi har alltid frivillige på jobb som kan bistå ved
-              behov slik at rullestolbrukere fint skal komme seg inn i teltet
-              eller rundt på området.
-            </p>
+          <h2 class="font-display text-2xl">Universell utforming</h2>
+          <p>
+            De fleste av konsertene skjer på vårt festivalområdet eller i vårt
+            festivaltelt på Kulturfabrikken.
+          </p>
+          <p>
+            Kulturfabrikken har to handicap-toaletter i første etasje. Det er
+            montert rampe for å enkelt komme inn i bygget med rullestol.
+            Utendørs i bakgården er det grus, så det kan kanskje være litt mer
+            krevende å komme til med rullestol enn på asfalt eller andre
+            underlag, men vi har alltid frivillige på jobb som kan bistå ved
+            behov slik at rullestolbrukere fint skal komme seg inn i teltet
+            eller rundt på området.
           </p>
         </div>
         <div
-          class="sticky bottom-4 top-auto md:bottom-auto md:top-24 h-fit md:col-span-2 lg:col-span-1 space-y-2 flex flex-col items-end"
+          class="sticky bottom-4 top-auto md:bottom-auto md:top-24 h-fit md:col-span-2 lg:col-span-1 space-y-2 flex flex-col items-end gap-3"
         >
           <BuyTicketsButton class="w-fit mx-auto md:w-48 md:mx-0" />
           <img
