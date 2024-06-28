@@ -116,17 +116,25 @@ const concertsGroupedByDay = Object.entries(
                             ) : null}
                             <div class="flex flex-row gap-2 items-start">
                               {id && !isPlaceholder ? (
-                                <Link href={`/artist/${id}`} title={title}>
-                                  {shortTitle || title}
-                                </Link>
+                                <div>
+                                  <Link
+                                    href={`/artist/${id}`}
+                                    title={title}
+                                    class=""
+                                  >
+                                    {shortTitle || title}
+                                  </Link>
+                                </div>
                               ) : externalLink ? (
-                                <Link
-                                  href={externalLink}
-                                  external
-                                  title={title}
-                                >
-                                  {title}
-                                </Link>
+                                <div>
+                                  <Link
+                                    href={externalLink}
+                                    external
+                                    title={title}
+                                  >
+                                    {title}
+                                  </Link>
+                                </div>
                               ) : (
                                 <div title={title}>{title}</div>
                               )}
