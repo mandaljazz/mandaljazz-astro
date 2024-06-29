@@ -7,6 +7,7 @@ export interface Props {
   openInNewTab?: boolean;
   class?: string;
   unstyled?: boolean;
+  hideInitialUnderline?: boolean;
 }
 
 const {
@@ -15,17 +16,20 @@ const {
   openInNewTab,
   class: extraClasses,
   unstyled,
+  hideInitialUnderline,
 } = Astro.props;
+
+const classes = [
+  "inline",
+  unstyled ? undefined : "link",
+  hideInitialUnderline ? "hide-initial-underline" : undefined,
+  extraClasses,
+];
 ---
 
 {
   openInNewTab || external ? (
-    <a
-      href={href}
-      class:list={["inline", unstyled ? undefined : "link", extraClasses]}
-      rel="noopener nofollow"
-      target="_blank"
-    >
+    <a href={href} class:list={classes} rel="noopener nofollow" target="_blank">
       {external ? (
         <>
           <slot />{" "}
@@ -38,7 +42,7 @@ const {
   ) : (
     <a
       href={href}
-      class:list={["inline", unstyled ? undefined : "link", extraClasses]}
+      class:list={classes}
       aria-current={Astro.url.pathname === href ? "page" : undefined}
     >
       <slot />

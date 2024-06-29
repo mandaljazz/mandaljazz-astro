@@ -15,6 +15,7 @@ import ImageAndLabel from "../components/ImageAndLabel.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 import Icon from "astro-icon";
+import Link from "../components/Link.astro";
 
 const {
   frontmatter: {
@@ -109,7 +110,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                 {tagline}
               </p>
               <div
-                class="grid grid-cols-1 gap-2 max-w-sm rounded-md rounded-tl-none p-4 clip shadow bg-yellow/50"
+                class="grid grid-cols-1 gap-4 max-w-sm rounded-md p-4 clip shadow-inner bg-indigo/20"
               >
                 {
                   concertStartAt && (
@@ -117,10 +118,10 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                       class={`flex flex-row gap-2 items-center text-lg md:text-xl`}
                     >
                       <Icon
-                        class="icon group-hover:-translate-y-0.5 transition-transform"
+                        class="icon"
                         pack={"ion"}
                         name={"time-outline"}
-                        size={48}
+                        size={40}
                       />
                       {`${formatHumanDateTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}
                     </span>
@@ -128,17 +129,20 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                 }
                 {
                   venue && (
-                    <span
-                      class={`flex flex-row gap-2 items-center text-lg md:text-xl`}
+                    <Link
+                      href="/praktisk"
+                      unstyled
+                      title={venue}
+                      class={`flex flex-row gap-2 w-fit items-center text-lg md:text-xl hover:-rotate-2 transition-transform`}
                     >
                       <Icon
-                        class="icon group-hover:-translate-y-0.5 transition-transform"
+                        class="icon"
                         pack={"ion"}
                         name={"location-outline"}
-                        size={48}
+                        size={40}
                       />
                       {venue}
-                    </span>
+                    </Link>
                   )
                 }
               </div>
