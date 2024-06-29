@@ -237,6 +237,11 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
               </div>
             )
           }
+          {
+            !isFree && spotifyUrl && (
+              <BuyTicketsButton class="flex-0 w-fit h-fit" />
+            )
+          }
         </div>
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
