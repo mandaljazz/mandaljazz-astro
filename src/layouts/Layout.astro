@@ -2,6 +2,9 @@
 import { SEO } from "astro-seo";
 import setDefaultOptions from "date-fns/setDefaultOptions/index.js";
 import nb from "date-fns/locale/nb/index.js";
+import { getImage } from "astro:assets";
+import faviconSrc from "../images/favicon.png";
+import faviconSvgSrc from "../images/favicon.svg";
 
 setDefaultOptions({ locale: nb });
 
@@ -10,6 +13,14 @@ import Footer from "../components/Footer.astro";
 import Sponsors from "../components/Sponsors.astro";
 import "../styles/main.css";
 import "../styles/fonts.css";
+
+const appleTouchIcon = await getImage({
+  src: faviconSrc,
+  width: 180,
+  height: 180,
+  format: "png",
+});
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
 
 export interface Props {
   title: string;
@@ -25,7 +36,10 @@ const { title, description, image } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <SEO
