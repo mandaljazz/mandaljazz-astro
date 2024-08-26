@@ -1,6 +1,6 @@
 ---
 const {
-  frontmatter: { title, id, fee, start, end },
+  frontmatter: { title, id, fee, start, end, deadline },
 } = Astro.props;
 ---
 
@@ -25,6 +25,14 @@ const {
         <td class="p-3">Avsluttes</td>
         <td class="p-3 col-span-2">{end}</td>
       </tr>
+      {
+        deadline && (
+          <tr class="divide-x">
+            <td class="p-3">Frist</td>
+            <td class="p-3 col-span-2">{deadline}</td>
+          </tr>
+        )
+      }
     </tbody>
   </table>
   <article class="prose">

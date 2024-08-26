@@ -79,9 +79,9 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
         <h2 class="font-display text-2xl md:text-3xl">
           Les litt om de ulike stillingene
         </h2>
-        <div class="md:grid md:grid-cols-5 gap-2">
+        <div class="md:grid md:grid-cols-6 gap-2">
           <div
-            class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-1 -mx-4 md:mx-0"
+            class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-2 -mx-4 md:mx-0"
           >
             <ul
               class="sticky top-[52px] md:top-[56px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 px-4 md:px-0 overflow-x-auto"
@@ -106,7 +106,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
               }
             </ul>
           </div>
-          <div class="md:col-span-3 lg:col-span-4 space-y-12">
+          <div class="md:col-span-4 lg:col-span-4 space-y-12">
             {
               positions.map((position) => {
                 const {
@@ -133,7 +133,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
         class={`sticky bottom-4 block w-fit mx-auto py-4 px-4 text-center bg-red text-beige rounded-lg text-sm md:text-xl duration-500
   transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover`}
         rel="noopener nofollow"
-        href="mailto:eirik@mandaljazz.no"
+        href="mailto:eirik@mandaljazz.no?cc=marimarie@mandaljazz.no"
         title="eirik@mandaljazz.no"
         target="_blank">Meld din interesse</a
       >
