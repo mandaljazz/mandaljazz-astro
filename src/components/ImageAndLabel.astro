@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+
+import { imagePathToSrc } from "../utils/images";
+
 export interface Props {
   image: string;
   alt: string;
@@ -8,5 +12,9 @@ const { image, alt } = Astro.props;
 ---
 
 <span class="flex flex-row gap-2 items-center"
-  ><img src={image} alt={alt} class="w-12 h-auto rounded-lg" /><slot /></span
+  ><Image
+    src={imagePathToSrc(image)}
+    alt={alt}
+    class="w-12 h-auto rounded-lg"
+  /><slot /></span
 >

@@ -2,6 +2,9 @@
 import { Icon } from "astro-icon";
 import Link from "../components/Link.astro";
 import BuyTicketsButton from "./BuyTicketsButton.astro";
+import { Image } from "astro:assets";
+
+import { imagePathToSrc } from "../utils/images";
 ---
 
 <footer class="relative">
@@ -45,8 +48,8 @@ import BuyTicketsButton from "./BuyTicketsButton.astro";
                 </li>
               </ul>
             </div>
-            <img
-              src={"/folk/eirik-kristensen.jpg"}
+            <Image
+              src={imagePathToSrc("/src/images/folk/eirik-kristensen.jpg")}
               alt={"Eirik Kristensen"}
               class="col-span-2 w-24 h-24 rounded-lg md:hover:scale-[3] transition-transform origin-right z-10"
             />
@@ -70,8 +73,10 @@ import BuyTicketsButton from "./BuyTicketsButton.astro";
                 </li>
               </ul>
             </div>
-            <img
-              src={"/folk/mari-marie-oinaes-nyvoll.jpg"}
+            <Image
+              src={imagePathToSrc(
+                "/src/images/folk/mari-marie-oinaes-nyvoll.jpg"
+              )}
               alt={"Mari Marie Øinæs Nyvoll"}
               class="col-span-2 w-24 h-24 rounded-lg md:hover:scale-[3] transition-transform origin-right z-10"
             />
