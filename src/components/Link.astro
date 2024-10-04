@@ -17,6 +17,7 @@ const {
   class: extraClasses,
   unstyled,
   hideInitialUnderline,
+  title,
 } = Astro.props;
 
 const classes = [
@@ -29,8 +30,14 @@ const classes = [
 
 {
   openInNewTab || external ? (
-    <a href={href} class:list={classes} rel="noopener nofollow" target="_blank">
-      {external ? (
+    <a
+      href={href}
+      class:list={classes}
+      rel="noopener nofollow"
+      target="_blank"
+      title={title}
+    >
+      {external && !unstyled ? (
         <>
           <slot />{" "}
           <Icon class="icon mb-1 inline" pack="ion" name="ios-link" size={24} />
@@ -44,6 +51,7 @@ const classes = [
       href={href}
       class:list={classes}
       aria-current={Astro.url.pathname === href ? "page" : undefined}
+      title={title}
     >
       <slot />
     </a>

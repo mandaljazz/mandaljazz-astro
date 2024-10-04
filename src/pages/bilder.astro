@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import classNames from "classnames";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -13,28 +15,55 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
     <div class="mx-auto max-w-5xl space-y-8">
       <h1 class="font-display text-5xl md:text-7xl">Bildegalleri</h1>
       <p>Bilder fra tidligere år på mandaljazz.</p>
-      <div class="space-y-24">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         {
-          albums.map((album) => {
+          [...albums, ...albums, ...albums].map((album) => {
             const {
-              default: { title, url_z, description, href, photos },
+              default: { title, url_z, width_z, height_z, href, photos },
             } = album;
+
             return (
-              <div class="space-y-8">
-                <h2 class="font-display text-4xl md:text-5xl">{title}</h2>
-                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <div>
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      <img src={url_z} class="rounded-lg" alt={title} />
-                    </a>
+              <div class="group relative overflow-clip rounded-lg">
+                <Link href={href} external unstyled title={title}>
+                  <div class="absolute bottom-2 left-2 flex space-x-2">
+                    {[...photos, ...photos, ...photos]
+                      .slice(0, 3)
+                      .map((photo, index) => (
+                        <Image
+                          src={photo.url_s}
+                          class={classNames(
+                            "w-32 rounded-lg transition-transform",
+                            {
+                              "group-hover:translate-x-2": index === 0,
+                              "group-hover:translate-x-6": index === 1,
+                              "group-hover:translate-x-10": index === 2,
+                            },
+                          )}
+                          alt={photo.title}
+                          width={photo.width_s}
+                          height={photo.height_s}
+                          quality={100}
+                        />
+                      ))}
                   </div>
-                  <div class="space-y-4">
-                    <p>{description}</p>
-                    <Link href={href} external title={title}>
-                      Se albumet på Flickr
-                    </Link>
-                  </div>
-                </div>
+
+                  <Image
+                    src={url_z}
+                    class="w-full"
+                    alt={title}
+                    width={width_z}
+                    height={height_z}
+                    quality={100}
+                  />
+                  <span
+                    class="absolute top-0 w-full p-8 text-center text-4xl text-white"
+                    style={{
+                      "text-shadow": "2px 2px 2px #000000",
+                    }}
+                  >
+                    {title}
+                  </span>
+                </Link>
               </div>
             );
           })
