@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+
+import { imagePathToSrc } from "../utils/images";
+
 export interface Props {
   class?: string;
   navItems: {
@@ -15,9 +19,10 @@ const { class: extraClasses, navItems } = Astro.props;
     class="menu p-4 flex gap-10 bg-dark-blue bg-grainy text-white fixed w-full top-0 left-0 rounded-b-lg shadow-xl"
   >
     <a href="/" class="ml-2 hover:-rotate-6 transition-transform shrink-0"
-      ><img
-        src="/profil/logo/tertiary/white.svg"
+      ><Image
+        src={imagePathToSrc("/src/images/profil/logo/tertiary/white.svg")}
         class="jazzlaug transition-all w-12 h-auto duration-700"
+        alt="mandaljazz logo"
       /></a
     >
     <nav class="w-full flex flex-row gap-4 sm:gap-8 items-center">

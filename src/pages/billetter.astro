@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
+
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import Title from "../components/Title.astro";
 import Layout from "../layouts/Layout.astro";
+import { imagePathToSrc } from "../utils/images";
 import "../styles/tikkio-overrides.css";
 ---
 
@@ -56,15 +58,17 @@ import "../styles/tikkio-overrides.css";
         <div
           class="sticky bottom-4 md:bottom-8 h-fit md:col-span-2 space-y-2 flex flex-col items-end gap-3"
         >
-          <img
-            src="/profil/frimerke-sykkeltur.png"
+          <Image
+            src={imagePathToSrc("/src/images/profil/frimerke-sykkeltur.png")}
             class="w-48 hidden md:block"
+            alt="Frimerke sykkeltur"
           />
           <BuyTicketsButton class="w-fit mx-auto md:w-48 md:mx-0" />
         </div>
-        <img
-          src="/profil/frimerke-sykkeltur.png"
+        <Image
+          src={imagePathToSrc("/src/images/profil/frimerke-sykkeltur.png")}
           class="w-full max-w-sm block md:hidden mx-auto"
+          alt="Frimerke sykkeltur"
         />
       </div>
     </div>

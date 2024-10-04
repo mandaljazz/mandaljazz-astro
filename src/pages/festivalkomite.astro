@@ -2,6 +2,8 @@
 import sortBy from "lodash/sortBy";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
+import { imagePathToSrc } from "../utils/images";
+import { Image } from "astro:assets";
 
 const positions = await Astro.glob("../content/festivalkomite/*.mdx");
 ---
@@ -139,6 +141,10 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
         target="_blank">Meld din interesse</a
       >
     </div>
-    <img src="/profil/frimerke-dans.png" class="mx-auto max-w-72 md:max-w-96" />
+    <Image
+      src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
+      class="mx-auto max-w-72 md:max-w-96"
+      alt="Frimerke dans"
+    />
   </main>
 </Layout>

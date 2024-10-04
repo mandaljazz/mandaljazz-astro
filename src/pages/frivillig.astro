@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Link from "../components/Link.astro";
 // import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
+import { imagePathToSrc } from "../utils/images";
 
 const groups = await Astro.glob("../content/frivillig/*.mdx");
 ---
@@ -118,10 +120,12 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
         <h2 class="font-display text-3xl">Registrering</h2>
         <VolunteerForm />
       </div> -->
-      <img
-        src="/profil/frimerke-dans.png"
+      <Image
+        src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
         class="mx-auto max-w-72 md:max-w-96"
+        alt="Frimerke dans"
       />
+
       <div class="space-y-8">
         <h2 class="font-display text-3xl">Tidligere frivilliggjenger</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

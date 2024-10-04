@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
+
+import { imagePathToSrc } from "../utils/images";
 
 export interface Props {
   class?: string;
@@ -33,7 +36,11 @@ const { class: extraClasses, navItems } = Astro.props;
     class="menu fixed w-full top-0 px-4 flex items-center justify-between gap-10 rounded-b-lg text-white z-10 duration-500 bg-dark-blue bg-grainy shadow-xl"
   >
     <a href="/" class="m-3"
-      ><img src="/profil/logo/tertiary/white.svg" class="w-7 h-auto" /></a
+      ><Image
+        src={imagePathToSrc("/src/images/profil/logo/tertiary/white.svg")}
+        class="w-7 h-auto"
+        alt="mandaljazz logo"
+      /></a
     >
     <button class="hamburger">
       <Icon
@@ -52,7 +59,7 @@ const { class: extraClasses, navItems } = Astro.props;
 
   const toggleMobileMenu = () => {
     ["-translate-y-full", "translate-y-0", "translate-x-0"].map((c) =>
-      offScreenNavItemsList.classList.toggle(c),
+      offScreenNavItemsList.classList.toggle(c)
     );
   };
 

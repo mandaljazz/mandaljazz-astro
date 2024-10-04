@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+
+import { imagePathToSrc } from "../utils/images";
+
 export interface Props {
   type: "dark-blue" | "blue";
   title: string;
@@ -24,8 +28,8 @@ const fontColor = {
   <h2 class={`font-display text-3xl p-4 my-2 ${fontColor}`}>
     {title}
   </h2>
-  <img
-    src={`/profil/trompet.png`}
+  <Image
+    src={imagePathToSrc("/src/images/profil/trompet.png")}
     class={`hidden xl:block absolute w-20 ${
       flip ? "-left-24" : "-right-24 -scale-x-100"
     }`}
