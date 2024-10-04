@@ -1,0 +1,54 @@
+name: Update Flickr Photo Albums
+
+on:
+  # schedule:
+  #   - cron: "38 4 * * *" # Every day at 04:38
+  # push:
+  #   branches:
+  #     - "flickr-*"
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install
+        run: npm install
+      - name: Fetch from Flickr
+        run: npm run fetch-from-flickr
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+      - name: Check for file changes
+        id: changed-files
+        run: |
+          CHANGES=$(git status --porcelain)
+          if [ -n "$CHANGES" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected:"
+            echo "$CHANGES"
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          fi
+      - name: Commit and push changes
+        if: steps.changed-files.outputs.changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "dev@mandaljazz.no"
+          BRANCH_NAME="flickr-$(date +'%Y-%m-%d')"
+          git checkout -b $BRANCH_NAME
+          git add .
+          git commit -m "Update Flickr Photo Albums"
+          git push origin $BRANCH_NAME
+          gh pr create --title "Update Flickr Photo Albums" --body "This pull request was automatically created by a GitHub Actions workflow." --base main --head $BRANCH_NAME
