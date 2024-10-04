@@ -3,6 +3,7 @@ import { createFlickr } from "flickr-sdk";
 import fs from "fs";
 
 const USER_ID = "201530280@N05";
+
 const { flickr } = createFlickr(process.env.FLICKR_API_KEY);
 
 const photosetsResponse = await flickr("flickr.photosets.getList", {

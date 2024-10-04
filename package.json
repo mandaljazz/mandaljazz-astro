@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
-    "fetch-flickr-images": "node scripts/fetch-flickr-images.js"
+    "fetch-from-flickr": "node scripts/fetch-from-flickr.js"
   },
   "dependencies": {
     "@astrojs/mdx": "3.1.7",

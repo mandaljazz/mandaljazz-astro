@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
@@ -11,8 +10,8 @@ const artists = await Astro.glob("../pages/artist/*.mdx");
 >
   <main class="px-4 py-20 sm:px-12 sm:py-24 md:px-24 lg:px-32">
     <div class="mx-auto max-w-5xl">
-      <Image
-        src={"/sponsor/jazzlaugs-venner.png"}
+      <img
+        src="/sponsor/jazzlaugs-venner.png"
         alt="Jazzlaugs Venner"
         class="mx-auto my-8 w-96 max-w-full"
       />
