@@ -21,14 +21,14 @@ const backgroundColor = {
 
 <div
   class:list={[
-    `relative w-fit flex flex-row ${backgroundColor} bg-grainy rounded-lg`,
+    `relative flex w-fit flex-row ${backgroundColor} bg-grainy rounded-lg`,
     fluid ? "w-full" : undefined,
   ]}
 >
   <span
     class={`py-2 px-4 my-2 flex flex-row gap-2 items-center text-lg md:text-xl`}
     ><Icon
-      class="icon group-hover:-translate-y-0.5 transition-transform"
+      class="icon transition-transform group-hover:-translate-y-0.5"
       pack={pack || "ion"}
       name={icon}
       size={48}

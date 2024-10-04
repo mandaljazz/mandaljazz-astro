@@ -10,11 +10,11 @@ const { title } = Astro.props;
 
 <div>
   <button
-    class="accordion bg-dark-blue bg-grainy text-white text-left p-4 w-full rounded-t flex justify-between group"
+    class="accordion bg-grainy group flex w-full justify-between rounded-t bg-dark-blue p-4 text-left text-white"
   >
     <span>{title}</span><span
       ><Icon
-        class="icon group-hover:-translate-y-0.5 transition-transform"
+        class="icon transition-transform group-hover:-translate-y-0.5"
         pack="ion"
         name="chevron-down"
         size={24}
@@ -22,7 +22,7 @@ const { title } = Astro.props;
     >
   </button>
   <div
-    class="bg-dark-blue/10 bg-grainy rounded-b transition-all px-4 h-0 overflow-y-hidden space-y-8"
+    class="bg-grainy h-0 space-y-8 overflow-y-hidden rounded-b bg-dark-blue/10 px-4 transition-all"
   >
     <slot />
   </div>

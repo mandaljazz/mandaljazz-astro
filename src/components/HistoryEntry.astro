@@ -1,24 +1,36 @@
 ---
+import { Image } from "astro:assets";
+import { imagePathToSrc } from "../utils/images";
 import Spotify from "./Spotify.astro";
 
 export interface Props {
   year: string;
   image: string;
   spotifyUrl?: string;
+  flickr?: {
+    href: string;
+    src: string;
+  };
 }
 
-const { year, spotifyUrl, image } = Astro.props;
+const { year, spotifyUrl, image, flickr } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <h2
-    class={`font-display md:text-center text-8xl md:text-9xl p-4 text-black rounded-lg self-center`}
-  >
-    {year}
-  </h2>
-  <div>{spotifyUrl && <Spotify src={spotifyUrl} />}</div>
-  <img src={image} class="rounded-lg" alt={`Festivalplakat ${year}`} />
-  <ul class="space-y-4 p-8 text-xl">
-    <slot />
-  </ul>
+<div class="space-y-8">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <h2
+      class={`font-display md:text-center text-8xl md:text-9xl p-4 text-black rounded-lg self-center`}
+    >
+      {year}
+    </h2>
+    <div>{spotifyUrl && <Spotify src={spotifyUrl} />}</div>
+    <Image
+      src={imagePathToSrc(image)}
+      class="rounded-lg"
+      alt={`Festivalplakat ${year}`}
+    />
+    <ul class="space-y-4 p-8 text-xl">
+      <slot />
+    </ul>
+  </div>
 </div>

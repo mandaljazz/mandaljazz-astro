@@ -7,7 +7,7 @@ export interface Props {
 const { src, iframeClass } = Astro.props;
 ---
 
-<div class="w-full max-w-lg mx-auto lg:h-full">
+<div class="mx-auto w-full max-w-lg lg:h-full">
   <iframe
     class={`rounded-lg h-[500px] ${iframeClass}`}
     src={`${src?.replace(

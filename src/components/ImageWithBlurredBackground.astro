@@ -17,11 +17,11 @@ const { src, alt, className } = Astro.props;
     )}
     style={`background-image: url('${src}');`}
   >
-    <div class="backdrop-blur-md w-full h-full rounded"></div>
+    <div class="h-full w-full rounded backdrop-blur-md"></div>
   </div>
   <img
     src={`${src}`}
     alt={alt}
-    class="max-h-full w-auto m-auto rounded shadow-2xl"
+    class="m-auto max-h-full w-auto rounded shadow-2xl"
   />
 </div>
