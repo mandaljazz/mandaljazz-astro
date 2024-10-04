@@ -3,17 +3,17 @@ import first from "lodash/first";
 import last from "lodash/last";
 import sortBy from "lodash/sortBy";
 
-import Layout from "./Layout.astro";
-import Spotify from "../components/Spotify.astro";
+import Icon from "astro-icon";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import ImageAndLabel from "../components/ImageAndLabel.astro";
+import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
+import InfoBox from "../components/InfoBox.astro";
+import Link from "../components/Link.astro";
+import Spotify from "../components/Spotify.astro";
 import YouTube from "../components/YouTube.astro";
 import { formatHumanDateTime, formatTime } from "../utils/date";
-import InfoBox from "../components/InfoBox.astro";
-import ImageAndLabel from "../components/ImageAndLabel.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
-import Icon from "astro-icon";
-import Link from "../components/Link.astro";
+import Layout from "./Layout.astro";
 
 const {
   frontmatter: {
@@ -65,13 +65,13 @@ const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
   [
     ...artistsPages.filter(
-      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList
+      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],
-  "frontmatter.concertStartAt"
+  "frontmatter.concertStartAt",
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
-  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id
+  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id,
 );
 const previousArtist =
   indexOfThisArtist === 0
@@ -93,27 +93,27 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
   description={`${title} på mandaljazz! ${tagline}`}
   image={`/artist/${image}`}
 >
-  <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
-    <div class="max-w-5xl mx-auto space-y-24">
+  <main class="px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32">
+    <div class="mx-auto max-w-5xl space-y-24">
       <div class="space-y-4">
         <div class="space-y-4">
           <h1
-            class="text-4xl leading-snug md:text-7xl md:leading-tight font-display hyphens-auto md:hyphens-none"
+            class="hyphens-auto font-display text-4xl leading-snug md:hyphens-none md:text-7xl md:leading-tight"
           >
             {title}
           </h1>
-          <div class="grid grid-cols-6 gap-8 flex-nowrap w-full items-end">
+          <div class="grid w-full grid-cols-6 flex-nowrap items-end gap-8">
             <div class="col-span-6 space-y-8">
-              <p class="text-3xl hyphens-auto">
+              <p class="hyphens-auto text-3xl">
                 {tagline}
               </p>
               <div
-                class="grid grid-cols-1 gap-4 max-w-sm rounded-md p-4 clip shadow-inner bg-indigo/20"
+                class="clip grid max-w-sm grid-cols-1 gap-4 rounded-md bg-indigo/20 p-4 shadow-inner"
               >
                 {
                   concertStartAt && (
                     <span
-                      class={`flex flex-row gap-2 items-center text-lg md:text-xl`}
+                      class={`flex flex-row items-center gap-2 text-lg md:text-xl`}
                     >
                       <Icon
                         class="icon"
@@ -131,7 +131,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                       href="/praktisk"
                       unstyled
                       title={venue}
-                      class={`flex flex-row gap-2 w-fit items-center text-lg md:text-xl hover:-rotate-2 transition-transform`}
+                      class={`flex w-fit flex-row items-center gap-2 text-lg transition-transform hover:-rotate-2 md:text-xl`}
                     >
                       <Icon
                         class="icon"
@@ -165,14 +165,14 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
           />
           {
             imageAttribution && (
-              <div class="text-sm justify-self-end">
+              <div class="justify-self-end text-sm">
                 Foto: {imageAttribution}
               </div>
             )
           }
         </div>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
+      <div class="grid grid-cols-1 gap-y-4 lg:grid-cols-3 lg:gap-x-4">
         <div class="col-span-2 space-y-4">
           <ImageAndLabel
             image={`/src/images/folk/${authorImage || "placeholder.png"}`}
@@ -199,15 +199,15 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
             )
           }
           <div class="flex flex-row justify-between">
-            {!isFree && <BuyTicketsButton class="flex-0 w-fit h-fit" />}
+            {!isFree && <BuyTicketsButton class="flex-0 h-fit w-fit" />}
             {
               isFree && requiresFreeTicket && (
-                <BuyTicketsButton class="flex-0 w-fit h-fit" isFree />
+                <BuyTicketsButton class="flex-0 h-fit w-fit" isFree />
               )
             }
             {
               sponsoredByBergesenstiftelsen && (
-                <div class="flex flex-col lg:items-end gap-y-1">
+                <div class="flex flex-col gap-y-1 lg:items-end">
                   <p class="text-xs lg:text-right">
                     Konserten er støttet av{" "}
                     <span class="hidden">Bergesenstiftelsen</span>
@@ -217,11 +217,11 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
                     title={"Bergesenstiftelsen"}
                     rel="noopener nofollow"
                     target="_blank"
-                    class="block hover:-rotate-2 transition-transform"
+                    class="block transition-transform hover:-rotate-2"
                   >
                     <div
                       style={`background-image: url(/sponsor/bergesenstiftelsen.png);`}
-                      class={`w-32 h-12 bg-no-repeat bg-contain bg-left`}
+                      class={`h-12 w-32 bg-contain bg-left bg-no-repeat`}
                     />
                   </a>
                 </div>
@@ -237,7 +237,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
           }
           {
             !isFree && spotifyUrl && (
-              <BuyTicketsButton class="flex-0 w-fit h-fit" />
+              <BuyTicketsButton class="flex-0 h-fit w-fit" />
             )
           }
         </div>

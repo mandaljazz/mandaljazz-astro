@@ -20,7 +20,7 @@ const imageSize = {
 
 <ul
   role="list"
-  class="w-full flex flex-row flex-wrap gap-8 items-center justify-center"
+  class="flex w-full flex-row flex-wrap items-center justify-center gap-8"
 >
   {
     sponsors.map(({ name, image, url }) => (
@@ -30,11 +30,11 @@ const imageSize = {
           title={name}
           rel="noopener nofollow"
           target="_blank"
-          class="block hover:-rotate-2 transition-transform"
+          class="block transition-transform hover:-rotate-2"
         >
           <div
             style={`background-image: url(/sponsor/${image}`}
-            class={`${imageSize[size]} bg-no-repeat bg-contain bg-center`}
+            class={`${imageSize[size]} bg-contain bg-center bg-no-repeat`}
           />
         </a>
       </li>

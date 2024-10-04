@@ -4,10 +4,10 @@ import groupBy from "lodash/groupBy";
 import sortBy from "lodash/sortBy";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
+import { Image } from "astro:assets";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
-import { Image } from "astro:assets";
 import { imagePathToSrc } from "../utils/images";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
@@ -49,14 +49,14 @@ const concertsGroupedByDay = Object.entries(
     sortBy(
       [
         ...artistsPages.filter(
-          ({ frontmatter: { hideFromProgram } }) => !hideFromProgram
+          ({ frontmatter: { hideFromProgram } }) => !hideFromProgram,
         ),
         ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
       ],
-      "frontmatter.concertStartAt"
+      "frontmatter.concertStartAt",
     ),
-    (artistPage) => formatHumanDate(artistPage.frontmatter.concertStartAt)
-  )
+    (artistPage) => formatHumanDate(artistPage.frontmatter.concertStartAt),
+  ),
 );
 ---
 
@@ -64,24 +64,24 @@ const concertsGroupedByDay = Object.entries(
   title="Program // mandaljazz 2024"
   description="Programmet til mandaljazz 2024"
 >
-  <main class="px-4 sm:px-12 md:px-24 lg:px-32 py-24 sm:py-40">
+  <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
     <div class="mx-auto max-w-5xl space-y-16">
       <h1 class="font-display text-5xl md:text-7xl">Program</h1>
       {
         concertsGroupedByDay.map(([day, artists]) => {
           return (
             <div class="space-y-4">
-              <h2 class="font-display text-2xl p-4 bg-dark-blue bg-grainy text-white rounded-xl rounded-tl-none w-fit sticky top-[52px] lg:top-[56px] z-10">
+              <h2 class="bg-grainy sticky top-[52px] z-10 w-fit rounded-xl rounded-tl-none bg-dark-blue p-4 font-display text-2xl text-white lg:top-[56px]">
                 {capitalize(day)}
               </h2>
-              <div class="grid grid-cols-4 gap-y-4 w-full text-lg">
-                <div class="py-3 font-normal border-b border-dark-blue col-span-3 md:col-span-2 md:block">
+              <div class="grid w-full grid-cols-4 gap-y-4 text-lg">
+                <div class="col-span-3 border-b border-dark-blue py-3 font-normal md:col-span-2 md:block">
                   Artist
                 </div>
-                <div class="py-3 font-normal border-b border-dark-blue hidden md:block">
+                <div class="hidden border-b border-dark-blue py-3 font-normal md:block">
                   Scene
                 </div>
-                <div class="py-3 font-normal border-b border-dark-blue md:block">
+                <div class="border-b border-dark-blue py-3 font-normal md:block">
                   Tid
                 </div>
                 {
@@ -112,30 +112,30 @@ const concertsGroupedByDay = Object.entries(
                       }
 
                       return (
-                        <div class="grid grid-cols-4 gap-y-1 gap-2 col-span-4">
-                          <div class="col-span-4 flex flex-row gap-2 md:col-span-2 text-xl md:text-lg">
+                        <div class="col-span-4 grid grid-cols-4 gap-2 gap-y-1">
+                          <div class="col-span-4 flex flex-row gap-2 text-xl md:col-span-2 md:text-lg">
                             {id ? (
                               <img
                                 src={`/artist/${image}`}
                                 alt={shortTitle || title}
-                                class="w-8 h-8 rounded-lg object-cover"
+                                class="h-8 w-8 rounded-lg object-cover"
                               />
                             ) : altImage ? (
                               <Image
                                 src={imagePathToSrc(altImage)}
                                 alt={shortTitle || title}
-                                class="w-8 h-8 object-contain"
+                                class="h-8 w-8 object-contain"
                               />
                             ) : (
                               <Image
                                 src={imagePathToSrc(
-                                  "/src/images/profil/logo/primary/black.svg"
+                                  "/src/images/profil/logo/primary/black.svg",
                                 )}
                                 alt={shortTitle || title}
-                                class="w-8 h-8 object-contain"
+                                class="h-8 w-8 object-contain"
                               />
                             )}
-                            <div class="flex flex-row gap-2 items-start">
+                            <div class="flex flex-row items-start gap-2">
                               {id && !isPlaceholder ? (
                                 <div>
                                   <Link
@@ -161,7 +161,7 @@ const concertsGroupedByDay = Object.entries(
                               )}
 
                               {isFree && (
-                                <div class="bg-pink/80 text-black -rotate-6 text-xs mt-1 px-1 rounded">
+                                <div class="mt-1 -rotate-6 rounded bg-pink/80 px-1 text-xs text-black">
                                   Gratis
                                 </div>
                               )}
@@ -171,7 +171,7 @@ const concertsGroupedByDay = Object.entries(
                           <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
                         </div>
                       );
-                    }
+                    },
                   )
                 }
               </div>
@@ -179,7 +179,7 @@ const concertsGroupedByDay = Object.entries(
           );
         })
       }
-      <BuyTicketsButton class="w-fit mx-auto" />
+      <BuyTicketsButton class="mx-auto w-fit" />
       <Image
         src={imagePathToSrc("/src/images/profil/frimerke-pils.png")}
         class="mx-auto max-w-72 md:max-w-96"

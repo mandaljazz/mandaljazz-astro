@@ -1,18 +1,18 @@
 ---
 import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
 import { setDefaultOptions } from "date-fns";
 import { nb } from "date-fns/locale";
-import { getImage } from "astro:assets";
 import faviconSrc from "../images/favicon.png";
 import faviconSvgSrc from "../images/favicon.svg";
 
 setDefaultOptions({ locale: nb });
 
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import Sponsors from "../components/Sponsors.astro";
-import "../styles/main.css";
 import "../styles/fonts.css";
+import "../styles/main.css";
 
 const appleTouchIcon = await getImage({
   src: faviconSrc,
@@ -60,7 +60,7 @@ const { title, description, image } = Astro.props;
       }}
     />
   </head>
-  <body class="bg-stone-100 text-black flex flex-col">
+  <body class="flex flex-col bg-stone-100 text-black">
     <Header />
     <slot />
     <Sponsors />

@@ -1,9 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import sortBy from "lodash/sortBy";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import { imagePathToSrc } from "../utils/images";
-import { Image } from "astro:assets";
 
 const positions = await Astro.glob("../content/festivalkomite/*.mdx");
 ---
@@ -14,12 +14,12 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
   image="/festivalkomite/markedssjef.jpg"
 >
   <main
-    class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40 space-y-16"
+    class="space-y-16 px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32"
   >
-    <div class="max-w-5xl mx-auto space-y-16">
+    <div class="mx-auto max-w-5xl space-y-16">
       <h1 class="font-display text-4xl md:text-7xl">Festivalkomite</h1>
-      <div class="grid md:grid-cols-5 gap-16 items-center">
-        <div class="md:col-span-3 space-y-4">
+      <div class="grid items-center gap-16 md:grid-cols-5">
+        <div class="space-y-4 md:col-span-3">
           <p>
             Hver høst setter vi sammen en festivalkomité som har ansvar for å
             planlegge neste sommers festival. Festivalkomiteen består av
@@ -37,17 +37,17 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
             og som ønsker å være med å sette sitt preg på festivalen!
           </p>
         </div>
-        <img
-          src="/festivalkomite/solnedgang.jpg"
+        <Image
+          src={imagePathToSrc("/src/images/festivalkomite/solnedgang.jpg")}
           alt="Festivalkomiteen"
-          class="md:col-span-2 rounded-lg shadow-lg"
+          class="rounded-lg shadow-lg md:col-span-2"
         />
-        <img
-          src="/festivalkomite/norsk-jazzforum.jpg"
+        <Image
+          src={imagePathToSrc("/src/images/festivalkomite/norsk-jazzforum.jpg")}
           alt="Festivalkomiteen"
-          class="row-start-4 md:row-start-auto md:col-span-2 rounded-lg shadow-lg"
+          class="row-start-4 rounded-lg shadow-lg md:col-span-2 md:row-start-auto"
         />
-        <div class="md:col-span-3 space-y-4">
+        <div class="space-y-4 md:col-span-3">
           <p>
             Komiteen møtes et par-tre helger i løpet av året for å jobbe og
             brainstorme. Da gjør vi også alltid noe hyggelig, alt fra å spise
@@ -82,12 +82,12 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
         <h2 class="font-display text-2xl md:text-3xl">
           Les litt om de ulike stillingene
         </h2>
-        <div class="md:grid md:grid-cols-6 gap-2">
+        <div class="gap-2 md:grid md:grid-cols-6">
           <div
-            class="sticky top-[52px] md:top-[56px] z-10 md:col-span-2 lg:col-span-2 -mx-4 md:mx-0"
+            class="sticky top-[52px] z-10 -mx-4 md:top-[56px] md:col-span-2 md:mx-0 lg:col-span-2"
           >
             <ul
-              class="sticky top-[52px] md:top-[56px] flex flex-row md:flex-col gap-4 items-center md:items-start bg-stone-100 py-3 px-4 md:px-0 overflow-x-auto"
+              class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-stone-100 px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
             >
               {
                 sortBy(positions, "frontmatter.filled").map((position) => {
@@ -109,7 +109,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
               }
             </ul>
           </div>
-          <div class="md:col-span-4 lg:col-span-4 space-y-12">
+          <div class="space-y-12 md:col-span-4 lg:col-span-4">
             {
               positions.map((position) => {
                 const {

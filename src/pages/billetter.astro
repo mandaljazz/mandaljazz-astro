@@ -3,18 +3,18 @@ import { Image } from "astro:assets";
 
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Layout from "../layouts/Layout.astro";
-import { imagePathToSrc } from "../utils/images";
 import "../styles/tikkio-overrides.css";
+import { imagePathToSrc } from "../utils/images";
 ---
 
 <Layout
   title="Billetter // mandaljazz 2024"
   description="Kjøp billetter til mandaljazz 2024"
 >
-  <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
-        <div class="md:col-span-3 space-y-8">
+  <main class="px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32">
+    <div class="mx-auto max-w-5xl">
+      <div class="grid grid-cols-1 items-end gap-4 md:grid-cols-5">
+        <div class="space-y-8 md:col-span-3">
           <h1 class="font-display text-5xl md:text-7xl">Billetter</h1>
 
           <p>
@@ -22,17 +22,17 @@ import "../styles/tikkio-overrides.css";
             publikum.
           </p>
 
-          <h2 class="font-display text-1xl md:text-3xl pt-8">
+          <h2 class="text-1xl pt-8 font-display md:text-3xl">
             Festivalpass og dagspass
           </h2>
           <p>Gir inngang til alle konserter.</p>
 
-          <h2 class="font-display text-1xl md:text-3xl pt-8">
+          <h2 class="text-1xl pt-8 font-display md:text-3xl">
             Enkeltbilletter
           </h2>
           <p>Gir inngang til den aktuelle konserten.</p>
 
-          <h2 class="font-display text-1xl md:text-3xl pt-8">
+          <h2 class="text-1xl pt-8 font-display md:text-3xl">
             Studenter og ungdom under 26 år
           </h2>
           <p>
@@ -41,13 +41,13 @@ import "../styles/tikkio-overrides.css";
             barneskoler.
           </p>
 
-          <h2 class="font-display text-1xl md:text-3xl pt-8">Barnekonsert</h2>
+          <h2 class="text-1xl pt-8 font-display md:text-3xl">Barnekonsert</h2>
           <p>
             Barnekonserten er gratis for alle, både barn og voksne! Men husk å
             reservere en gratisbillett.
           </p>
 
-          <h2 class="font-display text-1xl md:text-3xl pt-8">
+          <h2 class="text-1xl pt-8 font-display md:text-3xl">
             Funksjonshemmede med ledsagerbevis
           </h2>
           <p>
@@ -56,18 +56,18 @@ import "../styles/tikkio-overrides.css";
           </p>
         </div>
         <div
-          class="sticky bottom-4 md:bottom-8 h-fit md:col-span-2 space-y-2 flex flex-col items-end gap-3"
+          class="sticky bottom-4 flex h-fit flex-col items-end gap-3 space-y-2 md:bottom-8 md:col-span-2"
         >
           <Image
             src={imagePathToSrc("/src/images/profil/frimerke-sykkeltur.png")}
-            class="w-48 hidden md:block"
+            class="hidden w-48 md:block"
             alt="Frimerke sykkeltur"
           />
-          <BuyTicketsButton class="w-fit mx-auto md:w-48 md:mx-0" />
+          <BuyTicketsButton class="mx-auto w-fit md:mx-0 md:w-48" />
         </div>
         <Image
           src={imagePathToSrc("/src/images/profil/frimerke-sykkeltur.png")}
-          class="w-full max-w-sm block md:hidden mx-auto"
+          class="mx-auto block w-full max-w-sm md:hidden"
           alt="Frimerke sykkeltur"
         />
       </div>

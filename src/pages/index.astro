@@ -1,12 +1,12 @@
 ---
 import partition from "lodash/partition";
 
+import { Image } from "astro:assets";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Card from "../components/Card.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
-import PlaceholderCard from "../components/PlaceholderCard.astro";
-import Link from "../components/Link.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import { imagePathToSrc } from "../utils/images";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
 const [upcomingArtists, pastArtists] = partition(artists, (artist) => {
@@ -32,26 +32,27 @@ const byOrder = (a, b) => {
 
 <Layout title="mandaljazz 2024" description="Jazzfestivalen i Mandal">
   <main
-    class="px-4 sm:px-12 md:px-24 lg:px-32 py-24 sm:py-40 xl:px-32 space-y-24 sm:pb-32"
+    class="space-y-24 px-4 py-24 sm:px-12 sm:py-40 sm:pb-32 md:px-24 lg:px-32 xl:px-32"
   >
-    <div class="max-w-5xl mx-auto flex flex-col items-center gap-8">
+    <div class="mx-auto flex max-w-5xl flex-col items-center gap-8">
       <div
-        class="flex flex-col md:flex-row gap-4 items-center w-full lg:w-fit lg:mx-auto relative"
+        class="relative flex w-full flex-col items-center gap-4 md:flex-row lg:mx-auto lg:w-fit"
       >
-        <img
-          src="/poster/2024.png"
-          class="max-w-72 lg:max-w-96 w-full rounded-sm shadow-solid"
+        <Image
+          src={imagePathToSrc("/src/images/poster/2024.png")}
+          class="w-full max-w-72 rounded-sm shadow-solid lg:max-w-96"
+          alt="mandaljazz 2024 poster"
         />
         <div class="flex flex-col gap-1 lg:gap-4">
-          <h1 class="font-display text-2xl sm:text-4xl text-center p-6 block">
+          <h1 class="block p-6 text-center font-display text-2xl sm:text-4xl">
             mandaljazz 10 år!
           </h1>
           <h2
-            class="p-6 text-2xl sm:text-4xl font-display text-center leading-snug bg-beige bg-grainy text-black rounded-xl"
+            class="bg-grainy rounded-xl bg-beige p-6 text-center font-display text-2xl leading-snug text-black sm:text-4xl"
           >
             27.–29. juni 2024
           </h2>
-          <BuyTicketsButton class="mt-8 w-fit mx-auto" />
+          <BuyTicketsButton class="mx-auto mt-8 w-fit" />
         </div>
       </div>
     </div>
@@ -59,7 +60,7 @@ const byOrder = (a, b) => {
       <h3 class="font-display text-3xl">Artister</h3>
       <ul
         role="list"
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {
           [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
@@ -85,51 +86,7 @@ const byOrder = (a, b) => {
     <Spotify
       src="https://open.spotify.com/playlist/0Yu3man6TSrYAHi7VntNjT?si=d695cdc021a749e3"
     />
-    <BuyTicketsButton class="w-fit mx-auto" />
-    <div
-      class="p-6 md:p-8 bg-blue/30 rounded-xl flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto"
-    >
-      <div class="space-y-8">
-        <Link
-          openInNewTab
-          unstyled
-          href="https://cosmopolite.no/program/cosmopolite/2024/april/mandaljazz-10-ar-andreas-roysum-takeover"
-          title="mandaljazz 10 år: Andreas Røysum takeover på Cosmopolite 12. april 2024"
-          class="group w-40 self-center"
-        >
-          <img
-            src="/cosmopolite-takeover-2024-kvadratisk-1-1.png"
-            alt={"mandaljazz 10 år: Andreas Røysum takeover på Cosmopolite 12. april 2024"}
-            class="w-full rounded-xl transition-all group-hover:-rotate-1"
-          />
-        </Link>
-      </div>
-      <div class="space-y-4 md:self-center">
-        <p>
-          Gikk du glipp av den <Link
-            href="https://cosmopolite.no/program/cosmopolite/2024/april/mandaljazz-10-ar-andreas-roysum-takeover"
-            title="mandaljazz 10 år: Andreas Røysum takeover på Cosmopolite 12. april 2024"
-            external
-          >
-            lille forsmaken av mandaljazz 2024
-          </Link> som fant sted på Cosmopolite fredag 12. april? Fortvil ikke! Les
-          <Link
-            href="https://jazzinorge.no/anmeldelse/mandalitter-og-kosmopolitter/"
-            title="mandaljazz 10-årsjubileum - Cosmopolite 12. april 2024: Mandalitter og kosmopolitter"
-            external
-          >
-            Audun Vingers anmeldelse
-          </Link> og bli forført til å få med deg årets festival.
-        </p>
-        <a
-          class={`block w-full sm:w-fit sm:mx-auto py-4 px-4 text-center bg-yellow text-black rounded-lg text-sm md:text-xl duration-500 transition-all -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover`}
-          href="https://jazzinorge.no/anmeldelse/mandalitter-og-kosmopolitter/"
-          title="mandaljazz 10-årsjubileum - Cosmopolite 12. april 2024: Mandalitter og kosmopolitter"
-          rel="noopener nofollow"
-          target="_blank">Les «Mandalitter og kosmopolitter»</a
-        >
-      </div>
-    </div>
+    <BuyTicketsButton class="mx-auto w-fit" />
   </main>
 </Layout>
 

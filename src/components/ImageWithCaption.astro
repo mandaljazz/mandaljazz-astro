@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import { imagePathToSrc } from "../utils/images";
+
 export interface Props {
   src: string;
   caption?: string;
@@ -9,8 +12,8 @@ const { src, caption, attribution } = Astro.props;
 ---
 
 <figure>
-  <img src={src} alt={caption} class="rounded-t-lg" />
-  <figcaption class="p-4 bg-blue bg-grainy rounded-b-lg flex justify-between">
+  <Image src={imagePathToSrc(src)} alt={caption} class="rounded-t-lg" />
+  <figcaption class="bg-grainy flex justify-between rounded-b-lg bg-blue p-4">
     {caption && <span>{caption}</span>}
     {attribution && <span>{attribution}</span>}
   </figcaption>

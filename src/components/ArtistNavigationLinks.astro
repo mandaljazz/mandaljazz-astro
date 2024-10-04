@@ -1,6 +1,6 @@
 ---
-import Link from "./Link.astro";
 import { Icon } from "astro-icon";
+import Link from "./Link.astro";
 
 export interface Props {
   previousArtist: {
@@ -30,11 +30,11 @@ const {
     compact ? "justify-between" : "flex-col"
   } gap-4 sm:flex-row sm:justify-between ${extraClasses}`}
 >
-  <div class="self-start sm:self-auto flex flex-row gap-2 items-center">
+  <div class="flex flex-row items-center gap-2 self-start sm:self-auto">
     <Link href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}>
       <span class="flex flex-row items-center gap-2">
         <Icon
-          class="icon group-hover:-translate-y-0.5 transition-transform"
+          class="icon transition-transform group-hover:-translate-y-0.5"
           pack="ion"
           name="play-back-outline"
           size={40}
@@ -48,16 +48,16 @@ const {
       ><img
         src={`/artist/${prevId}.jpg`}
         alt={prevShortTitle || prevTitle}
-        class="w-10 h-10 rounded-lg object-cover"
+        class="h-10 w-10 rounded-lg object-cover"
       /></a
     >
   </div>
-  <div class="self-end sm:self-auto flex flex-row gap-2 items-center">
+  <div class="flex flex-row items-center gap-2 self-end sm:self-auto">
     <a href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}
       ><img
         src={`/artist/${nextId}.jpg`}
         alt={nextShortTitle || nextTitle}
-        class="w-10 h-10 rounded-lg object-cover"
+        class="h-10 w-10 rounded-lg object-cover"
       /></a
     >
     <Link href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}>
@@ -66,7 +66,7 @@ const {
           >{nextShortTitle || nextTitle}</span
         >
         <Icon
-          class="icon group-hover:-translate-y-0.5 transition-transform"
+          class="icon transition-transform group-hover:-translate-y-0.5"
           pack="ion"
           name="play-forward-outline"
           size={40}
