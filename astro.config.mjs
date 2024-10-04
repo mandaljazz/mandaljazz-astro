@@ -10,4 +10,7 @@ export default defineConfig({
   site: "https://mandaljazz.no/",
   prefetch: true,
   integrations: [tailwind(), sitemap(), robotsTxt(), mdx(), lottie()],
+  image: {
+    domains: ["live.staticflickr.com"],
+  },
 });
