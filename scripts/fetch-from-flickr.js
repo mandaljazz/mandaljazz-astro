@@ -11,12 +11,21 @@ const photosetsResponse = await flickr("flickr.photosets.getList", {
   primary_photo_extras: "url_z",
 });
 
+console.log("Found", photosetsResponse.photosets.photoset.length, "albums");
+
 for (const photoset of photosetsResponse.photosets.photoset) {
   const photos = await flickr("flickr.photosets.getPhotos", {
     photoset_id: photoset.id,
     user_id: USER_ID,
     extras: "url_z, url_o",
   });
+
+  console.log(
+    "Found",
+    photos.photoset.photo.length,
+    "photos in album",
+    photoset.title._content,
+  );
 
   const album = {
     title: photoset.title._content,
