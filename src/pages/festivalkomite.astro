@@ -114,7 +114,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
                   Content,
                   frontmatter: { filled },
                 } = position;
-                return filled ? null : (
+                return (
                   <div class="space-y-16">
                     <Content />
                     <hr />
