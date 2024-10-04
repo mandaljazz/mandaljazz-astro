@@ -1,5 +1,4 @@
-import format from "date-fns/format/index.js";
-import isThisYear from "date-fns/isThisYear/index.js";
+import { format, isThisYear } from "date-fns";
 import capitalize from "lodash/capitalize";
 
 export const formatTime = (date: string) => {
