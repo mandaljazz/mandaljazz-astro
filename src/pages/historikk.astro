@@ -18,6 +18,10 @@ import Layout from "../layouts/Layout.astro";
           year="2023"
           spotifyUrl="https://open.spotify.com/playlist/63wOAJl5BH7l1TJ99aUSFd?si=e9b38daf65884e70"
           image="/poster/2023.png"
+          flickr={{
+            href: "https://www.flickr.com/photos/201530280@N05/albums/72177720320878569",
+            src: "https://live.staticflickr.com/65535/54041657941_c6214f2464_b.jpg",
+          }}
         >
           <li>Kemaca Kinetic + Mathias Eick</li>
           <li>D'Sound</li>
@@ -253,3 +257,9 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </main>
 </Layout>
+
+<script
+  is:inline
+  async
+  src="//embedr.flickr.com/assets/client-code.js"
+  charset="utf-8"></script>

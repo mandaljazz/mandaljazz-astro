@@ -1,0 +1,15 @@
+---
+export interface Props {
+  href: string;
+  src: string;
+  title: string;
+}
+
+const { href, src, title } = Astro.props;
+---
+
+<div class="w-full max-w-md">
+  <a data-flickr-embed="true" href={href} title={title} class="block w-full"
+    ><img src={src} width="100%" height="1200" alt={title} /></a
+  >
+</div>
