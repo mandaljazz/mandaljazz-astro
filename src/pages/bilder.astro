@@ -1,0 +1,45 @@
+---
+import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
+
+const albums = await Astro.glob("../content/flickr-albums/*.json");
+---
+
+<Layout
+  title="Bilder // mandaljazz 2024"
+  description="Bilder fra tidligere år på mandaljazz"
+>
+  <main class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-24 sm:py-40">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <h1 class="font-display text-5xl md:text-7xl">Bildegalleri</h1>
+      <p>Bilder fra tidligere år på mandaljazz.</p>
+      <div class="space-y-24">
+        {
+          albums.map((album) => {
+            const {
+              default: { title, url_z, description, href, photos },
+            } = album;
+            return (
+              <div class="space-y-8">
+                <h2 class="font-display text-4xl md:text-5xl">{title}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      <img src={url_z} class="rounded-lg" alt={title} />
+                    </a>
+                  </div>
+                  <div class="space-y-4">
+                    <p>{description}</p>
+                    <Link href={href} external title={title}>
+                      Se albumet på Flickr
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

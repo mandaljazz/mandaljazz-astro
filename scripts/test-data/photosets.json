@@ -1,0 +1,39 @@
+{
+  "photosets": {
+    "page": 1,
+    "pages": 1,
+    "perpage": 500,
+    "total": 1,
+    "photoset": [
+      {
+        "id": "72177720320878569",
+        "owner": "201530280@N05",
+        "username": "hh.gronsleth",
+        "primary": "54041657941",
+        "secret": "c6214f2464",
+        "server": "65535",
+        "farm": 66,
+        "count_views": "0",
+        "count_comments": "0",
+        "count_photos": 2,
+        "count_videos": 0,
+        "title": { "_content": "AI pianos" },
+        "description": { "_content": "" },
+        "can_comment": 0,
+        "date_create": "1728033764",
+        "date_update": "1728033835",
+        "sorting_option_id": "manual-add-to-end",
+        "photos": 2,
+        "videos": 0,
+        "visibility_can_see_set": 1,
+        "needs_interstitial": 0,
+        "primary_photo_extras": {
+          "url_z": "https://live.staticflickr.com/65535/54041657941_c6214f2464_z.jpg",
+          "height_z": 640,
+          "width_z": 640
+        }
+      }
+    ]
+  },
+  "stat": "ok"
+}
