@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
+
 import favicon from "../images/favicon.png";
 
 const faviconPngSizes = [192, 512];

@@ -13,7 +13,7 @@ const { src, alt, className } = Astro.props;
 <div class={classNames("relative overflow-clip flex h-full", className)}>
   <div
     class={classNames(
-      "absolute -z-10 bg-no-repeat bg-cover bg-center w-full h-full rounded"
+      "absolute -z-10 bg-no-repeat bg-cover bg-center w-full h-full rounded",
     )}
     style={`background-image: url('${src}');`}
   >

@@ -52,7 +52,7 @@ const { class: extraClasses, navItems } = Astro.props;
 
   const toggleMobileMenu = () => {
     ["-translate-y-full", "translate-y-0", "translate-x-0"].map((c) =>
-      offScreenNavItemsList.classList.toggle(c)
+      offScreenNavItemsList.classList.toggle(c),
     );
   };
 
