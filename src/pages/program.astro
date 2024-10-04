@@ -16,7 +16,7 @@ const tbaArtists = [
     concertStartAt: "2024-06-27T18:30",
     isFree: true,
     externalLink: "https://www.facebook.com/events/334325382874540/",
-    altImage: "/profil/trompet.png"
+    altImage: "/profil/trompet.png",
   },
   {
     title: "Nachspiel",
@@ -47,14 +47,14 @@ const concertsGroupedByDay = Object.entries(
     sortBy(
       [
         ...artistsPages.filter(
-          ({ frontmatter: { hideFromProgram } }) => !hideFromProgram
+          ({ frontmatter: { hideFromProgram } }) => !hideFromProgram,
         ),
         ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
       ],
-      "frontmatter.concertStartAt"
+      "frontmatter.concertStartAt",
     ),
-    (artistPage) => formatHumanDate(artistPage.frontmatter.concertStartAt)
-  )
+    (artistPage) => formatHumanDate(artistPage.frontmatter.concertStartAt),
+  ),
 );
 ---
 
@@ -167,7 +167,7 @@ const concertsGroupedByDay = Object.entries(
                           <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
                         </div>
                       );
-                    }
+                    },
                   )
                 }
               </div>

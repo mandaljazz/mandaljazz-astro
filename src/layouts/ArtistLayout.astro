@@ -67,13 +67,13 @@ const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
 const sortedArtistsPages = sortBy(
   [
     ...artistsPages.filter(
-      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList
+      ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],
-  "frontmatter.concertStartAt"
+  "frontmatter.concertStartAt",
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
-  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id
+  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id,
 );
 const previousArtist =
   indexOfThisArtist === 0

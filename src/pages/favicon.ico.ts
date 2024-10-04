@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
+import path from "node:path";
 import sharp from "sharp";
 import ico from "sharp-ico";
-import path from "node:path";
 
 // relative to project root
 const faviconSrc = path.resolve("src/images/favicon.png");

@@ -84,7 +84,7 @@ import "../styles/mapbox-overrides.css";
     // Insert the layer beneath any symbol layer.
     const layers = map.getStyle().layers;
     const labelLayerId = layers.find(
-      ({ type, layout }) => type === "symbol" && layout["text-field"]
+      ({ type, layout }) => type === "symbol" && layout["text-field"],
     ).id;
 
     // The 'building' layer in the Mapbox Streets
@@ -105,7 +105,7 @@ import "../styles/mapbox-overrides.css";
           "fill-extrusion-opacity": 0.6,
         },
       },
-      labelLayerId
+      labelLayerId,
     );
 
     // Define a source before using it to create a new layer
@@ -125,7 +125,7 @@ import "../styles/mapbox-overrides.css";
               type: "Point",
               coordinates: coordinates,
             },
-          })
+          }),
         ),
       },
     });
@@ -169,7 +169,7 @@ import "../styles/mapbox-overrides.css";
             `<div><a class="link" href=${directionsLink}>Åpne i Google Maps</a></div>`
           }
         </div>
-        `
+        `,
       )
       .setLngLat(coordinates)
       .addTo(map);
