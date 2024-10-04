@@ -1,6 +1,8 @@
 import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import keystatic from "@keystatic/astro";
 import lottie from "astro-integration-lottie";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
@@ -9,5 +11,14 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://mandaljazz.no/",
   prefetch: true,
-  integrations: [tailwind(), sitemap(), robotsTxt(), mdx(), lottie()],
+  integrations: [
+    tailwind(),
+    sitemap(),
+    robotsTxt(),
+    mdx(),
+    lottie(),
+    react(),
+    keystatic(),
+  ],
+  output: "hybrid",
 });
