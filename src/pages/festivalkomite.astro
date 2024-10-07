@@ -96,7 +96,10 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
                   } = position;
                   return filled ? (
                     <li>
-                      <span class="line-through">{title}</span>&nbsp;✔
+                      <Link href={`#${id}`} title={title}>
+                        <span class="line-through">{title}</span>
+                      </Link>
+                      &nbsp;✔
                     </li>
                   ) : (
                     <li>
@@ -112,10 +115,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
           <div class="space-y-12 md:col-span-4 lg:col-span-4">
             {
               positions.map((position) => {
-                const {
-                  Content,
-                  frontmatter: { filled },
-                } = position;
+                const { Content } = position;
                 return (
                   <div class="space-y-16">
                     <Content />
@@ -127,7 +127,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
           </div>
         </div>
       </div>
-      <p class="mx-auto max-w-2xl">
+      <!-- <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
         kanskje interessert i å bli med i festivalkomiteen? Hvis du er det, kan
         du sende en mail til festivalsjef Eirik og melde din interesse!
@@ -139,7 +139,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
         href="mailto:eirik@mandaljazz.no?cc=marimarie@mandaljazz.no"
         title="eirik@mandaljazz.no"
         target="_blank">Meld din interesse</a
-      >
+      > -->
     </div>
     <Image
       src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
