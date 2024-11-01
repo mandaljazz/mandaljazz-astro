@@ -2,12 +2,18 @@ import "dotenv/config";
 import { createFlickr } from "flickr-sdk";
 import fs from "fs";
 
-const USER_ID = "201530280@N05";
-
 const { flickr } = createFlickr(process.env.FLICKR_API_KEY);
 
+// See docs: https://www.flickr.com/services/api/flickr.urls.lookupUser.html
+const lookupUserResponse = await flickr("flickr.urls.lookupUser", {
+  url: "https://www.flickr.com/people/mandaljazz/",
+});
+
+const user_id = lookupUserResponse.user.id;
+
+// See docs: https://www.flickr.com/services/api/flickr.photosets.getList.html
 const photosetsResponse = await flickr("flickr.photosets.getList", {
-  user_id: USER_ID,
+  user_id,
   primary_photo_extras: "url_z",
 });
 
@@ -16,7 +22,7 @@ console.log("Found", photosetsResponse.photosets.photoset.length, "albums");
 for (const photoset of photosetsResponse.photosets.photoset) {
   const photos = await flickr("flickr.photosets.getPhotos", {
     photoset_id: photoset.id,
-    user_id: USER_ID,
+    user_id,
     extras: "url_s, url_z, url_o",
   });
 
@@ -31,13 +37,13 @@ for (const photoset of photosetsResponse.photosets.photoset) {
     title: photoset.title._content,
     description: photoset.description._content,
     id: photoset.id,
-    href: `https://www.flickr.com/photos/${USER_ID}/albums/${photoset.id}`,
+    href: `https://www.flickr.com/photos/${user_id}/albums/${photoset.id}`,
     url_z: photoset.primary_photo_extras.url_z,
     height_z: photoset.primary_photo_extras.height_z,
     width_z: photoset.primary_photo_extras.width_z,
     photos: photos.photoset.photo.map((photo) => ({
       title: photo.title,
-      href: `https://www.flickr.com/photos/${USER_ID}/${photo.id}/in/album-${photoset.id}/`,
+      href: `https://www.flickr.com/photos/${user_id}/${photo.id}/in/album-${photoset.id}/`,
       url_o: photo.url_o,
       url_z: photo.url_z,
       width_z: photo.width_z,
