@@ -17,9 +17,8 @@ const photosetsResponse = await flickr("flickr.photosets.getList", {
   primary_photo_extras: "url_z",
 });
 
-console.log("Found", photosetsResponse.photosets.photoset.length, "albums");
-
 for (const photoset of photosetsResponse.photosets.photoset) {
+  // See docs: https://www.flickr.com/services/api/flickr.photosets.getPhotos.html
   const photos = await flickr("flickr.photosets.getPhotos", {
     photoset_id: photoset.id,
     user_id,
