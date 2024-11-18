@@ -1,11 +1,8 @@
 name: Update Flickr Photo Albums
 
 on:
-  # schedule:
-  #   - cron: "38 4 * * *" # Every day at 04:38
-  push:
-    branches:
-      - "flickr-*"
+  schedule:
+    - cron: "38 4 * * *" # Every day at 04:38
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
