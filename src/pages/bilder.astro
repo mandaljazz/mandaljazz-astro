@@ -17,54 +17,53 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
       <p>Bilder fra tidligere år på mandaljazz.</p>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         {
-          albums.map((album) => {
-            const {
-              default: { title, url_z, width_z, height_z, href, photos },
-            } = album;
+          albums
+            .sort((a, b) => b.default.title.localeCompare(a.default.title))
+            .map((album) => {
+              const {
+                default: { title, url_z, width_z, height_z, href, photos },
+              } = album;
 
-            return (
-              <div class="group relative overflow-clip rounded-lg">
-                <Link href={href} external unstyled title={title}>
-                  <div class="absolute bottom-2 left-2 flex space-x-2">
-                    {photos.slice(0, 3).map((photo, index) => (
-                      <Image
-                        src={photo.url_s}
-                        class={classNames(
-                          "w-32 rounded-lg transition-transform",
-                          {
+              return (
+                <div class="group relative overflow-clip rounded-lg">
+                  <Link href={href} external unstyled title={title}>
+                    <div class="absolute bottom-2 left-2 grid grid-cols-3 items-end gap-2">
+                      {photos.slice(0, 3).map((photo, index) => (
+                        <Image
+                          src={photo.url_s}
+                          class={classNames("rounded-lg transition-transform", {
                             "group-hover:translate-x-2": index === 0,
                             "group-hover:translate-x-6": index === 1,
                             "group-hover:translate-x-10": index === 2,
-                          },
-                        )}
-                        alt={photo.title}
-                        width={photo.width_s}
-                        height={photo.height_s}
-                        quality={100}
-                      />
-                    ))}
-                  </div>
+                          })}
+                          alt={photo.title}
+                          width={photo.width_s}
+                          height={photo.height_s}
+                          quality={100}
+                        />
+                      ))}
+                    </div>
 
-                  <Image
-                    src={url_z}
-                    class="w-full"
-                    alt={title}
-                    width={width_z}
-                    height={height_z}
-                    quality={100}
-                  />
-                  <span
-                    class="absolute top-0 w-full p-8 text-center text-4xl text-white"
-                    style={{
-                      "text-shadow": "2px 2px 2px #000000",
-                    }}
-                  >
-                    {title}
-                  </span>
-                </Link>
-              </div>
-            );
-          })
+                    <Image
+                      src={url_z}
+                      class="w-full"
+                      alt={title}
+                      width={width_z}
+                      height={height_z}
+                      quality={100}
+                    />
+                    <span
+                      class="absolute top-0 w-full p-8 text-center text-4xl text-white"
+                      style={{
+                        "text-shadow": "2px 2px 2px #000000",
+                      }}
+                    >
+                      {title}
+                    </span>
+                  </Link>
+                </div>
+              );
+            })
         }
       </div>
     </div>
