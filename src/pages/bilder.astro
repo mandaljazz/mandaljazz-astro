@@ -50,14 +50,14 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
                           />
                         ))}
                     </div>
-                    <span
-                      class="absolute top-0 w-full p-8 text-center text-4xl text-white"
+                    <h2
+                      class="absolute top-0 w-full p-8 text-right text-6xl text-white"
                       style={{
                         "text-shadow": "2px 2px 2px #000000",
                       }}
                     >
-                      {title}
-                    </span>
+                      {title?.replace("Mandaljazz ", "")}
+                    </h2>
                   </Link>
                 </div>
               );
