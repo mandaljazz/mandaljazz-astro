@@ -48,4 +48,4 @@ jobs:
           git add .
           git commit -m "Update Flickr Photo Albums"
           git push origin $BRANCH_NAME
-          gh pr create --title "Update Flickr Photo Albums" --body "This pull request was automatically created by a GitHub Actions workflow." --base main --head $BRANCH_NAME
+          gh pr create --auto --title "Update Flickr Photo Albums" --body "This pull request was automatically created by a GitHub Actions workflow." --base main --head $BRANCH_NAME
