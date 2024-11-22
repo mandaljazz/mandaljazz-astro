@@ -1,12 +1,11 @@
 ---
 import partition from "lodash/partition";
 
-import { Image } from "astro:assets";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Card from "../components/Card.astro";
+import PlaceholderCard from "../components/PlaceholderCard.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
-import { imagePathToSrc } from "../utils/images";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
 const [upcomingArtists, pastArtists] = partition(artists, (artist) => {
@@ -38,19 +37,11 @@ const byOrder = (a, b) => {
       <div
         class="relative flex w-full flex-col items-center gap-4 md:flex-row lg:mx-auto lg:w-fit"
       >
-        <Image
-          src={imagePathToSrc("/src/images/poster/2024.png")}
-          class="w-full max-w-72 rounded-sm shadow-solid lg:max-w-96"
-          alt="mandaljazz 2024 poster"
-        />
         <div class="flex flex-col gap-1 lg:gap-4">
-          <h1 class="block p-6 text-center font-display text-2xl sm:text-4xl">
-            mandaljazz 10 år!
-          </h1>
           <h2
-            class="bg-grainy rounded-xl bg-beige p-6 text-center font-display text-2xl leading-snug text-black sm:text-4xl"
+            class="rounded-xl bg-beige p-6 text-center font-display text-2xl leading-snug text-black sm:text-4xl"
           >
-            27.–29. juni 2024
+            26.–28. juni 2025
           </h2>
           <BuyTicketsButton class="mx-auto mt-8 w-fit" />
         </div>
@@ -77,16 +68,17 @@ const byOrder = (a, b) => {
             },
           )
         }
-        <!-- <PlaceholderCard title="Kul artist" /> -->
-        <!-- <PlaceholderCard title="Hippe greier" /> -->
-        <!-- <PlaceholderCard title="Fine ting" /> -->
-        <!-- <PlaceholderCard title="Er dét jazz da?" /> -->
+        <PlaceholderCard title="Kul artist" />
+        <PlaceholderCard title="Hippe greier" />
+        <PlaceholderCard title="Fine ting" />
+        <PlaceholderCard title="Åh, skal de dit!" />
+        <PlaceholderCard title="Er dét jazz da?" />
       </ul>
     </div>
-    <Spotify
+    <!-- <Spotify
       src="https://open.spotify.com/playlist/0Yu3man6TSrYAHi7VntNjT?si=d695cdc021a749e3"
-    />
-    <BuyTicketsButton class="mx-auto w-fit" />
+    /> -->
+    <!-- <BuyTicketsButton class="mx-auto w-fit" /> -->
   </main>
 </Layout>
 
