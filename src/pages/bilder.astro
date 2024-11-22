@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import classNames from "classnames";
+import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -15,7 +16,7 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
     <div class="mx-auto max-w-5xl space-y-8">
       <h1 class="text-5xl md:text-7xl">Bildegalleri</h1>
       <p>Bilder fra tidligere år på mandaljazz.</p>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:md:grid-cols-3">
         {
           albums
             .sort((a, b) => b.default.title.localeCompare(a.default.title))
@@ -27,31 +28,28 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
               return (
                 <div class="group relative overflow-clip rounded-lg">
                   <Link href={href} external unstyled title={title}>
-                    <div class="absolute bottom-2 left-2 grid grid-cols-3 items-end gap-2">
-                      {photos.slice(0, 3).map((photo, index) => (
-                        <Image
-                          src={photo.url_s}
-                          class={classNames("rounded-lg transition-transform", {
-                            "group-hover:translate-x-2": index === 0,
-                            "group-hover:translate-x-6": index === 1,
-                            "group-hover:translate-x-10": index === 2,
-                          })}
-                          alt={photo.title}
-                          width={photo.width_s}
-                          height={photo.height_s}
-                          quality={100}
-                        />
-                      ))}
-                    </div>
-
-                    <Image
+                    <ImageWithBlurredBackground
                       src={url_z}
-                      class="w-full"
                       alt={title}
-                      width={width_z}
-                      height={height_z}
-                      quality={100}
+                      className="group-hover:scale-110 transition-transform duration-700"
                     />
+                    <div class="absolute bottom-2 left-2 flex flex-row items-end gap-2">
+                      {photos
+                        // .filter(({ width_s, height_s }) => height_s > width_s)
+                        .slice(0, 5)
+                        .map((photo, index) => (
+                          <Image
+                            src={photo.url_s}
+                            class={classNames(
+                              "rounded-lg transition-transform group-hover:-rotate-2",
+                            )}
+                            alt={photo.title}
+                            width={photo.width_s / 2}
+                            height={photo.height_s / 2}
+                            quality={100}
+                          />
+                        ))}
+                    </div>
                     <span
                       class="absolute top-0 w-full p-8 text-center text-4xl text-white"
                       style={{
