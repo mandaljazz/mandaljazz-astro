@@ -8,7 +8,7 @@ body {
 }
 
 ::selection {
-  background: theme("colors.yellow");
+  background: theme("colors.pink");
   color: theme("colors.black");
 }
 
@@ -25,7 +25,7 @@ h6 {
 .link {
   background: linear-gradient(
     to top,
-    theme("colors.blue") 80%,
+    theme("colors.light-green") 80%,
     transparent 80%
   );
   text-decoration: none;

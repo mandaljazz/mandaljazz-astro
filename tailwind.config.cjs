@@ -16,6 +16,7 @@ const colors = {
   orange: "#db7b3d",
   pink: "#f6adc9", // hubba-bubba
   green: "#02724A", // noe-gront-no
+  "light-green": "#02b373",
   yellow: "#e8c973",
   red: "#f26b54", // jazz-rod
   black: "#171717", // jazzlaugs-lille-sorte
