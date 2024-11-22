@@ -13,7 +13,7 @@ const { src, caption, attribution } = Astro.props;
 
 <figure>
   <Image src={imagePathToSrc(src)} alt={caption} class="rounded-t-lg" />
-  <figcaption class="flex justify-between rounded-b-lg bg-blue p-4">
+  <figcaption class="flex justify-between rounded-b-lg bg-pink p-4">
     {caption && <span>{caption}</span>}
     {attribution && <span>{attribution}</span>}
   </figcaption>

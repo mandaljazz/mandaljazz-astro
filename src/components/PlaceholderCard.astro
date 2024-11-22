@@ -1,4 +1,6 @@
 ---
+import backgroundImage from "../images/profil/logo/tertiary/green.svg";
+
 export interface Props {
   title: string;
 }
@@ -6,16 +8,16 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<li
-  class={`rounded-xl w-full h-96 sm:h-72 bg-cover bg-bottom sm:bg-center bg-no-repeat`}
-  style={`background-image: url('/2023/artist/jam-torsdag.png')`}
->
-  <div class="relative block h-full w-full">
-    <h2
-      class={`absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-xl text-center
-      p-4 rounded-xl transition-transform group-hover:-rotate-2 bg-stone-200  `}
-    >
-      {title} (kommer…)
-    </h2>
+<li class={`rounded-xl w-full h-96 sm:h-72 p-12 bg-green relative`}>
+  <div
+    class="relative block h-full w-full bg-contain bg-center bg-no-repeat"
+    style={`background-image: url(${backgroundImage.src})`}
+  >
   </div>
+  <h2
+    class={`absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-xl text-center
+  p-4 rounded-xl transition-transform group-hover:-rotate-2 bg-hubba-bubba  `}
+  >
+    {title}
+  </h2>
 </li>

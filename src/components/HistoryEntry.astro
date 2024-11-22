@@ -16,10 +16,10 @@ export interface Props {
 const { year, spotifyUrl, image, flickr } = Astro.props;
 ---
 
-<div class="space-y-8">
+<div class="space-y-8 font-display">
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <h2
-      class={`font-display md:text-center text-8xl md:text-9xl p-4 text-black rounded-lg self-center`}
+      class={`md:text-center text-8xl md:text-9xl p-4 text-black rounded-lg self-center`}
     >
       {year}
     </h2>

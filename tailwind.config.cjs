@@ -1,16 +1,24 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const colors = {
+  // Evergreen colors
+  "creme-de-la-creme": "#fff6f2",
+  "jazzlaugs-lille-sorte": "#171717",
+  "jazz-rod": "#f26b54",
+  "hubba-bubba": "#f6adc9",
+  "noe-gront-no": "#02724A",
+  "the-blues": "#17477e",
+  // Other colors
   blue: "#0e9ead",
-  "dark-blue": "#005f65",
-  beige: "#ecd4b9",
+  "dark-blue": "#17477e", // the-blues
+  beige: "#fff6f2", // creme-de-la-creme
   indigo: "#288885",
   orange: "#db7b3d",
-  pink: "#db8a95",
-  green: "#4b774a",
+  pink: "#f6adc9", // hubba-bubba
+  green: "#02724A", // noe-gront-no
   yellow: "#e8c973",
-  red: "#cd584a",
-  black: "rgb(18, 18, 18)",
+  red: "#f26b54", // jazz-rod
+  black: "#171717", // jazzlaugs-lille-sorte
   white: "rgb(241, 241, 241)",
   "chalk-white": "rgb(255, 255, 255)",
 };
@@ -22,8 +30,8 @@ module.exports = {
     extend: {
       colors,
       fontFamily: {
-        sans: ["Raleway", ...defaultTheme.fontFamily.sans],
-        display: ["Libre Baskerville"],
+        sans: ["ZillaSlab", ...defaultTheme.fontFamily.sans],
+        display: ["Poppins"],
       },
       typography: {
         "quoteless-blockquotes": {
