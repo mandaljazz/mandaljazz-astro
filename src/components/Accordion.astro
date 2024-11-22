@@ -10,7 +10,7 @@ const { title } = Astro.props;
 
 <div>
   <button
-    class="accordion bg-grainy group flex w-full justify-between rounded-t bg-dark-blue p-4 text-left text-white"
+    class="accordion group flex w-full justify-between rounded-t bg-dark-blue p-4 text-left text-white"
   >
     <span>{title}</span><span
       ><Icon
@@ -22,7 +22,7 @@ const { title } = Astro.props;
     >
   </button>
   <div
-    class="bg-grainy h-0 space-y-8 overflow-y-hidden rounded-b bg-dark-blue/10 px-4 transition-all"
+    class="h-0 space-y-8 overflow-y-hidden rounded-b bg-dark-blue/10 px-4 transition-all"
   >
     <slot />
   </div>
