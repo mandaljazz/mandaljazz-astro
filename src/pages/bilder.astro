@@ -35,7 +35,7 @@ const albums = await Astro.glob("../content/flickr-albums/*.json");
                     />
                     <div class="absolute bottom-2 left-2 flex flex-row items-end gap-2">
                       {photos
-                        // .filter(({ width_s, height_s }) => height_s > width_s)
+                        .filter((photo) => url_z !== photo.url_z)
                         .slice(0, 5)
                         .map((photo, index) => (
                           <Image

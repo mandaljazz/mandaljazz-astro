@@ -41,6 +41,7 @@ for (const photoset of photosetsResponse.photosets.photoset) {
     height_z: photoset.primary_photo_extras.height_z,
     width_z: photoset.primary_photo_extras.width_z,
     photos: photos.photoset.photo.map((photo) => ({
+      id: photo.id,
       title: photo.title,
       href: `https://www.flickr.com/photos/${user_id}/${photo.id}/in/album-${photoset.id}/`,
       url_o: photo.url_o,
