@@ -46,8 +46,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: `-6px 6px 0px 0px ${colors.beige}`,
-        "solid-hover": `-10px 10px 0px 0px ${colors["beige"]}`,
+        solid: `-6px 6px 0px 0px ${colors["pink"]}`,
+        "solid-hover": `-10px 10px 0px 0px ${colors["pink"]}`,
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",

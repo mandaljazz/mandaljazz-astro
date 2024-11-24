@@ -1,6 +1,7 @@
 ---
 import partition from "lodash/partition";
 
+import classNames from "classnames";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Card from "../components/Card.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
@@ -55,7 +56,7 @@ const byOrder = (a, b) => {
       >
         {
           [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
-            (artist) => {
+            (artist, index) => {
               const {
                 frontmatter: { title, id, hideFromArtistList },
               } = artist;
@@ -64,7 +65,17 @@ const byOrder = (a, b) => {
                 return null;
               }
 
-              return <Card href={`/artist/${id}`} title={title} id={id} />;
+              return (
+                <Card
+                  className={classNames({
+                    "h-[600px] sm:col-span-2 sm:row-span-2 sm:h-[600px]":
+                      index === 0,
+                  })}
+                  href={`/artist/${id}`}
+                  title={title}
+                  id={id}
+                />
+              );
             },
           )
         }
