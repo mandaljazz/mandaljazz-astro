@@ -22,7 +22,7 @@ for (const photoset of photosetsResponse.photosets.photoset) {
   const photos = await flickr("flickr.photosets.getPhotos", {
     photoset_id: photoset.id,
     user_id,
-    extras: "url_s, url_z, url_o",
+    extras: "url_s, url_z, url_o, url_sq, url_q",
   });
 
   console.log(
@@ -51,6 +51,12 @@ for (const photoset of photosetsResponse.photosets.photoset) {
       url_s: photo.url_s,
       width_s: photo.width_s,
       height_s: photo.height_s,
+      url_sq: photo.url_sq,
+      width_sq: photo.width_sq,
+      height_sq: photo.height_sq,
+      url_q: photo.url_q,
+      width_q: photo.width_q,
+      height_q: photo.height_q,
     })),
   };
 

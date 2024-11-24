@@ -1,19 +1,20 @@
 ---
 import { Image } from "astro:assets";
+import classNames from "classnames";
 import { imagePathToSrc } from "../utils/images";
+import Link from "./Link.astro";
 import Spotify from "./Spotify.astro";
 
 export interface Props {
   year: string;
   image: string;
   spotifyUrl?: string;
-  flickr?: {
-    href: string;
-    src: string;
-  };
+  flickrAlbumId?: string;
 }
 
-const { year, spotifyUrl, image, flickr } = Astro.props;
+const { year, spotifyUrl, image, flickrAlbumId } = Astro.props;
+const albums = await Astro.glob(`../content/flickr-albums/*.json`);
+const album = albums.find((album) => album.default.id === flickrAlbumId);
 ---
 
 <div class="space-y-8 font-display">
@@ -32,5 +33,30 @@ const { year, spotifyUrl, image, flickr } = Astro.props;
     <ul class="space-y-4 p-8 text-xl">
       <slot />
     </ul>
+    {
+      album && (
+        <div class="group flex flex-wrap justify-center gap-3 rounded-lg md:col-span-2 md:justify-start">
+          {album.default.photos.map((photo) => (
+            <Link
+              href={album.default.href}
+              external
+              unstyled
+              title={album.default.title}
+            >
+              <Image
+                src={photo.url_q}
+                class={classNames(
+                  "rounded-lg transition-transform hover:scale-105",
+                )}
+                alt={photo.title}
+                width={photo.width_q}
+                height={photo.height_q}
+                quality={75}
+              />
+            </Link>
+          ))}
+        </div>
+      )
+    }
   </div>
 </div>
