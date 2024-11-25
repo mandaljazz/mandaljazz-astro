@@ -28,10 +28,10 @@ const years = [
       <h1 class="text-5xl md:text-7xl">Historikk</h1>
       <p>Tidligere artister på mandaljazz.</p>
       <div
-        class="sticky top-[52px] z-10 -mx-4 md:top-[56px] md:col-span-2 md:mx-0 lg:col-span-2"
+        class="sticky top-[48px] z-10 -mx-4 md:col-span-2 lg:top-[56px] lg:col-span-2"
       >
         <ul
-          class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
+          class="scrollbar-hidden flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3"
         >
           {
             years.map((year) => (
@@ -355,8 +355,29 @@ const years = [
   </main>
 </Layout>
 
-<script
-  is:inline
-  async
-  src="//embedr.flickr.com/assets/client-code.js"
-  charset="utf-8"></script>
+<script>
+  // list of elements to be observed
+  const targets = document.getElementsByClassName("observed");
+
+  const options = {
+    root: null, // null means root is viewport
+    rootMargin: "0px",
+    threshold: 0.5, // trigger callback when 50% of the element is visible
+  };
+
+  function callback(entries, observer) {
+    console.log({ document, entries, observer });
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        document.querySelector(".active")?.classList?.remove("active");
+        const targetId = entry.target.id; // identify which element is visible in the viewport at 50%
+        console.log({ targetId });
+        document.querySelector(`[href="#${targetId}"]`).classList.add("active");
+      }
+    });
+  }
+
+  let observer = new IntersectionObserver(callback, options);
+
+  [...targets].forEach((target) => observer.observe(target));
+</script>

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+}
+
 body {
   letter-spacing: 0.05em;
   hyphenate-character: "-";
@@ -41,6 +53,10 @@ h6 {
   background-position: 0% 0%;
 }
 .link:hover {
+  background-position: 0 22%;
+  color: theme("colors.white");
+}
+.link.active {
   background-position: 0 22%;
   color: theme("colors.white");
 }
