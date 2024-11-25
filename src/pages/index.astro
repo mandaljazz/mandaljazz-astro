@@ -36,14 +36,16 @@ const byOrder = (a, b) => {
   >
     <div class="mx-auto flex max-w-5xl flex-col items-center gap-8">
       <div
-        class="relative flex w-full flex-col items-center gap-4 md:flex-row lg:mx-auto lg:w-fit"
+        class="relative flex w-full flex-col items-center gap-4 pt-8 md:pt-12 lg:mx-auto lg:w-fit"
       >
-        <div class="flex flex-col gap-1 lg:gap-4">
-          <h2
-            class="rounded-xl bg-beige p-6 text-center text-2xl leading-snug text-black sm:text-4xl"
+        <div class="flex flex-col gap-1 lg:gap-6">
+          <h1
+            class="font-league-spartan rounded-xl bg-beige p-6 text-center text-5xl leading-snug text-black sm:space-y-6 sm:text-7xl"
           >
-            26.–28. juni 2025
-          </h2>
+            <span class="block">26.–28. juni</span><span class="block"
+              >2025</span
+            >
+          </h1>
           <BuyTicketsButton class="mx-auto mt-8 w-fit" />
         </div>
       </div>
@@ -79,11 +81,11 @@ const byOrder = (a, b) => {
             },
           )
         }
-        <PlaceholderCard title="Kul artist" />
-        <PlaceholderCard title="Hippe greier" />
-        <PlaceholderCard title="Fine ting" />
-        <PlaceholderCard title="Serr?! Wow!" />
-        <PlaceholderCard title="Er dét jazz da?" />
+        <PlaceholderCard title="Kul artist (kommer…)" />
+        <PlaceholderCard title="Hippe greier (kommer…)" />
+        <PlaceholderCard title="Fine ting (kommer…)" />
+        <PlaceholderCard title="Andre ting (kommer…)" />
+        <PlaceholderCard title="Er dét jazz da? (kommer…)" />
       </ul>
     </div>
     <!-- <Spotify

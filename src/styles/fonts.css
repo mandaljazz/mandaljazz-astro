@@ -145,3 +145,12 @@
   font-style: italic;
   font-weight: 700;
 }
+
+/* League Spartan */
+@font-face {
+  font-family: "LeagueSpartan";
+  src:
+    local("LeagueSpartan"),
+    url(/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf)
+      format("truetype");
+}

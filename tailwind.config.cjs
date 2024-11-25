@@ -33,6 +33,7 @@ module.exports = {
       fontFamily: {
         sans: ["ZillaSlab", ...defaultTheme.fontFamily.sans],
         display: ["Poppins"],
+        "league-spartan": ["LeagueSpartan"],
       },
       typography: {
         "quoteless-blockquotes": {
