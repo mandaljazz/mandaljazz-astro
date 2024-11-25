@@ -3,6 +3,20 @@ import HistoryEntry from "../components/HistoryEntry.astro";
 import Link from "../components/Link.astro";
 import RainbowDivider from "../components/RainbowDivider.astro";
 import Layout from "../layouts/Layout.astro";
+
+const years = [
+  "2024",
+  "2023",
+  "2022",
+  "2021",
+  "2020",
+  "2019",
+  "2018",
+  "2017",
+  "2016",
+  "2015",
+  "2014",
+];
 ---
 
 <Layout
@@ -13,8 +27,26 @@ import Layout from "../layouts/Layout.astro";
     <div class="mx-auto max-w-5xl space-y-8">
       <h1 class="text-5xl md:text-7xl">Historikk</h1>
       <p>Tidligere artister på mandaljazz.</p>
+      <div
+        class="sticky top-[52px] z-10 -mx-4 md:top-[56px] md:col-span-2 md:mx-0 lg:col-span-2"
+      >
+        <ul
+          class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
+        >
+          {
+            years.map((year) => (
+              <li>
+                <Link href={`#mandaljazz-${year}`} title={year}>
+                  {year}
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
       <div class="space-y-24">
         <HistoryEntry
+          id="mandaljazz-2024"
           year="2024"
           spotifyUrl="https://open.spotify.com/playlist/0Yu3man6TSrYAHi7VntNjT?si=d695cdc021a749e3"
           image={"/src/images/poster/2024-alt.png"}
@@ -34,6 +66,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2023"
           year="2023"
           spotifyUrl="https://open.spotify.com/playlist/63wOAJl5BH7l1TJ99aUSFd?si=e9b38daf65884e70"
           image={"/src/images/poster/2023.png"}
@@ -56,6 +89,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2022"
           year="2022"
           spotifyUrl="https://open.spotify.com/playlist/7bRe3n4p7ki3482DA7paLg?si=13350e503bdd4eeb"
           image={"/src/images/poster/2022.png"}
@@ -86,6 +120,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2021"
           year="2021"
           spotifyUrl="https://open.spotify.com/playlist/0WidFIgWoilkjFxsbyrKnW?si=c7986c7dae6046a3"
           image={"/src/images/poster/2021.png"}
@@ -110,6 +145,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2020"
           year="2020"
           spotifyUrl="https://open.spotify.com/playlist/3bsaVvMLXtqBQrtVUnpMDc?si=0154d21c24cc48a7"
           image={"/src/images/poster/2020.jpg"}
@@ -129,6 +165,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2019"
           year="2019"
           spotifyUrl="https://open.spotify.com/playlist/1bJMg11qTaFXos3AhXcDGa?si=1422da49d6494b35"
           image={"/src/images/poster/2019.png"}
@@ -160,6 +197,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2018"
           year="2018"
           spotifyUrl="https://open.spotify.com/playlist/52IPREVc8kXgKkUgF3uhSJ?si=4181913b19b34fdf"
           image={"/src/images/poster/2018.png"}
@@ -188,6 +226,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2017"
           year="2017"
           image={"/src/images/poster/2017.jpg"}
           flickrAlbumId="72177720320933405"
@@ -231,6 +270,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2016"
           year="2016"
           image={"/src/images/poster/2016.jpg"}
           flickrAlbumId="72177720320933247"
@@ -252,6 +292,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2015"
           year="2015"
           image={"/src/images/poster/2015.jpg"}
           flickrAlbumId="72177720320931490"
@@ -286,6 +327,7 @@ import Layout from "../layouts/Layout.astro";
         <RainbowDivider />
 
         <HistoryEntry
+          id="mandaljazz-2014"
           year="2014"
           image={"/src/images/poster/2014.jpg"}
           flickrAlbumId="72177720320931090"

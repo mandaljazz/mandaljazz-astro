@@ -6,18 +6,20 @@ import Link from "./Link.astro";
 import Spotify from "./Spotify.astro";
 
 export interface Props {
+  id: string;
   year: string;
   image: string;
   spotifyUrl?: string;
   flickrAlbumId?: string;
 }
 
-const { year, spotifyUrl, image, flickrAlbumId } = Astro.props;
+const { id, year, spotifyUrl, image, flickrAlbumId } = Astro.props;
 const albums = await Astro.glob(`../content/flickr-albums/*.json`);
 const album = albums.find((album) => album.default.id === flickrAlbumId);
 ---
 
 <div class="space-y-8 font-display">
+  <div id={id} class="invisible -translate-y-40"></div>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
     <h2
       class={`md:text-center text-8xl md:text-9xl p-4 text-black rounded-lg self-center`}

@@ -94,10 +94,8 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
                   } = position;
                   return filled ? (
                     <li>
-                      <Link href={`#${id}`} title={title}>
-                        <span class="line-through">{title}</span>
-                      </Link>
-                      &nbsp;✔
+                      {/* prettier-ignore */}
+                      <><Link href={`#${id}`} title={title}><span class="line-through">{title}</span></Link>&nbsp;✔</>
                     </li>
                   ) : (
                     <li>
