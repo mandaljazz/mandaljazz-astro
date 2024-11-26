@@ -19,13 +19,13 @@ import "../styles/mapbox-overrides.css";
       supportText: "på Kulturfabrikken",
       coordinates: [7.457609, 58.024953],
     },
-    // {
-    //   id: "elvesalen",
-    //   directionsLink: "https://goo.gl/maps/DFWhAkxsG79Z6XsSA",
-    //   name: "Elvesalen",
-    //   supportText: "i Buen",
-    //   coordinates: [7.456102489810863, 58.025413017347816],
-    // },
+    {
+      id: "storsalen",
+      directionsLink: "https://goo.gl/maps/DFWhAkxsG79Z6XsSA",
+      name: "Storsalen",
+      supportText: "i Buen",
+      coordinates: [7.456102489810863, 58.025413017347816],
+    },
     {
       id: "dynamitten",
       directionsLink: "https://maps.app.goo.gl/6Xg1GqjQRNGNcQSz9",
@@ -136,8 +136,8 @@ import "../styles/mapbox-overrides.css";
       source: "venues-source",
       paint: {
         "circle-radius": 8.5,
-        "circle-color": "#cd584a",
-        "circle-stroke-color": "#ecd4b9",
+        "circle-color": "#f26b54",
+        "circle-stroke-color": "#fff6f2",
         "circle-stroke-width": 2,
         "circle-opacity": 1,
       },
@@ -166,7 +166,7 @@ import "../styles/mapbox-overrides.css";
           </div>
           ${
             directionsLink &&
-            `<div><a class="link" href=${directionsLink}>Åpne i Google Maps</a></div>`
+            `<div><a class="link font-display" href=${directionsLink}>Åpne i Google Maps</a></div>`
           }
         </div>
         `,

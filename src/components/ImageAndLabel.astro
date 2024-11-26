@@ -11,7 +11,7 @@ export interface Props {
 const { image, alt } = Astro.props;
 ---
 
-<span class="flex flex-row items-center gap-2"
+<span class="flex flex-row items-center gap-2 font-display"
   ><Image
     src={imagePathToSrc(image)}
     alt={alt}
