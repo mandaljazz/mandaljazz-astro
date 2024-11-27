@@ -22,6 +22,7 @@ const {
     title,
     author,
     authorImage,
+    noAuthor,
     tagline,
     id,
     imageType,
@@ -46,6 +47,7 @@ export type ArtistProps = {
     shortTitle?: string;
     author?: string;
     authorImage?: string;
+    noAuthor?: boolean;
     tagline?: string;
     venue?: string;
     concertStartAt?: string;
@@ -174,12 +176,16 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
               )
             }
           </div>
-          <ImageAndLabel
-            image={`/src/images/folk/${authorImage || "placeholder.png"}`}
-            alt={`Bilde av ${author || "Presseskriv"}`}
-          >
-            Tekst: {author || "Presseskriv"}
-          </ImageAndLabel>
+          {
+            !noAuthor && (
+              <ImageAndLabel
+                image={`/src/images/folk/${authorImage || "placeholder.png"}`}
+                alt={`Bilde av ${author || "Presseskriv"}`}
+              >
+                Tekst: {author || "Presseskriv"}
+              </ImageAndLabel>
+            )
+          }
           <article class="prose prose-quoteless-blockquotes">
             <slot />
           </article>
@@ -199,7 +205,14 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
             )
           }
           <div class="flex flex-row justify-between">
-            {!isFree && <BuyTicketsButton class="flex-0 h-fit w-fit" externalTicketUrl={externalTicketUrl} />}
+            {
+              !isFree && (
+                <BuyTicketsButton
+                  class="flex-0 h-fit w-fit"
+                  externalTicketUrl={externalTicketUrl}
+                />
+              )
+            }
             {
               isFree && requiresFreeTicket && (
                 <BuyTicketsButton class="flex-0 h-fit w-fit" isFree />
