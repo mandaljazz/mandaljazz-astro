@@ -21,9 +21,9 @@ const byOrder = (a, b) => {
   const aOrder = a.frontmatter.order || 0;
   const bOrder = b.frontmatter.order || 0;
   if (aOrder > bOrder) {
-    return -1;
-  } else if (aOrder < bOrder) {
     return 1;
+  } else if (aOrder < bOrder) {
+    return -1;
   } else {
     return 0;
   }
