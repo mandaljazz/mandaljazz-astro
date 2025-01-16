@@ -60,6 +60,23 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
             gruppene du kan være med i som frivillig.
           </p>
         </div>
+        <div class="space-y-4 md:col-span-2">
+          <p>Ønsker du å bidra enda mer?</p>
+          <p>
+            Da kan du <Link href="/festivalkomite" title="Festivalkomiteen"
+              >bli med i festivalkomiteen!</Link
+            >
+          </p>
+        </div>
+        <div class="rounded-lg shadow-lg md:col-span-3">
+          <Image
+            src={"/festivalkomite/artistsjef.jpg"}
+            alt="Festivalkomiteen"
+            height={750}
+            width={1000}
+            class="rounded-lg shadow-lg md:col-span-2"
+          />
+        </div>
       </div>
       <!-- <Link
         href="#registreringsskjema"
@@ -110,23 +127,27 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
       </div>
       <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
-        kanskje interessert i å bli med som frivillig på mandaljazz? Da er det
-        bare å melde seg på i skjemaet nedenfor!
+        kanskje interessert i å bli med som frivillig på mandaljazz? Vi kommer
+        snart med et skjema hvor du kan melde deg på!
       </p>
       <!-- <div class="space-y-4">
         <div class="invisible -translate-y-16" id="registreringsskjema"></div>
         <h2 class="text-3xl">Registrering</h2>
         <VolunteerForm />
       </div> -->
-      <Image
+      <!-- <Image
         src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
         class="mx-auto max-w-72 md:max-w-96"
         alt="Frimerke dans"
-      />
+      /> -->
 
       <div class="space-y-8">
         <h2 class="text-3xl">Tidligere frivilliggjenger</h2>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <ImageWithCaption
+            src="/src/images/frivillig/fellesbilde-2024.jpg"
+            caption={`Frivilliggjengen ${2024}`}
+          />
           <ImageWithCaption
             src="/src/images/frivillig/fellesbilde-2023.jpg"
             caption={`Frivilliggjengen ${2023}`}
