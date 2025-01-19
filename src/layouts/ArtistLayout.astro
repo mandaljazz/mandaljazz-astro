@@ -4,6 +4,7 @@ import last from "lodash/last";
 import sortBy from "lodash/sortBy";
 
 import Icon from "astro-icon";
+import { isBefore } from "date-fns";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
@@ -62,13 +63,20 @@ export type ArtistProps = {
     requiresFreeTicket?: boolean;
     externalTicketUrl?: string;
     order?: string;
+    releaseAt?: string;
   };
 };
 
 const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
+const releasedArtists = artistsPages.filter(
+  (artist) =>
+    !artist.frontmatter.hideFromProgram &&
+    (!artist.frontmatter.releaseAt ||
+      isBefore(artist.frontmatter.releaseAt, new Date())),
+);
 const sortedArtistsPages = sortBy(
   [
-    ...artistsPages.filter(
+    ...releasedArtists.filter(
       ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],
