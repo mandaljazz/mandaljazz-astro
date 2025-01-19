@@ -2,6 +2,7 @@
 import partition from "lodash/partition";
 
 import classNames from "classnames";
+import { isBefore } from "date-fns";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Card from "../components/Card.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
@@ -9,7 +10,12 @@ import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
-const [upcomingArtists, pastArtists] = partition(artists, (artist) => {
+const releasedArtists = artists.filter(
+  (artist) =>
+    !artist.frontmatter.releaseAt ||
+    isBefore(artist.frontmatter.releaseAt, new Date()),
+);
+const [upcomingArtists, pastArtists] = partition(releasedArtists, (artist) => {
   const {
     frontmatter: { concertStartAt },
   } = artist;
@@ -40,7 +46,7 @@ const byOrder = (a, b) => {
       >
         <div class="flex flex-col gap-1 lg:gap-6">
           <h1
-            class="font-league-spartan rounded-xl bg-beige p-6 text-center text-5xl leading-snug text-black sm:space-y-6 sm:text-7xl"
+            class="rounded-xl bg-beige p-6 text-center font-league-spartan text-5xl leading-snug text-black sm:space-y-6 sm:text-7xl"
           >
             <span class="block">26.–28. juni</span><span class="block"
               >2025</span

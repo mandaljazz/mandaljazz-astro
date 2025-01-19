@@ -5,12 +5,19 @@ import sortBy from "lodash/sortBy";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
+import { isBefore } from "date-fns";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
+const releasedArtists = artistsPages.filter(
+  (artist) =>
+    !artist.frontmatter.hideFromProgram &&
+    (!artist.frontmatter.releaseAt ||
+      isBefore(artist.frontmatter.releaseAt, new Date())),
+);
 const tbaArtists = [
   // {
   //   title: "Jazzlaugs gebursdag m/M. Rexen solo",
@@ -48,7 +55,7 @@ const concertsGroupedByDay = Object.entries(
   groupBy(
     sortBy(
       [
-        ...artistsPages.filter(
+        ...releasedArtists.filter(
           ({ frontmatter: { hideFromProgram } }) => !hideFromProgram,
         ),
         ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
