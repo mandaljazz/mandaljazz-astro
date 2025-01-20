@@ -68,15 +68,16 @@ export type ArtistProps = {
 };
 
 const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
-const releasedArtists = artistsPages.filter(
-  (artist) =>
-    !artist.frontmatter.hideFromProgram &&
-    (!artist.frontmatter.releaseAt ||
-      isBefore(artist.frontmatter.releaseAt, new Date())),
-);
+const releasedArtists = () =>
+  artistsPages.filter(
+    (artist) =>
+      !artist.frontmatter.hideFromProgram &&
+      (!artist.frontmatter.releaseAt ||
+        isBefore(artist.frontmatter.releaseAt, new Date())),
+  );
 const sortedArtistsPages = sortBy(
   [
-    ...releasedArtists.filter(
+    ...releasedArtists().filter(
       ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],

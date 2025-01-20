@@ -10,18 +10,22 @@ import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
 const artists = await Astro.glob("../pages/artist/*.mdx");
-const releasedArtists = artists.filter(
-  (artist) =>
-    !artist.frontmatter.releaseAt ||
-    isBefore(artist.frontmatter.releaseAt, new Date()),
-);
-const [upcomingArtists, pastArtists] = partition(releasedArtists, (artist) => {
-  const {
-    frontmatter: { concertStartAt },
-  } = artist;
+const releasedArtists = () =>
+  artists.filter(
+    (artist) =>
+      !artist.frontmatter.releaseAt ||
+      isBefore(artist.frontmatter.releaseAt, new Date()),
+  );
+const [upcomingArtists, pastArtists] = partition(
+  releasedArtists(),
+  (artist) => {
+    const {
+      frontmatter: { concertStartAt },
+    } = artist;
 
-  return new Date(concertStartAt) > new Date();
-});
+    return new Date(concertStartAt) > new Date();
+  },
+);
 
 const byOrder = (a, b) => {
   const aOrder = a.frontmatter.order || 0;

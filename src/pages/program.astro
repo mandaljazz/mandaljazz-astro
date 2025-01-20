@@ -12,12 +12,13 @@ import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
 
 const artistsPages = await Astro.glob("../pages/artist/*.mdx");
-const releasedArtists = artistsPages.filter(
-  (artist) =>
-    !artist.frontmatter.hideFromProgram &&
-    (!artist.frontmatter.releaseAt ||
-      isBefore(artist.frontmatter.releaseAt, new Date())),
-);
+const releasedArtists = () =>
+  artistsPages.filter(
+    (artist) =>
+      !artist.frontmatter.hideFromProgram &&
+      (!artist.frontmatter.releaseAt ||
+        isBefore(artist.frontmatter.releaseAt, new Date())),
+  );
 const tbaArtists = [
   // {
   //   title: "Jazzlaugs gebursdag m/M. Rexen solo",
@@ -55,7 +56,7 @@ const concertsGroupedByDay = Object.entries(
   groupBy(
     sortBy(
       [
-        ...releasedArtists.filter(
+        ...releasedArtists().filter(
           ({ frontmatter: { hideFromProgram } }) => !hideFromProgram,
         ),
         ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
