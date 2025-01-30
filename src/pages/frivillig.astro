@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Link from "../components/Link.astro";
-// import VolunteerForm from "../components/VolunteerForm.astro";
+import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
 import { imagePathToSrc } from "../utils/images";
 
@@ -78,13 +78,11 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
           />
         </div>
       </div>
-      <!-- <Link
-        href="#registreringsskjema"
-        title="Til registreingsskjema"
-        class="mx-auto"
-      >
-        Til registreringsskjema
-      </Link> -->
+      <div class="flex justify-center">
+        <Link href="#registreringsskjema" title="Til registreingsskjema">
+          Til registreringsskjema
+        </Link>
+      </div>
       <div class="space-y-8">
         <h2 class="text-2xl md:text-3xl">Les litt om de ulike gruppene</h2>
         <div class="gap-2 md:grid md:grid-cols-5">
@@ -127,14 +125,14 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
       </div>
       <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
-        kanskje interessert i å bli med som frivillig på mandaljazz? Vi kommer
-        snart med et skjema hvor du kan melde deg på!
+        kanskje interessert i å bli med som frivillig på mandaljazz? Da kan du
+        melde deg på i skjemaet nedenfor.
       </p>
-      <!-- <div class="space-y-4">
+      <div class="space-y-4">
         <div class="invisible -translate-y-16" id="registreringsskjema"></div>
         <h2 class="text-3xl">Registrering</h2>
         <VolunteerForm />
-      </div> -->
+      </div>
       <!-- <Image
         src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
         class="mx-auto max-w-72 md:max-w-96"
