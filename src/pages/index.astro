@@ -3,8 +3,8 @@ import partition from "lodash/partition";
 
 import classNames from "classnames";
 import { isBefore } from "date-fns";
+import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import Card from "../components/Card.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
@@ -76,6 +76,7 @@ const byOrder = (a, b) => {
                   id,
                   hideFromArtistList,
                   isPlaceholder,
+                  tagline,
                 },
               } = artist;
 
@@ -87,8 +88,10 @@ const byOrder = (a, b) => {
                 return (
                   <div
                     class={classNames("lg:col-start-1", {
-                      "lg:row-start-3": index === 4,
-                      "lg:row-start-4": index === 5,
+                      "lg:row-start-3":
+                        index === 4 && releasedArtists()?.length > 3,
+                      "lg:row-start-4":
+                        index === 5 && releasedArtists()?.length > 3,
                     })}
                   >
                     <PlaceholderCard title={title} />
@@ -97,7 +100,7 @@ const byOrder = (a, b) => {
               }
 
               return (
-                <Card
+                <ArtistCard
                   className={classNames({
                     "h-[600px] lg:col-span-2 lg:row-span-2 lg:h-[600px]":
                       index === 0,
@@ -106,6 +109,7 @@ const byOrder = (a, b) => {
                   })}
                   href={`/artist/${id}`}
                   title={shortTitle || title}
+                  tagline={tagline}
                   id={id}
                 />
               );

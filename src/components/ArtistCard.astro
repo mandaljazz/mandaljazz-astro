@@ -4,13 +4,14 @@ import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 
 export interface Props {
   title: string;
+  tagline: string;
   href: string;
   id: string;
   imageType?: string;
   className?: string;
 }
 
-const { href, title, id, imageType, className } = Astro.props;
+const { href, title, id, imageType, className, tagline } = Astro.props;
 
 const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
 ---
@@ -27,8 +28,13 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
       alt={title}
       className="rounded-xl"
     />
+    <div
+      class="absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl bg-blue p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-8 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5"
+    >
+      <p>{tagline}</p>
+    </div>
     <h2
-      class={`absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4  text-xl text-center
+      class={`font-medium absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-xl text-center
       p-4 rounded-xl transition-transform group-hover:-rotate-2 bg-pink`}
     >
       {title}

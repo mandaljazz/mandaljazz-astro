@@ -28,13 +28,13 @@ const colors = {
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    colors,
+    fontFamily: {
+      sans: ["ZillaSlab", ...defaultTheme.fontFamily.sans],
+      display: ["Poppins"],
+      "league-spartan": ["LeagueSpartan"],
+    },
     extend: {
-      colors,
-      fontFamily: {
-        sans: ["ZillaSlab", ...defaultTheme.fontFamily.sans],
-        display: ["Poppins"],
-        "league-spartan": ["LeagueSpartan"],
-      },
       typography: {
         "quoteless-blockquotes": {
           css: {
