@@ -64,36 +64,54 @@ const byOrder = (a, b) => {
       <h3 class="text-3xl">Artister</h3>
       <ul
         role="list"
-        class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
       >
         {
           [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
             (artist, index) => {
               const {
-                frontmatter: { title, id, hideFromArtistList },
+                frontmatter: {
+                  title,
+                  shortTitle,
+                  id,
+                  hideFromArtistList,
+                  isPlaceholder,
+                },
               } = artist;
 
               if (hideFromArtistList) {
                 return null;
               }
 
+              if (isPlaceholder) {
+                return (
+                  <div
+                    class={classNames("lg:col-start-1", {
+                      "lg:row-start-3": index === 4,
+                      "lg:row-start-4": index === 5,
+                    })}
+                  >
+                    <PlaceholderCard title={title} />
+                  </div>
+                );
+              }
+
               return (
                 <Card
                   className={classNames({
-                    "h-[600px] sm:col-span-2 sm:row-span-2 sm:h-[600px]":
+                    "h-[600px] lg:col-span-2 lg:row-span-2 lg:h-[600px]":
                       index === 0,
+                    "h-[600px] lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:h-[600px]":
+                      index === 3,
                   })}
                   href={`/artist/${id}`}
-                  title={title}
+                  title={shortTitle || title}
                   id={id}
                 />
               );
             },
           )
         }
-        <PlaceholderCard title="Kul artist (kommer…)" />
-        <PlaceholderCard title="Hippe greier (kommer…)" />
-        <PlaceholderCard title="Fine ting (kommer…)" />
       </ul>
     </div>
     <!-- <Spotify
