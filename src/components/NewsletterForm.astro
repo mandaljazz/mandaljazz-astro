@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<form
+  data-mnm-formid="MjQ3ODk6NGQ3N2QzYzAtNDA0Ni00NWNlLTk1MmQtOGVlNWZhYTA0MmRl"
+  data-mnm-captcha="hcaptcha"
+  data-mnm-version="1"
+  action="https://pub.dialogapi.no/s/MjQ3ODk6NGQ3N2QzYzAtNDA0Ni00NWNlLTk1MmQtOGVlNWZhYTA0MmRl"
+  accept-charset="utf-8"
+  method="post"
+  class="mnm-embed-form w-full max-w-sm"
+>
+  <div class="mnm-form-fields flex flex-col">
+    <div class="flex flex-col gap-1">
+      <label for="email"><span class="text-sm">E-postadresse</span> </label>
+      <input
+        class="rounded-t-md border border-black bg-chalk-white px-3 py-2 text-black placeholder:text-black/50"
+        type="email"
+        name="email"
+        placeholder="din@epost.no"
+        required
+      />
+      <input type="hidden" name="h-captcha-response" />
+    </div>
+    <button
+      type="submit"
+      class="group relative flex cursor-pointer items-center justify-center gap-2 rounded-b-md bg-black p-2 text-white transition-shadow group-hover:shadow-xl"
+      ><Icon
+        pack="ion"
+        name="paper-plane-outline"
+        class="opacity-0 transition-all group-hover:opacity-100"
+        size={24}
+      /><span>Meld meg på</span><span
+        class="h-6 w-6 transition-all group-hover:-ml-8"></span></button
+    >
+  </div>
+  <div class="mnm-form-confirmation" style="display: none"></div>
+</form>
+
+<script
+  src="https://cdn.dialogapi.no/form.min.js"
+  crossorigin="anonymous"
+  async
+  defer></script>

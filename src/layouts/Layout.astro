@@ -10,6 +10,7 @@ setDefaultOptions({ locale: nb });
 
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import NewsletterSection from "../components/NewsletterSection.astro";
 import Sponsors from "../components/Sponsors.astro";
 import "../styles/fonts.css";
 import "../styles/main.css";
@@ -60,9 +61,10 @@ const { title, description, image } = Astro.props;
       }}
     />
   </head>
-  <body class="bg-creme-de-la-creme flex flex-col font-sans font-medium text-lg text-black">
+  <body class="flex flex-col bg-beige font-sans text-lg font-medium text-black">
     <Header />
     <slot />
+    <NewsletterSection />
     <Sponsors />
     <Footer />
 

@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import NewsletterForm from "./NewsletterForm.astro";
+---
+
+<div
+  class="bg-chalk-white px-4 pb-24 pt-20 shadow-inner sm:px-6 sm:pb-32 sm:pt-28 md:px-8 lg:px-16 xl:px-32"
+>
+  <div
+    class="mx-auto grid max-w-5xl items-center gap-x-4 gap-y-8 md:grid-cols-2"
+  >
+    <div class="space-y-8">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl">Nyhetsbrev</h2>
+      <NewsletterForm />
+    </div>
+    <div>
+      <Image
+        src={"/2023/profil/eirik.png"}
+        alt="Eirik med ropert, jazz"
+        class="rounded-lg"
+        height={750}
+        width={1000}
+      />
+    </div>
+  </div>
+</div>
