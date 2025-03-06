@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+
 ---
 
 <form
@@ -23,23 +23,18 @@ import { Icon } from "astro-icon";
       />
       <input type="hidden" name="h-captcha-response" />
     </div>
-    <button
+    <input
       type="submit"
       class="group relative flex cursor-pointer items-center justify-center gap-2 rounded-b-md bg-black p-2 text-white transition-shadow group-hover:shadow-xl"
-      ><Icon
-        pack="ion"
-        name="paper-plane-outline"
-        class="opacity-0 transition-all group-hover:opacity-100"
-        size={24}
-      /><span>Meld meg på</span><span
-        class="h-6 w-6 transition-all group-hover:-ml-8"></span></button
-    >
+      value="Meld meg på"
+    />
   </div>
   <div class="mnm-form-confirmation" style="display: none"></div>
 </form>
 
 <script
-  type="module"
   is:inline
   src="https://cdn.dialogapi.no/form.min.js"
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"
+  async
+  defer></script>
