@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { isBefore } from "date-fns";
 import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import PlaceholderCard from "../components/PlaceholderCard.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -84,28 +83,13 @@ const byOrder = (a, b) => {
                 return null;
               }
 
-              if (isPlaceholder) {
-                return (
-                  <div
-                    class={classNames("lg:col-start-1", {
-                      "lg:row-start-3":
-                        index === 4 && releasedArtists()?.length > 3,
-                      "lg:row-start-4":
-                        index === 5 && releasedArtists()?.length > 3,
-                    })}
-                  >
-                    <PlaceholderCard title={title} />
-                  </div>
-                );
-              }
-
               return (
                 <ArtistCard
                   className={classNames({
                     "h-[600px] lg:col-span-2 lg:row-span-2 lg:h-[600px]":
                       index === 0,
                     "h-[600px] lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:h-[600px]":
-                      index === 3,
+                      index === 4,
                   })}
                   href={`/artist/${id}`}
                   title={shortTitle || title}
