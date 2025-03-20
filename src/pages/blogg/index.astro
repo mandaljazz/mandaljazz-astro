@@ -5,11 +5,11 @@ const articles = await Astro.glob("./*.mdx");
 ---
 
 <Layout
-  title="Blogg // mandaljazz 2024"
+  title="Blogg // mandaljazz"
   description="Tilfeldige skriblerier fra gjengen i mandaljazz"
 >
-  <main class="px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32">
-    <section class="mx-auto max-w-3xl space-y-24">
+  <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
+    <div class="mx-auto max-w-5xl space-y-16">
       <h1 class="text-5xl md:text-7xl">Jazzblogg</h1>
       <ul
         role="list"
@@ -41,6 +41,6 @@ const articles = await Astro.glob("./*.mdx");
             })
         }
       </ul>
-    </section>
+    </div>
   </main>
 </Layout>
