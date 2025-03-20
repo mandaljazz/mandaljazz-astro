@@ -74,7 +74,6 @@ const byOrder = (a, b) => {
                   shortTitle,
                   id,
                   hideFromArtistList,
-                  isPlaceholder,
                   tagline,
                 },
               } = artist;
@@ -86,10 +85,10 @@ const byOrder = (a, b) => {
               return (
                 <ArtistCard
                   className={classNames({
-                    "h-[600px] lg:col-span-2 lg:row-span-2 lg:h-[600px]":
-                      index === 0,
-                    "h-[600px] lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:h-[600px]":
-                      index === 4,
+                    "h-[600px] lg:col-span-2 lg:row-span-2 lg:h-[628px]":
+                      index === 0 || index === 9,
+                    "h-[600px] lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:h-[628px]":
+                      index === 4 || index === 16,
                   })}
                   href={`/artist/${id}`}
                   title={shortTitle || title}
