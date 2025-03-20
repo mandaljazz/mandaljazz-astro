@@ -7,6 +7,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import { Image } from "astro:assets";
 import { isBefore } from "date-fns";
 import Link from "../components/Link.astro";
+import MorgensoloTag from "../components/MorgensoloTag.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
@@ -107,6 +108,7 @@ const concertsGroupedByDay = Object.entries(
                         concertEndAt,
                         hideFromProgram,
                         isPlaceholder,
+                        isMorgensolo,
                         isFree,
                         externalLink,
                         altImage,
@@ -171,9 +173,15 @@ const concertsGroupedByDay = Object.entries(
                                 )}
 
                                 {isFree && (
-                                  <div class="mt-1 -rotate-6 rounded bg-pink/80 px-1 text-xs text-black">
+                                  <div class="-rotate-6 rounded bg-pink/80 px-1 text-xs text-black">
                                     Gratis
                                   </div>
+                                )}
+                                {isMorgensolo && (
+                                  <MorgensoloTag
+                                    className="text-xs bg-yellow px-1 py-1 -rotate-6 rounded"
+                                    size={16}
+                                  />
                                 )}
                               </div>
                               <p class="text-sm">{tagline}</p>

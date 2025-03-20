@@ -75,6 +75,7 @@ const byOrder = (a, b) => {
                   id,
                   hideFromArtistList,
                   tagline,
+                  isMorgensolo,
                 },
               } = artist;
 
@@ -94,6 +95,7 @@ const byOrder = (a, b) => {
                   title={shortTitle || title}
                   tagline={tagline}
                   id={id}
+                  isMorgensolo={isMorgensolo}
                 />
               );
             },
