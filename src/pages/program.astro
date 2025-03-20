@@ -6,6 +6,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
 import { isBefore } from "date-fns";
+import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
 import Layout from "../layouts/Layout.astro";
@@ -112,6 +113,7 @@ const concertsGroupedByDay = Object.entries(
                         isFree,
                         externalLink,
                         altImage,
+                        isBestillingsverk,
                       },
                     }) => {
                       const image = imageType
@@ -179,7 +181,13 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isMorgensolo && (
                                   <MorgensoloTag
-                                    className="text-xs bg-yellow px-1 py-1 -rotate-6 rounded"
+                                    className="text-xs px-1 py-1 -rotate-6 rounded"
+                                    size={16}
+                                  />
+                                )}
+                                {isBestillingsverk && (
+                                  <BestillingsverkTag
+                                    className="text-xs px-1 py-1 -rotate-6 rounded"
                                     size={16}
                                   />
                                 )}

@@ -1,5 +1,6 @@
 ---
 import classNames from "classnames";
+import BestillingsverkTag from "./BestillingsverkTag.astro";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 import MorgensoloTag from "./MorgensoloTag.astro";
 export interface Props {
@@ -9,11 +10,20 @@ export interface Props {
   id: string;
   imageType?: string;
   isMorgensolo?: boolean;
+  isBestillingsverk?: boolean;
   className?: string;
 }
 
-const { href, title, id, imageType, className, tagline, isMorgensolo } =
-  Astro.props;
+const {
+  href,
+  title,
+  id,
+  imageType,
+  className,
+  tagline,
+  isMorgensolo,
+  isBestillingsverk,
+} = Astro.props;
 
 const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
 ---
@@ -34,6 +44,13 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
       isMorgensolo && (
         <div class="absolute right-2 top-2">
           <MorgensoloTag />
+        </div>
+      )
+    }
+    {
+      isBestillingsverk && (
+        <div class="absolute right-2 top-2">
+          <BestillingsverkTag />
         </div>
       )
     }
