@@ -1,7 +1,22 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 
-const articles = await Astro.glob("./*.mdx");
+interface ArticleProps {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: string;
+    image: string;
+    hide?: boolean;
+    ingress?: string;
+  };
+  Content: any;
+  url: string;
+}
+
+const articles = await import.meta.glob<ArticleProps>("./*.mdx", { eager: true });
+const articleList = Object.values(articles);
 ---
 
 <Layout
@@ -16,7 +31,7 @@ const articles = await Astro.glob("./*.mdx");
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {
-          articles
+          articleList
             .filter(({ frontmatter: { hide } }) => !hide)
             .map((article) => {
               const {

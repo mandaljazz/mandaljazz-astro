@@ -12,10 +12,12 @@ import MorgensoloTag from "../components/MorgensoloTag.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
+import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 
-const artistsPages = await Astro.glob("../pages/artist/*.mdx");
+const artistsPages = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", { eager: true });
+const artists = Object.values(artistsPages);
 const releasedArtists = () =>
-  artistsPages.filter(
+  artists.filter(
     (artist) =>
       !artist.frontmatter.hideFromProgram &&
       (!artist.frontmatter.releaseAt ||

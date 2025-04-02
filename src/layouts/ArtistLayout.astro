@@ -64,6 +64,7 @@ export type ArtistProps = {
     hideFromArtistList?: boolean;
     isFree?: boolean;
     isMorgensolo?: boolean;
+    isBestillingsverk?: boolean;
     isPlaceholder?: boolean;
     requiresFreeTicket?: boolean;
     externalTicketUrl?: string;
@@ -72,9 +73,10 @@ export type ArtistProps = {
   };
 };
 
-const artistsPages: ArtistProps[] = await Astro.glob("../pages/artist/*.mdx");
+const artistsPages = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", { eager: true });
+const artists = Object.values(artistsPages);
 const releasedArtists = () =>
-  artistsPages.filter(
+  artists.filter(
     (artist) =>
       !artist.frontmatter.hideFromProgram &&
       (!artist.frontmatter.releaseAt ||

@@ -6,7 +6,18 @@ import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
 import { imagePathToSrc } from "../utils/images";
 
-const groups = await Astro.glob("../content/frivillig/*.mdx");
+interface GroupProps {
+  frontmatter: {
+    title: string;
+    description: string;
+    image: string;
+    id: string;
+  };
+  Content: any;
+}
+
+const groups = await import.meta.glob<GroupProps>("../content/frivillig/*.mdx", { eager: true });
+const groupList = Object.values(groups);
 ---
 
 <Layout
@@ -93,7 +104,7 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
               class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
             >
               {
-                groups.map((group) => {
+                groupList.map((group) => {
                   const {
                     frontmatter: { title, id },
                   } = group;
@@ -110,7 +121,7 @@ const groups = await Astro.glob("../content/frivillig/*.mdx");
           </div>
           <div class="space-y-12 md:col-span-3 lg:col-span-4">
             {
-              groups.map((group) => {
+              groupList.map((group) => {
                 const { Content } = group;
                 return (
                   <div class="space-y-16">

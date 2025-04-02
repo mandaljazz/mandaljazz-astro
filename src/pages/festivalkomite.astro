@@ -5,7 +5,23 @@ import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import { imagePathToSrc } from "../utils/images";
 
-const positions = await Astro.glob("../content/festivalkomite/*.mdx");
+interface PositionProps {
+  frontmatter: {
+    name: string;
+    role: string;
+    image: string;
+    title: string;
+    id: string;
+    filled: boolean;
+  };
+  Content: any;
+}
+
+const positions = await import.meta.glob<PositionProps>(
+  "../content/festivalkomite/*.mdx",
+  { eager: true },
+);
+const positionList = Object.values(positions);
 ---
 
 <Layout
@@ -88,14 +104,16 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
               class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
             >
               {
-                sortBy(positions, "frontmatter.filled").map((position) => {
+                sortBy(positionList, "frontmatter.filled").map((position) => {
                   const {
                     frontmatter: { title, id, filled },
                   } = position;
                   return filled ? (
-                    <li>
-                      {/* prettier-ignore */}
-                      <><Link href={`#${id}`} title={title}><span class="line-through">{title}</span></Link>&nbsp;✔</>
+                    <li class="whitespace-nowrap">
+                      <Link href={`#${id}`} title={title}>
+                        <span class="line-through">{title}</span>
+                      </Link>{" "}
+                      ✔
                     </li>
                   ) : (
                     <li>
@@ -110,7 +128,7 @@ const positions = await Astro.glob("../content/festivalkomite/*.mdx");
           </div>
           <div class="space-y-12 md:col-span-4 lg:col-span-4">
             {
-              positions.map((position) => {
+              positionList.map((position) => {
                 const { Content } = position;
                 return (
                   <div class="space-y-16">

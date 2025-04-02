@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 import partition from "lodash/partition";
 
 import classNames from "classnames";
@@ -8,9 +10,10 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
-const artists = await Astro.glob("../pages/artist/*.mdx");
+const artists = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", { eager: true });
+const artistList = Object.values(artists);
 const releasedArtists = () =>
-  artists.filter(
+  artistList.filter(
     (artist) =>
       !artist.frontmatter.releaseAt ||
       isBefore(artist.frontmatter.releaseAt, new Date()),

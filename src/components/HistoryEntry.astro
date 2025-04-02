@@ -5,6 +5,20 @@ import { imagePathToSrc } from "../utils/images";
 import Link from "./Link.astro";
 import Spotify from "./Spotify.astro";
 
+interface FlickrPhoto {
+  url_q: string;
+  title: string;
+  width_q: number;
+  height_q: number;
+}
+
+interface FlickrAlbum {
+  id: string;
+  title: string;
+  href: string;
+  photos: FlickrPhoto[];
+}
+
 export interface Props {
   id: string;
   year: string;
@@ -14,8 +28,11 @@ export interface Props {
 }
 
 const { id, year, spotifyUrl, image, flickrAlbumId } = Astro.props;
-const albums = await Astro.glob(`../content/flickr-albums/*.json`);
-const album = albums.find((album) => album.default.id === flickrAlbumId);
+const albums = await import.meta.glob<FlickrAlbum>(
+  "../content/flickr-albums/*.json",
+  { eager: true },
+);
+const album = Object.values(albums).find((album) => album.id === flickrAlbumId);
 ---
 
 <div class="space-y-8 font-display">
@@ -38,13 +55,8 @@ const album = albums.find((album) => album.default.id === flickrAlbumId);
     {
       album && (
         <div class="group flex flex-wrap justify-center gap-3 rounded-lg md:col-span-2 md:justify-start">
-          {album.default.photos.map((photo) => (
-            <Link
-              href={album.default.href}
-              external
-              unstyled
-              title={album.default.title}
-            >
+          {album.photos.map((photo) => (
+            <Link href={album.href} external unstyled title={album.title}>
               <Image
                 src={photo.url_q}
                 class={classNames(
