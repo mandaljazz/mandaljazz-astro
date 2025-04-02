@@ -6,7 +6,7 @@ import "../styles/mapbox-overrides.css";
 <div id="map" class="h-72 w-full sm:h-96 md:h-[480px]"></div>
 
 <script>
-  import mapboxgl from "mapbox-gl";
+  import mapboxgl, { type LngLatLike } from "mapbox-gl";
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoiaGFuc2hlbnJpayIsImEiOiJjaXpjdTc5a3AwMDhrMndwZW1ucWdkdXdwIn0.a15J4-cKGPIZClcvh-LeTQ";
@@ -64,7 +64,7 @@ import "../styles/mapbox-overrides.css";
     },
   ];
 
-  const center = [7.45436325431531, 58.02442355659143];
+  const center: LngLatLike = [7.45436325431531, 58.02442355659143];
   const navigationControl = new mapboxgl.NavigationControl();
   const fullscreenControl = new mapboxgl.FullscreenControl();
   const geolocateControl = new mapboxgl.GeolocateControl();
