@@ -5,25 +5,22 @@ import sortBy from "lodash/sortBy";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
-import { isBefore } from "date-fns";
+import { isBefore, isValid } from "date-fns";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
+import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
-import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 
-const artistsPages = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", { eager: true });
+const artistsPages = await import.meta.glob<ArtistProps>(
+  "../pages/artist/*.mdx",
+  { eager: true },
+);
 const artists = Object.values(artistsPages);
-const releasedArtists = () =>
-  artists.filter(
-    (artist) =>
-      !artist.frontmatter.hideFromProgram &&
-      (!artist.frontmatter.releaseAt ||
-        isBefore(artist.frontmatter.releaseAt, new Date())),
-  );
-const tbaArtists = [
+
+const otherEvents = [
   // {
   //   title: "Jazzlaugs gebursdag m/M. Rexen solo",
   //   venue: "Bakgården",
@@ -39,31 +36,33 @@ const tbaArtists = [
   //   isFree: true,
   //   altImage: "/src/images/profil/frimerke-pils.png",
   // },
-  // {
-  //   title: "Jazzparade (med SNUS)",
-  //   venue: "Gierts Karis Plass",
-  //   concertStartAt: "2024-06-29T13:30",
-  //   isFree: true,
-  //   altImage: "/src/images/profil/frimerke-sykkeltur.png",
-  // },
-  // {
-  //   title: "Afterwork",
-  //   venue: "Bakgården",
-  //   concertStartAt: "2024-06-28T16:00",
-  //   isFree: true,
-  //   externalLink: "https://www.facebook.com/events/444193931498788/",
-  //   altImage: "/src/images/profil/frimerke-pils.png",
-  // },
+  {
+    title: "Kommer…", // Pride-parade (med SNUS og BUJO)
+    venue: "Amaldus Nielsens plass",
+    concertStartAt: "2025-06-28T13:00",
+    isFree: true,
+    // altImage: "/src/images/profil/frimerke-sykkeltur.png",
+  },
+  {
+    title: "Kommer…",
+    venue: "Bakgården",
+    concertStartAt: "2025-06-27T16:00",
+    isFree: true,
+    // externalLink: "https://www.facebook.com/events/444193931498788/",
+    // altImage: "/src/images/profil/frimerke-pils.png",
+  },
 ];
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
     sortBy(
       [
-        ...releasedArtists().filter(
-          ({ frontmatter: { hideFromProgram } }) => !hideFromProgram,
+        ...artists.filter(({ frontmatter: { concertStartAt } }) =>
+          isValid(new Date(concertStartAt)),
         ),
-        ...tbaArtists.map((tbaArtist) => ({ frontmatter: tbaArtist })),
+        ...(otherEvents.map((tbaArtist) => ({
+          frontmatter: tbaArtist,
+        })) as ArtistProps[]),
       ],
       "frontmatter.concertStartAt",
     ),
@@ -116,19 +115,38 @@ const concertsGroupedByDay = Object.entries(
                         externalLink,
                         altImage,
                         isBestillingsverk,
+                        releaseAt,
                       },
                     }) => {
                       const image = imageType
                         ? `${id}.${imageType}`
                         : `${id}.jpg`;
 
-                      if (hideFromProgram) {
-                        return null;
+                      const isNotReleasedYet =
+                        hideFromProgram || isBefore(new Date(), releaseAt);
+
+                      if (isNotReleasedYet) {
+                        return (
+                          <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
+                            <div class="col-span-4 flex flex-row items-center gap-2 text-xl md:col-span-2 md:text-lg">
+                              <Image
+                                src={imagePathToSrc(
+                                  "/src/images/profil/logo/primary/black.svg",
+                                )}
+                                alt={"Kommer…"}
+                                class="h-8 w-8 object-contain"
+                              />
+                              Kommer…
+                            </div>
+                            <div class="col-span-3 md:col-span-1">{venue}</div>
+                            <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                          </div>
+                        );
                       }
 
                       return (
-                        <div class="col-span-4 grid grid-cols-4 gap-2 gap-y-1">
-                          <div class="col-span-4 flex flex-row items-center gap-2 text-xl md:col-span-2 md:text-lg">
+                        <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
+                          <div class="col-span-3 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
                             {id ? (
                               <img
                                 src={`/artist/${image}`}
@@ -183,18 +201,18 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isMorgensolo && (
                                   <MorgensoloTag
-                                    className="text-xs px-1 py-1 -rotate-6 rounded"
+                                    className="text-xs px-1 py-0.5 -rotate-6 rounded"
                                     size={16}
                                   />
                                 )}
                                 {isBestillingsverk && (
                                   <BestillingsverkTag
-                                    className="text-xs px-1 py-1 -rotate-6 rounded"
+                                    className="text-xs px-1 py-0.5 -rotate-6 rounded"
                                     size={16}
                                   />
                                 )}
                               </div>
-                              <p class="text-sm">{tagline}</p>
+                              <p class="hidden text-sm sm:block">{tagline}</p>
                             </div>
                           </div>
                           <div class="col-span-3 md:col-span-1">{venue}</div>
