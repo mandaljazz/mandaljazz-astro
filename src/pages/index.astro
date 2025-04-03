@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 import partition from "lodash/partition";
+import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 
 import classNames from "classnames";
 import { isBefore } from "date-fns";
@@ -10,7 +9,9 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
-const artists = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", { eager: true });
+const artists = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", {
+  eager: true,
+});
 const artistList = Object.values(artists);
 const releasedArtists = () =>
   artistList.filter(
@@ -108,10 +109,8 @@ const byOrder = (a, b) => {
         }
       </ul>
     </div>
-    <!-- <Spotify
-      src="https://open.spotify.com/playlist/0Yu3man6TSrYAHi7VntNjT?si=d695cdc021a749e3"
-    /> -->
-    <!-- <BuyTicketsButton class="mx-auto w-fit" /> -->
+    <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" />
+    <BuyTicketsButton class="mx-auto w-fit" />
   </main>
 </Layout>
 

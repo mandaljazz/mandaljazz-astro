@@ -22,21 +22,6 @@ const artistsPages = await import.meta.glob<ArtistProps>(
 const artists = Object.values(artistsPages);
 
 const otherEvents = [
-  // {
-  //   title: "Jazzlaugs gebursdag m/M. Rexen solo",
-  //   venue: "Bakgården",
-  //   concertStartAt: "2024-06-27T18:30",
-  //   isFree: true,
-  //   externalLink: "https://www.facebook.com/events/334325382874540/",
-  //   altImage: "/src/images/profil/trompet.png",
-  // },
-  // {
-  //   title: "Nachspiel",
-  //   venue: "Dynamitten",
-  //   concertStartAt: "2024-06-27T23:59",
-  //   isFree: true,
-  //   altImage: "/src/images/profil/frimerke-pils.png",
-  // },
   {
     title: "Kommer…", // Pride-parade (med SNUS og BUJO)
     venue: "Amaldus Nielsens plass",
@@ -45,7 +30,7 @@ const otherEvents = [
     // altImage: "/src/images/profil/frimerke-sykkeltur.png",
   },
   {
-    title: "Kommer…",
+    title: "Kommer…", // Afterwork
     venue: "Bakgården",
     concertStartAt: "2025-06-27T16:00",
     isFree: true,
@@ -230,11 +215,11 @@ const concertsGroupedByDay = Object.entries(
         })
       }
       <BuyTicketsButton class="mx-auto w-fit" />
-      <Image
+      <!-- <Image
         src={imagePathToSrc("/src/images/profil/frimerke-pils.png")}
         class="mx-auto max-w-72 md:max-w-96"
         alt="Frimerke pils"
-      />
+      /> -->
     </div>
   </main>
 </Layout>
