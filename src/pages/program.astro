@@ -7,6 +7,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import { Image } from "astro:assets";
 import { isBefore, isValid } from "date-fns";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
+import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
 import type { ArtistProps } from "../layouts/ArtistLayout.astro";
@@ -195,20 +196,21 @@ const concertsGroupedByDay = Object.entries(
                                 )}
 
                                 {isFree && (
-                                  <div class="-rotate-6 rounded bg-pink/80 px-1 text-xs text-black">
-                                    Gratis
-                                  </div>
+                                  <FreeTag
+                                    className="-rotate-6"
+                                    size={"small"}
+                                  />
                                 )}
                                 {isMorgensolo && (
                                   <MorgensoloTag
-                                    className="text-xs px-1 py-0.5 -rotate-6 rounded"
-                                    size={16}
+                                    className="-rotate-6"
+                                    size={"small"}
                                   />
                                 )}
                                 {isBestillingsverk && (
                                   <BestillingsverkTag
-                                    className="text-xs px-1 py-0.5 -rotate-6 rounded"
-                                    size={16}
+                                    className="-rotate-6"
+                                    size={"small"}
                                   />
                                 )}
                               </div>
