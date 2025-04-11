@@ -6,6 +6,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
 import { isBefore, isValid } from "date-fns";
+import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
@@ -101,6 +102,7 @@ const concertsGroupedByDay = Object.entries(
                         externalLink,
                         altImage,
                         isBestillingsverk,
+                        isBarnekonsert,
                         releaseAt,
                       },
                     }) => {
@@ -179,13 +181,6 @@ const concertsGroupedByDay = Object.entries(
                                 ) : (
                                   <div title={title}>{title}</div>
                                 )}
-
-                                {isFree && (
-                                  <FreeTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
                                 {isMorgensolo && (
                                   <MorgensoloTag
                                     className="-rotate-6"
@@ -194,6 +189,18 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isBestillingsverk && (
                                   <BestillingsverkTag
+                                    className="-rotate-6"
+                                    size={"small"}
+                                  />
+                                )}
+                                {isBarnekonsert && (
+                                  <BarnekonsertTag
+                                    className="-rotate-6"
+                                    size={"small"}
+                                  />
+                                )}
+                                {isFree && (
+                                  <FreeTag
                                     className="-rotate-6"
                                     size={"small"}
                                   />
