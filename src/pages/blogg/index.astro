@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 
 interface ArticleProps {
@@ -15,13 +14,15 @@ interface ArticleProps {
   url: string;
 }
 
-const articles = await import.meta.glob<ArticleProps>("./*.mdx", { eager: true });
+const articles = await import.meta.glob<ArticleProps>("./*.mdx", {
+  eager: true,
+});
 const articleList = Object.values(articles);
 ---
 
 <Layout
-  title="Blogg // mandaljazz"
-  description="Tilfeldige skriblerier fra gjengen i mandaljazz"
+  title="Blogg // Mandaljazz"
+  description="Tilfeldige skriblerier fra gjengen i Mandaljazz"
 >
   <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
     <div class="mx-auto max-w-5xl space-y-16">

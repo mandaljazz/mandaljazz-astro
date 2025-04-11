@@ -16,28 +16,31 @@ interface GroupProps {
   Content: any;
 }
 
-const groups = await import.meta.glob<GroupProps>("../content/frivillig/*.mdx", { eager: true });
+const groups = await import.meta.glob<GroupProps>(
+  "../content/frivillig/*.mdx",
+  { eager: true },
+);
 const groupList = Object.values(groups);
 ---
 
 <Layout
-  title="Frivillig // mandaljazz 2025"
-  description="Ja, bli frivillig på mandaljazz 2025 du også!"
+  title="Frivillig // Mandaljazz 2025"
+  description="Ja, bli frivillig på Mandaljazz 2025 du også!"
 >
   <main class="px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32">
     <div class="mx-auto max-w-5xl space-y-24">
       <div class="space-y-8">
         <h1 class="text-5xl md:text-7xl">Frivillig</h1>
-        <p>Vi vil gjerne ha deg med som frivillig på mandaljazz!</p>
+        <p>Vi vil gjerne ha deg med som frivillig på Mandaljazz!</p>
       </div>
       <div
         class="grid items-center gap-8 md:grid-cols-5 md:gap-x-16 md:gap-y-20"
       >
         <div class="space-y-4 md:col-span-2">
           <p>
-            Som frivillig på mandaljazz får du oppleve massevis av god musikk og
+            Som frivillig på Mandaljazz får du oppleve massevis av god musikk og
             mye moro sammen med en herlig gjeng sosiale, hyggelige og åpne folk.
-            På mandaljazz er alle velkommen, og vi har frivilligroller som kan
+            På Mandaljazz er alle velkommen, og vi har frivilligroller som kan
             passe de fleste – alt fra bartender til bygging av telt eller ta
             imot artistene som kommer.
           </p>
@@ -136,7 +139,7 @@ const groupList = Object.values(groups);
       </div>
       <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
-        kanskje interessert i å bli med som frivillig på mandaljazz? Da kan du
+        kanskje interessert i å bli med som frivillig på Mandaljazz? Da kan du
         melde deg på i skjemaet nedenfor.
       </p>
       <div class="space-y-4">

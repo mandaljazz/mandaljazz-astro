@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
   );
 
   const manifest = {
-    name: "mandaljazz",
+    name: "Mandaljazz",
     description: "Jazzfestivalen i Mandal",
     start_url: "/",
     display: "standalone",
