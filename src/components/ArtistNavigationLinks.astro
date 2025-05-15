@@ -4,10 +4,10 @@ import Link from "./Link.astro";
 
 export interface Props {
   previousArtist: {
-    frontmatter: { id: string; shortTitle?: string; title: string };
+    frontmatter: { id: string; shortTitle?: string; title: string, imageType?: string };
   };
   nextArtist: {
-    frontmatter: { id: string; shortTitle?: string; title: string };
+    frontmatter: { id: string; shortTitle?: string; title: string, imageType?: string };
   };
   class?: string;
   compact?: boolean;
@@ -15,10 +15,10 @@ export interface Props {
 
 const {
   previousArtist: {
-    frontmatter: { id: prevId, shortTitle: prevShortTitle, title: prevTitle },
+    frontmatter: { id: prevId, shortTitle: prevShortTitle, title: prevTitle, imageType: prevImageType },
   },
   nextArtist: {
-    frontmatter: { id: nextId, shortTitle: nextShortTitle, title: nextTitle },
+    frontmatter: { id: nextId, shortTitle: nextShortTitle, title: nextTitle, imageType: nextImageType },
   },
   class: extraClasses,
   compact,
@@ -46,7 +46,7 @@ const {
     </Link>
     <a href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}
       ><img
-        src={`/artist/${prevId}.jpg`}
+        src={`/artist/${prevId}.${prevImageType || "jpg"}`}
         alt={prevShortTitle || prevTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a
@@ -55,7 +55,7 @@ const {
   <div class="flex flex-row items-center gap-2 self-end sm:self-auto">
     <a href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}
       ><img
-        src={`/artist/${nextId}.jpg`}
+        src={`/artist/${nextId}.${nextImageType || "jpg"}`}
         alt={nextShortTitle || nextTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a

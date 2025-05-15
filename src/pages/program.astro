@@ -22,15 +22,7 @@ const artistsPages = await import.meta.glob<ArtistProps>(
 );
 const artists = Object.values(artistsPages);
 
-const otherEvents = [
-  {
-    title: "Kommer…", // Pride-parade (med SNUS og BUJO)
-    venue: "Amaldus Nielsens plass",
-    concertStartAt: "2025-06-28T13:00",
-    isFree: true,
-    // altImage: "/src/images/profil/frimerke-sykkeltur.png",
-  },
-];
+const otherEvents = [];
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
