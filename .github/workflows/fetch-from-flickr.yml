@@ -44,6 +44,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "dev@mandaljazz.no"
           BRANCH_NAME="auto-update-flickr-albums-$(date +'%Y-%m-%d')"
+          git pull origin main
           git checkout -b $BRANCH_NAME
           git add .
           git commit -m "Update Flickr Photo Albums"
