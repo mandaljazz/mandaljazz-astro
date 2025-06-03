@@ -28,6 +28,7 @@ const {
     authorImage,
     noAuthor,
     tagline,
+    cancelled,
     id,
     imageType,
     imageAttribution,
@@ -75,6 +76,7 @@ export type ArtistProps = {
     externalTicketUrl?: string;
     order?: string;
     releaseAt?: string;
+    cancelled?: boolean;
   };
 };
 
@@ -137,6 +139,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
           </div>
 
           <h2 class="hyphens-auto text-3xl font-normal">
+            {cancelled && "Avlyst, "}
             {tagline}
           </h2>
 

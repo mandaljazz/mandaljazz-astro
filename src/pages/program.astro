@@ -5,6 +5,7 @@ import sortBy from "lodash/sortBy";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
+import classNames from "classnames";
 import { isBefore, isValid } from "date-fns";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
@@ -88,6 +89,7 @@ const concertsGroupedByDay = Object.entries(
                         isBestillingsverk,
                         isBarnekonsert,
                         releaseAt,
+                        cancelled,
                       },
                     }) => {
                       const image = imageType
@@ -144,12 +146,17 @@ const concertsGroupedByDay = Object.entries(
                               <div class="flex flex-row items-start gap-2">
                                 {id && !isPlaceholder ? (
                                   <div>
-                                    <Link
-                                      href={`/artist/${id}`}
-                                      title={title}
-                                      class=""
-                                    >
-                                      {shortTitle || title}
+                                    <Link href={`/artist/${id}`} title={title}>
+                                      {/* prettier-ignore */}
+                                      <span class={classNames({
+                                          "line-through": cancelled,
+                                        })}>{shortTitle || title}</span>
+                                      {cancelled && (
+                                        <span class="ml-1 text-sm">
+                                          {" "}
+                                          (AVLYST)
+                                        </span>
+                                      )}
                                     </Link>
                                   </div>
                                 ) : externalLink ? (
@@ -159,7 +166,16 @@ const concertsGroupedByDay = Object.entries(
                                       external
                                       title={title}
                                     >
-                                      {title}
+                                      {/* prettier-ignore */}
+                                      <span class={classNames({
+                                          "line-through": cancelled,
+                                        })}>{title}</span>
+                                      {cancelled && (
+                                        <span class="ml-1 text-sm">
+                                          {" "}
+                                          (AVLYST)
+                                        </span>
+                                      )}
                                     </Link>
                                   </div>
                                 ) : (

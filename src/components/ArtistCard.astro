@@ -13,6 +13,7 @@ export interface Props {
   isMorgensolo?: boolean;
   isBestillingsverk?: boolean;
   isBarnekonsert?: boolean;
+  cancelled?: boolean;
   className?: string;
 }
 
@@ -26,6 +27,7 @@ const {
   isMorgensolo,
   isBestillingsverk,
   isBarnekonsert,
+  cancelled,
 } = Astro.props;
 
 const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
@@ -80,7 +82,12 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
         },
       )}
     >
-      {title}
+      <span
+        class={classNames({
+          "line-through": cancelled,
+        })}>{title}</span
+      >
+      {cancelled && <span class="text-base ml-2"> AVLYST</span>}
     </h2>
   </a>
 </li>
