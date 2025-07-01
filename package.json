@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "4.2.3",
-    "@astrojs/sitemap": "3.3.0",
+    "@astrojs/sitemap": "3.4.1",
     "@astrojs/tailwind": "6.0.2",
     "@yeskunall/astro-umami": "0.0.5",
     "astro": "5.8.1",
