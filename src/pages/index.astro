@@ -5,7 +5,7 @@ import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 import classNames from "classnames";
 import { isBefore } from "date-fns";
 import ArtistCard from "../components/ArtistCard.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -59,7 +59,12 @@ const byOrder = (a, b) => {
               >2025</span
             >
           </h1>
-          <BuyTicketsButton class="mx-auto mt-8 w-fit" />
+          <div
+            class="mx-auto w-fit -translate-y-8 -rotate-6 rounded-lg bg-red px-4 py-1 text-2xl text-white md:-translate-y-6 lg:-translate-y-10"
+          >
+            Takk for i år!
+          </div>
+          <!-- <BuyTicketsButton class="mx-auto mt-8 w-fit" /> -->
         </div>
       </div>
     </div>
@@ -116,15 +121,6 @@ const byOrder = (a, b) => {
       </ul>
     </div>
     <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" />
-    <BuyTicketsButton class="mx-auto w-fit" />
+    <!-- <BuyTicketsButton class="mx-auto w-fit" /> -->
   </main>
 </Layout>
-
-<script>
-  document.addEventListener("astro-lottie-loaded", (e) => {
-    // Hide Lottie placeholder images when Lottie has loaded
-    document.querySelectorAll(".lottie-placeholder").forEach((placeholder) => {
-      placeholder.classList.toggle("opacity-0");
-    });
-  });
-</script>
