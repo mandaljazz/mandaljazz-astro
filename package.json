@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "3.4.1",
     "@astrojs/tailwind": "6.0.2",
     "@yeskunall/astro-umami": "0.0.7",
-    "astro": "5.13.5",
+    "astro": "5.15.3",
     "astro-icon": "0.8.2",
     "astro-integration-lottie": "0.3.2",
     "astro-robots-txt": "1.0.0",
