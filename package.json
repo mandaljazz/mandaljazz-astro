@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "0.5.16",
-    "@types/lodash": "4.17.19",
+    "@types/lodash": "4.17.20",
     "dotenv": "16.5.0",
     "flickr-sdk": "7.1.0",
     "prettier": "3.6.2",
