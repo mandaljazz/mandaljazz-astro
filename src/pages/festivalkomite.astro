@@ -17,7 +17,7 @@ interface PositionProps {
   Content: any;
 }
 
-const positions = await import.meta.glob<PositionProps>(
+const positions = import.meta.glob<PositionProps>(
   "../content/festivalkomite/*.mdx",
   { eager: true },
 );
@@ -110,10 +110,7 @@ const positionList = Object.values(positions);
                   } = position;
                   return filled ? (
                     <li class="whitespace-nowrap">
-                      <Link href={`#${id}`} title={title}>
-                        <span class="line-through">{title}</span>
-                      </Link>{" "}
-                      ✔
+                      <span class="line-through">{title}</span> ✔
                     </li>
                   ) : (
                     <li>
@@ -128,20 +125,22 @@ const positionList = Object.values(positions);
           </div>
           <div class="space-y-12 md:col-span-4 lg:col-span-4">
             {
-              positionList.map((position) => {
-                const { Content } = position;
-                return (
-                  <div class="space-y-16">
-                    <Content />
-                    <hr />
-                  </div>
-                );
-              })
+              positionList
+                .filter((position) => !position.frontmatter.filled)
+                .map((position) => {
+                  const { Content } = position;
+                  return (
+                    <div class="space-y-16">
+                      <Content />
+                      <hr />
+                    </div>
+                  );
+                })
             }
           </div>
         </div>
       </div>
-      <!-- <p class="mx-auto max-w-2xl">
+      <p class="mx-auto max-w-2xl">
         Puh, det var mye greier! Men hvis du har lest helt ned hit, så er du
         kanskje interessert i å bli med i festivalkomiteen? Hvis du er det, kan
         du sende en mail til festivalsjef Eirik og melde din interesse!
@@ -153,7 +152,7 @@ const positionList = Object.values(positions);
         href="mailto:eirik@mandaljazz.no?cc=marimarie@mandaljazz.no"
         title="eirik@mandaljazz.no"
         target="_blank">Meld din interesse</a
-      > -->
+      >
     </div>
     <!-- <Image
       src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}

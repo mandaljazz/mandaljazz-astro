@@ -14,10 +14,6 @@ const {
   <table class="max-w-lg border-spacing-2 rounded-lg bg-chalk-white shadow-lg">
     <tbody class="divide-y">
       <tr class="divide-x">
-        <td class="p-3">Honorar</td>
-        <td class="p-3">{fee}</td>
-      </tr>
-      <tr class="divide-x">
         <td class="p-3">Oppstart</td>
         <td class="col-span-2 p-3">{start}</td>
       </tr>
@@ -37,5 +33,6 @@ const {
   </table>
   <article class="prose">
     <slot />
+    {fee && <p>Stillingen er honorert.</p>}
   </article>
 </section>
