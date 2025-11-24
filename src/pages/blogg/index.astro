@@ -1,23 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-interface ArticleProps {
-  frontmatter: {
-    title: string;
-    description: string;
-    pubDate: string;
-    image: string;
-    hide?: boolean;
-    ingress?: string;
-  };
-  Content: any;
-  url: string;
-}
-
-const articles = await import.meta.glob<ArticleProps>("./*.mdx", {
-  eager: true,
-});
-const articleList = Object.values(articles);
+const allBlogPosts = await getCollection("blogg");
+const articleList = allBlogPosts
+  .filter((post) => !post.data.hide)
+  .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 ---
 
 <Layout
@@ -32,11 +20,10 @@ const articleList = Object.values(articles);
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {
-          articleList
-            .filter(({ frontmatter: { hide } }) => !hide)
-            .map((article) => {
+          articleList.map((article) => {
               const {
-                frontmatter: { title, ingress, image },
+                data: { title, ingress, image },
+                slug,
               } = article;
               return (
                 <li
@@ -44,12 +31,12 @@ const articleList = Object.values(articles);
                   style={`background-image: url('${image}');`}
                 >
                   <a
-                    href={`${article.url}`}
+                    href={`/blogg/${slug}`}
                     class="relative flex h-full w-full flex-col justify-end"
                   >
                     <div class="space-y-4 bg-chalk-white p-4">
                       <h2>{title}</h2>
-                      <p>{ingress}</p>
+                      {ingress && <p>{ingress}</p>}
                     </div>
                   </a>
                 </li>

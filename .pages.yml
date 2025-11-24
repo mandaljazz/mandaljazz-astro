@@ -9,8 +9,8 @@ content:
   - name: blogg
     label: Blog Posts
     type: collection
-    path: src/pages/blogg
-    filename: '{title}.mdx'
+    path: src/content/blogg
+    filename: "{slug}.mdx"
     view:
       fields: [title, author, createdAt, hide]
       sort: [createdAt, title]
@@ -18,11 +18,6 @@ content:
         sort: createdAt
         order: desc
     fields:
-      - name: layout
-        label: Layout
-        type: string
-        default: ../../layouts/BlogLayout.astro
-        hidden: true
       - name: title
         label: Title
         type: string
@@ -44,15 +39,17 @@ content:
         description: "URL or path to the blog post image (should be landscape format)"
       - name: createdAt
         label: Created At
-        type: datetime
+        type: date
         required: true
         options:
-          format: yyyy-MM-ddTHH:mm:ss.SSSZ
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: updatedAt
         label: Updated At
-        type: datetime
+        type: date
         options:
-          format: yyyy-MM-ddTHH:mm:ss.SSSZ
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: hide
         label: Hide
         type: boolean
