@@ -1,8 +1,13 @@
 media:
-  - name: images
-    label: Images
+  - name: public-images
+    label: Public Images
     input: public
     output: /public
+    extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: src-images
+    label: Source Images
+    input: src/images
+    output: /src/images
     extensions: [png, jpg, jpeg, webp, svg, gif]
 
 content:
