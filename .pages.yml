@@ -33,8 +33,11 @@ content:
         type: string
       - name: authorImage
         label: Author Image
-        type: string
-        description: "Filename in src/images/folk/ (e.g., jens-bessesen.jpg)"
+        type: image
+        options:
+          path: src-images/folk
+          extensions: [jpg, jpeg, png, webp]
+        description: "Image of the author"
       - name: ingress
         label: Ingress
         type: text
