@@ -49,8 +49,9 @@ content:
       - name: author
         label: Author
         type: reference
-        collection: authors
         required: true
+        options:
+          collection: authors
       - name: ingress
         label: Ingress
         type: text
