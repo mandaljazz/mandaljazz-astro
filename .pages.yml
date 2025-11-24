@@ -35,7 +35,8 @@ content:
         label: Author Image
         type: image
         options:
-          path: src-images/folk
+          media: src-images
+          path: folk
           extensions: [jpg, jpeg, png, webp]
         description: "Image of the author"
       - name: ingress
