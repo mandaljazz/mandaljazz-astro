@@ -53,8 +53,8 @@ content:
         options:
           collection: authors
           value: "{slug}"
-          label: "{name}"
-          image: "{image}"
+          label: name
+          image: image
       - name: ingress
         label: Ingress
         type: text
