@@ -52,6 +52,8 @@ content:
         required: true
         options:
           collection: authors
+          label: "{name}"
+          image: "{image}"
       - name: ingress
         label: Ingress
         type: text
