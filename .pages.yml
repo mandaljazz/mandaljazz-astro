@@ -45,7 +45,11 @@ content:
         description: "Short description/intro text"
       - name: image
         label: Image
-        type: string
+        type: image
+        options:
+          media: src-images
+          path: src/images/blogg
+          extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "URL or path to the blog post image (should be landscape format)"
       - name: createdAt
         label: Created At
@@ -72,7 +76,7 @@ content:
           media: src-images
           path: src/images/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Main content of the blog post (supports Markdown/MDX)"
+        description: "Main content of the blog post"
 
 settings:
   content:
