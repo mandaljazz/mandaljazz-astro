@@ -11,6 +11,24 @@ media:
     extensions: [png, jpg, jpeg, webp, svg, gif]
 
 content:
+  - name: authors
+    label: Authors
+    type: collection
+    path: src/content/authors
+    filename: "{name}.mdx"
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: image
+        label: Image
+        type: image
+        options:
+          media: src-images
+          path: src/images/folk
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+        description: "Author profile image"
   - name: blogg
     label: Blog Posts
     type: collection
@@ -30,15 +48,9 @@ content:
         description: "The title will be used in the filename (spaces and special chars will be sanitized)"
       - name: author
         label: Author
-        type: string
-      - name: authorImage
-        label: Author Image
-        type: image
-        options:
-          media: src-images
-          path: src/images/folk
-          extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Image of the author"
+        type: reference
+        collection: authors
+        required: true
       - name: ingress
         label: Ingress
         type: text
