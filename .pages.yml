@@ -68,8 +68,8 @@ content:
         label: Image
         type: image
         options:
-          media: src-images
-          path: src/images/blogg
+          media: public-images
+          path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "URL or path to the blog post image (should be landscape format)"
       - name: createdAt
@@ -94,8 +94,8 @@ content:
         label: Body
         type: rich-text
         options:
-          media: src-images
-          path: src/images/blogg
+          media: public-images
+          path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Main content of the blog post"
 
