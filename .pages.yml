@@ -1,0 +1,64 @@
+media:
+  - name: images
+    label: Images
+    input: public
+    output: /public
+    extensions: [png, jpg, jpeg, webp, svg, gif]
+
+content:
+  - name: blogg
+    label: Blog Posts
+    type: collection
+    path: src/pages/blogg
+    filename: '{title}.mdx'
+    view:
+      fields: [title, author, createdAt, hide]
+      sort: [createdAt, title]
+      default:
+        sort: createdAt
+        order: desc
+    fields:
+      - name: layout
+        label: Layout
+        type: string
+        default: ../../layouts/BlogLayout.astro
+        hidden: true
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: author
+        label: Author
+        type: string
+      - name: authorImage
+        label: Author Image
+        type: string
+        description: "Filename in src/images/folk/ (e.g., jens-bessesen.jpg)"
+      - name: ingress
+        label: Ingress
+        type: text
+        description: "Short description/intro text"
+      - name: image
+        label: Image
+        type: string
+        description: "URL or path to the blog post image (should be landscape format)"
+      - name: createdAt
+        label: Created At
+        type: datetime
+        required: true
+        options:
+          format: yyyy-MM-ddTHH:mm:ss.SSSZ
+      - name: updatedAt
+        label: Updated At
+        type: datetime
+        options:
+          format: yyyy-MM-ddTHH:mm:ss.SSSZ
+      - name: hide
+        label: Hide
+        type: boolean
+        default: false
+        description: "Hide this post from the blog listing"
+
+settings:
+  content:
+    merge: true
