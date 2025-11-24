@@ -29,10 +29,7 @@ const {
         <div class="col-span-2 space-y-4">
           {
             author && (
-              <ImageAndLabel
-                image={`/src/images/folk/${authorImage}`}
-                alt={`Bilde av ${author}`}
-              >
+              <ImageAndLabel image={authorImage} alt={`Bilde av ${author}`}>
                 <div>
                   <div>Tekst: {author}</div>
                   <div>
