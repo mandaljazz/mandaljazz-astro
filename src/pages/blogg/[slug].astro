@@ -26,7 +26,7 @@ const author = await getEntry("authors", post.data.author);
   frontmatter={{
     title: post.data.title,
     author: author.data.name,
-    authorImage: `/src/images/folk/${author.data.image}`,
+    authorImage: author.data.image,
     ingress: post.data.ingress,
     image: post.data.image,
     createdAt: post.data.createdAt.toISOString(),
