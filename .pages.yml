@@ -65,6 +65,12 @@ content:
         type: boolean
         default: false
         description: "Hide this post from the blog listing"
+      - name: body
+        label: Body
+        type: rich-text
+        options:
+          media: src-images
+        description: "Main content of the blog post (supports Markdown/MDX)"
 
 settings:
   content:

@@ -13,6 +13,7 @@ const blogg = defineCollection({
       .union([z.string().transform((str) => new Date(str)), z.undefined()])
       .optional(),
     hide: z.boolean().default(false),
+    body: z.string(),
   }),
 });
 

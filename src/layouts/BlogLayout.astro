@@ -12,6 +12,7 @@ const {
     image,
     createdAt,
     updatedAt,
+    body,
   },
 } = Astro.props;
 ---
@@ -48,7 +49,7 @@ const {
         </div>
       </div>
       <article class="prose prose-quoteless-blockquotes w-full max-w-full">
-        <slot />
+        {body}
       </article>
     </section>
   </main>
