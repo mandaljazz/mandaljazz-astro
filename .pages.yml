@@ -37,7 +37,7 @@ content:
         options:
           media: src-images
           path: folk
-          extensions: [jpg, jpeg, png, webp]
+          extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Image of the author"
       - name: ingress
         label: Ingress
