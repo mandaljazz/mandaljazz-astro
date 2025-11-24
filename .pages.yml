@@ -70,6 +70,8 @@ content:
         type: rich-text
         options:
           media: src-images
+          path: src/images/blogg
+          extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Main content of the blog post (supports Markdown/MDX)"
 
 settings:
