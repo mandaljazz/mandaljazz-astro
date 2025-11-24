@@ -10,7 +10,7 @@ content:
     label: Blog Posts
     type: collection
     path: src/content/blogg
-    filename: "{slug}.mdx"
+    filename: "{year}-{month}-{day}-{title}.mdx"
     view:
       fields: [title, author, createdAt, hide]
       sort: [createdAt, title]
@@ -22,6 +22,7 @@ content:
         label: Title
         type: string
         required: true
+        description: "The title will be used in the filename (spaces and special chars will be sanitized)"
       - name: author
         label: Author
         type: string
