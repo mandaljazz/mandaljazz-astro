@@ -56,7 +56,9 @@ content:
         required: true
         options:
           collection: authors
-          value: "{primary}"
+          value: "{name}"
+          label: "{name}"
+          image: "{image}"
       - name: ingress
         label: Ingress
         type: text
