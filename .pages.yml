@@ -17,14 +17,9 @@ content:
     path: src/content/authors
     filename: "{primary}.mdx"
     view:
-      fields: [name, image, slug]
-      primary: slug
+      fields: [name, image]
+      primary: name
     fields:
-      - name: slug
-        label: Slug
-        type: string
-        required: true
-        description: "URL-friendly identifier (e.g., 'jens-bessesen')"
       - name: name
         label: Name
         type: string
@@ -59,11 +54,10 @@ content:
         label: Author
         type: reference
         required: true
-         options:
-           collection: authors
-           value: "{slug}"
-           label: "{name}"
-           image: "{image}"
+        options:
+          collection: authors
+          label: "{name}"
+          image: "{image}"
       - name: ingress
         label: Ingress
         type: text
