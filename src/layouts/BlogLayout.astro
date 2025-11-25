@@ -4,15 +4,7 @@ import { formatDate } from "../utils/date";
 import Layout from "./Layout.astro";
 
 const {
-  frontmatter: {
-    title,
-    author,
-    authorImage,
-    ingress,
-    image,
-    createdAt,
-    updatedAt,
-  },
+  frontmatter: { title, author, ingress, image, createdAt, updatedAt },
 } = Astro.props;
 ---
 
@@ -29,9 +21,12 @@ const {
         <div class="col-span-2 space-y-4">
           {
             author && (
-              <ImageAndLabel image={authorImage} alt={`Bilde av ${author}`}>
+              <ImageAndLabel
+                image={author.image}
+                alt={`Bilde av ${author.name}`}
+              >
                 <div>
-                  <div>Tekst: {author}</div>
+                  <div>Tekst: {author.name}</div>
                   <div>
                     Publisert: {formatDate(createdAt)}{" "}
                     {updatedAt && <em>(endret {formatDate(updatedAt)})</em>}

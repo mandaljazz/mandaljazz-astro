@@ -19,14 +19,18 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as Props;
 const { Content } = await post.render();
-const author = await getEntry("authors", post.data.author);
+
+// Extract author slug from full path (e.g., "src/content/authors/jens-bessesen.mdx" -> "jens-bessesen")
+const authorSlug = post.data.author
+  .replace("src/content/authors/", "")
+  .replace(".mdx", "");
+const author = await getEntry("authors", authorSlug);
 ---
 
 <BlogLayout
   frontmatter={{
     title: post.data.title,
-    author: author.data.name,
-    authorImage: author.data.image,
+    author: author.data,
     ingress: post.data.ingress,
     image: post.data.image,
     createdAt: post.data.createdAt.toISOString(),
