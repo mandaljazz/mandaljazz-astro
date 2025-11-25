@@ -56,7 +56,6 @@ content:
         required: true
         options:
           collection: authors
-          value: "{path}"
           label: "{name}"
           image: "{image}"
       - name: ingress
