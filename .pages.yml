@@ -66,6 +66,7 @@ content:
       - name: image
         label: Image
         type: image
+        required: true
         options:
           media: public-images
           path: public/blogg
