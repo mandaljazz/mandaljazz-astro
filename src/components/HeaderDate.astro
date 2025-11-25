@@ -1,0 +1,26 @@
+---
+export interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { class: extraClasses, id } = Astro.props;
+---
+
+<div
+  id={id}
+  class={`relative header-date h-fit flex gap-2 opacity-0 transition-[opacity,transform] duration-300 ${extraClasses || ""}`}
+>
+  <div
+    class="whitespace-nowrap rounded-lg bg-pink px-3 py-1 text-xs font-medium text-black"
+  >
+    9.–11. juli 2026
+  </div>
+  <div class="absolute -bottom-[9px] -right-3">
+    <div
+      class="-rotate-6 transform rounded-full bg-red px-2 py-0.5 text-[10px] leading-none text-white shadow-lg"
+    >
+      NY DATO
+    </div>
+  </div>
+</div>
