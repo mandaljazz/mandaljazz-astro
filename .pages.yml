@@ -15,13 +15,8 @@ content:
     label: Authors
     type: collection
     path: src/content/authors
-    filename: "{id}.mdx"
+    filename: "{{slug}}.mdx"
     fields:
-      - name: id
-        label: ID
-        type: string
-        required: true
-        description: "URL-friendly identifier (e.g., 'jens-bessesen')"
       - name: name
         label: Name
         type: string
@@ -38,7 +33,7 @@ content:
     label: Blog Posts
     type: collection
     path: src/content/blogg
-    filename: "{year}-{month}-{day}-{title}.mdx"
+    filename: "{{year}}-{{month}}-{{day}}-{{slug}}.mdx"
     view:
       fields: [title, author, createdAt, hide]
       sort: [createdAt, title]
@@ -57,9 +52,9 @@ content:
         required: true
         options:
           collection: authors
-          value: "{id}"
-          label: "{name}"
-          image: "{image}"
+          value: "{{slug}}"
+          label: "{{name}}"
+          image: "{{image}}"
       - name: ingress
         label: Ingress
         type: text
