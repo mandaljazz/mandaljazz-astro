@@ -15,7 +15,10 @@ content:
     label: Authors
     type: collection
     path: src/content/authors
-    filename: "{{slug}}.mdx"
+    filename: "{primary}.mdx"
+    view:
+      fields: [name, image]
+      primary: name
     fields:
       - name: name
         label: Name
@@ -33,9 +36,10 @@ content:
     label: Blog Posts
     type: collection
     path: src/content/blogg
-    filename: "{{year}}-{{month}}-{{day}}-{{slug}}.mdx"
+    filename: "{year}-{month}-{day}-{primary}.mdx"
     view:
       fields: [title, author, createdAt, hide]
+      primary: title
       sort: [createdAt, title]
       default:
         sort: createdAt
