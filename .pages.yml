@@ -17,10 +17,10 @@ content:
     path: src/content/authors
     filename: "{primary}.mdx"
     view:
-      fields: [authorName, image]
-      primary: authorName
+      fields: [name, image]
+      primary: name
     fields:
-      - name: authorName
+      - name: name
         label: Name
         type: string
         required: true
@@ -56,8 +56,8 @@ content:
         required: true
         options:
           collection: authors
-          value: "{primary}"
-          label: "{authorName}"
+          value: "{name}"
+          label: "{name}"
           image: "{image}"
       - name: ingress
         label: Ingress
