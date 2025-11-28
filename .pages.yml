@@ -63,7 +63,7 @@ content:
         type: text
         description: "Short description/intro text"
         options:
-          rows: 3
+          rows: 2
           maxLength: 150
       - name: image
         label: Image
