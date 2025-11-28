@@ -4,10 +4,20 @@ import Link from "./Link.astro";
 
 export interface Props {
   previousArtist: {
-    frontmatter: { id: string; shortTitle?: string; title: string, imageType?: string };
+    frontmatter: {
+      id: string;
+      shortTitle?: string;
+      title: string;
+      imageType?: string;
+    };
   };
   nextArtist: {
-    frontmatter: { id: string; shortTitle?: string; title: string, imageType?: string };
+    frontmatter: {
+      id: string;
+      shortTitle?: string;
+      title: string;
+      imageType?: string;
+    };
   };
   class?: string;
   compact?: boolean;
@@ -15,10 +25,20 @@ export interface Props {
 
 const {
   previousArtist: {
-    frontmatter: { id: prevId, shortTitle: prevShortTitle, title: prevTitle, imageType: prevImageType },
+    frontmatter: {
+      id: prevId,
+      shortTitle: prevShortTitle,
+      title: prevTitle,
+      imageType: prevImageType,
+    },
   },
   nextArtist: {
-    frontmatter: { id: nextId, shortTitle: nextShortTitle, title: nextTitle, imageType: nextImageType },
+    frontmatter: {
+      id: nextId,
+      shortTitle: nextShortTitle,
+      title: nextTitle,
+      imageType: nextImageType,
+    },
   },
   class: extraClasses,
   compact,

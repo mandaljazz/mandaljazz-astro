@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import sortBy from "lodash/sortBy";
 import Link from "../components/Link.astro";
-import Layout from "../layouts/Layout.astro";
 import FestivalCommitteePositionLayout from "../layouts/FestivalCommitteePositionLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import { imagePathToSrc } from "../utils/images";
 
 const positions = await getCollection("festivalkomite");

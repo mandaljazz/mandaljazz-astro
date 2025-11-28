@@ -64,7 +64,8 @@ h6 {
 }
 
 .bg-grainy-dark-blue-gradient {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       120deg,
       theme("colors.dark-blue / 50%"),
       theme("colors.dark-blue") 40%
