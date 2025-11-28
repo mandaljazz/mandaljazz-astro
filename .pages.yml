@@ -1,18 +1,18 @@
 media:
   - name: public-images
-    label: Public Images
+    label: Bilder
     input: public
     output: /
     extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: src-images
-    label: Source Images
+    label: Kode-bilder
     input: src/images
     output: /src/images
     extensions: [png, jpg, jpeg, webp, svg, gif]
 
 content:
   - name: authors
-    label: Authors
+    label: Forfattere
     type: collection
     path: src/content/authors
     filename: "{primary}.mdx"
@@ -21,19 +21,19 @@ content:
       primary: name
     fields:
       - name: name
-        label: Name
+        label: Navn
         type: string
         required: true
       - name: image
-        label: Image
+        label: Bilde
         type: image
         options:
           media: src-images
           path: src/images/folk
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Author profile image"
+        description: "Forfatterprofilbilde"
   - name: blogg
-    label: Blog Posts
+    label: Blogginnlegg
     type: collection
     path: src/content/blogg
     filename: "{year}-{month}-{day}-{primary}.mdx"
@@ -46,12 +46,12 @@ content:
         order: desc
     fields:
       - name: title
-        label: Title
+        label: Tittel
         type: string
         required: true
-        description: "The title will be used in the filename (spaces and special chars will be sanitized)"
+        description: "Tittelen vil også bli brukt i URL-en"
       - name: author
-        label: Author
+        label: Forfatter
         type: reference
         required: true
         options:
@@ -61,45 +61,43 @@ content:
       - name: ingress
         label: Ingress
         type: text
-        description: "Short description/intro text"
         options:
           rows: 2
           maxLength: 150
       - name: image
-        label: Image
+        label: Bilde
         type: image
         required: true
         options:
           media: public-images
           path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "URL or path to the blog post image (should be landscape format)"
+        description: "Bør være landskapsformat"
       - name: createdAt
-        label: Created At
+        label: Opprettet
         type: date
         required: true
         options:
           time: true
           format: yyyy-MM-dd HH:mm
       - name: updatedAt
-        label: Updated At
+        label: Oppdatert
         type: date
         options:
           time: true
           format: yyyy-MM-dd HH:mm
       - name: hide
-        label: Hide
+        label: Skjul
         type: boolean
         default: false
-        description: "Hide this post from the blog listing"
+        description: "Skjul dette innlegget fra blogglisten"
       - name: body
-        label: Body
+        label: Innhold
         type: rich-text
         options:
           media: public-images
           path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Main content of the blog post"
 
 settings:
   content:
