@@ -62,6 +62,9 @@ content:
         label: Ingress
         type: text
         description: "Short description/intro text"
+        options:
+          rows: 3
+          maxLength: 150
       - name: image
         label: Image
         type: image
