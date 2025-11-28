@@ -98,6 +98,95 @@ content:
           media: public-images
           path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: festivalkomite
+    label: Festivalkomite
+    type: collection
+    path: src/content/festivalkomite
+    filename: "{primary}.mdx"
+    view:
+      fields: [title, filled, fee, start, end]
+      primary: title
+      sort: [filled, title]
+      default:
+        sort: filled
+        order: asc
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+        description: "Tittelen vil også bli brukt i URL-en"
+      - name: fee
+        label: Honorar
+        type: boolean
+        default: false
+        description: "Om stillingen har honorar"
+      - name: start
+        label: Startdato
+        type: string
+        description: "Når stillingen starter (f.eks. '1. mai 2026')"
+      - name: end
+        label: Sluttdato
+        type: string
+        description: "Når stillingen slutter (f.eks. '1. august 2026')"
+      - name: deadline
+        label: Søknadsfrist
+        type: string
+        description: "Søknadsfrist (f.eks. '10. september 2025')"
+      - name: filled
+        label: Besatt
+        type: boolean
+        default: false
+        description: "Om stillingen er besatt"
+      - name: image
+        label: Bilde
+        type: image
+        options:
+          media: public-images
+          path: public/festivalkomite
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+        description: "Bilde for stillingen"
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/festivalkomite
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: frivillig
+    label: Frivillig
+    type: collection
+    path: src/content/frivillig
+    filename: "{primary}.mdx"
+    view:
+      fields: [title]
+      primary: title
+      sort: [title]
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+        description: "Tittelen vil også bli brukt i URL-en"
+      - name: imagePath
+        label: Bilde
+        type: image
+        options:
+          media: src-images
+          path: src/images/frivillig
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+        description: "Bilde for frivilliggruppen"
+      - name: imageAlt
+        label: Bildebeskrivelse
+        type: string
+        description: "Alternativ tekst for bildet"
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/blogg
+          extensions: [png, jpg, jpeg, webp, svg, gif]
 
 settings:
   content:

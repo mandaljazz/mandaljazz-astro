@@ -1,27 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import sortBy from "lodash/sortBy";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
+import FestivalCommitteePositionLayout from "../layouts/FestivalCommitteePositionLayout.astro";
 import { imagePathToSrc } from "../utils/images";
 
-interface PositionProps {
-  frontmatter: {
-    name: string;
-    role: string;
-    image: string;
-    title: string;
-    id: string;
-    filled: boolean;
-  };
-  Content: any;
-}
-
-const positions = import.meta.glob<PositionProps>(
-  "../content/festivalkomite/*.mdx",
-  { eager: true },
-);
-const positionList = Object.values(positions);
+const positions = await getCollection("festivalkomite");
+const positionList = sortBy(positions, (p) => p.data.filled);
 ---
 
 <Layout
@@ -104,9 +91,10 @@ const positionList = Object.values(positions);
               class="sticky top-[52px] flex flex-row items-center gap-4 overflow-x-auto bg-beige px-4 py-3 md:top-[56px] md:flex-col md:items-start md:px-0"
             >
               {
-                sortBy(positionList, "frontmatter.filled").map((position) => {
+                positionList.map((position) => {
                   const {
-                    frontmatter: { title, id, filled },
+                    data: { title, filled },
+                    slug,
                   } = position;
                   return filled ? (
                     <li class="whitespace-nowrap">
@@ -114,7 +102,7 @@ const positionList = Object.values(positions);
                     </li>
                   ) : (
                     <li>
-                      <Link href={`#${id}`} title={title}>
+                      <Link href={`#${slug}`} title={title}>
                         {title}
                       </Link>
                     </li>
@@ -125,17 +113,24 @@ const positionList = Object.values(positions);
           </div>
           <div class="space-y-12 md:col-span-4 lg:col-span-4">
             {
-              positionList
-                .filter((position) => !position.frontmatter.filled)
-                .map((position) => {
-                  const { Content } = position;
-                  return (
-                    <div class="space-y-16">
-                      <Content />
-                      <hr />
-                    </div>
-                  );
-                })
+              await Promise.all(
+                positionList
+                  .filter((position) => !position.data.filled)
+                  .map(async (position) => {
+                    const { Content } = await position.render();
+                    return (
+                      <div class="space-y-16">
+                        <FestivalCommitteePositionLayout
+                          data={position.data}
+                          slug={position.slug}
+                        >
+                          <Content />
+                        </FestivalCommitteePositionLayout>
+                        <hr />
+                      </div>
+                    );
+                  }),
+              )
             }
           </div>
         </div>

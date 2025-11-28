@@ -1,11 +1,12 @@
 ---
 const {
-  frontmatter: { title, id, fee, start, end, deadline },
+  data: { title, fee, start, end, deadline },
+  slug,
 } = Astro.props;
 ---
 
 <section class="space-y-8">
-  <div id={id} class="invisible -translate-y-16"></div>
+  <div id={slug} class="invisible -translate-y-16"></div>
   <h3
     class="sticky top-[100px] inline-block w-full rounded-xl rounded-tl-none bg-pink p-3 text-xl md:top-[56px] md:p-4 md:text-2xl"
   >

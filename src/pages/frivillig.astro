@@ -1,26 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Link from "../components/Link.astro";
 import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
+import VolunteerGroupLayout from "../layouts/VolunteerGroupLayout.astro";
 import { imagePathToSrc } from "../utils/images";
 
-interface GroupProps {
-  frontmatter: {
-    title: string;
-    description: string;
-    image: string;
-    id: string;
-  };
-  Content: any;
-}
-
-const groups = await import.meta.glob<GroupProps>(
-  "../content/frivillig/*.mdx",
-  { eager: true },
-);
-const groupList = Object.values(groups);
+const groups = await getCollection("frivillig");
+const groupList = groups.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <Layout
@@ -109,11 +98,12 @@ const groupList = Object.values(groups);
               {
                 groupList.map((group) => {
                   const {
-                    frontmatter: { title, id },
+                    data: { title },
+                    slug,
                   } = group;
                   return (
                     <li class="whitespace-nowrap">
-                      <Link href={`#${id}`} title={title}>
+                      <Link href={`#${slug}`} title={title}>
                         {title}
                       </Link>
                     </li>
@@ -124,15 +114,22 @@ const groupList = Object.values(groups);
           </div>
           <div class="space-y-12 md:col-span-3 lg:col-span-4">
             {
-              groupList.map((group) => {
-                const { Content } = group;
-                return (
-                  <div class="space-y-16">
-                    <Content />
-                    <hr />
-                  </div>
-                );
-              })
+              await Promise.all(
+                groupList.map(async (group) => {
+                  const { Content } = await group.render();
+                  return (
+                    <div class="space-y-16">
+                      <VolunteerGroupLayout
+                        data={group.data}
+                        slug={group.slug}
+                      >
+                        <Content />
+                      </VolunteerGroupLayout>
+                      <hr />
+                    </div>
+                  );
+                })
+              )
             }
           </div>
         </div>

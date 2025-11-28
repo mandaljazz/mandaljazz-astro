@@ -23,7 +23,30 @@ const blogg = defineCollection({
   }),
 });
 
+const festivalkomite = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    fee: z.boolean().default(false),
+    start: z.string().optional(),
+    end: z.string().optional(),
+    deadline: z.string().optional(),
+    filled: z.boolean().default(false),
+  }),
+});
+
+const frivillig = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    imagePath: z.string().optional(),
+    imageAlt: z.string().optional(),
+  }),
+});
+
 export const collections = {
   authors,
   blogg,
+  festivalkomite,
+  frivillig,
 };
