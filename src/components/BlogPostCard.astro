@@ -1,0 +1,49 @@
+---
+import classNames from "classnames";
+import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
+
+export interface Props {
+  title: string;
+  ingress?: string;
+  href: string;
+  image: string;
+  className?: string;
+}
+
+const { href, title, ingress, image, className } = Astro.props;
+---
+
+<li
+  class={classNames(
+    `rounded-xl w-full h-96 sm:h-72 transition-transform group hover:rotate-1`,
+    className,
+  )}
+>
+  <a href={href} class="relative block h-full w-full">
+    <ImageWithBlurredBackground
+      src={image}
+      alt={title}
+      className="rounded-xl"
+    />
+    {
+      ingress && (
+        <div class="absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl bg-blue p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-9 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5">
+          <p>{ingress}</p>
+        </div>
+      )
+    }
+    <h2
+      class={classNames(
+        `font-medium absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-center
+      p-4 h-14 items-center justify-center flex rounded-xl transition-transform group-hover:-rotate-2 bg-pink whitespace-nowrap truncate`,
+        {
+          "text-xl": title.length < 20,
+          "text-base": title.length >= 20 && title.length < 25,
+          "text-sm": title.length >= 25,
+        },
+      )}
+    >
+      {title}
+    </h2>
+  </a>
+</li>

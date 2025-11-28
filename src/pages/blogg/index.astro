@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import BlogPostCard from "../../components/BlogPostCard.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const allBlogPosts = await getCollection("blogg");
@@ -21,27 +22,19 @@ const articleList = allBlogPosts
       >
         {
           articleList.map((article) => {
-              const {
-                data: { title, ingress, image },
-                slug,
-              } = article;
-              return (
-                <li
-                  class="h-56 rounded transition hover:scale-105 hover:shadow-lg"
-                  style={`background-image: url('${image}');`}
-                >
-                  <a
-                    href={`/blogg/${slug}`}
-                    class="relative flex h-full w-full flex-col justify-end"
-                  >
-                    <div class="space-y-4 bg-chalk-white p-4">
-                      <h2>{title}</h2>
-                      {ingress && <p>{ingress}</p>}
-                    </div>
-                  </a>
-                </li>
-              );
-            })
+            const {
+              data: { title, ingress, image },
+              slug,
+            } = article;
+            return (
+              <BlogPostCard
+                title={title}
+                ingress={ingress}
+                href={`/blogg/${slug}`}
+                image={image}
+              />
+            );
+          })
         }
       </ul>
     </div>
