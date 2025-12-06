@@ -3,15 +3,33 @@ export interface Props {
   class?: string;
   isFree?: boolean;
   externalTicketUrl?: string;
+  earlyBird?: boolean;
 }
 
-const { class: extraClasses = "", isFree, externalTicketUrl } = Astro.props;
+const {
+  class: extraClasses = "",
+  isFree,
+  externalTicketUrl,
+  earlyBird = false,
+} = Astro.props;
 ---
 
-<a
-  class={`block py-4 px-4 text-center bg-red text-beige rounded-lg text-sm md:text-xl duration-500 font-display
-  transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover ${extraClasses}`}
-  href={externalTicketUrl ?? "https://tikkio.com/events/60317-mandaljazz-2026"}
-  rel="noopener nofollow"
-  target="_blank">{isFree ? "Reserver gratisbillett" : "Kjøp billetter"}</a
->
+<div class={`group relative ${extraClasses}`}>
+  {
+    earlyBird && (
+      <div class="absolute -right-8 -top-3 z-10 sm:-top-4">
+        <div class="rotate-12 transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform group-hover:scale-110 sm:text-sm">
+          <span>Early bird</span>
+        </div>
+      </div>
+    )
+  }
+  <a
+    class={`block py-4 px-4 text-center bg-red text-beige rounded-lg text-sm md:text-xl duration-500 font-display
+    transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover`}
+    href={externalTicketUrl ??
+      "https://tikkio.com/events/60317-mandaljazz-2026"}
+    rel="noopener nofollow"
+    target="_blank">{isFree ? "Reserver gratisbillett" : "Kjøp billetter"}</a
+  >
+</div>

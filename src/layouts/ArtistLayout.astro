@@ -8,7 +8,7 @@ import { isBefore } from "date-fns";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
-// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 import InfoBox from "../components/InfoBox.astro";
@@ -239,11 +239,12 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
             )
           }
           <div class="flex flex-row justify-between">
-            <!-- {
+            {
               !isFree && (
                 <BuyTicketsButton
                   class="flex-0 h-fit w-fit"
                   externalTicketUrl={externalTicketUrl}
+                  earlyBird
                 />
               )
             }
@@ -251,7 +252,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
               isFree && requiresFreeTicket && (
                 <BuyTicketsButton class="flex-0 h-fit w-fit" isFree />
               )
-            } -->
+            }
             {
               sponsoredByBergesenstiftelsen && (
                 <div class="flex flex-col gap-y-1 lg:items-end">
