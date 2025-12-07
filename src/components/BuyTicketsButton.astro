@@ -1,24 +1,39 @@
 ---
+import classNames from "classnames";
+
 export interface Props {
   class?: string;
   isFree?: boolean;
   externalTicketUrl?: string;
-  earlyBird?: boolean;
+  earlyBird?: "left" | "right";
 }
 
 const {
   class: extraClasses = "",
   isFree,
   externalTicketUrl,
-  earlyBird = false,
+  earlyBird,
 } = Astro.props;
 ---
 
 <div class={`group relative ${extraClasses}`}>
   {
     earlyBird && (
-      <div class="absolute -right-8 -top-3 z-10 sm:-top-4">
-        <div class="rotate-12 transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform group-hover:scale-110 sm:text-sm">
+      <div
+        class={classNames("absolute -top-3 z-10 sm:-top-4", {
+          "-right-8": earlyBird === "right",
+          "-left-8": earlyBird === "left",
+        })}
+      >
+        <div
+          class={classNames(
+            "transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform group-hover:scale-110 sm:text-sm",
+            {
+              "rotate-12": earlyBird === "right",
+              "-rotate-12": earlyBird === "left",
+            },
+          )}
+        >
           <span>Early bird</span>
         </div>
       </div>
