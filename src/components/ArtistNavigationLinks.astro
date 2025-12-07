@@ -5,7 +5,7 @@ import Link from "./Link.astro";
 export interface Props {
   previousArtist: {
     frontmatter: {
-      id: string;
+      slug: string;
       shortTitle?: string;
       title: string;
       imageType?: string;
@@ -13,7 +13,7 @@ export interface Props {
   };
   nextArtist: {
     frontmatter: {
-      id: string;
+      slug: string;
       shortTitle?: string;
       title: string;
       imageType?: string;
@@ -26,7 +26,7 @@ export interface Props {
 const {
   previousArtist: {
     frontmatter: {
-      id: prevId,
+      slug: prevSlug,
       shortTitle: prevShortTitle,
       title: prevTitle,
       imageType: prevImageType,
@@ -34,7 +34,7 @@ const {
   },
   nextArtist: {
     frontmatter: {
-      id: nextId,
+      slug: nextSlug,
       shortTitle: nextShortTitle,
       title: nextTitle,
       imageType: nextImageType,
@@ -51,7 +51,7 @@ const {
   } gap-4 sm:flex-row sm:justify-between ${extraClasses}`}
 >
   <div class="flex flex-row items-center gap-2 self-start sm:self-auto">
-    <Link href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}>
+    <Link href={`/artist/${prevSlug}`} title={prevShortTitle || prevTitle}>
       <span class="flex flex-row items-center gap-2">
         <Icon
           class="icon transition-transform group-hover:-translate-y-0.5"
@@ -64,23 +64,23 @@ const {
         ></span
       >
     </Link>
-    <a href={`/artist/${prevId}`} title={prevShortTitle || prevTitle}
+    <a href={`/artist/${prevSlug}`} title={prevShortTitle || prevTitle}
       ><img
-        src={`/artist/${prevId}.${prevImageType || "jpg"}`}
+        src={`/artist/${prevSlug}.${prevImageType || "jpg"}`}
         alt={prevShortTitle || prevTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a
     >
   </div>
   <div class="flex flex-row items-center gap-2 self-end sm:self-auto">
-    <a href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}
+    <a href={`/artist/${nextSlug}`} title={nextShortTitle || nextTitle}
       ><img
-        src={`/artist/${nextId}.${nextImageType || "jpg"}`}
+        src={`/artist/${nextSlug}.${nextImageType || "jpg"}`}
         alt={nextShortTitle || nextTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a
     >
-    <Link href={`/artist/${nextId}`} title={nextShortTitle || nextTitle}>
+    <Link href={`/artist/${nextSlug}`} title={nextShortTitle || nextTitle}>
       <span class="flex flex-row items-center gap-2"
         ><span class={compact ? "hidden lg:block" : ""}
           >{nextShortTitle || nextTitle}</span

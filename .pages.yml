@@ -187,6 +187,162 @@ content:
           media: public-images
           path: public/blogg
           extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: artist
+    label: Artister
+    type: collection
+    path: src/content/artist
+    filename: "{primary}.mdx"
+    view:
+      fields: [title, tagline, concertStartAt, venue, hideFromArtistList, order]
+      primary: title
+      sort: [order, concertStartAt, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+        description: "Fullt navn på artisten"
+      - name: shortTitle
+        label: Kort tittel
+        type: string
+        description: "Kortere navn som vises på kort (hvis annerledes enn tittel)"
+      - name: tagline
+        label: Tagline
+        type: string
+        description: "Kort beskrivelse som vises på kort"
+      - name: imageType
+        label: Bildeformat
+        type: select
+        options:
+          - jpg
+          - png
+        description: "Format på artistbildet (jpg eller png)"
+      - name: imageAttribution
+        label: Bildeattribusjon
+        type: string
+        description: "Navn på fotograf"
+      - name: author
+        label: Forfatter
+        type: string
+        description: "Navn på forfatter av teksten"
+      - name: authorImage
+        label: Forfatterbilde
+        type: image
+        options:
+          media: src-images
+          path: src/images/folk
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+        description: "Profilbilde av forfatteren"
+      - name: noAuthor
+        label: Ingen forfatter
+        type: boolean
+        default: false
+        description: "Skjul forfatterinformasjon"
+      - name: venue
+        label: Scene
+        type: string
+        description: "Hvor konserten spilles (f.eks. 'Teltet', 'Buen (Storsalen)')"
+      - name: concertStartAt
+        label: Konsertstart
+        type: datetime
+        description: "Når konserten starter (f.eks. '2026-07-10T22:00')"
+      - name: concertEndAt
+        label: Konsertslutt
+        type: datetime
+        description: "Når konserten slutter (f.eks. '2026-07-10T23:30')"
+      - name: spotifyUrl
+        label: Spotify URL
+        type: string
+        description: "Lenke til artist på Spotify"
+      - name: youtubeUrl
+        label: YouTube URL
+        type: string
+        description: "Lenke til YouTube-video"
+      - name: sponsoredByBergesenstiftelsen
+        label: Støttet av Bergesenstiftelsen
+        type: boolean
+        default: false
+        description: "Vis logo for Bergesenstiftelsen"
+      - name: hideFromProgram
+        label: Skjul fra program
+        type: boolean
+        default: false
+        description: "Skjul fra programsiden"
+      - name: hideFromArtistList
+        label: Skjul fra artistliste
+        type: boolean
+        default: false
+        description: "Skjul fra forsiden"
+      - name: releaseAt
+        label: Utgivelsesdato
+        type: datetime
+        description: "Når artisten skal vises (skjules til denne datoen)"
+      - name: isFree
+        label: Gratis
+        type: boolean
+        default: false
+        description: "Om konserten er gratis"
+      - name: requiresFreeTicket
+        label: Krever gratisbillett
+        type: boolean
+        default: false
+        description: "Om gratis konsert krever gratisbillett"
+      - name: externalTicketUrl
+        label: Ekstern billettlenke
+        type: string
+        description: "Lenke til ekstern billettsalg"
+      - name: isMorgensolo
+        label: Morgensolo
+        type: boolean
+        default: false
+        description: "Om dette er en morgensolo"
+      - name: isBestillingsverk
+        label: Bestillingsverk
+        type: boolean
+        default: false
+        description: "Om dette er et bestillingsverk"
+      - name: isBarnekonsert
+        label: Barnekonsert
+        type: boolean
+        default: false
+        description: "Om dette er en barnekonsert"
+      - name: isPlaceholder
+        label: Placeholder
+        type: boolean
+        default: false
+        description: "Om dette er en placeholder"
+      - name: isNonConcertEvent
+        label: Ikke konsert
+        type: boolean
+        default: false
+        description: "Om dette ikke er en konsert"
+      - name: cancelled
+        label: Avlyst
+        type: boolean
+        default: false
+        description: "Om konserten er avlyst"
+      - name: order
+        label: Rekkefølge
+        type: number
+        description: "Rekkefølge på forsiden (lavere er bedre)"
+      - name: externalLink
+        label: Ekstern lenke
+        type: string
+        description: "Ekstern lenke (hvis ikke lokal artistside)"
+      - name: altImage
+        label: Alternativt bilde
+        type: string
+        description: "Alternativt bilde (hvis ikke standard artistbilde)"
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/artist
+          extensions: [png, jpg, jpeg, webp, svg, gif]
 
 settings:
   content:

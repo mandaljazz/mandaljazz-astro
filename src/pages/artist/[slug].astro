@@ -1,0 +1,50 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import ArtistLayout from "../../layouts/ArtistLayout.astro";
+
+type Props = {
+  artist: CollectionEntry<"artist">;
+};
+
+export async function getStaticPaths() {
+  const artists = await getCollection("artist");
+
+  return artists.map((artist) => ({
+    params: { slug: artist.slug },
+    props: { artist },
+  }));
+}
+
+const { artist } = Astro.props as Props;
+const { Content } = await artist.render();
+---
+
+<ArtistLayout
+  frontmatter={{
+    slug: artist.slug,
+    imageType: artist.data.imageType,
+    imageAttribution: artist.data.imageAttribution,
+    title: artist.data.title,
+    shortTitle: artist.data.shortTitle,
+    author: artist.data.author,
+    authorImage: artist.data.authorImage,
+    noAuthor: artist.data.noAuthor,
+    tagline: artist.data.tagline,
+    venue: artist.data.venue,
+    concertStartAt: artist.data.concertStartAt,
+    concertEndAt: artist.data.concertEndAt,
+    spotifyUrl: artist.data.spotifyUrl,
+    youtubeUrl: artist.data.youtubeUrl,
+    sponsoredByBergesenstiftelsen: artist.data.sponsoredByBergesenstiftelsen,
+    isFree: artist.data.isFree,
+    isMorgensolo: artist.data.isMorgensolo,
+    isBestillingsverk: artist.data.isBestillingsverk,
+    isBarnekonsert: artist.data.isBarnekonsert,
+    requiresFreeTicket: artist.data.requiresFreeTicket,
+    externalTicketUrl: artist.data.externalTicketUrl,
+    isNonConcertEvent: artist.data.isNonConcertEvent,
+    cancelled: artist.data.cancelled,
+  }}
+>
+  <Content />
+</ArtistLayout>

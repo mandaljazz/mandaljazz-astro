@@ -5,6 +5,7 @@ import sortBy from "lodash/sortBy";
 // import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import classNames from "classnames";
 import { isBefore, isValid } from "date-fns";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
@@ -12,16 +13,18 @@ import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
-import type { ArtistProps } from "../layouts/ArtistLayout.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
 
-const artistsPages = await import.meta.glob<ArtistProps>(
-  "../pages/artist/*.mdx",
-  { eager: true },
-);
-const artists = Object.values(artistsPages);
+const artistEntries = await getCollection("artist");
+const artists: Array<{
+  slug: string;
+  frontmatter: (typeof artistEntries)[number]["data"];
+}> = artistEntries.map((entry) => ({
+  slug: entry.slug,
+  frontmatter: entry.data,
+}));
 
 const otherEvents = [];
 
@@ -29,12 +32,14 @@ const concertsGroupedByDay = Object.entries(
   groupBy(
     sortBy(
       [
-        ...artists.filter(({ frontmatter: { concertStartAt } }) =>
-          isValid(new Date(concertStartAt)),
+        ...artists.filter(
+          ({ frontmatter: { concertStartAt } }) =>
+            concertStartAt && isValid(new Date(concertStartAt)),
         ),
-        ...(otherEvents.map((tbaArtist) => ({
+        ...otherEvents.map((tbaArtist) => ({
+          slug: "",
           frontmatter: tbaArtist,
-        })) as ArtistProps[]),
+        })),
       ],
       "frontmatter.concertStartAt",
     ),
@@ -71,11 +76,11 @@ const concertsGroupedByDay = Object.entries(
                   // @ts-ignore - This is the list of artistPages grouped by day
                   artists.map(
                     ({
+                      slug,
                       frontmatter: {
                         title,
                         shortTitle,
                         tagline,
-                        id,
                         imageType,
                         venue,
                         concertStartAt,
@@ -93,11 +98,13 @@ const concertsGroupedByDay = Object.entries(
                       },
                     }) => {
                       const image = imageType
-                        ? `${id}.${imageType}`
-                        : `${id}.jpg`;
+                        ? `${slug}.${imageType}`
+                        : `${slug}.jpg`;
 
                       const isNotReleasedYet =
-                        hideFromProgram || isBefore(new Date(), releaseAt);
+                        hideFromProgram ||
+                        (releaseAt &&
+                          isBefore(new Date(), new Date(releaseAt)));
 
                       if (isNotReleasedYet) {
                         return (
@@ -121,7 +128,7 @@ const concertsGroupedByDay = Object.entries(
                       return (
                         <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
                           <div class="col-span-3 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
-                            {id ? (
+                            {slug ? (
                               <img
                                 src={`/artist/${image}`}
                                 alt={shortTitle || title}
@@ -144,9 +151,12 @@ const concertsGroupedByDay = Object.entries(
                             )}
                             <div>
                               <div class="flex flex-row items-start gap-2">
-                                {id && !isPlaceholder ? (
+                                {slug && !isPlaceholder ? (
                                   <div>
-                                    <Link href={`/artist/${id}`} title={title}>
+                                    <Link
+                                      href={`/artist/${slug}`}
+                                      title={title}
+                                    >
                                       {/* prettier-ignore */}
                                       <span class={classNames({
                                           "line-through": cancelled,

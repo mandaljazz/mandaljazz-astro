@@ -4,6 +4,7 @@ import last from "lodash/last";
 import sortBy from "lodash/sortBy";
 
 import Icon from "astro-icon";
+import { getCollection } from "astro:content";
 import { isBefore } from "date-fns";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
@@ -29,7 +30,7 @@ const {
     noAuthor,
     tagline,
     cancelled,
-    id,
+    slug,
     imageType,
     imageAttribution,
     concertStartAt,
@@ -49,7 +50,7 @@ const {
 export type ArtistProps = {
   frontmatter: {
     layout?: string;
-    id: string;
+    slug: string;
     imageType?: "jpg" | "png";
     imageAttribution?: string;
     title: string;
@@ -63,7 +64,7 @@ export type ArtistProps = {
     concertEndAt?: string;
     spotifyUrl?: string;
     youtubeUrl?: string;
-    sponsoredByBergesenstiftelsen?: string;
+    sponsoredByBergesenstiftelsen?: string | boolean;
     hideFromProgram?: boolean;
     hideFromArtistList?: boolean;
     isFree?: boolean;
@@ -76,23 +77,23 @@ export type ArtistProps = {
     isNonConcertEvent?: boolean;
     requiresFreeTicket?: boolean;
     externalTicketUrl?: string;
-    order?: string;
+    order?: string | number;
     releaseAt?: string;
     cancelled?: boolean;
   };
 };
 
-const artistsPages = await import.meta.glob<ArtistProps>(
-  "../pages/artist/*.mdx",
-  { eager: true },
-);
-const artists = Object.values(artistsPages);
+const artistEntries = await getCollection("artist");
+const artists = artistEntries.map((entry) => ({
+  slug: entry.slug,
+  frontmatter: entry.data,
+}));
 const releasedArtists = () =>
   artists.filter(
     (artist) =>
       !artist.frontmatter.hideFromProgram &&
       (!artist.frontmatter.releaseAt ||
-        isBefore(artist.frontmatter.releaseAt, new Date())),
+        isBefore(new Date(artist.frontmatter.releaseAt), new Date())),
   );
 const sortedArtistsPages = sortBy(
   [
@@ -103,21 +104,43 @@ const sortedArtistsPages = sortBy(
   "frontmatter.concertStartAt",
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
-  ({ frontmatter: { id } }) => id === Astro.props.frontmatter.id,
+  ({ slug: artistSlug }) => artistSlug === Astro.props.frontmatter.slug,
 );
-const previousArtist =
+const previousArtistRaw =
   indexOfThisArtist === 0
     ? last(sortedArtistsPages)
     : sortedArtistsPages[indexOfThisArtist - 1];
-const nextArtist =
+const nextArtistRaw =
   indexOfThisArtist === sortedArtistsPages.length - 1
     ? first(sortedArtistsPages)
     : sortedArtistsPages[indexOfThisArtist + 1];
 
+const previousArtist = previousArtistRaw
+  ? {
+      frontmatter: {
+        slug: previousArtistRaw.slug,
+        shortTitle: previousArtistRaw.frontmatter.shortTitle,
+        title: previousArtistRaw.frontmatter.title,
+        imageType: previousArtistRaw.frontmatter.imageType,
+      },
+    }
+  : undefined;
+
+const nextArtist = nextArtistRaw
+  ? {
+      frontmatter: {
+        slug: nextArtistRaw.slug,
+        shortTitle: nextArtistRaw.frontmatter.shortTitle,
+        title: nextArtistRaw.frontmatter.title,
+        imageType: nextArtistRaw.frontmatter.imageType,
+      },
+    }
+  : undefined;
+
 const showPrevAndNextArtistNavigationLinks =
   sortedArtistsPages.length > 1 && previousArtist && nextArtist;
 
-const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
+const image = imageType ? `${slug}.${imageType}` : `${slug}.jpg`;
 ---
 
 <Layout
@@ -146,7 +169,9 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
           </h2>
 
           {
-            showPrevAndNextArtistNavigationLinks ? (
+            showPrevAndNextArtistNavigationLinks &&
+            previousArtist &&
+            nextArtist ? (
               <ArtistNavigationLinks
                 previousArtist={previousArtist}
                 nextArtist={nextArtist}
@@ -287,7 +312,7 @@ const image = imageType ? `${id}.${imageType}` : `${id}.jpg`;
       </div>
       {youtubeUrl && <YouTube src={youtubeUrl} />}
       {
-        showPrevAndNextArtistNavigationLinks ? (
+        showPrevAndNextArtistNavigationLinks && previousArtist && nextArtist ? (
           <ArtistNavigationLinks
             previousArtist={previousArtist}
             nextArtist={nextArtist}
