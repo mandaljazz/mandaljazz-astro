@@ -27,7 +27,7 @@ const {
       >
         <div
           class={classNames(
-            "transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform group-hover:scale-110 sm:text-sm",
+            "transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform duration-500 group-hover:scale-110 sm:text-sm",
             {
               "rotate-12": earlyBird === "right",
               "-rotate-12": earlyBird === "left",
@@ -40,8 +40,7 @@ const {
     )
   }
   <a
-    class={`block py-4 px-4 text-center bg-red text-beige rounded-lg text-sm md:text-xl duration-500 font-display
-    transition-all shadow-solid -translate-y-1 hover:translate-x-1 hover:-translate-y-2 hover:shadow-solid-hover`}
+    class="block -translate-y-1 rounded-lg bg-red px-4 py-4 text-center font-display text-sm text-beige shadow-solid transition-all duration-500 hover:-translate-y-2 hover:translate-x-1 hover:shadow-solid-hover md:text-xl"
     href={externalTicketUrl ??
       "https://tikkio.com/events/60317-mandaljazz-2026"}
     rel="noopener nofollow"

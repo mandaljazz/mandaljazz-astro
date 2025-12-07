@@ -9,7 +9,9 @@ import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 // import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
-import jazzlaugUtklipp from "/public/profil/jazzlaug-utklipp.png";
+// import jazzlaugUtklipp from "/public/profil/jazzlaug-utklipp.png";
+import PlaceholderCard from "../components/PlaceholderCard.astro";
+import jazzlaugJulelue from "/public/profil/jazzlaug-julelue.png";
 
 const artists = await import.meta.glob<ArtistProps>("../pages/artist/*.mdx", {
   eager: true,
@@ -52,7 +54,7 @@ const byOrder = (a, b) => {
     <div class="flex flex-col gap-8 sm:gap-12">
       <div class="mx-auto flex max-w-5xl flex-col items-center gap-8">
         <div
-          class="relative flex w-full flex-col items-center gap-4 pt-8 md:pt-24 lg:mx-auto lg:w-fit"
+          class="relative flex w-full flex-col items-center gap-4 pt-16 md:pt-32 lg:mx-auto lg:w-fit"
         >
           <div class="flex flex-col">
             <div class="relative flex w-full">
@@ -63,7 +65,7 @@ const byOrder = (a, b) => {
                   class="block rounded-xl rounded-br-none bg-pink p-6 text-center text-4xl sm:text-7xl"
                   >9.–11. juli</span
                 >
-                <span class="flex w-full flex-row">
+                <span class="flex w-full flex-row bg-beige">
                   <span class="block flex-1 bg-beige"></span>
                   <span
                     class="block w-fit rounded-b-xl bg-pink/50 p-2 text-4xl italic"
@@ -86,9 +88,9 @@ const byOrder = (a, b) => {
               class="absolute bottom-0 mx-auto rotate-6 px-4 py-1 text-2xl text-white"
             >
               <Image
-                src={jazzlaugUtklipp}
-                alt="Jazzlaug utklipp"
-                class="w-12 animate-[bounce_5s_ease-in-out_infinite] sm:w-20"
+                src={jazzlaugJulelue}
+                alt="Jazzlaug med julelue"
+                class="w-32 animate-[bounce_5s_ease-in-out_infinite] sm:w-48 md:w-52"
               />
             </div>
             <!-- <BuyTicketsButton class="mx-auto mt-8 w-fit" /> -->
@@ -152,6 +154,11 @@ const byOrder = (a, b) => {
             },
           )
         }
+        <PlaceholderCard title="Kul artist…" />
+        <PlaceholderCard title="Spennende saker…" />
+        <PlaceholderCard title="Oi, kommer de…" />
+        <PlaceholderCard title="Kommer snart…" />
+        <PlaceholderCard title="Kommer snart…" />
       </ul>
     </div>
     <!-- <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" /> -->
