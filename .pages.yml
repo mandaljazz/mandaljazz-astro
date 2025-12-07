@@ -217,8 +217,10 @@ content:
         label: Bildeformat
         type: select
         options:
-          - jpg
-          - png
+          - label: JPG
+            value: jpg
+          - label: PNG
+            value: png
         description: "Format på artistbildet (jpg eller png)"
       - name: imageAttribution
         label: Bildeattribusjon
