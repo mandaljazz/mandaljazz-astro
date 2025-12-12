@@ -11,6 +11,7 @@ import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import Layout from "../layouts/Layout.astro";
 // import jazzlaugUtklipp from "/public/profil/jazzlaug-utklipp.png";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
+import { getArtistUrl } from "../utils/artist";
 import jazzlaugJulelue from "/public/profil/jazzlaug-julelue.png";
 
 const artistEntries = await getCollection("artist");
@@ -19,10 +20,12 @@ const artistList = artistEntries.map((entry) => ({
   frontmatter: entry.data,
 }));
 
-// Filter out old artists (those in year folders like 2023/, 2024/, 2025/)
-const currentYearArtists = artistList.filter(
-  (artist) => !/^\d{4}\//.test(artist.slug),
-);
+// Filter to only show current year artists (2026)
+const currentYear = "2026";
+const currentYearArtists = artistList.filter((artist) => {
+  // Check if slug starts with current year (e.g., "2026/pumpegris")
+  return artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear;
+});
 
 const releasedArtists = () =>
   currentYearArtists.filter(
@@ -147,7 +150,7 @@ const byOrder = (a, b) => {
                     "h-[600px] lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:h-[628px]":
                       index === 4 || index === 16,
                   })}
-                  href={`/artist/${slug}`}
+                  href={getArtistUrl(slug)}
                   title={shortTitle || title}
                   tagline={tagline}
                   slug={slug}

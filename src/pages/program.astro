@@ -14,6 +14,7 @@ import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
 import Layout from "../layouts/Layout.astro";
+import { getArtistUrl } from "../utils/artist";
 import { formatHumanDate, formatTime } from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
 
@@ -26,8 +27,11 @@ const artists: Array<{
     slug: entry.slug,
     frontmatter: entry.data,
   }))
-  // Filter out old artists (those in year folders like 2023/, 2024/, 2025/)
-  .filter((artist) => !/^\d{4}\//.test(artist.slug));
+  // Filter to only show current year artists (2026)
+  .filter((artist) => {
+    const currentYear = "2026";
+    return artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear;
+  });
 
 const otherEvents = [];
 
@@ -146,7 +150,7 @@ const concertsGroupedByDay = Object.entries(
                                 {slug && !isPlaceholder ? (
                                   <div>
                                     <Link
-                                      href={`/artist/${slug}`}
+                                      href={getArtistUrl(slug)}
                                       title={title}
                                     >
                                       {/* prettier-ignore */}

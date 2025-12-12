@@ -50,8 +50,13 @@ const artists = artistEntries
     slug: entry.slug,
     frontmatter: entry.data,
   }))
-  // Filter out old artists (those in year folders like 2023/, 2024/, 2025/)
-  .filter((artist) => !/^\d{4}\//.test(artist.slug));
+  // Filter to only show current year artists (2026) for navigation
+  .filter((artist) => {
+    const currentYear = "2026";
+    return (
+      artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear
+    );
+  });
 const releasedArtists = () =>
   artists.filter(
     (artist) =>

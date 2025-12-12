@@ -1,28 +1,43 @@
 ---
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
-import ArtistLayout from "../../layouts/ArtistLayout.astro";
+import ArtistLayout from "../../../layouts/ArtistLayout.astro";
 
 type Props = {
   artist: CollectionEntry<"artist">;
+  year: string;
+  slug: string;
 };
 
 export async function getStaticPaths() {
   const artists = await getCollection("artist");
 
-  return artists.map((artist) => ({
-    params: { slug: artist.slug },
-    props: { artist },
-  }));
+  return artists.map((artist) => {
+    // Parse slug to extract year and slug parts
+    // Slugs from content collections include folder path: "2026/pumpegris" or "2023/snus"
+    const slugParts = artist.slug.split("/");
+    const year =
+      slugParts.length > 1 ? slugParts[0] : new Date().getFullYear().toString();
+    const slug =
+      slugParts.length > 1 ? slugParts.slice(1).join("/") : slugParts[0];
+
+    return {
+      params: { year, slug },
+      props: { artist, year, slug },
+    };
+  });
 }
 
-const { artist } = Astro.props as Props;
+const { artist, year, slug } = Astro.props as Props;
 const { Content } = await artist.render();
 
 // Extract author slug from full path (e.g., "src/content/authors/jens-bessesen.mdx" -> "jens-bessesen")
-const authorSlug = artist.data.author
-  .replace("src/content/authors/", "")
-  .replace(".mdx", "");
-const author = await getEntry("authors", authorSlug);
+let author = null;
+if (artist.data.author) {
+  const authorSlug = artist.data.author
+    .replace("src/content/authors/", "")
+    .replace(".mdx", "");
+  author = await getEntry("authors", authorSlug);
+}
 ---
 
 <ArtistLayout
@@ -32,7 +47,7 @@ const author = await getEntry("authors", authorSlug);
     imageAttribution: artist.data.imageAttribution,
     title: artist.data.title,
     shortTitle: artist.data.shortTitle,
-    author: author.data,
+    author: author?.data,
     tagline: artist.data.tagline,
     venue: artist.data.venue,
     concertStartAt: artist.data.concertStartAt,
