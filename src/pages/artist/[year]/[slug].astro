@@ -33,10 +33,15 @@ const { Content } = await artist.render();
 // Extract author slug from full path (e.g., "src/content/authors/jens-bessesen.mdx" -> "jens-bessesen")
 let author = null;
 if (artist.data.author) {
-  const authorSlug = artist.data.author
-    .replace("src/content/authors/", "")
-    .replace(".mdx", "");
-  author = await getEntry("authors", authorSlug);
+  try {
+    const authorSlug = artist.data.author
+      .replace("src/content/authors/", "")
+      .replace(".mdx", "");
+    author = await getEntry("authors", authorSlug);
+  } catch (error) {
+    // Author doesn't exist, skip it
+    console.warn(`Author not found for artist ${artist.slug}: ${artist.data.author}`);
+  }
 }
 ---
 

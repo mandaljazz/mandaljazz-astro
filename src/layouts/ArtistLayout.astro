@@ -201,7 +201,7 @@ const showPrevAndNextArtistNavigationLinks =
             }
           </div>
           {
-            author && (
+            author && author?.image && (
               <ImageAndLabel
                 image={author.image}
                 alt={`Bilde av ${author.name}`}
