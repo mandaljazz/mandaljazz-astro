@@ -4,7 +4,7 @@ const authors = defineCollection({
   type: "content",
   schema: z.object({
     name: z.string(),
-    image: z.string(),
+    image: z.string().optional(),
   }),
 });
 
