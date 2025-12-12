@@ -81,7 +81,7 @@ const concertsGroupedByDay = Object.entries(
                         title,
                         shortTitle,
                         tagline,
-                        imageType,
+                        image,
                         venue,
                         concertStartAt,
                         concertEndAt,
@@ -90,17 +90,12 @@ const concertsGroupedByDay = Object.entries(
                         isMorgensolo,
                         isFree,
                         externalLink,
-                        altImage,
                         isBestillingsverk,
                         isBarnekonsert,
                         releaseAt,
                         cancelled,
                       },
                     }) => {
-                      const image = imageType
-                        ? `${slug}.${imageType}`
-                        : `${slug}.jpg`;
-
                       const isNotReleasedYet =
                         hideFromProgram ||
                         (releaseAt &&
@@ -130,15 +125,9 @@ const concertsGroupedByDay = Object.entries(
                           <div class="col-span-3 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
                             {slug ? (
                               <img
-                                src={`/artist/${image}`}
+                                src={image}
                                 alt={shortTitle || title}
                                 class="h-8 w-8 rounded-lg object-cover"
-                              />
-                            ) : altImage ? (
-                              <Image
-                                src={imagePathToSrc(altImage)}
-                                alt={shortTitle || title}
-                                class="h-8 w-8 object-contain"
                               />
                             ) : (
                               <Image

@@ -47,13 +47,11 @@ const frivillig = defineCollection({
 const artist = defineCollection({
   type: "content",
   schema: z.object({
-    imageType: z.string().optional(),
+    image: z.string(),
     imageAttribution: z.string().optional(),
     title: z.string(),
     shortTitle: z.string().optional(),
-    author: z.string().optional(),
-    authorImage: z.string().optional(),
-    noAuthor: z.boolean().default(false),
+    author: z.string(),
     tagline: z.string().optional(),
     venue: z.string().optional(),
     concertStartAt: z.string().optional(),
@@ -67,7 +65,6 @@ const artist = defineCollection({
     hideFromArtistList: z.boolean().default(false),
     isFree: z.boolean().default(false),
     externalLink: z.string().optional(),
-    altImage: z.string().optional(),
     isMorgensolo: z.boolean().default(false),
     isBestillingsverk: z.boolean().default(false),
     isBarnekonsert: z.boolean().default(false),

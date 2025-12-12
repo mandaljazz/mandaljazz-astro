@@ -212,37 +212,18 @@ content:
       - name: tagline
         label: Tagline
         type: string
-        description: "Kort beskrivelse som vises på kort"
-      - name: imageType
-        label: Bildeformat
-        type: select
-        options:
-          - label: JPG
-            value: jpg
-          - label: PNG
-            value: png
-        description: "Format på artistbildet (jpg eller png)"
+        description: "Kort og snappy beskrivelse som blant annet vises på kort"
       - name: imageAttribution
-        label: Bildeattribusjon
+        label: Fotograf
         type: string
-        description: "Navn på fotograf"
       - name: author
         label: Forfatter
-        type: string
-        description: "Navn på forfatter av teksten"
-      - name: authorImage
-        label: Forfatterbilde
-        type: image
+        type: reference
+        required: false
         options:
-          media: src-images
-          path: src/images/folk
-          extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Profilbilde av forfatteren"
-      - name: noAuthor
-        label: Ingen forfatter
-        type: boolean
-        default: false
-        description: "Skjul forfatterinformasjon"
+          collection: authors
+          label: "{name}"
+          image: "{image}"
       - name: venue
         label: Scene
         type: string
@@ -320,7 +301,7 @@ content:
         label: Ikke konsert
         type: boolean
         default: false
-        description: "Om dette ikke er en konsert"
+        description: "Om dette er en annen type event enn en konsert, feks Pride, After Work, etc."
       - name: cancelled
         label: Avlyst
         type: boolean
@@ -329,22 +310,18 @@ content:
       - name: order
         label: Rekkefølge
         type: number
-        description: "Rekkefølge på forsiden (lavere er bedre)"
+        description: "Rekkefølge på forsiden (lavere tall først)"
       - name: externalLink
         label: Ekstern lenke
         type: string
         description: "Ekstern lenke (hvis ikke lokal artistside)"
-      - name: altImage
-        label: Alternativt bilde
-        type: string
-        description: "Alternativt bilde (hvis ikke standard artistbilde)"
       - name: body
         label: Innhold
         type: rich-text
         options:
           media: public-images
           path: public/artist
-          extensions: [png, jpg, jpeg, webp, svg, gif]
+          extensions: [png, jpg, jpeg, webp]
 
 settings:
   content:

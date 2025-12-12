@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import ArtistLayout from "../../layouts/ArtistLayout.astro";
 
 type Props = {
@@ -17,18 +17,22 @@ export async function getStaticPaths() {
 
 const { artist } = Astro.props as Props;
 const { Content } = await artist.render();
+
+// Extract author slug from full path (e.g., "src/content/authors/jens-bessesen.mdx" -> "jens-bessesen")
+const authorSlug = artist.data.author
+  .replace("src/content/authors/", "")
+  .replace(".mdx", "");
+const author = await getEntry("authors", authorSlug);
 ---
 
 <ArtistLayout
   frontmatter={{
     slug: artist.slug,
-    imageType: artist.data.imageType,
+    image: artist.data.image,
     imageAttribution: artist.data.imageAttribution,
     title: artist.data.title,
     shortTitle: artist.data.shortTitle,
-    author: artist.data.author,
-    authorImage: artist.data.authorImage,
-    noAuthor: artist.data.noAuthor,
+    author: author.data,
     tagline: artist.data.tagline,
     venue: artist.data.venue,
     concertStartAt: artist.data.concertStartAt,

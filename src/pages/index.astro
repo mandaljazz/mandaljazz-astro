@@ -100,7 +100,7 @@ const byOrder = (a, b) => {
       </div>
       <div class="mx-auto flex max-w-5xl flex-col items-center gap-8 sm:gap-16">
         <p class="text-center text-lg italic text-black sm:text-xl">
-         Festivalpass til jazzete pris!
+          Festivalpass til jazzete pris!
         </p>
         <BuyTicketsButton class="scale-125 sm:scale-150" earlyBird="left" />
       </div>
@@ -124,7 +124,7 @@ const byOrder = (a, b) => {
                   isMorgensolo,
                   isBestillingsverk,
                   isBarnekonsert,
-                  imageType,
+                  image,
                   cancelled,
                 },
               } = artist;
@@ -145,7 +145,7 @@ const byOrder = (a, b) => {
                   title={shortTitle || title}
                   tagline={tagline}
                   slug={slug}
-                  imageType={imageType}
+                  image={image}
                   isMorgensolo={isMorgensolo}
                   isBestillingsverk={isBestillingsverk}
                   isBarnekonsert={isBarnekonsert}

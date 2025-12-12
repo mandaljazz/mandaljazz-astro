@@ -26,12 +26,9 @@ const {
     youtubeUrl,
     title,
     author,
-    authorImage,
-    noAuthor,
     tagline,
     cancelled,
-    slug,
-    imageType,
+    image,
     imageAttribution,
     concertStartAt,
     concertEndAt,
@@ -46,42 +43,6 @@ const {
     isNonConcertEvent,
   },
 } = Astro.props;
-
-export type ArtistProps = {
-  frontmatter: {
-    layout?: string;
-    slug: string;
-    imageType?: "jpg" | "png";
-    imageAttribution?: string;
-    title: string;
-    shortTitle?: string;
-    author?: string;
-    authorImage?: string;
-    noAuthor?: boolean;
-    tagline?: string;
-    venue?: string;
-    concertStartAt?: string;
-    concertEndAt?: string;
-    spotifyUrl?: string;
-    youtubeUrl?: string;
-    sponsoredByBergesenstiftelsen?: string | boolean;
-    hideFromProgram?: boolean;
-    hideFromArtistList?: boolean;
-    isFree?: boolean;
-    externalLink?: string;
-    altImage?: string;
-    isMorgensolo?: boolean;
-    isBestillingsverk?: boolean;
-    isBarnekonsert?: boolean;
-    isPlaceholder?: boolean;
-    isNonConcertEvent?: boolean;
-    requiresFreeTicket?: boolean;
-    externalTicketUrl?: string;
-    order?: string | number;
-    releaseAt?: string;
-    cancelled?: boolean;
-  };
-};
 
 const artistEntries = await getCollection("artist");
 const artists = artistEntries.map((entry) => ({
@@ -121,7 +82,7 @@ const previousArtist = previousArtistRaw
         slug: previousArtistRaw.slug,
         shortTitle: previousArtistRaw.frontmatter.shortTitle,
         title: previousArtistRaw.frontmatter.title,
-        imageType: previousArtistRaw.frontmatter.imageType,
+        image: previousArtistRaw.frontmatter.image,
       },
     }
   : undefined;
@@ -132,21 +93,19 @@ const nextArtist = nextArtistRaw
         slug: nextArtistRaw.slug,
         shortTitle: nextArtistRaw.frontmatter.shortTitle,
         title: nextArtistRaw.frontmatter.title,
-        imageType: nextArtistRaw.frontmatter.imageType,
+        image: nextArtistRaw.frontmatter.image,
       },
     }
   : undefined;
 
 const showPrevAndNextArtistNavigationLinks =
   sortedArtistsPages.length > 1 && previousArtist && nextArtist;
-
-const image = imageType ? `${slug}.${imageType}` : `${slug}.jpg`;
 ---
 
 <Layout
   title={`${title} // Mandaljazz 2026`}
   description={`${title} på Mandaljazz! ${tagline}`}
-  image={`/artist/${image}`}
+  image={image}
 >
   <main class="px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32">
     <div class="mx-auto max-w-5xl space-y-24">
@@ -183,7 +142,7 @@ const image = imageType ? `${slug}.${imageType}` : `${slug}.jpg`;
 
         <div class="relative grid gap-1">
           <ImageWithBlurredBackground
-            src={`/artist/${image}`}
+            src={image}
             alt={title}
             className="h-[320px] sm:h-[520px] lg:h-[620px]"
           />
@@ -234,12 +193,12 @@ const image = imageType ? `${slug}.${imageType}` : `${slug}.jpg`;
             }
           </div>
           {
-            !noAuthor && (
+            author && (
               <ImageAndLabel
-                image={`/src/images/folk/${authorImage || "placeholder.png"}`}
-                alt={`Bilde av ${author || "Presseskriv"}`}
+                image={author.image}
+                alt={`Bilde av ${author.name}`}
               >
-                Tekst: {author || "Presseskriv"}
+                Tekst: {author.name}
               </ImageAndLabel>
             )
           }

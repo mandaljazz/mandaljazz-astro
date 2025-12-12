@@ -8,7 +8,7 @@ export interface Props {
       slug: string;
       shortTitle?: string;
       title: string;
-      imageType?: string;
+      image: string;
     };
   };
   nextArtist: {
@@ -16,7 +16,7 @@ export interface Props {
       slug: string;
       shortTitle?: string;
       title: string;
-      imageType?: string;
+      image: string;
     };
   };
   class?: string;
@@ -29,7 +29,7 @@ const {
       slug: prevSlug,
       shortTitle: prevShortTitle,
       title: prevTitle,
-      imageType: prevImageType,
+      image: prevImage,
     },
   },
   nextArtist: {
@@ -37,7 +37,7 @@ const {
       slug: nextSlug,
       shortTitle: nextShortTitle,
       title: nextTitle,
-      imageType: nextImageType,
+      image: nextImage,
     },
   },
   class: extraClasses,
@@ -66,7 +66,7 @@ const {
     </Link>
     <a href={`/artist/${prevSlug}`} title={prevShortTitle || prevTitle}
       ><img
-        src={`/artist/${prevSlug}.${prevImageType || "jpg"}`}
+        src={prevImage}
         alt={prevShortTitle || prevTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a
@@ -75,7 +75,7 @@ const {
   <div class="flex flex-row items-center gap-2 self-end sm:self-auto">
     <a href={`/artist/${nextSlug}`} title={nextShortTitle || nextTitle}
       ><img
-        src={`/artist/${nextSlug}.${nextImageType || "jpg"}`}
+        src={nextImage}
         alt={nextShortTitle || nextTitle}
         class="h-10 w-10 rounded-lg object-cover"
       /></a
