@@ -25,12 +25,14 @@ export const formatHumanDate = (date: string) => {
   }
 };
 
-export const formatHumanDateTime = (date: string) => {
+export const formatHumanDateTime = (dateString: string) => {
+  const date = new Date(dateString);
   try {
-    if (!isThisYear(new Date(date))) {
-      return capitalize(format(new Date(date), "EEEE dd.MM.yyyy HH:mm"));
+    if (!isThisYear(date)) {
+      return capitalize(format(date, "EEEE dd.MM.yyyy HH:mm"));
+    } else {
+      return capitalize(format(date, "EEEE d. MMMM HH:mm"));
     }
-    return capitalize(format(new Date(date), "EEEE d. MMMM HH:mm"));
   } catch (error) {
     return date;
   }
