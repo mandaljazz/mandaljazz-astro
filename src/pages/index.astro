@@ -18,8 +18,14 @@ const artistList = artistEntries.map((entry) => ({
   slug: entry.slug,
   frontmatter: entry.data,
 }));
+
+// Filter out old artists (those in year folders like 2023/, 2024/, 2025/)
+const currentYearArtists = artistList.filter(
+  (artist) => !/^\d{4}\//.test(artist.slug),
+);
+
 const releasedArtists = () =>
-  artistList.filter(
+  currentYearArtists.filter(
     (artist) =>
       !artist.frontmatter.releaseAt ||
       isBefore(new Date(artist.frontmatter.releaseAt), new Date()),

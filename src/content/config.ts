@@ -51,7 +51,7 @@ const artist = defineCollection({
     imageAttribution: z.string().optional(),
     title: z.string(),
     shortTitle: z.string().optional(),
-    author: z.string(),
+    author: z.string().optional(),
     tagline: z.string().optional(),
     venue: z.string().optional(),
     concertStartAt: z.string().optional(),

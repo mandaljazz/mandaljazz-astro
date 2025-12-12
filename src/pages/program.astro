@@ -21,10 +21,13 @@ const artistEntries = await getCollection("artist");
 const artists: Array<{
   slug: string;
   frontmatter: (typeof artistEntries)[number]["data"];
-}> = artistEntries.map((entry) => ({
-  slug: entry.slug,
-  frontmatter: entry.data,
-}));
+}> = artistEntries
+  .map((entry) => ({
+    slug: entry.slug,
+    frontmatter: entry.data,
+  }))
+  // Filter out old artists (those in year folders like 2023/, 2024/, 2025/)
+  .filter((artist) => !/^\d{4}\//.test(artist.slug));
 
 const otherEvents = [];
 
