@@ -329,5 +329,6 @@ content:
           extensions: [png, jpg, jpeg, webp, svg, gif]
 
 settings:
+  hide: true
   content:
     merge: true
