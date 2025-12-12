@@ -201,14 +201,14 @@ content:
         order: asc
     fields:
       - name: title
-        label: Tittel
+        label: Navn
         type: string
         required: true
         description: "Fullt navn på artisten"
       - name: shortTitle
-        label: Kort tittel
+        label: Kort navn
         type: string
-        description: "Kortere navn som vises på kort (hvis annerledes enn tittel)"
+        description: "Kortere navn som vises på kort. Bruk hvis artistnavnet er veldig langt."
       - name: tagline
         label: Tagline
         type: string
@@ -230,12 +230,18 @@ content:
         description: "Hvor konserten spilles (f.eks. 'Teltet', 'Buen (Storsalen)')"
       - name: concertStartAt
         label: Konsertstart
-        type: datetime
-        description: "Når konserten starter (f.eks. '2026-07-10T22:00')"
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
+        description: "Når konserten starter (f.eks. '2026-07-10 22:00')"
       - name: concertEndAt
         label: Konsertslutt
-        type: datetime
-        description: "Når konserten slutter (f.eks. '2026-07-10T23:30')"
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
+        description: "Når konserten slutter (f.eks. '2026-07-10 23:30')"
       - name: spotifyUrl
         label: Spotify URL
         type: string
