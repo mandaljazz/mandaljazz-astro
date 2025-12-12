@@ -266,9 +266,9 @@ content:
         default: false
         description: "Skjul fra forsiden"
       - name: releaseAt
-        label: Utgivelsesdato
-        type: datetime
-        description: "Når artisten skal vises (skjules til denne datoen)"
+        label: Slippdato
+        type: date
+        description: "Når artisten skal slippes (vil være skjult frem til denne datoen)"
       - name: isFree
         label: Gratis
         type: boolean
@@ -287,24 +287,24 @@ content:
         label: Morgensolo
         type: boolean
         default: false
-        description: "Om dette er en morgensolo"
+        description: "Om konserten er en morgensolo"
       - name: isBestillingsverk
         label: Bestillingsverk
         type: boolean
         default: false
-        description: "Om dette er et bestillingsverk"
+        description: "Om konserten er et bestillingsverk"
       - name: isBarnekonsert
         label: Barnekonsert
         type: boolean
         default: false
-        description: "Om dette er en barnekonsert"
+        description: "Om det er en barnekonsert"
       - name: isPlaceholder
         label: Placeholder
         type: boolean
         default: false
         description: "Om dette er en placeholder"
       - name: isNonConcertEvent
-        label: Ikke konsert
+        label: Annen event
         type: boolean
         default: false
         description: "Om dette er en annen type event enn en konsert, feks Pride, After Work, etc."
