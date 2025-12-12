@@ -4,12 +4,18 @@ import backgroundImage from "../images/profil/logo/tertiary/green.svg";
 
 export interface Props {
   title: string;
+  className?: string;
 }
 
-const { title } = Astro.props;
+const { title, className } = Astro.props;
 ---
 
-<li class={`rounded-xl w-full h-96 sm:h-72 p-12 bg-green relative`}>
+<li
+  class={classNames(
+    `rounded-xl w-full h-96 sm:h-72 p-12 bg-green relative`,
+    className,
+  )}
+>
   <div
     class="relative block h-full w-full bg-contain bg-center bg-no-repeat"
     style={`background-image: url(${backgroundImage.src})`}
