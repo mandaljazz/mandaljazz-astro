@@ -155,7 +155,7 @@ content:
   - name: blogg
     label: Blekka
     type: collection
-    path: src/content/blogg
+    path: src/content/blekka
     filename: "{primary}-{year}-{month}-{day}.mdx"
     view:
       fields: [title, author, createdAt, hide]
@@ -190,7 +190,7 @@ content:
         required: true
         options:
           media: public-images
-          path: public/blogg
+          path: public/blekka
           extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Bør være landskapsformat"
       - name: createdAt
@@ -210,13 +210,13 @@ content:
         label: Skjul
         type: boolean
         default: false
-        description: "Skjul dette innlegget fra blogglisten"
+        description: "Skjul innlegget"
       - name: body
         label: Innhold
         type: rich-text
         options:
           media: public-images
-          path: public/blogg
+          path: public/blekka
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: frivillig
     label: Frivillig
@@ -250,7 +250,7 @@ content:
         type: rich-text
         options:
           media: public-images
-          path: public/blogg
+          path: public/blekka
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: festivalkomite
     label: Festivalkomite
