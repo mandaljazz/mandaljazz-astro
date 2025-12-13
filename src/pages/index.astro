@@ -32,7 +32,6 @@ const currentYearArtists = artistList.filter((artist) => {
 const releasedArtists = () =>
   currentYearArtists.filter(
     (artist) =>
-      console.log(artist) ||
       !artist.frontmatter.releaseAt ||
       isBefore(new Date(artist.frontmatter.releaseAt), new Date()),
   );
