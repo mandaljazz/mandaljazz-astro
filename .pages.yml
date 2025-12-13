@@ -17,7 +17,16 @@ content:
     path: src/content/artist
     filename: "{primary}.mdx"
     view:
-      fields: [title, tagline, concertStartAt, venue, hideFromArtistList, order]
+      fields:
+        [
+          image,
+          title,
+          tagline,
+          concertStartAt,
+          venue,
+          hideFromArtistList,
+          order,
+        ]
       primary: title
       sort: [order, concertStartAt, title]
       default:
@@ -224,7 +233,7 @@ content:
     path: src/content/frivillig
     filename: "{primary}.mdx"
     view:
-      fields: [title]
+      fields: [image, title]
       primary: title
       sort: [title]
     fields:
@@ -233,7 +242,7 @@ content:
         type: string
         required: true
         description: "Tittelen vil også bli brukt i URL-en"
-      - name: imagePath
+      - name: image
         label: Bilde
         type: image
         options:
@@ -258,7 +267,7 @@ content:
     path: src/content/festivalkomite
     filename: "{primary}.mdx"
     view:
-      fields: [title, filled, fee, start, end]
+      fields: [image, title, filled, fee, start, end]
       primary: title
       sort: [filled, title]
       default:
@@ -313,7 +322,7 @@ content:
     path: src/content/authors
     filename: "{primary}.mdx"
     view:
-      fields: [name, image]
+      fields: [image, name]
       primary: name
     fields:
       - name: name

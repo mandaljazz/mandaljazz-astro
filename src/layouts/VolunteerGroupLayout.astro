@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { imagePathToSrc } from "../utils/images";
 
 const {
-  data: { title, imagePath, imageAlt },
+  data: { title, image, imageAlt },
   slug,
 } = Astro.props;
 ---
@@ -19,9 +19,9 @@ const {
     <slot />
   </article>
   {
-    imagePath && imageAlt && (
+    image && imageAlt && (
       <Image
-        src={imagePathToSrc(imagePath)}
+        src={imagePathToSrc(image)}
         class="w-full max-w-xl rounded-lg shadow-lg"
         alt={imageAlt}
       />

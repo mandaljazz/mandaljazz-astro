@@ -39,7 +39,7 @@ const frivillig = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    imagePath: z.string().optional(),
+    image: z.string().optional(),
     imageAlt: z.string().optional(),
   }),
 });
