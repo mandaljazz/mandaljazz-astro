@@ -158,7 +158,7 @@ content:
     path: src/content/blekka
     filename: "{primary}-{year}-{month}-{day}.mdx"
     view:
-      fields: [title, author, createdAt, hide]
+      fields: [image, title, author, createdAt, hide]
       primary: title
       sort: [createdAt, title]
       default:
