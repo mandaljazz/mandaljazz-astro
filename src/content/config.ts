@@ -73,7 +73,7 @@ const artist = defineCollection({
     requiresFreeTicket: z.boolean().default(false),
     externalTicketUrl: z.string().optional(),
     order: z.union([z.string(), z.number()]).optional(),
-    releaseAt: z.string().optional(),
+    releaseAt: z.date().optional(),
     cancelled: z.boolean().default(false),
   }),
 });

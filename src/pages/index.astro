@@ -24,15 +24,20 @@ const artistList = artistEntries.map((entry) => ({
 const currentYear = "2026";
 const currentYearArtists = artistList.filter((artist) => {
   // Check if slug starts with current year (e.g., "2026/pumpegris")
-  return artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear;
+  return (
+    artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear
+  );
 });
 
 const releasedArtists = () =>
   currentYearArtists.filter(
     (artist) =>
+      console.log(artist) ||
       !artist.frontmatter.releaseAt ||
       isBefore(new Date(artist.frontmatter.releaseAt), new Date()),
   );
+
+console.log(releasedArtists);
 const [upcomingArtists, pastArtists] = partition(
   releasedArtists(),
   (artist) => {
