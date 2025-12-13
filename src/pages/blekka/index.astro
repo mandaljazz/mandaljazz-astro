@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BlogPostCard from "../../components/BlogPostCard.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const allBlogPosts = await getCollection("blogg");
+const allBlogPosts = await getCollection("blekka");
 const articleList = allBlogPosts
   .filter((post) => !post.data.hide)
   .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());

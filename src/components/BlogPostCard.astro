@@ -19,19 +19,12 @@ const { href, title, ingress, image, className } = Astro.props;
     className,
   )}
 >
-  <a href={href} class="relative block h-full w-full">
+  <a href={href} class="relative block h-full w-full space-y-4">
     <ImageWithBlurredBackground
       src={image}
       alt={title}
       className="rounded-xl"
     />
-    {
-      ingress && (
-        <div class="absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl bg-blue p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-9 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5">
-          <p>{ingress}</p>
-        </div>
-      )
-    }
     <h2
       class={classNames(
         `font-medium absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-center
@@ -45,5 +38,12 @@ const { href, title, ingress, image, className } = Astro.props;
     >
       {title}
     </h2>
+    {
+      ingress && (
+        <div class="w-full rounded-t-xl p-4 text-xl transition-transform group-hover:-rotate-1">
+          <p>{ingress}</p>
+        </div>
+      )
+    }
   </a>
 </li>

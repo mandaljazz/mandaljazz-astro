@@ -8,7 +8,7 @@ const authors = defineCollection({
   }),
 });
 
-const blogg = defineCollection({
+const blekka = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -80,7 +80,7 @@ const artist = defineCollection({
 
 export const collections = {
   authors,
-  blogg,
+  blekka,
   festivalkomite,
   frivillig,
   artist,

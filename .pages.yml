@@ -152,7 +152,7 @@ content:
           media: public-images
           path: public/artist
           extensions: [png, jpg, jpeg, webp, svg, gif]
-  - name: blogg
+  - name: blekka
     label: Blekka
     type: collection
     path: src/content/blekka
