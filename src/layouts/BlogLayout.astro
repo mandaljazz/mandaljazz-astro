@@ -29,11 +29,19 @@ const {
                 image={author.image}
                 alt={`Bilde av ${author.name}`}
               >
-                <div>
-                  <div>Tekst: {author.name}</div>
+                <div class="space-y-1">
                   <div>
-                    Publisert: {formatDate(createdAt)}{" "}
-                    {updatedAt && <em>(endret {formatDate(updatedAt)})</em>}
+                    <div class="text-xs">Tekst</div>
+                    <div>{author.name}</div>
+                  </div>
+                  <div>
+                    <div class="text-xs">
+                      Publisert:{" "}
+                      <time datetime={createdAt}>{formatDate(createdAt)}</time>
+                      {updatedAt &&
+                        /* prettier-ignore */
+                        <span class="italic text-[10px]">(endret:{" "}<time datetime={updatedAt}>{formatDate(updatedAt)}</time>)</span>}
+                    </div>
                   </div>
                 </div>
               </ImageAndLabel>

@@ -206,7 +206,10 @@ const showPrevAndNextArtistNavigationLinks =
                 image={author.image}
                 alt={`Bilde av ${author.name}`}
               >
-                Tekst: {author.name}
+                <div>
+                  <div class="text-xs">Tekst</div>
+                  <div>{author.name}</div>
+                </div>
               </ImageAndLabel>
             )
           }
