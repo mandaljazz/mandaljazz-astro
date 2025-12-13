@@ -17,16 +17,7 @@ content:
     path: src/content/artist
     filename: "{primary}.mdx"
     view:
-      fields:
-        [
-          image,
-          title,
-          tagline,
-          concertStartAt,
-          venue,
-          hideFromArtistList,
-          order,
-        ]
+      fields: [image, title, concertStartAt, venue, order]
       primary: title
       sort: [order, concertStartAt, title]
       default:
