@@ -82,11 +82,6 @@ content:
         label: YouTube URL
         type: string
         description: "Lenke til YouTube-video"
-      - name: sponsoredByBergesenstiftelsen
-        label: Støttet av Bergesenstiftelsen
-        type: boolean
-        default: false
-        description: "Vis logo for Bergesenstiftelsen"
       - name: hideFromProgram
         label: Skjul fra program
         type: boolean
@@ -136,7 +131,7 @@ content:
         default: false
         description: "Om dette er en placeholder"
       - name: isNonConcertEvent
-        label: Annen event
+        label: Annen type event
         type: boolean
         default: false
         description: "Om dette er en annen type event enn en konsert, feks Pride, After Work, etc."
@@ -149,6 +144,11 @@ content:
         label: Rekkefølge
         type: number
         description: "Rekkefølge på forsiden (lavere tall først)"
+      - name: sponsoredByBergesenstiftelsen
+        label: Støttet av Bergesenstiftelsen
+        type: boolean
+        default: false
+        description: "Vis logo for Bergesenstiftelsen"
       - name: externalLink
         label: Ekstern lenke
         type: string
