@@ -29,6 +29,14 @@ content:
         type: string
         required: true
         description: "Fullt navn på artisten"
+      - name: image
+        label: Bilde
+        type: image
+        required: true
+        options:
+          media: public-images
+          path: public/artist/2026
+          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: shortTitle
         label: Kort navn
         type: string
