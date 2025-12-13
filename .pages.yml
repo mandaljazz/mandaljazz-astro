@@ -153,10 +153,10 @@ content:
           path: public/artist
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: blogg
-    label: Blogginnlegg
+    label: Blekka
     type: collection
     path: src/content/blogg
-    filename: "{year}-{month}-{day}-{primary}.mdx"
+    filename: "{primary}-{year}-{month}-{day}.mdx"
     view:
       fields: [title, author, createdAt, hide]
       primary: title
