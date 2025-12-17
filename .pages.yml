@@ -29,14 +29,6 @@ content:
         type: string
         required: true
         description: "Fullt navn på artisten"
-      - name: image
-        label: Bilde
-        type: image
-        required: true
-        options:
-          media: public-images
-          path: public/artist/2026
-          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: shortTitle
         label: Kort navn
         type: string
@@ -45,9 +37,24 @@ content:
         label: Tagline
         type: string
         description: "Kort og snappy beskrivelse som blant annet vises på kort"
+      - name: image
+        label: Bilde
+        type: image
+        required: true
+        options:
+          media: public-images
+          path: public/artist/2026
+          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: imageAttribution
         label: Fotograf
         type: string
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/artist
+          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: author
         label: Forfatter
         type: reference
@@ -93,13 +100,6 @@ content:
         options:
           time: true
           format: yyyy-MM-dd HH:mm
-      - name: body
-        label: Innhold
-        type: rich-text
-        options:
-          media: public-images
-          path: public/artist
-          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: hideFromProgram
         label: Skjul fra program
         type: boolean
