@@ -82,6 +82,24 @@ content:
         label: YouTube URL
         type: string
         description: "Lenke til YouTube-video"
+      - name: order
+        label: Rekkefølge
+        type: number
+        description: "Rekkefølge på forsiden (lavere tall først)"
+      - name: releaseAt
+        label: Slippdato
+        type: date
+        description: "Når artisten skal slippes (vil være skjult frem til denne datoen)"
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/artist
+          extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: hideFromProgram
         label: Skjul fra program
         type: boolean
@@ -92,13 +110,6 @@ content:
         type: boolean
         default: false
         description: "Skjul fra forsiden"
-      - name: releaseAt
-        label: Slippdato
-        type: date
-        description: "Når artisten skal slippes (vil være skjult frem til denne datoen)"
-        options:
-          time: true
-          format: yyyy-MM-dd HH:mm
       - name: isFree
         label: Gratis
         type: boolean
@@ -143,10 +154,6 @@ content:
         type: boolean
         default: false
         description: "Om konserten er avlyst"
-      - name: order
-        label: Rekkefølge
-        type: number
-        description: "Rekkefølge på forsiden (lavere tall først)"
       - name: sponsoredByBergesenstiftelsen
         label: Støttet av Bergesenstiftelsen
         type: boolean
@@ -156,13 +163,6 @@ content:
         label: Ekstern lenke
         type: string
         description: "Ekstern lenke (hvis ikke lokal artistside)"
-      - name: body
-        label: Innhold
-        type: rich-text
-        options:
-          media: public-images
-          path: public/artist
-          extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: blekka
     label: Blekka
     type: collection
