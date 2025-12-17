@@ -96,6 +96,9 @@ content:
         label: Slippdato
         type: date
         description: "Når artisten skal slippes (vil være skjult frem til denne datoen)"
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: isFree
         label: Gratis
         type: boolean
