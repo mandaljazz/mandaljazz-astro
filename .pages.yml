@@ -65,8 +65,24 @@ content:
           image: "{image}"
       - name: venue
         label: Scene
-        type: string
-        description: "Hvor konserten spilles (f.eks. 'Teltet', 'Buen (Storsalen)')"
+        type: select
+        options:
+          creatable: true
+          values:
+            [
+              Teltet,
+              Bakgården,
+              Buen (Storsalen),
+              Buen (Elvesalen),
+              Buen (Galleriet),
+              Smoi,
+              Piren Kulturrom,
+              Scene & Hobby,
+              Dynamitten,
+              Hekkholmen,
+              Hestetroa,
+              Gierts Karis Plass,
+            ]
       - name: concertStartAt
         label: Konsertstart
         type: date
