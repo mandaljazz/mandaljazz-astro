@@ -36,7 +36,7 @@
     "@types/lodash": "4.17.20",
     "dotenv": "16.5.0",
     "flickr-sdk": "7.1.0",
-    "prettier": "3.7.3",
+    "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-astro-organize-imports": "0.4.11",
     "prettier-plugin-tailwindcss": "0.7.1"
