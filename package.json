@@ -14,7 +14,7 @@
     "fetch-from-flickr": "node scripts/fetch-from-flickr.js"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.2.3",
+    "@astrojs/mdx": "4.3.13",
     "@astrojs/sitemap": "3.6.0",
     "@astrojs/tailwind": "6.0.2",
     "@yeskunall/astro-umami": "0.0.7",
