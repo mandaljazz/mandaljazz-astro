@@ -356,37 +356,32 @@ content:
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: accommodations
     label: Overnatting
-    type: file
-    path: src/content/accommodations.json
-    format: json
+    type: collection
+    path: src/content/accommodations
+    filename: "{primary}.mdx"
+    view:
+      fields: [image, title, url]
+      primary: title
+      sort: [title]
     fields:
-      - name: ""
-        label: Overnatting
-        type: list
-        fields:
-          - name: id
-            label: ID
-            type: string
-            required: true
-            description: "Unik identifikator (brukes internt)"
-          - name: title
-            label: Tittel
-            type: string
-            required: true
-            description: "Navn på overnattingsstedet"
-          - name: url
-            label: URL
-            type: string
-            required: true
-            description: "Lenke til overnattingsstedets nettside"
-          - name: image
-            label: Bilde
-            type: image
-            options:
-              media: public-images
-              path: public/accommodations
-              extensions: [png, jpg, jpeg, webp, svg, gif]
-            description: "Bilde for overnattingsstedet"
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+        description: "Navn på overnattingsstedet"
+      - name: url
+        label: URL
+        type: string
+        required: true
+        description: "Lenke til overnattingsstedets nettside"
+      - name: image
+        label: Bilde
+        type: image
+        options:
+          media: public-images
+          path: public/accommodations
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+        description: "Bilde for overnattingsstedet"
 
 settings:
   hide: true
