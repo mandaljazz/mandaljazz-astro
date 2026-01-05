@@ -22,4 +22,7 @@ export default defineConfig({
   image: {
     domains: ["live.staticflickr.com"],
   },
+  redirects: {
+    "/historikk": "/galleri-og-historie",
+  },
 });
