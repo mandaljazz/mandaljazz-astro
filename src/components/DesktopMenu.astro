@@ -30,7 +30,7 @@ const { class: extraClasses, navItems } = Astro.props;
     <div class="flex w-full flex-row items-center gap-4 sm:gap-8">
       {
         navItems.map(({ href, title }) => (
-          <div class="relative transition-transform hover:-rotate-3">
+          <div class="relative whitespace-nowrap transition-transform hover:-rotate-3">
             {Astro.url.pathname === href ||
             Astro.url.pathname === `${href}/` ? (
               <div class="absolute -right-3 -top-1.5 h-3 w-3 rounded-full bg-blue" />
