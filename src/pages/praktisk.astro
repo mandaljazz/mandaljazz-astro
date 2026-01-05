@@ -83,12 +83,12 @@ const accommodations = await Promise.all(
           >
             {
               accommodations.map(({ title, url, image }) => (
-                <li class="relative">
+                <li class="group relative">
                   <a
-                    class={`flex h-full rounded px-6 py-8 text-center shadow-inner transition-all hover:-rotate-1 ${
+                    class={`flex h-full rounded px-6 py-8 text-center shadow-inner ${
                       image
-                        ? "text-white hover:text-white"
-                        : "bg-light-green/60 hover:bg-green hover:text-white"
+                        ? "text-white"
+                        : "bg-light-green/60 transition-all hover:bg-green hover:text-white group-hover:-rotate-1"
                     }`}
                     target="_blank"
                     rel="noopener nofollow"
@@ -98,7 +98,7 @@ const accommodations = await Promise.all(
                       <Image
                         src={image}
                         alt={title}
-                        class="absolute inset-0 -z-10 h-full w-full rounded object-cover opacity-80"
+                        class="absolute inset-0 -z-10 h-full w-full rounded object-cover opacity-80 transition-all group-hover:-rotate-1"
                       />
                     )}
                     <div
