@@ -1,0 +1,47 @@
+[
+  {
+    "id": "kjobmandsgaarden-hotell",
+    "title": "Kjøbmandsgården Hotell",
+    "url": "https://www.kjobmandsgaarden.no/"
+  },
+  {
+    "id": "skap-hostel-mandal",
+    "title": "SKAP Hostel Mandal",
+    "url": "https://www.skapfhs.no/skap-sommerhostel/"
+  },
+  {
+    "id": "sjosanden-feriesenter",
+    "title": "Sjøsanden Feriesenter",
+    "url": "https://topcamp.no/nb/sjosanden"
+  },
+  {
+    "id": "sjosanden-ferietun",
+    "title": "Sjøsanden Ferietun",
+    "url": "https://www.ferietun.no/"
+  },
+  {
+    "id": "tregde-feriesenter",
+    "title": "Tregde Feriesenter",
+    "url": "https://tregdeferie.no/"
+  },
+  {
+    "id": "hald-pensjonat",
+    "title": "Hald Pensjonat",
+    "url": "https://haldpensjonat.no/"
+  },
+  {
+    "id": "hatholmen-fyr",
+    "title": "Hatholmen Fyr",
+    "url": "https://www.hatholmen.no"
+  },
+  {
+    "id": "mandal-hotel",
+    "title": "Mandal Hotel",
+    "url": "https://mandalhotel.no/"
+  },
+  {
+    "id": "ryvingen-fyr",
+    "title": "Ryvingen Fyr",
+    "url": "https://www.ryvingenfyr.no"
+  }
+]

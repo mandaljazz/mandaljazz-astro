@@ -6,27 +6,14 @@ import { Image } from "astro:assets";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import VenueMap from "../components/VenueMap.astro";
 import { imagePathToSrc } from "../utils/images";
+import { getCollection } from "astro:content";
 
-const accomodations = [
-  { name: "Kjøbmandsgården Hotell", url: "https://www.kjobmandsgaarden.no/" },
-  {
-    name: "SKAP Hostel Mandal",
-    url: "https://www.skapfhs.no/skap-sommerhostel/",
-  },
-  { name: "Sjøsanden Feriesenter", url: "https://topcamp.no/nb/sjosanden" },
-  { name: "Sjøsanden Ferietun", url: "https://www.ferietun.no/" },
-  { name: "Tregde Feriesenter", url: "https://tregdeferie.no/" },
-  { name: "Hald Pensjonat", url: "https://haldpensjonat.no/" },
-  {
-    name: "Hatholmen Fyr",
-    url: "https://www.hatholmen.no",
-  },
-  { name: "Mandal Hotel", url: "https://mandalhotel.no/" },
-  {
-    name: "Ryvingen Fyr",
-    url: "https://www.ryvingenfyr.no",
-  },
-];
+const accommodationsEntries = await getCollection("accommodations");
+const accommodations = accommodationsEntries.map((entry) => ({
+  title: entry.data.title,
+  url: entry.data.url,
+  image: entry.data.image,
+}));
 ---
 
 <Layout
@@ -80,7 +67,7 @@ const accomodations = [
             class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
             {
-              accomodations.map(({ name, url }) => (
+              accommodations.map(({ title, url, image }) => (
                 <li>
                   <a
                     class="flex h-full rounded bg-light-green/60 px-6 py-8 text-center shadow-inner transition-all hover:-rotate-1 hover:bg-green hover:text-white"
@@ -88,7 +75,7 @@ const accomodations = [
                     rel="noopener nofollow"
                     href={url}
                   >
-                    <div class="m-auto">{name}</div>
+                    <div class="m-auto">{title}</div>
                   </a>
                 </li>
               ))

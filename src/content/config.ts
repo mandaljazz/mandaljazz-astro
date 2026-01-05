@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { file } from "astro/loaders";
 
 const authors = defineCollection({
   type: "content",
@@ -78,10 +79,21 @@ const artist = defineCollection({
   }),
 });
 
+const accommodations = defineCollection({
+  loader: file("src/content/accommodations.json"),
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    url: z.string(),
+    image: z.string().optional(),
+  }),
+});
+
 export const collections = {
   authors,
   blekka,
   festivalkomite,
   frivillig,
   artist,
+  accommodations,
 };
