@@ -378,8 +378,8 @@ content:
         label: Bilde
         type: image
         options:
-          media: public-images
-          path: public/accommodations
+          media: src-images
+          path: src/images/overnatting
           extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Bilde for overnattingsstedet"
 
