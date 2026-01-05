@@ -3,17 +3,32 @@ import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import VenueMap from "../components/VenueMap.astro";
 import { imagePathToSrc } from "../utils/images";
-import { getCollection } from "astro:content";
 
 const accommodationsEntries = await getCollection("accommodations");
-const accommodations = accommodationsEntries.map((entry) => ({
-  title: entry.data.title,
-  url: entry.data.url,
-  image: entry.data.image,
-}));
+const accommodations = await Promise.all(
+  accommodationsEntries.map(async (entry) => {
+    let imageData = null;
+    if (entry.data.image) {
+      try {
+        const imageModule = await imagePathToSrc(entry.data.image);
+        imageData = imageModule.default;
+      } catch (error) {
+        console.warn(
+          `Image not found for ${entry.data.title}: ${entry.data.image}`,
+        );
+      }
+    }
+    return {
+      title: entry.data.title,
+      url: entry.data.url,
+      image: imageData,
+    };
+  }),
+);
 ---
 
 <Layout
@@ -68,14 +83,33 @@ const accommodations = accommodationsEntries.map((entry) => ({
           >
             {
               accommodations.map(({ title, url, image }) => (
-                <li>
+                <li class="relative">
                   <a
-                    class="flex h-full rounded bg-light-green/60 px-6 py-8 text-center shadow-inner transition-all hover:-rotate-1 hover:bg-green hover:text-white"
+                    class={`flex h-full rounded px-6 py-8 text-center shadow-inner transition-all hover:-rotate-1 ${
+                      image
+                        ? "text-white hover:text-white"
+                        : "bg-light-green/60 hover:bg-green hover:text-white"
+                    }`}
                     target="_blank"
                     rel="noopener nofollow"
                     href={url}
                   >
-                    <div class="m-auto">{title}</div>
+                    {image && (
+                      <Image
+                        src={image}
+                        alt={title}
+                        class="absolute inset-0 -z-10 h-full w-full rounded object-cover opacity-80"
+                      />
+                    )}
+                    <div
+                      class={`m-auto ${
+                        image
+                          ? "rounded bg-black/40 px-4 py-2 backdrop-blur-md"
+                          : ""
+                      }`}
+                    >
+                      {title}
+                    </div>
                   </a>
                 </li>
               ))
