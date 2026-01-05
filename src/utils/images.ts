@@ -12,12 +12,12 @@ export const randomSmallHandSrc = () =>
 
 export const imagePathToSrc = (imagePath: string) => {
   const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/images/**/*.{jpeg,jpg,png,gif,svg}",
+    "/src/images/**/*.{jpeg,jpg,png,gif,svg,webp}",
   );
 
   if (!images[imagePath]) {
     throw new Error(
-      `"${imagePath}" does not exist in glob: "src/images/**/*.{jpeg,jpg,png,gif,svg}"`,
+      `"${imagePath}" does not exist in glob: "src/images/**/*.{jpeg,jpg,png,gif,svg,webp}"`,
     );
   }
 
