@@ -1,200 +1,200 @@
-[
-  {
+{
+  "0": {
     "name": "Sparebanken Norge",
     "url": "https://www.sor.no/",
     "image": "/src/images/sponsors/sparebanken-norge.png",
     "group": "Generalsponsor"
   },
-  {
+  "1": {
     "name": "Hr. Redaktør!",
     "url": "https://red.no/",
     "image": "/src/images/sponsors/hr-redaktor.png",
     "group": "Hovedsponsorer"
   },
-  {
+  "2": {
     "name": "Larsen Optikk",
     "url": "https://larsenoptikk.no/",
     "image": "/src/images/sponsors/larsen-optikk.png",
     "group": "Hovedsponsorer"
   },
-  {
+  "3": {
     "name": "Lindesnes Avis",
     "url": "https://www.l-a.no/",
     "image": "/src/images/sponsors/lindesnes-avis.png",
     "group": "Hovedsponsorer"
   },
-  {
+  "4": {
     "name": "WHY Connect",
     "url": "https://whyconnect.no/",
     "image": "/src/images/sponsors/whyconnect.png",
     "group": "Hovedsponsorer"
   },
-  {
+  "5": {
     "name": "Nøsted",
     "url": "https://www.nosted.com/",
     "image": "/src/images/sponsors/nosted.png",
     "group": "Sponsorer"
   },
-  {
+  "6": {
     "name": "Jobzone Mandal",
     "url": "https://jobzone.no/avdelinger/mandal/",
     "image": "/src/images/sponsors/jobzone.png",
     "group": "Sponsorer"
   },
-  {
+  "7": {
     "name": "Corado Coffee Roasters",
     "url": "https://coradocoffeeroasters.com/",
     "image": "/src/images/sponsors/corado.png",
     "group": "Støttespillere"
   },
-  {
+  "8": {
     "name": "Egeland Rør",
     "url": "https://www.egeland.no/",
     "image": "/src/images/sponsors/egeland-ror.png",
     "group": "Støttespillere"
   },
-  {
+  "9": {
     "name": "Enøk Total",
     "url": "https://enoktotal.no/",
     "image": "/src/images/sponsors/enok-total.png",
     "group": "Støttespillere"
   },
-  {
+  "10": {
     "name": "Gullsmed Danielsen",
     "url": "https://www.gullsmeddanielsen.no",
     "image": "/src/images/sponsors/gullsmed-danielsen.png",
     "group": "Støttespillere"
   },
-  {
+  "11": {
     "name": "Håland Utstyr",
     "url": "https://www.halandutstyr.no/",
     "image": "/src/images/sponsors/haland-utstyr.png",
     "group": "Støttespillere"
   },
-  {
+  "12": {
     "name": "Jazzlaugs Venner",
     "url": "/jazzlaugs-venner",
     "image": "/src/images/sponsors/jazzlaugs-venner.png",
     "group": "Støttespillere"
   },
-  {
+  "13": {
     "name": "Jens Westbye Fotograf",
     "url": "https://www.jenswestbye.com/",
     "image": "/src/images/sponsors/jens-westbye-fotograf.png",
     "group": "Støttespillere"
   },
-  {
+  "14": {
     "name": "Kjøbmandsgaarden Hotel",
     "url": "https://kjobmandsgaarden.no/",
     "image": "/src/images/sponsors/kjobmandsgaarden.png",
     "group": "Støttespillere"
   },
-  {
+  "15": {
     "name": "Mandal Musikkforening",
     "url": "https://mmf.no/",
     "image": "/src/images/sponsors/mandal-musikkforening.png",
     "group": "Støttespillere"
   },
-  {
+  "16": {
     "name": "Neumann",
     "url": "https://www.neumann.no/",
     "image": "/src/images/sponsors/neumann-bygg.svg",
     "group": "Støttespillere"
   },
-  {
+  "17": {
     "name": "Oakland",
     "url": "https://www.oakland.no/avdeling/mandal",
     "image": "/src/images/sponsors/oakland.png",
     "group": "Støttespillere"
   },
-  {
+  "18": {
     "name": "Revisorsenteret Mandal",
     "url": "https://revisorsenteretmandal.no/",
     "image": "/src/images/sponsors/revisorsenteret-mandal.png",
     "group": "Støttespillere"
   },
-  {
+  "19": {
     "name": "SKAP",
     "url": "https://skapfhs.no/",
     "image": "/src/images/sponsors/skap.png",
     "group": "Støttespillere"
   },
-  {
+  "20": {
     "name": "Sjøsanden Grafiske",
     "url": "https://www.sjograf.no/",
     "image": "/src/images/sponsors/sjosanden-grafiske.png",
     "group": "Støttespillere"
   },
-  {
+  "21": {
     "name": "Aider",
     "url": "https://aider.no/styringsgruppen/",
     "image": "/src/images/sponsors/aider.svg",
     "group": "Støttespillere"
   },
-  {
+  "22": {
     "name": "Sørlandsreklame",
     "url": "https://sorlandsreklame.no/",
     "image": "/src/images/sponsors/sorlandsreklame.png",
     "group": "Støttespillere"
   },
-  {
+  "23": {
     "name": "Sørlandets Elektro",
     "url": "https://www.seeas.no/",
     "image": "/src/images/sponsors/sorlandets-elektro.png",
     "group": "Støttespillere"
   },
-  {
+  "24": {
     "name": "TESS",
     "url": "https://www.tess.no/",
     "image": "/src/images/sponsors/tess.png",
     "group": "Støttespillere"
   },
-  {
+  "25": {
     "name": "Tønnesen 1937",
     "url": "https://tonnesen1937.no/",
     "image": "/src/images/sponsors/tonnesen.png",
     "group": "Støttespillere"
   },
-  {
+  "26": {
     "name": "Veidekke",
     "url": "http://www.veidekke.no/",
     "image": "/src/images/sponsors/veidekke.jpg",
     "group": "Støttespillere"
   },
-  {
+  "27": {
     "name": "Agder Fylkeskommune",
     "url": "https://agderfk.no/",
     "image": "/src/images/sponsors/agder-fylkeskommune.png",
     "group": "Offentlig støtte"
   },
-  {
+  "28": {
     "name": "Kulturrådet",
     "url": "https://www.kulturradet.no/",
     "image": "/src/images/sponsors/kulturraadet.png",
     "group": "Offentlig støtte"
   },
-  {
+  "29": {
     "name": "Sør-Norsk Jazzsenter",
     "url": "https://sornorsk.jazzinorge.no/",
     "image": "/src/images/sponsors/sor-norsk-jazzsenter.png",
     "group": "Offentlig støtte"
   },
-  {
+  "30": {
     "name": "Lindesnes kommune",
     "url": "https://www.lindesnes.kommune.no/",
     "image": "/src/images/sponsors/lindesnes-kommune.png",
     "group": "Offentlig støtte"
   },
-  {
+  "31": {
     "name": "Balansemerket",
     "url": "https://balansemerket.no/",
     "image": "/src/images/sponsors/balansemerket.png",
     "group": "Samarbeidspartnere"
   },
-  {
+  "32": {
     "name": "Keychange",
     "url": "https://keychange.eu/",
     "image": "/src/images/sponsors/keychange.png",
     "group": "Samarbeidspartnere"
   }
-]
+}

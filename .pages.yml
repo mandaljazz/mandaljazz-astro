@@ -358,6 +358,7 @@ content:
     type: file
     format: json
     path: src/content/sponsors/sponsors.json
+    list: true
     fields:
       - name: name
         label: Navn
