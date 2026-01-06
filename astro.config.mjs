@@ -1,7 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import swup from "@swup/astro";
 import lottie from "astro-integration-lottie";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
@@ -19,7 +18,6 @@ export default defineConfig({
     mdx(),
     lottie(),
     yeskunallumami({ id: "d43a3a76-eba4-47c6-b19f-8c6499479a8b" }),
-    swup({ theme: "slide", smoothScrolling: false }),
   ],
   image: {
     domains: ["live.staticflickr.com"],
