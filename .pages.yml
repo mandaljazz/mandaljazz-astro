@@ -9,11 +9,6 @@ media:
     input: src/images
     output: /src/images
     extensions: [png, jpg, jpeg, webp, svg, gif]
-  - name: data
-    label: Data
-    input: src/content/data
-    output: /src/content/data
-    extensions: [json]
 
 content:
   - name: artist
