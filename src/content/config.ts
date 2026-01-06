@@ -28,15 +28,9 @@ const festivalkomite = defineCollection({
   schema: z.object({
     title: z.string(),
     fee: z.boolean().default(false),
-    start: z
-      .union([z.string().transform((str) => new Date(str)), z.undefined()])
-      .optional(),
-    end: z
-      .union([z.string().transform((str) => new Date(str)), z.undefined()])
-      .optional(),
-    deadline: z
-      .union([z.string().transform((str) => new Date(str)), z.undefined()])
-      .optional(),
+    start: z.date().optional(),
+    end: z.date().optional(),
+    deadline: z.date().optional(),
     filled: z.boolean().default(false),
   }),
 });
@@ -93,6 +87,29 @@ const accommodations = defineCollection({
   }),
 });
 
+const sponsorGroup = z.enum([
+  "Generalsponsor",
+  "Hovedsponsorer",
+  "Sponsorer",
+  "Støttespillere",
+  "Offentlig støtte",
+  "Samarbeidspartnere",
+]);
+
+const sponsorSchema = z.object({
+  name: z.string(),
+  url: z.string(),
+  image: z.string(),
+  group: sponsorGroup,
+});
+
+const sponsors = defineCollection({
+  type: "data",
+  schema: z.object({
+    sponsors: z.array(sponsorSchema),
+  }),
+});
+
 export const collections = {
   authors,
   blekka,
@@ -100,4 +117,5 @@ export const collections = {
   frivillig,
   artist,
   accommodations,
+  sponsors,
 };

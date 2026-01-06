@@ -52,7 +52,7 @@ content:
         type: rich-text
         options:
           media: public-images
-          path: public/artist
+          path: public/artist/2026
           extensions: [png, jpg, jpeg, webp, svg, gif]
       - name: author
         label: Forfatter
@@ -249,7 +249,7 @@ content:
         type: rich-text
         options:
           media: public-images
-          path: public/blekka
+          path: public
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: festivalkomite
     label: Festivalkomite
@@ -353,6 +353,46 @@ content:
           media: src-images
           path: src/images/overnatting
           extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: sponsors
+    label: Sponsorer
+    type: file
+    path: src/content/sponsors/sponsors.json
+    fields:
+      - name: sponsors
+        label: Sponsorer
+        type: list
+        item:
+          fields:
+            - name: name
+              label: Navn
+              type: string
+              required: true
+            - name: url
+              label: URL
+              type: string
+              required: true
+            - name: image
+              label: Bilde
+              type: image
+              required: true
+              options:
+                media: src-images
+                path: src/images/sponsors
+                extensions: [png, jpg, jpeg, webp, svg, gif]
+            - name: group
+              label: Gruppe
+              type: select
+              required: true
+              options:
+                values:
+                  [
+                    Generalsponsor,
+                    Hovedsponsorer,
+                    Sponsorer,
+                    Støttespillere,
+                    Offentlig støtte,
+                    Samarbeidspartnere,
+                  ]
 
 settings:
   hide: true

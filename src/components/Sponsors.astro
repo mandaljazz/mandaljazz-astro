@@ -1,203 +1,61 @@
 ---
+import { getEntry } from "astro:content";
+import { imagePathToSrc } from "../utils/images";
 import SponsorList from "./SponsorList.astro";
 
-const generalSponsors = [
-  {
-    name: "Sparebanken Norge",
-    url: "https://www.sor.no/",
-    image: "sparebanken-norge.png",
-  },
-];
+type SponsorGroup =
+  | "Generalsponsor"
+  | "Hovedsponsorer"
+  | "Sponsorer"
+  | "Støttespillere"
+  | "Offentlig støtte"
+  | "Samarbeidspartnere";
 
-const mainSponsors = [
-  {
-    name: "Hr. Redaktør!",
-    url: "https://red.no/",
-    image: "hr-redaktor.png",
-  },
-  {
-    name: "Larsen Optikk",
-    url: "https://larsenoptikk.no/",
-    image: "larsen-optikk.png",
-  },
-  {
-    name: "Lindesnes Avis",
-    url: "https://www.l-a.no/",
-    image: "lindesnes-avis.png",
-  },
-  {
-    name: "WHY Connect",
-    url: "https://whyconnect.no/",
-    image: "whyconnect.png",
-  },
-];
+type Sponsor = {
+  name: string;
+  url: string;
+  image: ImageMetadata;
+};
 
-const regularSponsors = [
-  { name: "Nøsted", url: "https://www.nosted.com/", image: "nosted.png" },
-  {
-    name: "Jobzone Mandal",
-    url: "https://jobzone.no/avdelinger/mandal/",
-    image: "jobzone.png",
-  },
-];
+// Fetch sponsors from JSON data collection
+const sponsors = await getEntry("sponsors", "sponsors");
+const sponsorsWithImages = await Promise.all(
+  sponsors.data.sponsors.map(async ({ name, image, ...rest }) => {
+    try {
+      const imageModule = await imagePathToSrc(image);
+      const imageData = imageModule.default;
+      return { name, image: imageData, ...rest };
+    } catch (error) {
+      console.warn(`Image not found for ${name}: ${image}`);
+      return { name, image: null, ...rest };
+    }
+  }),
+);
 
-const supporterSponsors = [
-  {
-    name: "Corado Coffee Roasters",
-    url: "https://coradocoffeeroasters.com/",
-    image: "corado.png",
+// Group sponsors by their group field
+const sponsorsByGroup = sponsorsWithImages.reduce(
+  (acc, sponsor) => {
+    const group = sponsor.group;
+    if (!acc[group]) {
+      acc[group] = [];
+    }
+    acc[group].push({
+      name: sponsor.name,
+      url: sponsor.url,
+      image: sponsor.image,
+    });
+    return acc;
   },
-  {
-    name: "Egeland Rør",
-    url: "https://www.egeland.no/",
-    image: "egeland-ror.png",
-  },
-  // { name: "Ekstralys", url: "https://ekstralys.no/", image: "ekstralys.png" },
-  { name: "Enøk Total", url: "https://enoktotal.no/", image: "enok-total.png" },
-  {
-    name: "Gullsmed Danielsen",
-    url: "https://www.gullsmeddanielsen.no",
-    image: "gullsmed-danielsen.png",
-  },
-  {
-    name: "Håland Utstyr",
-    url: "https://www.halandutstyr.no/",
-    image: "haland-utstyr.png",
-  },
-  {
-    name: "Jazzlaugs Venner",
-    url: "/jazzlaugs-venner",
-    image: "jazzlaugs-venner.png",
-  },
-  {
-    name: "Jens Westbye Fotograf",
-    url: "https://www.jenswestbye.com/",
-    image: "jens-westbye-fotograf.png",
-  },
-  {
-    name: "Kjøbmandsgaarden Hotel",
-    url: "https://kjobmandsgaarden.no/",
-    image: "kjobmandsgaarden.png",
-  },
-  {
-    name: "Mandal Musikkforening",
-    url: "https://mmf.no/",
-    image: "mandal-musikkforening.png",
-  },
-  // {
-  //   name: "Norli",
-  //   url: "https://www.facebook.com/norlimandal/",
-  //   image: "norli.jpg",
-  // },
-  {
-    name: "Neumann",
-    url: "https://www.neumann.no/",
-    image: "neumann-bygg.svg",
-  },
-  {
-    name: "Oakland",
-    url: "https://www.oakland.no/avdeling/mandal",
-    image: "oakland.png",
-  },
-  {
-    name: "Revisorsenteret Mandal",
-    url: "https://revisorsenteretmandal.no/",
-    image: "revisorsenteret-mandal.png",
-  },
-  // {
-  //   name: "Scene & Hobby",
-  //   url: "https://www.facebook.com/people/Scene-og-Hobby/100086513974477/",
-  //   image: "scene-og-hobby.png",
-  // },
-  {
-    name: "SKAP",
-    url: "https://skapfhs.no/",
-    image: "skap.png",
-  },
-  {
-    name: "Sjøsanden Grafiske",
-    url: "https://www.sjograf.no/",
-    image: "sjosanden-grafiske.png",
-  },
-  {
-    name: "Aider",
-    url: "https://aider.no/styringsgruppen/",
-    image: "aider.svg",
-  },
-  {
-    name: "Sørlandsreklame",
-    url: "https://sorlandsreklame.no/",
-    image: "sorlandsreklame.png",
-  },
-  {
-    name: "Sørlandets Elektro",
-    url: "https://www.seeas.no/",
-    image: "sorlandets-elektro.png",
-  },
-  {
-    name: "TESS",
-    url: "https://www.tess.no/",
-    image: "tess.png",
-  },
-  // {
-  //   name: "Tor Fasseland",
-  //   url: "https://www.tor-fasseland.no/",
-  //   image: "tor-fasseland.png",
-  // },
-  {
-    name: "Tønnesen 1937",
-    url: "https://tonnesen1937.no/",
-    image: "tonnesen.png",
-  },
-  { name: "Veidekke", url: "http://www.veidekke.no/", image: "veidekke.jpg" },
-];
+  {} as Record<SponsorGroup, Sponsor[]>,
+);
 
-const publicSponsors = [
-  {
-    name: "Agder Fylkeskommune",
-    url: "https://agderfk.no/",
-    image: "agder-fylkeskommune.png",
-  },
-  // {
-  //   name: "Bergesenstiftelsen",
-  //   url: "https://bergesenstiftelsen.no/",
-  //   image: "bergesenstiftelsen.png",
-  // },
-  {
-    name: "Kulturrådet",
-    url: "https://www.kulturradet.no/",
-    image: "kulturraadet.png",
-  },
-  // {
-  //   name: "Norsk Jazzforum",
-  //   url: "https://jazzforum.jazzinorge.no/",
-  //   image: "norsk-jazzforum.svg",
-  // },
-  // {
-  //   name: "KOMP (Norsk Musikkråd)",
-  //   url: "https://www.musikk.no/nmr/tilskuddsordninger/komp",
-  //   image: "norsk-musikkrad.png",
-  // },
-  {
-    name: "Sør-Norsk Jazzsenter",
-    url: "https://sornorsk.jazzinorge.no/",
-    image: "sor-norsk-jazzsenter.png",
-  },
-  {
-    name: "Lindesnes kommune",
-    url: "https://www.lindesnes.kommune.no/",
-    image: "lindesnes-kommune.png",
-  },
-];
-
-const partners = [
-  {
-    name: "Balansemerket",
-    url: "https://balansemerket.no/",
-    image: "balansemerket.png",
-  },
-  { name: "Keychange", url: "https://keychange.eu/", image: "keychange.png" },
-];
+// Get sponsors for each group
+const generalSponsors: Sponsor[] = sponsorsByGroup["Generalsponsor"] || [];
+const mainSponsors: Sponsor[] = sponsorsByGroup["Hovedsponsorer"] || [];
+const regularSponsors: Sponsor[] = sponsorsByGroup["Sponsorer"] || [];
+const supporterSponsors: Sponsor[] = sponsorsByGroup["Støttespillere"] || [];
+const publicSponsors: Sponsor[] = sponsorsByGroup["Offentlig støtte"] || [];
+const partners: Sponsor[] = sponsorsByGroup["Samarbeidspartnere"] || [];
 ---
 
 <section class="bg-red/10 py-24 shadow-inner">

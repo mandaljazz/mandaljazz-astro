@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
+
 export interface Props {
   size: "sm" | "md" | "lg" | "xl";
   sponsors: {
     name: string;
-    image: string;
+    image: ImageMetadata;
     url: string;
   }[];
 }
@@ -23,21 +25,25 @@ const imageSize = {
   class="flex w-full flex-row flex-wrap items-center justify-center gap-8"
 >
   {
-    sponsors.map(({ name, image, url }) => (
-      <li>
-        <a
-          href={url}
-          title={name}
-          rel="noopener nofollow"
-          target="_blank"
-          class="block transition-transform hover:-rotate-2"
-        >
-          <div
-            style={`background-image: url(/sponsor/${image}`}
-            class={`${imageSize[size]} bg-contain bg-center bg-no-repeat`}
-          />
-        </a>
-      </li>
-    ))
+    sponsors.map(({ name, image, url }) => {
+      if (!image) return null;
+      return (
+        <li>
+          <a
+            href={url}
+            title={name}
+            rel="noopener nofollow"
+            target="_blank"
+            class="block transition-transform hover:-rotate-2"
+          >
+            <Image
+              src={image}
+              alt={name}
+              class={`${imageSize[size]} object-contain`}
+            />
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
