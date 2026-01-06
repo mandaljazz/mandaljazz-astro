@@ -136,11 +136,6 @@ content:
         label: Barnekonsert
         type: boolean
         default: false
-      - name: isPlaceholder
-        label: Placeholder
-        type: boolean
-        default: false
-        description: "Om dette er en placeholder (kan brukes for å vise at det kommer noe senere)"
       - name: isNonConcertEvent
         label: Annen type event
         type: boolean
