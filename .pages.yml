@@ -120,10 +120,6 @@ content:
         label: Krever gratisbillett
         type: boolean
         default: false
-      - name: externalTicketUrl
-        label: Ekstern billettlenke
-        type: string
-        description: "Lenke til eksternt billettsalg (hvis vi ikke selger billetter selv på Tikkio)"
       - name: isMorgensolo
         label: Morgensolo
         type: boolean
@@ -149,6 +145,10 @@ content:
         label: Støttet av Bergesenstiftelsen
         type: boolean
         default: false
+      - name: externalTicketUrl
+        label: Ekstern billettlenke
+        type: string
+        description: "Lenke til eksternt billettsalg (hvis vi ikke selger billetter selv på Tikkio)"
       - name: externalLink
         label: Ekstern lenke
         type: string
