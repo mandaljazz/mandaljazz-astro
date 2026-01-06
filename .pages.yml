@@ -379,13 +379,6 @@ content:
     format: json
     path: src/content/data/sponsors.json
     list: true
-    view:
-      fields: [image, name, group]
-      primary: name
-      sort: [group, name]
-      default:
-        sort: group
-        order: asc
     fields:
       - name: name
         label: Navn
