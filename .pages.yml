@@ -109,13 +109,6 @@ content:
         label: Rekkefølge
         type: number
         description: "Rekkefølge på forsiden (lavere tall først)"
-      - name: releaseAt
-        label: Slippdato
-        type: date
-        description: "Når artisten skal slippes (vil være skjult frem til denne datoen)"
-        options:
-          time: true
-          format: yyyy-MM-dd HH:mm
       - name: hideFromProgram
         label: Skjul fra program
         type: boolean
