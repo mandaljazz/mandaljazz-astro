@@ -114,6 +114,18 @@ const partners = defineCollection({
   }),
 });
 
+const sponsorsData = defineCollection({
+  type: "data",
+  schema: z.array(
+    z.object({
+      name: z.string(),
+      url: z.string(),
+      image: z.string(),
+      group: sponsorGroup,
+    })
+  ),
+});
+
 export const collections = {
   authors,
   blekka,
@@ -123,4 +135,5 @@ export const collections = {
   accommodations,
   sponsors,
   partners,
+  "sponsors-data": sponsorsData,
 };

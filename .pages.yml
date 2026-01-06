@@ -373,6 +373,43 @@ content:
         label: URL
         type: string
         required: true
+  - name: sponsors-data
+    label: Sponsorer (Data)
+    type: file
+    format: json
+    path: src/content/data/sponsors.json
+    list: true
+    fields:
+      - name: name
+        label: Navn
+        type: string
+        required: true
+      - name: url
+        label: URL
+        type: string
+        required: true
+      - name: image
+        label: Bilde
+        type: image
+        required: true
+        options:
+          media: src-images
+          path: src/images/sponsors
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+      - name: group
+        label: Gruppe
+        type: select
+        required: true
+        options:
+          values:
+            [
+              Generalsponsor,
+              Hovedsponsorer,
+              Sponsorer,
+              Støttespillere,
+              Offentlig støtte,
+              Samarbeidspartnere,
+            ]
   - name: sponsors
     label: Sponsorer
     type: collection
