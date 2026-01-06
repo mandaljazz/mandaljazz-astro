@@ -9,7 +9,7 @@ export const formatTime = (date: string) => {
   }
 };
 
-export const formatDate = (date: string) => {
+export const formatDate = (date: string | Date) => {
   try {
     return format(new Date(date), "dd.MM.yyyy");
   } catch (error) {
@@ -17,7 +17,7 @@ export const formatDate = (date: string) => {
   }
 };
 
-export const formatHumanDate = (date: string) => {
+export const formatHumanDate = (date: string | Date) => {
   try {
     return format(new Date(date), "EEEE d. MMMM");
   } catch (error) {
@@ -25,7 +25,7 @@ export const formatHumanDate = (date: string) => {
   }
 };
 
-export const formatHumanDateTime = (dateString: string) => {
+export const formatHumanDateTime = (dateString: string | Date) => {
   const date = new Date(dateString);
   try {
     if (!isThisYear(date)) {

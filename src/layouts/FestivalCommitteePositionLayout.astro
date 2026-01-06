@@ -1,4 +1,6 @@
 ---
+import { formatDate } from "../utils/date";
+
 const {
   data: { title, fee, start, end, deadline },
   slug,
@@ -16,17 +18,17 @@ const {
     <tbody class="divide-y">
       <tr class="divide-x">
         <td class="p-3">Oppstart</td>
-        <td class="col-span-2 p-3">{start}</td>
+        <td class="col-span-2 p-3">{formatDate(start)}</td>
       </tr>
       <tr class="divide-x">
         <td class="p-3">Avsluttes</td>
-        <td class="col-span-2 p-3">{end}</td>
+        <td class="col-span-2 p-3">{formatDate(end)}</td>
       </tr>
       {
         deadline && (
           <tr class="divide-x">
             <td class="p-3">Frist</td>
-            <td class="col-span-2 p-3">{deadline}</td>
+            <td class="col-span-2 p-3">{formatDate(deadline)}</td>
           </tr>
         )
       }
