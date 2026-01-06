@@ -6,13 +6,19 @@ export interface Props {
   src: string;
   caption?: string;
   attribution?: string;
+  loading?: "eager" | "lazy";
 }
 
-const { src, caption, attribution } = Astro.props;
+const { src, caption, attribution, loading = "lazy" } = Astro.props;
 ---
 
 <figure>
-  <Image src={imagePathToSrc(src)} alt={caption} class="rounded-t-lg" />
+  <Image
+    src={imagePathToSrc(src)}
+    alt={caption}
+    class="rounded-t-lg"
+    loading={loading}
+  />
   <figcaption class="flex justify-between rounded-b-lg bg-pink p-4">
     {caption && <span>{caption}</span>}
     {attribution && <span>{attribution}</span>}

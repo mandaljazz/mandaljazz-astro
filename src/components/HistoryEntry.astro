@@ -25,9 +25,10 @@ export interface Props {
   image: string;
   spotifyUrl?: string;
   flickrAlbumId?: string;
+  isFirst?: boolean;
 }
 
-const { id, year, spotifyUrl, image, flickrAlbumId } = Astro.props;
+const { id, year, spotifyUrl, image, flickrAlbumId, isFirst } = Astro.props;
 const albums = await import.meta.glob<FlickrAlbum>(
   "../content/flickr-albums/*.json",
   { eager: true },
@@ -43,7 +44,13 @@ const album = Object.values(albums).find((album) => album.id === flickrAlbumId);
     >
       {year}
     </h2>
-    <div>{spotifyUrl && <Spotify src={spotifyUrl} />}</div>
+    <div>
+      {
+        spotifyUrl && (
+          <Spotify src={spotifyUrl} loading={isFirst ? "eager" : "lazy"} />
+        )
+      }
+    </div>
     <Image
       src={imagePathToSrc(image)}
       class="rounded-lg"
