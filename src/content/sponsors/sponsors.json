@@ -1,4 +1,10 @@
 {
+  "0": {
+    "name": "test",
+    "url": "test",
+    "image": "/src/images/sponsors/agder-fylkeskommune.png",
+    "group": "Hovedsponsorer"
+  },
   "sponsors": [
     {
       "name": "Sparebanken Norge",
