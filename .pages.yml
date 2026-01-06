@@ -355,10 +355,9 @@ content:
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: sponsors
     label: Sponsorer
-    type: file
-    format: json
-    path: src/content/sponsors/sponsors.json
-    list: true
+    type: collection
+    path: src/content/sponsors
+    filename: "{primary}.mdx"
     view:
       fields: [image, name, group]
       primary: name

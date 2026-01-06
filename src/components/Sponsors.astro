@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { imagePathToSrc } from "../utils/images";
 import SponsorList from "./SponsorList.astro";
 
@@ -17,10 +17,11 @@ type Sponsor = {
   image: ImageMetadata;
 };
 
-// Fetch sponsors from JSON data collection
-const sponsors = await getEntry("sponsors", "sponsors");
+// Fetch sponsors from content collection
+const sponsorEntries = await getCollection("sponsors");
 const sponsorsWithImages = await Promise.all(
-  sponsors.data.sponsors.map(async ({ name, image, ...rest }) => {
+  sponsorEntries.map(async (entry) => {
+    const { name, image, ...rest } = entry.data;
     try {
       const imageModule = await imagePathToSrc(image);
       const imageData = imageModule.default;

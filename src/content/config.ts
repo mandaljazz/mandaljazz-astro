@@ -96,17 +96,13 @@ const sponsorGroup = z.enum([
   "Samarbeidspartnere",
 ]);
 
-const sponsorSchema = z.object({
-  name: z.string(),
-  url: z.string(),
-  image: z.string(),
-  group: sponsorGroup,
-});
-
 const sponsors = defineCollection({
-  type: "data",
+  type: "content",
   schema: z.object({
-    sponsors: z.array(sponsorSchema),
+    name: z.string(),
+    url: z.string(),
+    image: z.string(),
+    group: sponsorGroup,
   }),
 });
 
