@@ -283,20 +283,17 @@ content:
         label: Startdato
         type: date
         options:
-          time: true
-          format: yyyy-MM-dd HH:mm
+          format: yyyy-MM-dd
       - name: end
         label: Sluttdato
         type: date
         options:
-          time: true
-          format: yyyy-MM-dd HH:mm
+          format: yyyy-MM-dd
       - name: deadline
         label: Søknadsfrist
         type: date
         options:
-          time: true
-          format: yyyy-MM-dd HH:mm
+          format: yyyy-MM-dd
       - name: filled
         label: Besatt
         type: boolean

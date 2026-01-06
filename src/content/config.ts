@@ -28,9 +28,15 @@ const festivalkomite = defineCollection({
   schema: z.object({
     title: z.string(),
     fee: z.boolean().default(false),
-    start: z.string().optional(),
-    end: z.string().optional(),
-    deadline: z.string().optional(),
+    start: z
+      .union([z.string().transform((str) => new Date(str)), z.undefined()])
+      .optional(),
+    end: z
+      .union([z.string().transform((str) => new Date(str)), z.undefined()])
+      .optional(),
+    deadline: z
+      .union([z.string().transform((str) => new Date(str)), z.undefined()])
+      .optional(),
     filled: z.boolean().default(false),
   }),
 });
