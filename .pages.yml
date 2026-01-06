@@ -28,7 +28,6 @@ content:
         label: Navn
         type: string
         required: true
-        description: "Fullt navn på artisten"
       - name: shortTitle
         label: Kort navn
         type: string
@@ -89,22 +88,18 @@ content:
         options:
           time: true
           format: yyyy-MM-dd HH:mm
-        description: "Når konserten starter (f.eks. '2026-07-10 22:00')"
       - name: concertEndAt
         label: Konsertslutt
         type: date
         options:
           time: true
           format: yyyy-MM-dd HH:mm
-        description: "Når konserten slutter (f.eks. '2026-07-10 23:30')"
       - name: spotifyUrl
         label: Spotify URL
         type: string
-        description: "Lenke til artist på Spotify"
       - name: youtubeUrl
         label: YouTube URL
         type: string
-        description: "Lenke til YouTube-video"
       - name: order
         label: Rekkefølge
         type: number
@@ -113,46 +108,39 @@ content:
         label: Skjul fra program
         type: boolean
         default: false
-        description: "Skjul fra programsiden"
       - name: hideFromArtistList
         label: Skjul fra artistliste
         type: boolean
         default: false
-        description: "Skjul fra forsiden"
       - name: isFree
         label: Gratis
         type: boolean
         default: false
-        description: "Om konserten er gratis"
       - name: requiresFreeTicket
         label: Krever gratisbillett
         type: boolean
         default: false
-        description: "Om gratis konsert krever gratisbillett"
       - name: externalTicketUrl
         label: Ekstern billettlenke
         type: string
-        description: "Lenke til ekstern billettsalg"
+        description: "Lenke til eksternt billettsalg (hvis vi ikke selger billetter selv på Tikkio)"
       - name: isMorgensolo
         label: Morgensolo
         type: boolean
         default: false
-        description: "Om konserten er en morgensolo"
       - name: isBestillingsverk
         label: Bestillingsverk
         type: boolean
         default: false
-        description: "Om konserten er et bestillingsverk"
       - name: isBarnekonsert
         label: Barnekonsert
         type: boolean
         default: false
-        description: "Om det er en barnekonsert"
       - name: isPlaceholder
         label: Placeholder
         type: boolean
         default: false
-        description: "Om dette er en placeholder"
+        description: "Om dette er en placeholder (kan brukes for å vise at det kommer noe senere)"
       - name: isNonConcertEvent
         label: Annen type event
         type: boolean
@@ -162,16 +150,14 @@ content:
         label: Avlyst
         type: boolean
         default: false
-        description: "Om konserten er avlyst"
       - name: sponsoredByBergesenstiftelsen
         label: Støttet av Bergesenstiftelsen
         type: boolean
         default: false
-        description: "Vis logo for Bergesenstiftelsen"
       - name: externalLink
         label: Ekstern lenke
         type: string
-        description: "Ekstern lenke (hvis ikke lokal artistside)"
+        description: "Ekstern lenke (hvis vi ikke har artistsiden her på mandaljazz.no)"
   - name: blekka
     label: Blekka
     type: collection
@@ -260,11 +246,9 @@ content:
           media: src-images
           path: src/images/frivillig
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Bilde for frivilliggruppen"
       - name: imageAlt
         label: Bildebeskrivelse
         type: string
-        description: "Alternativ tekst for bildet"
       - name: body
         label: Innhold
         type: rich-text
@@ -297,16 +281,22 @@ content:
         description: "Om stillingen har honorar"
       - name: start
         label: Startdato
-        type: string
-        description: "Når stillingen starter (f.eks. '1. mai 2026')"
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: end
         label: Sluttdato
-        type: string
-        description: "Når stillingen slutter (f.eks. '1. august 2026')"
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: deadline
         label: Søknadsfrist
-        type: string
-        description: "Søknadsfrist (f.eks. '10. september 2025')"
+        type: date
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
       - name: filled
         label: Besatt
         type: boolean
@@ -319,7 +309,6 @@ content:
           media: public-images
           path: public/festivalkomite
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Bilde for stillingen"
       - name: body
         label: Innhold
         type: rich-text
@@ -358,15 +347,13 @@ content:
       sort: [title]
     fields:
       - name: title
-        label: Tittel
+        label: Navn
         type: string
         required: true
-        description: "Navn på overnattingsstedet"
       - name: url
         label: URL
         type: string
         required: true
-        description: "Lenke til overnattingsstedets nettside"
       - name: image
         label: Bilde
         type: image
@@ -374,7 +361,6 @@ content:
           media: src-images
           path: src/images/overnatting
           extensions: [png, jpg, jpeg, webp, svg, gif]
-        description: "Bilde for overnattingsstedet"
 
 settings:
   hide: true
