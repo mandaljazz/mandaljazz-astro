@@ -9,6 +9,11 @@ media:
     input: src/images
     output: /src/images
     extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: data
+    label: Data
+    input: src/content/data
+    output: /src/content/data
+    extensions: [json]
 
 content:
   - name: artist
@@ -353,6 +358,21 @@ content:
           media: src-images
           path: src/images/overnatting
           extensions: [png, jpg, jpeg, webp, svg, gif]
+  - name: partners
+    label: Samarbeidspartnere
+    type: file
+    format: json
+    path: src/content/data/partners.json
+    list: true
+    fields:
+      - name: name
+        label: Navn
+        type: string
+        required: true
+      - name: url
+        label: URL
+        type: string
+        required: true
   - name: sponsors
     label: Sponsorer
     type: collection
