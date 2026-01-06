@@ -106,14 +106,6 @@ const sponsors = defineCollection({
   }),
 });
 
-const partners = defineCollection({
-  type: "data",
-  schema: z.object({
-    name: z.string(),
-    url: z.string(),
-  }),
-});
-
 export const collections = {
   authors,
   blekka,
@@ -122,5 +114,4 @@ export const collections = {
   artist,
   accommodations,
   sponsors,
-  partners,
 };
