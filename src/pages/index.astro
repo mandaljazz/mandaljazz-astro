@@ -61,45 +61,68 @@ const byOrder = (a, b) => {
   <main
     class="space-y-24 px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32"
   >
-    <div class="flex flex-col gap-8 sm:gap-12">
-      <div class="mx-auto flex max-w-5xl flex-col items-center gap-8">
-        <div
-          class="relative flex w-full flex-col items-center gap-4 pt-16 md:pt-32 lg:mx-auto lg:w-fit"
+    <div
+      class="relative flex h-[60vh] max-h-[560px] min-h-[420px] w-full flex-col gap-8 overflow-hidden rounded-lg sm:gap-12"
+    >
+      <div class="absolute inset-0">
+        <video
+          autoplay
+          playsinline
+          muted
+          class="h-full w-full object-cover"
+          loop
         >
-          <div class="flex flex-col">
-            <div class="relative flex w-full">
-              <h1
-                class="z-10 flex flex-col items-end font-league-spartan leading-snug text-black"
-              >
-                <span
-                  class="block rounded-xl rounded-br-none bg-pink p-6 text-center text-4xl sm:text-7xl"
-                  >9.–11. juli</span
+          <source
+            src="/video/oppsummeringsfilm-2023-compressed.mp4"
+            type="video/mp4"
+          />
+          Beklager, her skulle det egentlig vært en video, men nettleseren din støtter
+          ikke innebygde videoer :(
+        </video>
+        <div class="absolute inset-0 bg-black/10"></div>
+      </div>
+      <div class="relative z-10 flex min-h-full w-full flex-col gap-8">
+        <div class="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
+          <div
+            class="relative flex w-full flex-col items-center gap-4 pt-16 md:pt-32 lg:mx-auto lg:w-fit"
+          >
+            <div class="flex flex-col">
+              <div class="relative flex w-full">
+                <h1
+                  class="z-10 flex flex-col items-end font-league-spartan leading-snug text-black"
                 >
-                <span class="flex w-full flex-row bg-beige">
-                  <span class="block flex-1 bg-beige"></span>
                   <span
-                    class="block w-fit rounded-b-xl bg-pink/50 p-2 text-4xl italic"
-                    >2026</span
+                    class="block rounded-xl rounded-br-none bg-pink p-6 text-center text-4xl sm:text-7xl"
+                    >9.–11. juli</span
                   >
-                </span>
-              </h1>
-              <!-- New date badge -->
-              <div
-                class="absolute -right-10 -top-6 z-10 sm:-right-10 sm:-top-8"
-              >
+                  <span class="flex w-full flex-row">
+                    <span class="block flex-1"></span>
+                    <span
+                      class="block w-fit rounded-b-xl bg-pink/70 p-2 text-4xl italic"
+                      >2026</span
+                    >
+                  </span>
+                </h1>
+                <!-- New date badge -->
                 <div
-                  class="delay-2500 rotate-12 transform rounded-full bg-red px-5 py-3 text-white"
+                  class="absolute -right-10 -top-6 z-10 sm:-right-10 sm:-top-8"
                 >
-                  <span class="font-semibold">NY DATO</span>
+                  <div
+                    class="delay-2500 rotate-12 transform rounded-full bg-red px-5 py-3 text-white"
+                  >
+                    <span class="font-semibold">NY DATO</span>
+                  </div>
                 </div>
               </div>
+              <!-- <BuyTicketsButton class="mx-auto mt-8 w-fit" /> -->
             </div>
-            <!-- <BuyTicketsButton class="mx-auto mt-8 w-fit" /> -->
           </div>
         </div>
-      </div>
-      <div class="mx-auto flex max-w-5xl flex-col items-center gap-8 sm:gap-16">
-        <BuyTicketsButton />
+        <div
+          class="mx-auto flex max-w-5xl flex-col items-center gap-8 sm:gap-16"
+        >
+          <BuyTicketsButton />
+        </div>
       </div>
     </div>
     <div class="mx-auto max-w-5xl space-y-4 sm:space-y-8">
