@@ -334,9 +334,12 @@ content:
     path: src/content/accommodations
     filename: "{primary}.mdx"
     view:
-      fields: [image, title, url]
+      fields: [image, title, url, order]
       primary: title
-      sort: [title]
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
     fields:
       - name: title
         label: Navn
@@ -353,6 +356,10 @@ content:
           media: src-images
           path: src/images/overnatting
           extensions: [png, jpg, jpeg, webp, svg, gif]
+      - name: order
+        label: Rekkefølge
+        type: number
+        description: "Rekkefølge i listen (lavere tall først)"
   - name: sponsors
     label: Sponsorer
     type: collection

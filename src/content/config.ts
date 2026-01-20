@@ -84,6 +84,7 @@ const accommodations = defineCollection({
     title: z.string(),
     url: z.string(),
     image: z.string().optional(),
+    order: z.number().optional(),
   }),
 });
 

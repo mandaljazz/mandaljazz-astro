@@ -9,8 +9,21 @@ import VenueMap from "../components/VenueMap.astro";
 import { imagePathToSrc } from "../utils/images";
 
 const accommodationsEntries = await getCollection("accommodations");
+const sortedAccommodationsEntries = [...accommodationsEntries].sort((a, b) => {
+  const orderA =
+    a.data.order === undefined ? Number.POSITIVE_INFINITY : a.data.order;
+  const orderB =
+    b.data.order === undefined ? Number.POSITIVE_INFINITY : b.data.order;
+
+  if (orderA !== orderB) {
+    return orderA - orderB;
+  }
+
+  return a.data.title.localeCompare(b.data.title);
+});
+
 const accommodations = await Promise.all(
-  accommodationsEntries.map(async (entry) => {
+  sortedAccommodationsEntries.map(async (entry) => {
     let imageData = null;
     if (entry.data.image) {
       try {
