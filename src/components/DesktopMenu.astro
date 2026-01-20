@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 
 import { imagePathToSrc } from "../utils/images";
@@ -7,12 +8,19 @@ import HeaderDate from "./HeaderDate.astro";
 export interface Props {
   class?: string;
   navItems: {
-    href: string;
     title: string;
+    href?: string;
+    items?: {
+      href: string;
+      title: string;
+    }[];
   }[];
 }
 
 const { class: extraClasses, navItems } = Astro.props;
+
+const isActive = (href) =>
+  Astro.url.pathname === href || Astro.url.pathname === `${href}/`;
 ---
 
 <div class={`relative ${extraClasses}`}>
@@ -30,17 +38,67 @@ const { class: extraClasses, navItems } = Astro.props;
 
     <div class="flex w-full flex-row items-center gap-4 sm:gap-8">
       {
-        navItems.map(({ href, title }) => (
-          <div class="relative whitespace-nowrap transition-transform hover:-rotate-3">
-            {Astro.url.pathname === href ||
-            Astro.url.pathname === `${href}/` ? (
-              <div class="absolute -right-3 -top-1.5 h-3 w-3 rounded-full bg-blue" />
-            ) : null}
-            <a href={href} title={title} class={`relative z-10`}>
-              {title}
-            </a>
-          </div>
-        ))
+        navItems.map(({ href, title, items }) => {
+          if (items?.length) {
+            const isMenuActive = items.some((item) => isActive(item.href));
+
+            return (
+              <div class="relative whitespace-nowrap">
+                {isMenuActive ? (
+                  <div class="absolute -right-1 top-0.5 h-6 w-6 rounded-full bg-blue" />
+                ) : null}
+                <div class="group relative">
+                  <button
+                    type="button"
+                    class="relative z-10 flex cursor-pointer items-center gap-2"
+                    aria-haspopup="true"
+                  >
+                    <span>{title}</span>
+                    <Icon
+                      class="transition-transform group-focus-within:rotate-180 group-hover:rotate-180"
+                      pack="ion"
+                      name="chevron-down"
+                      size={16}
+                    />
+                  </button>
+                  <div class="pointer-events-none absolute -left-4 top-full min-w-max pt-3 opacity-0 transition-opacity group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
+                    <div class="flex flex-col gap-6 rounded-lg bg-dark-blue/95 px-8 pb-8 pt-4 shadow-lg">
+                      {items.map((item) => (
+                        <div class="relative w-fit whitespace-nowrap transition-transform hover:-rotate-2">
+                          {isActive(item.href) ? (
+                            <div class="absolute -left-3 -top-1 h-9 w-9 rounded-full bg-blue" />
+                          ) : null}
+                          <a
+                            href={item.href}
+                            title={item.title}
+                            class="relative z-10"
+                          >
+                            {item.title}
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          if (!href) {
+            return null;
+          }
+
+          return (
+            <div class="relative whitespace-nowrap transition-transform hover:-rotate-3">
+              {isActive(href) ? (
+                <div class="absolute -left-3 -top-1 h-9 w-9 rounded-full bg-blue" />
+              ) : null}
+              <a href={href} title={title} class={`relative z-10`}>
+                {title}
+              </a>
+            </div>
+          );
+        })
       }
     </div>
 

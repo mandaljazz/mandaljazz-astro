@@ -24,7 +24,7 @@ const { class: extraClasses, navItems } = Astro.props;
       navItems.map(({ href, title }) => (
         <div class="relative whitespace-nowrap">
           {Astro.url.pathname === href || Astro.url.pathname === `${href}/` ? (
-            <div class="absolute -left-5 top-1.5 h-3 w-3 rounded-full bg-blue" />
+            <div class="absolute -left-3 -top-0.5 h-9 w-9 rounded-full bg-blue" />
           ) : null}
           <a href={href} title={title} class={`mobile-nav-link relative z-10`}>
             {title}

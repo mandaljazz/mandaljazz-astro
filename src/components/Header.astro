@@ -12,9 +12,25 @@ const navItems = [
   { href: "/galleri-og-historie", title: "Galleri og historie" },
   { href: "#kontakt", title: "Kontakt" },
 ];
+
+const desktopNavItems = [
+  { href: "/", title: "Artister" },
+  // { href: "/program", title: "Program" },
+  // { href: "/billetter", title: "Billetter" },
+  { href: "/praktisk", title: "Praktisk" },
+  {
+    title: "Bli frivillig",
+    items: [
+      { href: "/frivillig", title: "Frivillig" },
+      { href: "/festivalkomite", title: "Festivalkomite" },
+    ],
+  },
+  { href: "/galleri-og-historie", title: "Galleri og historie" },
+  { href: "#kontakt", title: "Kontakt" },
+];
 ---
 
 <header class="z-20 font-display">
   <MobileMenu class="block lg:hidden" navItems={navItems} />
-  <DesktopMenu class="hidden lg:block" navItems={navItems} />
+  <DesktopMenu class="hidden lg:block" navItems={desktopNavItems} />
 </header>
