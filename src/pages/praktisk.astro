@@ -92,13 +92,13 @@ const accommodations = await Promise.all(
 
           <ul
             role="list"
-            class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            class="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
           >
             {
               accommodations.map(({ title, url, image }) => (
                 <li class="group relative">
                   <a
-                    class={`flex h-full rounded px-6 py-8 text-center shadow-inner ${
+                    class={`flex h-full rounded px-12 py-20 text-center shadow-inner ${
                       image
                         ? "text-white"
                         : "bg-light-green/60 transition-all hover:bg-green hover:text-white group-hover:-rotate-1"
@@ -147,7 +147,7 @@ const accommodations = await Promise.all(
         <div
           class="sticky bottom-4 top-auto flex h-fit flex-col items-end gap-3 space-y-2 md:bottom-auto md:top-24 md:col-span-2 lg:col-span-1"
         >
-          <!-- <BuyTicketsButton class="mx-auto w-fit md:mx-0 md:w-48" /> -->
+          <BuyTicketsButton class="mx-auto w-fit md:mx-0 md:w-48" />
           <!-- <Image
             src={imagePathToSrc("/src/images/profil/frimerke-sykkeltur.png")}
             class="hidden w-48 md:block"
