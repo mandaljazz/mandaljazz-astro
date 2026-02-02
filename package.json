@@ -25,7 +25,7 @@
     "astro-seo": "0.8.4",
     "classnames": "2.5.1",
     "date-fns": "4.1.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "lottie-web": "5.13.0",
     "mapbox-gl": "3.16.0",
     "sharp-ico": "0.1.5",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "0.5.19",
-    "@types/lodash": "4.17.20",
+    "@types/lodash": "4.17.23",
     "dotenv": "16.5.0",
     "flickr-sdk": "7.1.0",
     "prettier": "3.7.4",
