@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import ImageWithCaption from "../components/ImageWithCaption.astro";
 import Link from "../components/Link.astro";
+import VolunteerForm from "../components/VolunteerForm.astro";
 import Layout from "../layouts/Layout.astro";
 import VolunteerGroupLayout from "../layouts/VolunteerGroupLayout.astro";
 
@@ -137,11 +138,11 @@ const groupList = groups.sort((a, b) =>
         kanskje interessert i å bli med som frivillig på Mandaljazz? Da kan du
         melde deg på når vi åpner registreringa for neste år.
       </p>
-      <!-- <div class="space-y-4">
+      <div class="space-y-4">
         <div class="invisible -translate-y-16" id="registreringsskjema"></div>
         <h2 class="text-3xl">Registrering</h2>
         <VolunteerForm />
-      </div> -->
+      </div>
       <!-- <Image
         src={imagePathToSrc("/src/images/profil/frimerke-dans.png")}
         class="mx-auto max-w-72 md:max-w-96"
