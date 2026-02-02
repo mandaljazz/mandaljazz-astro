@@ -3,19 +3,16 @@ import { getCollection } from "astro:content";
 import BlogPostCard from "../../components/BlogPostCard.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const allBlogPosts = await getCollection("blekka");
+const allBlogPosts = await getCollection("nyheter");
 const articleList = allBlogPosts
   .filter((post) => !post.data.hide)
   .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 ---
 
-<Layout
-  title="Blekka // Mandaljazz"
-  description="Tilfeldige skriblerier fra gjengen i Mandaljazz"
->
+<Layout title="Nyheter // Mandaljazz" description="Nyheter fra Mandaljazz">
   <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
     <div class="mx-auto max-w-5xl space-y-16">
-      <h1 class="text-5xl md:text-7xl">Blekka</h1>
+      <h1 class="text-5xl md:text-7xl">Nyheter</h1>
       <ul
         role="list"
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
@@ -30,7 +27,7 @@ const articleList = allBlogPosts
               <BlogPostCard
                 title={title}
                 ingress={ingress}
-                href={`/blekka/${slug}`}
+                href={`/nyheter/${slug}`}
                 image={image}
               />
             );

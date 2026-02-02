@@ -153,10 +153,10 @@ content:
         label: Ekstern lenke
         type: string
         description: "Ekstern lenke (hvis vi ikke har artistsiden her på mandaljazz.no)"
-  - name: blekka
-    label: Blekka
+  - name: nyheter
+    label: Nyheter
     type: collection
-    path: src/content/blekka
+    path: src/content/nyheter
     filename: "{primary}-{year}-{month}-{day}.mdx"
     view:
       fields: [image, title, author, createdAt, hide]
@@ -191,7 +191,7 @@ content:
         required: true
         options:
           media: public-images
-          path: public/blekka
+          path: public/nyheter
           extensions: [png, jpg, jpeg, webp, svg, gif]
         description: "Bør være landskapsformat"
       - name: createdAt
@@ -217,7 +217,7 @@ content:
         type: rich-text
         options:
           media: public-images
-          path: public/blekka
+          path: public/nyheter
           extensions: [png, jpg, jpeg, webp, svg, gif]
   - name: frivillig
     label: Frivillig
