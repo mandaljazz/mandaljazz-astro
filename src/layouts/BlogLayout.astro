@@ -1,4 +1,5 @@
 ---
+import { isSameDay } from "date-fns";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import { formatDate } from "../utils/date";
 import Layout from "./Layout.astro";
@@ -38,7 +39,7 @@ const {
                     <div class="text-xs">
                       Publisert:{" "}
                       <time datetime={createdAt}>{formatDate(createdAt)}</time>
-                      {updatedAt &&
+                      {!isSameDay(createdAt, updatedAt) &&
                         /* prettier-ignore */
                         <span class="italic text-[10px]">(endret:{" "}<time datetime={updatedAt}>{formatDate(updatedAt)}</time>)</span>}
                     </div>
@@ -49,7 +50,7 @@ const {
           }
         </div>
         <div
-          class="h-80 w-full rounded bg-cover bg-top bg-no-repeat md:h-[420px] lg:h-[480px]"
+          class="h-80 w-full rounded bg-cover bg-center bg-no-repeat md:h-[420px] lg:h-[480px]"
           style={`background-image: url('${image}');`}
         >
         </div>
