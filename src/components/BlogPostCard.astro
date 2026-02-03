@@ -24,7 +24,7 @@ const { href, title, ingress, image, className } = Astro.props;
   <a href={href} class="block w-full">
     <h2
       class={classNames(
-        "font-medium w-full p-4 items-center justify-center flex rounded-xl text-xl",
+        "font-medium w-full items-center justify-center flex rounded-xl text-xl",
       )}
     >
       {title}
@@ -32,7 +32,7 @@ const { href, title, ingress, image, className } = Astro.props;
   </a>
   {
     ingress && (
-      <div class="w-full p-4 text-xl transition-transform">
+      <div class="w-full text-xl transition-transform">
         <p>{ingress}</p>
       </div>
     )
