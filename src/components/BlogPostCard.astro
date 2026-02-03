@@ -13,38 +13,28 @@ export interface Props {
 const { href, title, ingress, image, className } = Astro.props;
 ---
 
-<!-- TODO: Fix height etc. -->
-<li
-  class={classNames(
-    `rounded-xl w-full h-96 sm:h-72 transition-transform group hover:rotate-1`,
-    className,
-  )}
->
-  <a href={href} class="relative block h-full w-full space-y-4">
+<li class={classNames(`group rounded-xl w-full space-y-4`, className)}>
+  <a href={href} class="block w-full transition-transform group-hover:rotate-2">
     <ImageWithBlurredBackground
       src={image}
       alt={title}
-      className="rounded-xl"
+      className="h-96 rounded-xl sm:h-72"
     />
+  </a>
+  <a href={href} class="block w-full">
     <h2
       class={classNames(
-        `font-medium absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-center
-      p-4 h-14 items-center justify-center flex rounded-xl transition-transform group-hover:-rotate-2 bg-pink whitespace-nowrap truncate`,
-        {
-          "text-xl": title.length < 20,
-          "text-base": title.length >= 20 && title.length < 25,
-          "text-sm": title.length >= 25,
-        },
+        "font-medium w-full p-4 items-center justify-center flex rounded-xl text-xl",
       )}
     >
       {title}
     </h2>
-    {
-      ingress && (
-        <div class="w-full rounded-t-xl p-4 text-xl transition-transform group-hover:-rotate-1">
-          <p>{ingress}</p>
-        </div>
-      )
-    }
   </a>
+  {
+    ingress && (
+      <div class="w-full p-4 text-xl transition-transform">
+        <p>{ingress}</p>
+      </div>
+    )
+  }
 </li>
