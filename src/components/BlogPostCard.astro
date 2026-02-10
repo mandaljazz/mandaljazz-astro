@@ -22,17 +22,13 @@ const { href, title, ingress, image, className } = Astro.props;
     />
   </a>
   <a href={href} class="block w-full">
-    <h2
-      class={classNames(
-        "font-medium w-full items-center justify-center flex rounded-xl text-xl",
-      )}
-    >
+    <h2 class={classNames("font-medium w-full text-xl")}>
       {title}
     </h2>
   </a>
   {
     ingress && (
-      <div class="w-full text-xl transition-transform">
+      <div class="w-full text-base transition-transform">
         <p>{ingress}</p>
       </div>
     )
