@@ -15,7 +15,7 @@ const articleList = allBlogPosts
       <h1 class="text-5xl md:text-7xl">Nyheter</h1>
       <ul role="list" class="grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-2">
         {
-          [...articleList, ...articleList, ...articleList].map((article) => {
+          articleList.map((article) => {
             const {
               data: { title, ingress, image },
               slug,
