@@ -103,7 +103,7 @@ content:
       - name: order
         label: Rekkefølge
         type: number
-        description: "Rekkefølge på forsiden (lavere tall først)"
+        description: "Rekkefølge på forsiden (høyere tall først)"
       - name: hideFromProgram
         label: Skjul fra program
         type: boolean
@@ -359,7 +359,7 @@ content:
       - name: order
         label: Rekkefølge
         type: number
-        description: "Rekkefølge i listen (lavere tall først)"
+        description: "Rekkefølge i listen (høyere tall først)"
   - name: sponsors
     label: Sponsorer
     type: collection

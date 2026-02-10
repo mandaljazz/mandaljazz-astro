@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import partition from "lodash/partition";
 
 import classNames from "classnames";
-import { isBefore } from "date-fns";
 import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 // import Spotify from "../components/Spotify.astro";
@@ -25,16 +24,8 @@ const currentYearArtists = artistList.filter((artist) => {
   );
 });
 
-const releasedArtists = () =>
-  currentYearArtists.filter(
-    (artist) =>
-      !artist.frontmatter.releaseAt ||
-      isBefore(new Date(artist.frontmatter.releaseAt), new Date()),
-  );
-
-console.log(releasedArtists);
 const [upcomingArtists, pastArtists] = partition(
-  releasedArtists(),
+  currentYearArtists,
   (artist) => {
     const {
       frontmatter: { concertStartAt },
@@ -45,15 +36,9 @@ const [upcomingArtists, pastArtists] = partition(
 );
 
 const byOrder = (a, b) => {
-  const aOrder = Number(a.frontmatter.order) || 0;
-  const bOrder = Number(b.frontmatter.order) || 0;
-  if (aOrder > bOrder) {
-    return 1;
-  } else if (aOrder < bOrder) {
-    return -1;
-  } else {
-    return 0;
-  }
+  const aOrder = Number(a.frontmatter.order) || Number.NEGATIVE_INFINITY;
+  const bOrder = Number(b.frontmatter.order) || Number.NEGATIVE_INFINITY;
+  return bOrder - aOrder;
 };
 ---
 

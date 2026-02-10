@@ -11,12 +11,12 @@ import { imagePathToSrc } from "../utils/images";
 const accommodationsEntries = await getCollection("accommodations");
 const sortedAccommodationsEntries = [...accommodationsEntries].sort((a, b) => {
   const orderA =
-    a.data.order === undefined ? Number.POSITIVE_INFINITY : a.data.order;
+    a.data.order === undefined ? Number.NEGATIVE_INFINITY : a.data.order;
   const orderB =
-    b.data.order === undefined ? Number.POSITIVE_INFINITY : b.data.order;
+    b.data.order === undefined ? Number.NEGATIVE_INFINITY : b.data.order;
 
   if (orderA !== orderB) {
-    return orderA - orderB;
+    return orderB - orderA;
   }
 
   return a.data.title.localeCompare(b.data.title);
