@@ -20,7 +20,7 @@ body {
 }
 
 ::selection {
-  background: theme("colors.pink");
+  background-color: theme("colors.pink");
   color: theme("colors.black");
 }
 

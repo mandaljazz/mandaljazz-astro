@@ -43,13 +43,11 @@ const byOrder = (a, b) => {
 ---
 
 <Layout title="Mandaljazz 2026" description="Jazzfestivalen i Mandal">
-  <main
-    class="space-y-24 px-4 py-24 sm:px-6 sm:py-40 md:px-8 lg:px-16 xl:px-32"
-  >
+  <main class="space-y-24">
     <div
-      class="relative flex h-[60vh] max-h-[560px] min-h-[420px] w-full flex-col gap-8 overflow-hidden rounded-lg sm:gap-12"
+      class="relative flex h-[60vh] max-h-[560px] min-h-[420px] w-full flex-col gap-8 overflow-hidden bg-dark-blue sm:gap-12"
     >
-      <div class="absolute inset-0">
+      <div class="absolute inset-0 top-8 sm:top-16">
         <video
           autoplay
           playsinline
@@ -64,12 +62,11 @@ const byOrder = (a, b) => {
           Beklager, her skulle det egentlig vært en video, men nettleseren din støtter
           ikke innebygde videoer :(
         </video>
-        <div class="absolute inset-0 bg-black/10"></div>
       </div>
       <div class="relative z-10 flex min-h-full w-full flex-col gap-8">
         <div class="mx-auto flex w-full max-w-5xl flex-col items-center gap-8">
           <div
-            class="relative flex w-full flex-col items-center gap-4 pt-16 md:pt-32 lg:mx-auto lg:w-fit"
+            class="relative flex w-full flex-col items-center gap-4 pt-32 md:pt-48 lg:mx-auto lg:w-fit"
           >
             <div class="flex flex-col">
               <div class="relative flex w-full">
@@ -95,7 +92,7 @@ const byOrder = (a, b) => {
                   <div
                     class="delay-2500 rotate-12 transform rounded-full bg-red px-5 py-3 text-white"
                   >
-                    <span class="font-semibold">NY DATO</span>
+                    <span class="font-semibold uppercase">Ny dato</span>
                   </div>
                 </div>
               </div>
@@ -110,15 +107,20 @@ const byOrder = (a, b) => {
         </div>
       </div>
     </div>
-    <div class="mx-auto max-w-5xl space-y-4 sm:space-y-8">
-      <h2 class="text-4xl sm:text-6xl">Artister</h2>
-      <ul
-        role="list"
-        class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+    <div class="space-y-24 pb-24">
+      <div
+        class="mx-auto max-w-5xl space-y-4 px-4 sm:space-y-8 sm:px-6 md:px-8 lg:px-16 xl:px-32"
       >
-        {
-          [...upcomingArtists.sort(byOrder), ...pastArtists.sort(byOrder)].map(
-            (artist, index) => {
+        <h2 class="text-4xl sm:text-6xl">Artister</h2>
+        <ul
+          role="list"
+          class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {
+            [
+              ...upcomingArtists.sort(byOrder),
+              ...pastArtists.sort(byOrder),
+            ].map((artist, index) => {
               const {
                 slug,
                 frontmatter: {
@@ -157,12 +159,12 @@ const byOrder = (a, b) => {
                   cancelled={cancelled}
                 />
               );
-            },
-          )
-        }
-      </ul>
+            })
+          }
+        </ul>
+      </div>
+      <!-- <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" /> -->
+      <BuyTicketsButton class="mx-auto w-fit" />
     </div>
-    <!-- <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" /> -->
-    <BuyTicketsButton class="mx-auto w-fit" />
   </main>
 </Layout>

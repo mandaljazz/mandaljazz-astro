@@ -62,7 +62,7 @@ const isActive = (href) =>
                     />
                   </button>
                   <div class="pointer-events-none absolute -left-4 top-full min-w-max pt-3 opacity-0 transition-opacity group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
-                    <div class="flex flex-col gap-6 rounded-lg bg-dark-blue/95 px-8 pb-8 pt-4 shadow-lg">
+                    <div class="flex flex-col gap-6 rounded-lg bg-dark-blue px-8 pb-8 pt-4 shadow-lg">
                       {items.map((item) => (
                         <div class="relative w-fit whitespace-nowrap transition-transform hover:-rotate-3">
                           {isActive(item.href) ? (
