@@ -7,5 +7,7 @@
 Bruk noe sånt som denne, og spør ChatGPT om råd hvis du trenger noe mer fancy:
 
 ```
-ffmpeg -i input.mp4 -an -c:v libx264 -crf 24 -preset medium -vf scale=640:-1 output.mp4
+ffmpeg -i unoptimized.mp4 -an -c:v libvpx-vp9 -crf 30 -b:v 0 -vf "scale='min(1280,iw)':-2,fps=30" output.webm
+
+ffmpeg -i unoptimized.mp4 -an -c:v libx264 -crf 24 -preset slow -vf "scale='min(1280,iw)':-2,fps=30,format=yuv420p" -movflags +faststart output.mp4
 ```
