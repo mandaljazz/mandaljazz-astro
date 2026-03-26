@@ -22,7 +22,7 @@ content:
       sort: [order, concertStartAt, title]
       default:
         sort: order
-        order: asc
+        order: desc
     fields:
       - name: title
         label: Navn
@@ -262,7 +262,7 @@ content:
       sort: [filled, title]
       default:
         sort: filled
-        order: asc
+        order: desc
     fields:
       - name: title
         label: Tittel
@@ -339,7 +339,7 @@ content:
       sort: [order, title]
       default:
         sort: order
-        order: asc
+        order: desc
     fields:
       - name: title
         label: Navn
@@ -371,7 +371,7 @@ content:
       sort: [group, name]
       default:
         sort: group
-        order: asc
+        order: desc
     fields:
       - name: name
         label: Navn
