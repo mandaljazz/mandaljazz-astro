@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
+        uses: withastro/action@v6
         env:
           # Repository variable (Settings → Secrets and variables → Actions → Variables).
           # Inlined at build time by Vite for import.meta.env.PUBLIC_MAPBOX_ACCESS_TOKEN.
