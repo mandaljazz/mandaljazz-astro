@@ -5,7 +5,7 @@ import partition from "lodash/partition";
 import classNames from "classnames";
 import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-// import Spotify from "../components/Spotify.astro";
+import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
 
@@ -169,7 +169,7 @@ const byOrder = (a, b) => {
           }
         </ul>
       </div>
-      <!-- <Spotify src="https://open.spotify.com/playlist/0EIBP4fq87VohyCpG5TPsZ" /> -->
+      <Spotify src="https://open.spotify.com/playlist/08T1vf3NqWTr99yVF8ZKWv" />
       <BuyTicketsButton class="mx-auto w-fit" />
     </div>
   </main>
