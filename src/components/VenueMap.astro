@@ -74,12 +74,6 @@ import Link from "./Link.astro";
       coordinates: [7.45642627188327, 58.02126823756139],
     },
     {
-      id: "scene-hobby",
-      directionsLink: "https://goo.gl/maps/6ZMtR921b1Spj9uF7",
-      name: "Scene & Hobby",
-      coordinates: [7.4556629215051355, 58.02751486008526],
-    },
-    {
       id: "hestetroa",
       directionsLink: "https://goo.gl/maps/7jcZQyep46oVotuA6",
       name: "Hestetroa",
@@ -102,6 +96,18 @@ import Link from "./Link.astro";
       directionsLink: "https://maps.app.goo.gl/cEKKX4fmqcEyWUU4A",
       name: "Røkta / Mandal Tannklinikk",
       coordinates: [7.448687356550957, 58.024104342961905],
+    },
+    {
+      id: "landoy-broed-pizza",
+      directionsLink: "https://maps.app.goo.gl/Ag64AGgZgctP8i4PA",
+      name: "Landøy Brød & Pizza",
+      coordinates: [7.449646944178234, 58.02513693285713],
+    },
+    {
+      id: "bystyresalen",
+      directionsLink: "https://maps.app.goo.gl/49ePj9cFANamUevM9",
+      name: "Bystyresalen",
+      coordinates: [7.450029001849526, 58.02628169071628],
     },
   ];
 
@@ -234,9 +240,12 @@ import Link from "./Link.astro";
 
   // Center the map on the coordinates of any clicked venues-layer from the 'venues-layer' layer.
   map.on("click", "venues-layer", ({ features, lngLat }) => {
+    const feature = features?.[0];
+    if (!feature?.geometry || feature.geometry.type !== "Point") return;
+
     // Copy coordinates array.
-    const coordinates = features[0].geometry.coordinates.slice();
-    const { name, directionsLink, supportText } = features[0].properties;
+    const coordinates = [...feature.geometry.coordinates];
+    const { name, directionsLink, supportText } = feature.properties ?? {};
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -259,7 +268,7 @@ import Link from "./Link.astro";
         </div>
         `,
       )
-      .setLngLat(coordinates)
+      .setLngLat([coordinates[0], coordinates[1]])
       .addTo(map);
 
     map.flyTo({
