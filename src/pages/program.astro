@@ -13,6 +13,7 @@ import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
+import SoldOutTag from "../components/SoldOutTag.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
 import { formatHumanDate, formatTime } from "../utils/date";
@@ -103,6 +104,7 @@ const concertsGroupedByDay = Object.entries(
                         isBarnekonsert,
                         releaseAt,
                         cancelled,
+                        soldOut,
                       },
                     }) => {
                       const isNotReleasedYet =
@@ -209,6 +211,12 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isFree && (
                                   <FreeTag
+                                    className="-rotate-6"
+                                    size={"small"}
+                                  />
+                                )}
+                                {soldOut && (
+                                  <SoldOutTag
                                     className="-rotate-6"
                                     size={"small"}
                                   />

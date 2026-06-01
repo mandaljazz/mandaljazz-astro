@@ -145,6 +145,10 @@ content:
         label: Avlyst
         type: boolean
         default: false
+      - name: soldOut
+        label: Utsolgt
+        type: boolean
+        default: false
       - name: sponsoredByBergesenstiftelsen
         label: Støttet av Bergesenstiftelsen
         type: boolean

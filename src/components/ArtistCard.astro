@@ -4,6 +4,7 @@ import BarnekonsertTag from "./BarnekonsertTag.astro";
 import BestillingsverkTag from "./BestillingsverkTag.astro";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 import MorgensoloTag from "./MorgensoloTag.astro";
+import SoldOutTag from "./SoldOutTag.astro";
 export interface Props {
   title: string;
   tagline: string;
@@ -14,6 +15,7 @@ export interface Props {
   isBestillingsverk?: boolean;
   isBarnekonsert?: boolean;
   cancelled?: boolean;
+  soldOut?: boolean;
   className?: string;
 }
 
@@ -27,6 +29,7 @@ const {
   isBestillingsverk,
   isBarnekonsert,
   cancelled,
+  soldOut,
 } = Astro.props;
 ---
 
@@ -60,6 +63,13 @@ const {
       isBarnekonsert && (
         <div class="absolute right-2 top-2">
           <BarnekonsertTag />
+        </div>
+      )
+    }
+    {
+      soldOut && (
+        <div class="absolute right-2 top-2">
+          <SoldOutTag />
         </div>
       )
     }

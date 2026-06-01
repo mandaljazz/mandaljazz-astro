@@ -28,6 +28,7 @@ const {
     author,
     tagline,
     cancelled,
+    soldOut,
     image,
     imageAttribution,
     concertStartAt,
@@ -235,11 +236,16 @@ const showPrevAndNextArtistNavigationLinks =
           }
           <div class="flex flex-row justify-between">
             {
-              !isFree && (
+              !isFree && !soldOut && (
                 <BuyTicketsButton
                   class="flex-0 h-fit w-fit"
                   externalTicketUrl={externalTicketUrl}
                 />
+              )
+            }
+            {
+              soldOut && !isFree && (
+                <InfoBox>Utsolgt</InfoBox>
               )
             }
             {

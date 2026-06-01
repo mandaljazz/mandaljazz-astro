@@ -75,6 +75,7 @@ const artist = defineCollection({
     order: z.union([z.string(), z.number()]).optional(),
     releaseAt: z.string().optional(),
     cancelled: z.boolean().default(false),
+    soldOut: z.boolean().default(false),
   }),
 });
 
