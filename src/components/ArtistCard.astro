@@ -2,7 +2,6 @@
 import classNames from "classnames";
 import BarnekonsertTag from "./BarnekonsertTag.astro";
 import BestillingsverkTag from "./BestillingsverkTag.astro";
-import FreeTag from "./FreeTag.astro";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 import MorgensoloTag from "./MorgensoloTag.astro";
 import SoldOutTag from "./SoldOutTag.astro";
@@ -52,7 +51,6 @@ const {
       {isMorgensolo && <MorgensoloTag />}
       {isBestillingsverk && <BestillingsverkTag />}
       {isBarnekonsert && <BarnekonsertTag />}
-      {isFree && <FreeTag />}
       {soldOut && <SoldOutTag />}
     </div>
     <div
@@ -68,7 +66,7 @@ const {
           "text-xl": title.length < 18,
           "text-base": title.length >= 18 && title.length < 22,
           "text-sm": title.length >= 22 && title.length < 26,
-          "text-xs": title.length >= 26,
+          "text-[11px]": title.length >= 26,
         },
       )}
     >
