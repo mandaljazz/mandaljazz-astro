@@ -2,6 +2,7 @@
 import classNames from "classnames";
 import BarnekonsertTag from "./BarnekonsertTag.astro";
 import BestillingsverkTag from "./BestillingsverkTag.astro";
+import FreeTag from "./FreeTag.astro";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 import MorgensoloTag from "./MorgensoloTag.astro";
 import SoldOutTag from "./SoldOutTag.astro";
@@ -14,6 +15,7 @@ export interface Props {
   isMorgensolo?: boolean;
   isBestillingsverk?: boolean;
   isBarnekonsert?: boolean;
+  isFree?: boolean;
   cancelled?: boolean;
   soldOut?: boolean;
   className?: string;
@@ -28,6 +30,7 @@ const {
   isMorgensolo,
   isBestillingsverk,
   isBarnekonsert,
+  isFree,
   cancelled,
   soldOut,
 } = Astro.props;
@@ -45,34 +48,13 @@ const {
       alt={title}
       className="rounded-xl"
     />
-    {
-      isMorgensolo && (
-        <div class="absolute right-2 top-2">
-          <MorgensoloTag />
-        </div>
-      )
-    }
-    {
-      isBestillingsverk && (
-        <div class="absolute right-2 top-2">
-          <BestillingsverkTag />
-        </div>
-      )
-    }
-    {
-      isBarnekonsert && (
-        <div class="absolute right-2 top-2">
-          <BarnekonsertTag />
-        </div>
-      )
-    }
-    {
-      soldOut && (
-        <div class="absolute right-2 top-2">
-          <SoldOutTag />
-        </div>
-      )
-    }
+    <div class="absolute right-2 top-2 flex flex-col items-end gap-2">
+      {isMorgensolo && <MorgensoloTag />}
+      {isBestillingsverk && <BestillingsverkTag />}
+      {isBarnekonsert && <BarnekonsertTag />}
+      {isFree && <FreeTag />}
+      {soldOut && <SoldOutTag />}
+    </div>
     <div
       class="absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl bg-blue p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-8 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5"
     >

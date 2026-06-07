@@ -222,7 +222,14 @@ const showPrevAndNextArtistNavigationLinks =
           {
             isFree && !requiresFreeTicket && (
               <InfoBox>
-                {isNonConcertEvent ? "Arrangementet" : "Konserten"} er gratis!
+                <div>
+                  {isNonConcertEvent ? "Arrangementet" : "Konserten"} er gratis
+                  {title === "Jazzpizza" ? (
+                    <span class="italic">(men pizzaen er ikke)</span>
+                  ) : (
+                    "!"
+                  )}
+                </div>
               </InfoBox>
             )
           }
@@ -243,14 +250,14 @@ const showPrevAndNextArtistNavigationLinks =
                 />
               )
             }
-            {
-              soldOut && !isFree && (
-                <InfoBox>Utsolgt</InfoBox>
-              )
-            }
+            {soldOut && !isFree && <InfoBox>Utsolgt</InfoBox>}
             {
               isFree && requiresFreeTicket && (
-                <BuyTicketsButton class="flex-0 h-fit w-fit" isFree externalTicketUrl={externalTicketUrl} />
+                <BuyTicketsButton
+                  class="flex-0 h-fit w-fit"
+                  isFree
+                  externalTicketUrl={externalTicketUrl}
+                />
               )
             }
             {
