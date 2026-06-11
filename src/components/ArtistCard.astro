@@ -7,7 +7,7 @@ import MorgensoloTag from "./MorgensoloTag.astro";
 import SoldOutTag from "./SoldOutTag.astro";
 export interface Props {
   title: string;
-  tagline: string;
+  tagline?: string;
   href: string;
   slug: string;
   image: string;
@@ -29,7 +29,6 @@ const {
   isMorgensolo,
   isBestillingsverk,
   isBarnekonsert,
-  isFree,
   cancelled,
   soldOut,
 } = Astro.props;
@@ -54,14 +53,14 @@ const {
       {soldOut && <SoldOutTag />}
     </div>
     <div
-      class="absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl bg-blue p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-8 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5"
+      class="bg-2026-blue absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl p-4 text-center text-xl text-white opacity-0 transition-all group-hover:-translate-y-8 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5"
     >
       <p>{tagline}</p>
     </div>
     <h2
       class={classNames(
         `font-medium absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 sm:translate-x-4 sm:translate-y-4 text-center
-      p-4 h-14 items-center justify-center flex rounded-xl transition-transform group-hover:-rotate-2 bg-pink whitespace-nowrap truncate`,
+      p-4 h-14 items-center justify-center flex rounded-xl transition-transform group-hover:-rotate-2 bg-2026-lightgreen whitespace-nowrap truncate`,
         {
           "text-xl": title.length < 18,
           "text-base": title.length >= 18 && title.length < 22,

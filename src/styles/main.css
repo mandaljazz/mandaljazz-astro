@@ -20,7 +20,7 @@ body {
 }
 
 ::selection {
-  background-color: theme("colors.yellow");
+  background-color: theme("colors.2026.yellow");
   color: theme("colors.black");
 }
 
@@ -37,7 +37,7 @@ h6 {
 .link {
   background: linear-gradient(
     to top,
-    theme("colors.light-green") 80%,
+    theme("colors.2026.darkblue") 80%,
     transparent 80%
   );
   cursor: pointer;
@@ -67,8 +67,8 @@ h6 {
   background:
     linear-gradient(
       120deg,
-      theme("colors.dark-blue / 50%"),
-      theme("colors.dark-blue") 40%
+      theme("colors.2026.darkblue / 50%"),
+      theme("colors.2026.darkblue") 40%
     ),
     url("/profil/noise.svg");
   background-blend-mode: normal;

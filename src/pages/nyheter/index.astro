@@ -17,7 +17,7 @@ const articleList = allBlogPosts
         {
           articleList.map((article) => {
             const {
-              data: { title, ingress, image },
+              data: { title, ingress, image, createdAt, updatedAt },
               slug,
             } = article;
             return (
@@ -26,6 +26,8 @@ const articleList = allBlogPosts
                 ingress={ingress}
                 href={`/nyheter/${slug}`}
                 image={image}
+                createdAt={createdAt}
+                updatedAt={updatedAt}
               />
             );
           })

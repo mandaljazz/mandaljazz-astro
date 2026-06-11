@@ -22,6 +22,20 @@ const colors = {
   black: "#171717", // jazzlaugs-lille-sorte
   white: "rgb(241, 241, 241)",
   "chalk-white": "rgb(255, 255, 255)",
+  2026: {
+    red: "#d84532",
+    green: "#78b45a",
+    blue: "#399ec9",
+    yellow: "#f4e32d",
+    pink: "#dc3e7c",
+    orange: "#e39e35",
+    teal: "#26a69a",
+    lightblue: "#49b8b8",
+    lightgreen: "#a6ce8a",
+    purple: "#7e57c2",
+    darkblue: "#1a237e",
+    tan: "#c68e4d",
+  },
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -47,8 +61,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: `-6px 6px 0px 0px ${colors["pink"]}`,
-        "solid-hover": `-10px 10px 0px 0px ${colors["pink"]}`,
+        solid: `-6px 6px 0px 0px ${colors["2026"]["blue"]}`,
+        "solid-hover": `-10px 10px 0px 0px ${colors["2026"]["blue"]}`,
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",

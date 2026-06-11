@@ -1,5 +1,6 @@
 ---
 import classNames from "classnames";
+import { formatDate } from "../utils/date";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 
 export interface Props {
@@ -8,9 +9,12 @@ export interface Props {
   href: string;
   image: string;
   className?: string;
+  createdAt: Date;
+  updatedAt?: Date;
 }
 
-const { href, title, ingress, image, className } = Astro.props;
+const { href, title, ingress, image, className, createdAt, updatedAt } =
+  Astro.props;
 ---
 
 <li class={classNames(`group rounded-xl w-full space-y-4`, className)}>
@@ -25,12 +29,15 @@ const { href, title, ingress, image, className } = Astro.props;
     <h2 class={classNames("font-medium w-full text-xl")}>
       {title}
     </h2>
+    {
+      ingress && (
+        <div class="w-full text-base transition-transform">
+          <p>{ingress}</p>
+        </div>
+      )
+    }
+    <div class="flex w-full flex-row gap-1 text-black/60">
+      <time datetime={createdAt.toISOString()}>{formatDate(createdAt)}</time>
+    </div>
   </a>
-  {
-    ingress && (
-      <div class="w-full text-base transition-transform">
-        <p>{ingress}</p>
-      </div>
-    )
-  }
 </li>

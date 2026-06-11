@@ -1,11 +1,24 @@
 ---
+import { Image } from "astro:assets";
 import "mapbox-gl/dist/mapbox-gl.css";
+import mapPlaceholder from "../images/map-placeholder.png";
 import "../styles/mapbox-overrides.css";
 import Link from "./Link.astro";
 ---
 
 <div class="venue-map flex flex-col">
-  <div id="map" class="h-72 w-full sm:h-96 md:h-[480px]"></div>
+  <div class="relative h-72 w-full sm:h-96 md:h-[480px]">
+    <Image
+      id="venue-map-placeholder"
+      src={mapPlaceholder}
+      alt=""
+      aria-hidden="true"
+      widths={[640, 960, 1280, 2038]}
+      sizes="100vw"
+      class="absolute inset-0 z-10 h-full w-full object-cover transition-opacity duration-700"
+    />
+    <div id="map" class="h-full w-full"></div>
+  </div>
   <div class="mt-3 flex flex-row justify-between">
     <address class="not-italic">
       <Link
@@ -143,6 +156,16 @@ import Link from "./Link.astro";
   });
 
   map.once("load", () => {
+    const placeholder = document.getElementById("venue-map-placeholder");
+    placeholder?.classList.add("opacity-0");
+    placeholder?.addEventListener(
+      "transitionend",
+      () => {
+        placeholder.remove();
+      },
+      { once: true },
+    );
+
     map.flyTo({
       center,
       zoom: introZoom,
@@ -225,8 +248,8 @@ import Link from "./Link.astro";
           venueRadiusLg,
           venueRadiusSm,
         ],
-        "circle-color": "#f26b54",
-        "circle-stroke-color": "#fff6f2",
+        "circle-color": "#d14d39",
+        "circle-stroke-color": "#efc54c",
         "circle-stroke-width": [
           "case",
           ["==", ["get", "isBig"], true],
