@@ -2,7 +2,7 @@
 import capitalize from "lodash/capitalize";
 import groupBy from "lodash/groupBy";
 import sortBy from "lodash/sortBy";
-// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -14,6 +14,7 @@ import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
 import SoldOutTag from "../components/SoldOutTag.astro";
+/* import programPlakat2026 from "../images/profil/2026/Mandaljazz_26_plakat_komplett_navn.jpg"; */
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
 import { formatHumanDate, formatTime } from "../utils/date";
@@ -245,11 +246,13 @@ const concertsGroupedByDay = Object.entries(
           );
         })
       }
-      <!-- <BuyTicketsButton class="mx-auto w-fit" /> -->
+      <BuyTicketsButton class="mx-auto w-fit" />
       <!-- <Image
-        src={imagePathToSrc("/src/images/profil/frimerke-pils.png")}
-        class="mx-auto max-w-72 md:max-w-96"
-        alt="Frimerke pils"
+        src={programPlakat2026}
+        alt="Mandaljazz program 2026"
+        quality={100}
+        width={720}
+        class="mx-auto max-w-72 md:max-w-md"
       /> -->
     </div>
   </main>

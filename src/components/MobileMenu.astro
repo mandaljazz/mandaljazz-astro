@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 
-import { imagePathToSrc } from "../utils/images";
+import jazzlaug2026 from "../images/profil/2026/jazzlaug-top-clip.png";
 import HeaderDate from "./HeaderDate.astro";
 
 export interface Props {
@@ -71,7 +71,7 @@ const { class: extraClasses, navItems } = Astro.props;
   >
     <a href="/" class="m-3"
       ><Image
-        src={imagePathToSrc("/src/images/profil/logo/tertiary/black.svg")}
+        src={jazzlaug2026}
         class="h-auto w-7"
         alt="Mandaljazz logo"
         loading="eager"
@@ -97,11 +97,11 @@ const { class: extraClasses, navItems } = Astro.props;
 
   const toggleMobileMenu = () => {
     ["-translate-y-full", "translate-y-0", "translate-x-0"].map((c) =>
-      offScreenNavItemsList.classList.toggle(c),
+      offScreenNavItemsList?.classList.toggle(c),
     );
   };
 
-  hamburger.addEventListener("click", () => {
+  hamburger?.addEventListener("click", () => {
     toggleMobileMenu();
   });
 
@@ -116,7 +116,7 @@ const { class: extraClasses, navItems } = Astro.props;
   let lastKnownScrollPosition = 0;
   let ticking = false;
 
-  function setMobileDateVisibility(scrollPos) {
+  function setMobileDateVisibility(scrollPos: number) {
     const headerDateMobile = document.getElementById("mobile-header-date");
 
     if (scrollPos > 100) {
