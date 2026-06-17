@@ -69,17 +69,17 @@ const concertsGroupedByDay = Object.entries(
         concertsGroupedByDay.map(([day, artists]) => {
           return (
             <div class="space-y-4">
-              <h2 class="bg-2026-lightgreen sticky top-[52px] z-10 w-fit rounded-xl rounded-tl-none p-4 text-2xl text-black lg:top-[56px]">
+              <h2 class="sticky top-[52px] z-10 w-fit rounded-xl rounded-tl-none bg-2026-lightgreen p-4 text-2xl text-black lg:top-[56px]">
                 {capitalize(day)}
               </h2>
               <div class="grid w-full grid-cols-4 gap-y-4 text-lg">
-                <div class="border-2026-lightgreen col-span-3 border-b py-3 font-normal md:col-span-2 md:block">
+                <div class="col-span-3 border-b border-2026-lightgreen py-3 font-normal md:col-span-2 md:block">
                   Artist
                 </div>
-                <div class="border-2026-lightgreen hidden border-b py-3 font-normal md:block">
+                <div class="hidden border-b border-2026-lightgreen py-3 font-normal md:block">
                   Scene
                 </div>
-                <div class="border-2026-lightgreen border-b py-3 font-normal md:block">
+                <div class="border-b border-2026-lightgreen py-3 font-normal md:block">
                   Tid
                 </div>
                 {
@@ -133,7 +133,7 @@ const concertsGroupedByDay = Object.entries(
 
                       return (
                         <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
-                          <div class="col-span-3 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
+                          <div class="col-span-4 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
                             {slug ? (
                               <img
                                 src={image}
@@ -150,7 +150,7 @@ const concertsGroupedByDay = Object.entries(
                               />
                             )}
                             <div>
-                              <div class="flex flex-row items-start gap-2">
+                              <div class="flex flex-row items-center gap-2">
                                 {slug && !isPlaceholder ? (
                                   <div>
                                     <Link
@@ -191,42 +191,50 @@ const concertsGroupedByDay = Object.entries(
                                 ) : (
                                   <div title={title}>{title}</div>
                                 )}
-                                {isMorgensolo && (
-                                  <MorgensoloTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
-                                {isBestillingsverk && (
-                                  <BestillingsverkTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
-                                {isBarnekonsert && (
-                                  <BarnekonsertTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
-                                {isFree && (
-                                  <FreeTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
-                                {soldOut && (
-                                  <SoldOutTag
-                                    className="-rotate-6"
-                                    size={"small"}
-                                  />
-                                )}
+                                <div class="hidden flex-row items-start gap-2 sm:flex">
+                                  {isMorgensolo && (
+                                    <MorgensoloTag size={"small"} />
+                                  )}
+                                  {isBestillingsverk && (
+                                    <BestillingsverkTag size={"small"} />
+                                  )}
+                                  {isBarnekonsert && (
+                                    <BarnekonsertTag size={"small"} />
+                                  )}
+                                  {isFree && <FreeTag size={"small"} />}
+                                  {soldOut && <SoldOutTag size={"small"} />}
+                                </div>
                               </div>
+
                               <p class="hidden text-sm sm:block">{tagline}</p>
                             </div>
                           </div>
-                          <div class="col-span-3 md:col-span-1">{venue}</div>
-                          <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                          <div class="col-span-3 md:col-span-1">
+                            <div class="flex flex-row items-start gap-2">
+                              <span>{venue}</span>
+                              <div class="flex flex-row items-start gap-2 sm:hidden">
+                                {isMorgensolo && (
+                                  <MorgensoloTag size={"small"} />
+                                )}
+                                {isBestillingsverk && (
+                                  <BestillingsverkTag size={"small"} />
+                                )}
+                                {isBarnekonsert && (
+                                  <BarnekonsertTag size={"small"} />
+                                )}
+                                {isFree && <FreeTag size={"small"} />}
+                                {soldOut && <SoldOutTag size={"small"} />}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-span-1 flex flex-col text-right">
+                            <span>{formatTime(concertStartAt)}</span>
+                            {concertEndAt && (
+                              <span class="whitespace-nowrap text-xs">
+                                (ferdig {formatTime(concertEndAt)})
+                              </span>
+                            )}
+                          </div>
                         </div>
                       );
                     },

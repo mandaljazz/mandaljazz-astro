@@ -45,7 +45,7 @@ const isActive = (href) =>
             return (
               <div class="relative whitespace-nowrap">
                 {isMenuActive ? (
-                  <div class="bg-2026-lightgreen absolute -right-1 top-0.5 h-6 w-6 rounded-full" />
+                  <div class="absolute -right-1 top-0.5 h-6 w-6 rounded-full bg-2026-lightgreen" />
                 ) : null}
                 <div class="group relative">
                   <button
@@ -62,11 +62,11 @@ const isActive = (href) =>
                     />
                   </button>
                   <div class="pointer-events-none absolute -left-4 top-full min-w-max pt-3 opacity-0 transition-opacity group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
-                    <div class="bg-2026-green flex flex-col gap-6 rounded-lg px-8 pb-8 pt-4 shadow-lg">
+                    <div class="flex flex-col gap-6 rounded-lg bg-2026-green px-8 pb-8 pt-4 shadow-lg">
                       {items.map((item) => (
                         <div class="relative w-fit whitespace-nowrap transition-transform hover:-rotate-3">
                           {isActive(item.href) ? (
-                            <div class="bg-2026-lightgreen absolute -left-3 -top-1 h-9 w-9 rounded-full" />
+                            <div class="absolute -left-3 -top-1 h-9 w-9 rounded-full bg-2026-lightgreen" />
                           ) : null}
                           <a
                             href={item.href}
@@ -91,7 +91,7 @@ const isActive = (href) =>
           return (
             <div class="relative whitespace-nowrap transition-transform hover:-rotate-3">
               {isActive(href) ? (
-                <div class="bg-2026-lightgreen absolute -left-3 -top-1 h-9 w-9 rounded-full" />
+                <div class="absolute -left-3 -top-1 h-9 w-9 rounded-full bg-2026-lightgreen" />
               ) : null}
               <a href={href} title={title} class={`relative z-10`}>
                 {title}

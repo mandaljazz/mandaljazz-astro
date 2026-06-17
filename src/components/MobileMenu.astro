@@ -8,8 +8,12 @@ import HeaderDate from "./HeaderDate.astro";
 export interface Props {
   class?: string;
   navItems: {
-    href: string;
     title: string;
+    href?: string;
+    items?: {
+      href: string;
+      title: string;
+    }[];
   }[];
 }
 
@@ -21,16 +25,45 @@ const { class: extraClasses, navItems } = Astro.props;
     class="off-screen-nav-items bg-2026-blue fixed left-0 top-0 flex w-full -translate-y-full flex-col items-center gap-4 rounded-lg py-24 text-2xl text-black shadow-xl transition-transform duration-500 ease-in-out"
   >
     {
-      navItems.map(({ href, title }) => (
-        <div class="relative whitespace-nowrap">
-          {Astro.url.pathname === href || Astro.url.pathname === `${href}/` ? (
-            <div class="bg-2026-lightgreen absolute -left-3 -top-0.5 h-9 w-9 rounded-full" />
-          ) : null}
-          <a href={href} title={title} class={`mobile-nav-link relative z-10`}>
-            {title}
-          </a>
-        </div>
-      ))
+      navItems.flatMap(({ href, title, items }) => {
+        if (items?.length) {
+          return items.map((item) => (
+            <div class="relative whitespace-nowrap">
+              {Astro.url.pathname === item.href ||
+              Astro.url.pathname === `${item.href}/` ? (
+                <div class="absolute -left-3 -top-0.5 h-9 w-9 rounded-full bg-2026-lightgreen" />
+              ) : null}
+              <a
+                href={item.href}
+                title={item.title}
+                class={`mobile-nav-link relative z-10`}
+              >
+                {item.title}
+              </a>
+            </div>
+          ));
+        }
+
+        if (!href) {
+          return [];
+        }
+
+        return (
+          <div class="relative whitespace-nowrap">
+            {Astro.url.pathname === href ||
+            Astro.url.pathname === `${href}/` ? (
+              <div class="absolute -left-3 -top-0.5 h-9 w-9 rounded-full bg-2026-lightgreen" />
+            ) : null}
+            <a
+              href={href}
+              title={title}
+              class={`mobile-nav-link relative z-10`}
+            >
+              {title}
+            </a>
+          </div>
+        );
+      })
     }
   </nav>
   <nav
