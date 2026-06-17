@@ -178,7 +178,15 @@ const showPrevAndNextArtistNavigationLinks =
                     name={"time-outline"}
                     size={40}
                   />
-                  {`${formatHumanDateTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}
+                  <div>
+                    <span>{formatHumanDateTime(concertStartAt)}</span>
+                    {concertEndAt && (
+                      <span class="text-xs">
+                        {" "}
+                        (ferdig {formatTime(concertEndAt)})
+                      </span>
+                    )}
+                  </div>
                 </span>
               )
             }
