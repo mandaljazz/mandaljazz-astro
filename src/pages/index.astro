@@ -19,15 +19,16 @@ const artistList = artistEntries.map((entry) => ({
 
 // Filter to only show current year artists (2026)
 const currentYear = "2026";
-const currentYearArtists = artistList.filter((artist) => {
+const currentYearArtistsNotHidden = artistList.filter((artist) => {
   // Check if slug starts with current year (e.g., "2026/pumpegris")
   return (
-    artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear
+    !artist.frontmatter.hideFromArtistList &&
+    (artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear)
   );
 });
 
 const [upcomingArtists, pastArtists] = partition(
-  currentYearArtists,
+  currentYearArtistsNotHidden,
   (artist) => {
     const {
       frontmatter: { concertStartAt },
@@ -143,7 +144,6 @@ const byOrder = (a, b) => {
                 frontmatter: {
                   title,
                   shortTitle,
-                  hideFromArtistList,
                   tagline,
                   isMorgensolo,
                   isBestillingsverk,
@@ -154,10 +154,6 @@ const byOrder = (a, b) => {
                   soldOut,
                 },
               } = artist;
-
-              if (hideFromArtistList) {
-                return null;
-              }
 
               return (
                 <ArtistCard
