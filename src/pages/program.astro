@@ -80,7 +80,7 @@ const concertsGroupedByDay = Object.entries(
                 <div class="hidden border-b border-2026-lightgreen py-3 font-normal md:block">
                   Scene
                 </div>
-                <div class="border-b border-2026-lightgreen py-3 font-normal md:block">
+                <div class="border-b border-2026-lightgreen py-3 font-normal md:block text-right">
                   Tid
                 </div>
                 {
@@ -127,7 +127,7 @@ const concertsGroupedByDay = Object.entries(
                               Kommer…
                             </div>
                             <div class="col-span-3 md:col-span-1">{venue}</div>
-                            <div class="">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                            <div class="text-right">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
                           </div>
                         );
                       }
