@@ -1,41 +1,20 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const colors = {
-  // Evergreen colors
-  "creme-de-la-creme": "#fff6f2",
-  "jazzlaugs-lille-sorte": "#171717",
-  "jazz-rod": "#f26b54",
-  "hubba-bubba": "#f6adc9",
-  "noe-gront-no": "#02724A",
-  "the-blues": "#17477e",
-  // Other colors
-  blue: "#0e9ead",
-  "dark-blue": "#17477e", // the-blues
-  beige: "#fff6f2", // creme-de-la-creme
-  indigo: "#288885",
-  orange: "#db7b3d",
-  pink: "#f6adc9", // hubba-bubba
-  green: "#02724A", // noe-gront-no
-  "light-green": "#02b373",
-  yellow: "#e8c973",
-  red: "#f26b54", // jazz-rod
-  black: "#171717", // jazzlaugs-lille-sorte
+  // Brand colors
+  red: "#f26b54", // jazzrød - accent
+  "dark-blue": "#17477e", // the blues - primary, dark shade
+  beige: "#fff6f2", // crème de la crème - neutral
+  pink: "#f6adc9", // hubba bubba - accent
+  green: "#02724a", // noe grønt no - secondary, dark shade
+  black: "#171717", // jazzlaugs lille sorte - neutral
+  // Tints of the brand colors above, used for the same monochromatic families
+  "dark-red": "#d84532", // darker tint of red
+  blue: "#2b75ca", // lighter tint of dark-blue
+  "light-green": "#26d997", // lighter tint of green
   white: "rgb(241, 241, 241)",
   "chalk-white": "rgb(255, 255, 255)",
-  2026: {
-    red: "#d84532",
-    green: "#78b45a",
-    blue: "#399ec9",
-    yellow: "#f4e32d",
-    pink: "#dc3e7c",
-    orange: "#e39e35",
-    teal: "#26a69a",
-    lightblue: "#49b8b8",
-    lightgreen: "#a6ce8a",
-    purple: "#7e57c2",
-    darkblue: "#1a237e",
-    tan: "#c68e4d",
-  },
+  yellow: "#e8c973",
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -61,8 +40,8 @@ module.exports = {
         "-100": "-1",
       },
       boxShadow: {
-        solid: `-6px 6px 0px 0px ${colors["2026"]["blue"]}`,
-        "solid-hover": `-10px 10px 0px 0px ${colors["2026"]["blue"]}`,
+        solid: `-6px 6px 0px 0px ${colors["dark-red"]}`,
+        "solid-hover": `-10px 10px 0px 0px ${colors["dark-red"]}`,
       },
       animation: {
         orbit: "orbit-right 10s linear infinite",

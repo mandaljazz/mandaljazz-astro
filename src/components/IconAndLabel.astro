@@ -5,16 +5,16 @@ export interface Props {
   icon: string;
   flip?: boolean;
   pack?: string;
-  type: "yellow" | "orange" | "blue" | "beige";
+  type: "pink" | "red" | "blue" | "beige";
   fluid?: boolean;
 }
 
 const { icon, pack, flip, fluid, type } = Astro.props;
 
 const backgroundColor = {
-  yellow: "bg-2026-yellow",
-  orange: "bg-2026-orange",
-  blue: "bg-2026-blue",
+  pink: "bg-pink",
+  red: "bg-red",
+  blue: "bg-blue",
   beige: "bg-beige",
 }[type];
 ---

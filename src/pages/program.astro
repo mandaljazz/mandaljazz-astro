@@ -70,17 +70,17 @@ const concertsGroupedByDay = Object.entries(
         concertsGroupedByDay.map(([day, artists]) => {
           return (
             <div class="space-y-4">
-              <h2 class="sticky top-[52px] z-10 w-fit rounded-xl rounded-tl-none bg-2026-lightgreen p-4 text-2xl text-black lg:top-[56px]">
+              <h2 class="sticky top-[52px] z-10 w-fit rounded-xl rounded-tl-none bg-blue p-4 text-2xl text-beige lg:top-[56px]">
                 {capitalize(day)}
               </h2>
               <div class="grid w-full grid-cols-4 gap-y-4 text-lg">
-                <div class="col-span-3 border-b border-2026-lightgreen py-3 font-normal md:col-span-2 md:block">
+                <div class="col-span-3 border-b border-black py-3 font-normal md:col-span-2 md:block">
                   Artist
                 </div>
-                <div class="hidden border-b border-2026-lightgreen py-3 font-normal md:block">
+                <div class="hidden border-b border-black py-3 font-normal md:block">
                   Scene
                 </div>
-                <div class="border-b border-2026-lightgreen py-3 font-normal md:block text-right">
+                <div class="border-b border-black py-3 text-right font-normal md:block">
                   Tid
                 </div>
                 {
