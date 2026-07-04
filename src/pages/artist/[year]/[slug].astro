@@ -40,7 +40,9 @@ if (artist.data.author) {
     author = await getEntry("authors", authorSlug);
   } catch (error) {
     // Author doesn't exist, skip it
-    console.warn(`Author not found for artist ${artist.slug}: ${artist.data.author}`);
+    console.warn(
+      `Author not found for artist ${artist.slug}: ${artist.data.author}`,
+    );
   }
 }
 ---
