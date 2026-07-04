@@ -1,0 +1,27 @@
+---
+// RandomFunnyLine component
+
+// Array of funny lines
+const funnyLines = [
+  "Du ser ut som du trenger en bakgård å henge i",
+  "Jazz nok for jazzfolket og kos nok for resten",
+  "Årets viktigste begivenhet for folk som går med skjerf om sommeren",
+  "Mer jazz i monitor, takk!",
+];
+
+// Simple random selection - this will be consistent per build
+// but different between different pages/components
+const randomIndex = Math.floor(Math.random() * funnyLines.length);
+const randomLine = funnyLines[randomIndex];
+
+// Export the pure text for external use
+export const getRandomFunnyLine = () => randomLine;
+
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<span class={className}>{randomLine}</span>
