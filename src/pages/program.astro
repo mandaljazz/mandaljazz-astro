@@ -35,9 +35,10 @@ const artists: Array<{
     return (
       artist.slug.startsWith(`${currentYear}/`) || artist.slug === currentYear
     );
-  });
+  })
+  .filter((artist) => !artist.frontmatter.hideFromProgram);
 
-const otherEvents = [];
+const otherEvents: typeof artists = [];
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
@@ -83,137 +84,108 @@ const concertsGroupedByDay = Object.entries(
                 <div class="border-b border-black py-3 text-right font-normal md:block">
                   Tid
                 </div>
-                {
-                  // @ts-ignore - This is the list of artistPages grouped by day
-                  artists.map(
-                    ({
-                      slug,
-                      frontmatter: {
-                        title,
-                        shortTitle,
-                        tagline,
-                        image,
-                        venue,
-                        concertStartAt,
-                        concertEndAt,
-                        hideFromProgram,
-                        isPlaceholder,
-                        isMorgensolo,
-                        isFree,
-                        externalLink,
-                        isBestillingsverk,
-                        isBarnekonsert,
-                        releaseAt,
-                        cancelled,
-                        soldOut,
-                      },
-                    }) => {
-                      const isNotReleasedYet =
-                        hideFromProgram ||
-                        (releaseAt &&
-                          isBefore(new Date(), new Date(releaseAt)));
+                {artists.map(
+                  ({
+                    slug,
+                    frontmatter: {
+                      title,
+                      shortTitle,
+                      tagline,
+                      image,
+                      venue,
+                      concertStartAt,
+                      concertEndAt,
+                      isPlaceholder,
+                      isMorgensolo,
+                      isFree,
+                      externalLink,
+                      isBestillingsverk,
+                      isBarnekonsert,
+                      releaseAt,
+                      cancelled,
+                      soldOut,
+                    },
+                  }) => {
+                    const isNotReleasedYet =
+                      releaseAt && isBefore(new Date(), new Date(releaseAt));
 
-                      if (isNotReleasedYet) {
-                        return (
-                          <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
-                            <div class="col-span-4 flex flex-row items-center gap-2 text-xl md:col-span-2 md:text-lg">
-                              <Image
-                                src={imagePathToSrc(
-                                  "/src/images/profil/logo/primary/black.svg",
-                                )}
-                                alt={"Kommer…"}
-                                class="h-8 w-8 object-contain"
-                              />
-                              Kommer…
-                            </div>
-                            <div class="col-span-3 md:col-span-1">{venue}</div>
-                            <div class="text-right">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
-                          </div>
-                        );
-                      }
-
+                    if (isNotReleasedYet) {
                       return (
                         <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
-                          <div class="col-span-4 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
-                            {slug ? (
-                              <img
-                                src={image}
-                                alt={shortTitle || title}
-                                class="h-8 w-8 rounded-lg object-cover"
-                              />
-                            ) : (
-                              <Image
-                                src={imagePathToSrc(
-                                  "/src/images/profil/logo/primary/black.svg",
-                                )}
-                                alt={shortTitle || title}
-                                class="h-8 w-8 object-contain"
-                              />
-                            )}
-                            <div>
-                              <div class="flex flex-row items-center gap-2">
-                                {slug && !isPlaceholder ? (
-                                  <div>
-                                    <Link
-                                      href={getArtistUrl(slug)}
-                                      title={title}
-                                    >
-                                      {/* prettier-ignore */}
-                                      <span class={classNames({
+                          <div class="col-span-4 flex flex-row items-center gap-2 text-xl md:col-span-2 md:text-lg">
+                            <Image
+                              src={imagePathToSrc(
+                                "/src/images/profil/logo/primary/black.svg",
+                              )}
+                              alt={"Kommer…"}
+                              class="h-8 w-8 object-contain"
+                            />
+                            Kommer…
+                          </div>
+                          <div class="col-span-3 md:col-span-1">{venue}</div>
+                          <div class="text-right">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-0.5">
+                        <div class="col-span-4 flex flex-row items-center gap-2 text-xl sm:col-span-3 md:col-span-2 md:text-lg">
+                          {slug ? (
+                            <img
+                              src={image}
+                              alt={shortTitle || title}
+                              class="h-8 w-8 rounded-lg object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src={imagePathToSrc(
+                                "/src/images/profil/logo/primary/black.svg",
+                              )}
+                              alt={shortTitle || title}
+                              class="h-8 w-8 object-contain"
+                            />
+                          )}
+                          <div>
+                            <div class="flex flex-row items-center gap-2">
+                              {slug && !isPlaceholder ? (
+                                <div>
+                                  <Link href={getArtistUrl(slug)} title={title}>
+                                    {/* prettier-ignore */}
+                                    <span class={classNames({
                                           "line-through": cancelled,
                                         })}>{shortTitle || title}</span>
-                                      {cancelled && (
-                                        <span class="ml-1 text-sm">
-                                          {" "}
-                                          (AVLYST)
-                                        </span>
-                                      )}
-                                    </Link>
-                                  </div>
-                                ) : externalLink ? (
-                                  <div>
-                                    <Link
-                                      href={externalLink}
-                                      external
-                                      title={title}
-                                    >
-                                      {/* prettier-ignore */}
-                                      <span class={classNames({
+                                    {cancelled && (
+                                      <span class="ml-1 text-sm">
+                                        {" "}
+                                        (AVLYST)
+                                      </span>
+                                    )}
+                                  </Link>
+                                </div>
+                              ) : externalLink ? (
+                                <div>
+                                  <Link
+                                    href={externalLink}
+                                    external
+                                    title={title}
+                                  >
+                                    {/* prettier-ignore */}
+                                    <span class={classNames({
                                           "line-through": cancelled,
                                         })}>{title}</span>
-                                      {cancelled && (
-                                        <span class="ml-1 text-sm">
-                                          {" "}
-                                          (AVLYST)
-                                        </span>
-                                      )}
-                                    </Link>
-                                  </div>
-                                ) : (
-                                  <div title={title}>{title}</div>
-                                )}
-                                <div class="hidden flex-row items-start gap-2 sm:flex">
-                                  {isMorgensolo && (
-                                    <MorgensoloTag size={"small"} />
-                                  )}
-                                  {isBestillingsverk && (
-                                    <BestillingsverkTag size={"small"} />
-                                  )}
-                                  {isBarnekonsert && (
-                                    <BarnekonsertTag size={"small"} />
-                                  )}
-                                  {isFree && <FreeTag size={"small"} />}
-                                  {soldOut && <SoldOutTag size={"small"} />}
+                                    {cancelled && (
+                                      <span class="ml-1 text-sm">
+                                        {" "}
+                                        (AVLYST)
+                                      </span>
+                                    )}
+                                  </Link>
                                 </div>
-                              </div>
-
-                              <p class="hidden text-sm sm:block">{tagline}</p>
-                            </div>
-                          </div>
-                          <div class="col-span-3 md:col-span-1">
-                            <div class="flex flex-row items-start gap-2">
-                              <span>{venue}</span>
-                              <div class="flex flex-row items-start gap-2 sm:hidden">
+                              ) : (
+                                <div title={title}>{title}</div>
+                              )}
+                              <div class="hidden flex-row items-start gap-2 sm:flex">
                                 {isMorgensolo && (
                                   <MorgensoloTag size={"small"} />
                                 )}
@@ -227,20 +199,38 @@ const concertsGroupedByDay = Object.entries(
                                 {soldOut && <SoldOutTag size={"small"} />}
                               </div>
                             </div>
-                          </div>
-                          <div class="col-span-1 flex flex-col text-right">
-                            <span>{formatTime(concertStartAt)}</span>
-                            {concertEndAt && (
-                              <span class="whitespace-nowrap text-xs">
-                                (ferdig {formatTime(concertEndAt)})
-                              </span>
-                            )}
+
+                            <p class="hidden text-sm sm:block">{tagline}</p>
                           </div>
                         </div>
-                      );
-                    },
-                  )
-                }
+                        <div class="col-span-3 md:col-span-1">
+                          <div class="flex flex-row items-start gap-2">
+                            <span>{venue}</span>
+                            <div class="flex flex-row items-start gap-2 sm:hidden">
+                              {isMorgensolo && <MorgensoloTag size={"small"} />}
+                              {isBestillingsverk && (
+                                <BestillingsverkTag size={"small"} />
+                              )}
+                              {isBarnekonsert && (
+                                <BarnekonsertTag size={"small"} />
+                              )}
+                              {isFree && <FreeTag size={"small"} />}
+                              {soldOut && <SoldOutTag size={"small"} />}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-span-1 flex flex-col text-right">
+                          <span>{formatTime(concertStartAt)}</span>
+                          {concertEndAt && (
+                            <span class="whitespace-nowrap text-xs">
+                              (ferdig {formatTime(concertEndAt)})
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  },
+                )}
               </div>
             </div>
           );
