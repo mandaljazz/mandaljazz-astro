@@ -74,7 +74,8 @@ const sortedArtistsPages = sortBy(
       ({ frontmatter: { hideFromArtistList } }) => !hideFromArtistList,
     ),
   ],
-  "frontmatter.concertStartAt",
+  (artist) =>
+    artist.frontmatter.movedConcertStartAt || artist.frontmatter.concertStartAt,
 );
 const indexOfThisArtist = sortedArtistsPages.findIndex(
   ({ slug: artistSlug }) => artistSlug === Astro.props.frontmatter.slug,
@@ -187,7 +188,14 @@ const actualConcertStartAt = isMovedConcert
                     size={40}
                   />
                   <div>
-                    <span>{formatHumanDateTime(actualConcertStartAt)}</span>
+                    <div class="flex flex-row items-center gap-2">
+                      <span>{formatHumanDateTime(actualConcertStartAt)}</span>
+                      {isMovedConcert && concertStartAt && (
+                        <span class="text-gray-500 text-sm line-through">
+                          {formatTime(concertStartAt)}
+                        </span>
+                      )}
+                    </div>
                     {concertEndAt && (
                       <span class="text-xs">
                         {" "}
