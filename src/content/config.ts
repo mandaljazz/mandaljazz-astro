@@ -56,6 +56,7 @@ const artist = defineCollection({
     venue: z.string().optional(),
     concertStartAt: z.string().optional(),
     concertEndAt: z.string().optional(),
+    movedConcertStartAt: z.string().optional(),
     spotifyUrl: z.string().optional(),
     youtubeUrl: z.string().optional(),
     sponsoredByBergesenstiftelsen: z

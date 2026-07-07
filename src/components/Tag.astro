@@ -11,7 +11,8 @@ export interface Props {
     | "morgensolo"
     | "soldout"
     | "bestillingsverk"
-    | "fewtickets";
+    | "fewtickets"
+    | "moved";
 }
 
 const { className, size = "medium", variant } = Astro.props;
@@ -56,6 +57,12 @@ const variants = {
     icon: "flash-outline",
     label: "Få billetter",
   },
+  moved: {
+    bgColor: "bg-yellow",
+    textColor: "text-black",
+    icon: "swap-horizontal-outline",
+    label: "Flyttet pga. VM",
+  },
 };
 
 const { bgColor, textColor, icon, label } = variants[variant];
@@ -63,7 +70,7 @@ const { bgColor, textColor, icon, label } = variants[variant];
 
 <div
   class:list={[
-    `${bgColor} ${textColor} flex w-fit flex-row items-center rounded-md`,
+    `${bgColor} ${textColor} flex w-fit flex-row items-center rounded-md whitespace-nowrap`,
     className,
     size === "small" && "gap-1 rounded px-1 py-1 text-xs",
     size === "medium" && "gap-2 rounded-md px-2.5 py-1.5",

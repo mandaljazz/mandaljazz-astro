@@ -13,6 +13,7 @@ import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import FewTicketsTag from "../components/FewTicketsTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
+import MovedTag from "../components/MovedTag.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
 import SoldOutTag from "../components/SoldOutTag.astro";
 /* import programPlakat2026 from "../images/profil/2026/Mandaljazz_26_plakat_komplett_navn.jpg"; */
@@ -96,6 +97,7 @@ const concertsGroupedByDay = Object.entries(
                       venue,
                       concertStartAt,
                       concertEndAt,
+                      movedConcertStartAt,
                       isPlaceholder,
                       isMorgensolo,
                       isFree,
@@ -108,6 +110,11 @@ const concertsGroupedByDay = Object.entries(
                       fewTickets,
                     },
                   }) => {
+                    const isMovedConcert = movedConcertStartAt !== undefined;
+                    const actualConcertStartAt = isMovedConcert
+                      ? movedConcertStartAt
+                      : concertStartAt;
+
                     const isNotReleasedYet =
                       releaseAt && isBefore(new Date(), new Date(releaseAt));
 
@@ -125,7 +132,10 @@ const concertsGroupedByDay = Object.entries(
                             Kommer…
                           </div>
                           <div class="col-span-3 md:col-span-1">{venue}</div>
-                          <div class="text-right">{`${formatTime(concertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                          {actualConcertStartAt && (
+                            <div class="text-right">{`${formatTime(actualConcertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
+                          )}
+                          {isMovedConcert && <MovedTag size="small" />}
                         </div>
                       );
                     }
@@ -199,9 +209,7 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isFree && <FreeTag size={"small"} />}
                                 {soldOut && <SoldOutTag size={"small"} />}
-                                {fewTickets && (
-                                  <FewTicketsTag size={"small"} />
-                                )}
+                                {fewTickets && <FewTicketsTag size={"small"} />}
                               </div>
                             </div>
 
@@ -226,7 +234,11 @@ const concertsGroupedByDay = Object.entries(
                           </div>
                         </div>
                         <div class="col-span-1 flex flex-col text-right">
-                          <span>{concertStartAt ? formatTime(concertStartAt) : "TBA"}</span>
+                          <span>
+                            {concertStartAt
+                              ? formatTime(concertStartAt)
+                              : "TBA"}
+                          </span>
                           {concertEndAt && (
                             <span class="whitespace-nowrap text-xs">
                               (ferdig {formatTime(concertEndAt)})

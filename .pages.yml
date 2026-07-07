@@ -165,6 +165,13 @@ content:
         label: Ekstern lenke
         type: string
         description: "Ekstern lenke (hvis vi ikke har artistsiden her på mandaljazz.no)"
+      - name: movedConcertStartAt
+        label: Ny konsertstart
+        type: date
+        description: "Ny konsertstarttid hvis konsert er flyttet"
+        options:
+          time: true
+          format: yyyy-MM-dd HH:mm
   - name: nyheter
     label: Nyheter
     type: collection

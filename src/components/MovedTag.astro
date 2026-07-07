@@ -1,0 +1,12 @@
+---
+import Tag from "./Tag.astro";
+
+export interface Props {
+  className?: string;
+  size?: "small" | "medium";
+}
+
+const { className, size = "medium" } = Astro.props;
+---
+
+<Tag variant="moved" className={className} size={size} />
