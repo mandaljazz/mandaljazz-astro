@@ -10,7 +10,8 @@ export interface Props {
     | "barnekonsert"
     | "morgensolo"
     | "soldout"
-    | "bestillingsverk";
+    | "bestillingsverk"
+    | "fewtickets";
 }
 
 const { className, size = "medium", variant } = Astro.props;
@@ -48,6 +49,12 @@ const variants = {
     textColor: "text-white",
     icon: "color-palette-outline",
     label: "Bestillingsverk",
+  },
+  fewtickets: {
+    bgColor: "bg-red",
+    textColor: "text-white",
+    icon: "flash-outline",
+    label: "Få billetter",
   },
 };
 

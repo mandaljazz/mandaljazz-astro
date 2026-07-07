@@ -2,6 +2,7 @@
 import classNames from "classnames";
 import BarnekonsertTag from "./BarnekonsertTag.astro";
 import BestillingsverkTag from "./BestillingsverkTag.astro";
+import FewTicketsTag from "./FewTicketsTag.astro";
 import ImageWithBlurredBackground from "./ImageWithBlurredBackground.astro";
 import MorgensoloTag from "./MorgensoloTag.astro";
 import SoldOutTag from "./SoldOutTag.astro";
@@ -17,6 +18,7 @@ export interface Props {
   isFree?: boolean;
   cancelled?: boolean;
   soldOut?: boolean;
+  fewTickets?: boolean;
   className?: string;
 }
 
@@ -31,6 +33,7 @@ const {
   isBarnekonsert,
   cancelled,
   soldOut,
+  fewTickets,
 } = Astro.props;
 ---
 
@@ -51,6 +54,7 @@ const {
       {isBestillingsverk && <BestillingsverkTag />}
       {isBarnekonsert && <BarnekonsertTag />}
       {soldOut && <SoldOutTag />}
+      {fewTickets && <FewTicketsTag />}
     </div>
     <div
       class="bg-light-green absolute bottom-0 right-0 w-full translate-x-2 translate-y-4 rounded-t-xl p-4 text-center text-xl text-black opacity-0 transition-all group-hover:-translate-y-8 group-hover:translate-x-1.5 group-hover:-rotate-2 group-hover:opacity-100 sm:translate-x-4 sm:translate-y-4 sm:group-hover:translate-x-3.5"

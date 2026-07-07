@@ -6,6 +6,8 @@ export interface Props {
   isFree?: boolean;
   externalTicketUrl?: string;
   earlyBird?: "left" | "right";
+  fewTickets?: boolean;
+  size?: "small" | "large";
 }
 
 const {
@@ -13,6 +15,8 @@ const {
   isFree,
   externalTicketUrl,
   earlyBird,
+  fewTickets,
+  size = "large",
 } = Astro.props;
 ---
 
@@ -27,7 +31,7 @@ const {
       >
         <div
           class={classNames(
-            "transform rounded-full bg-dark-blue px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform duration-500 group-hover:scale-110 sm:text-sm",
+            "transform rounded-full bg-dark-red px-3 py-1 text-xs font-semibold leading-3 text-white transition-transform duration-500 group-hover:scale-110 sm:text-sm",
             {
               "rotate-12": earlyBird === "right",
               "-rotate-12": earlyBird === "left",
@@ -40,10 +44,20 @@ const {
     )
   }
   <a
-    class="bg-red block -translate-y-1 rounded-lg px-4 py-4 text-center font-display text-sm text-beige shadow-solid transition-all duration-500 hover:-translate-y-2 hover:translate-x-1 hover:shadow-solid-hover md:text-xl"
+    class={classNames(
+      "bg-red block -translate-y-1 rounded-lg text-center font-display text-sm text-beige shadow-solid transition-all duration-500 hover:-translate-y-2 hover:translate-x-1 hover:shadow-solid-hover",
+      { "px-4 py-4 md:text-xl": size === "large", "px-3 py-1.5 md:text-base": size === "small" },
+    )}
     href={externalTicketUrl ??
       "https://tikkio.com/events/60317-mandaljazz-2026"}
     rel="noopener nofollow"
-    target="_blank">{isFree ? "Reserver gratisbillett" : "Kjøp billetter"}</a
+    target="_blank"
+    >{
+      isFree
+        ? "Reserver gratisbillett"
+        : fewTickets
+          ? "Få billetter igjen"
+          : "Kjøp billetter"
+    }</a
   >
 </div>

@@ -10,11 +10,13 @@ import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+import FewTicketsTag from "../components/FewTicketsTag.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 import InfoBox from "../components/InfoBox.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
+import SoldOutTag from "../components/SoldOutTag.astro";
 import Spotify from "../components/Spotify.astro";
 import YouTube from "../components/YouTube.astro";
 import { formatHumanDateTime, formatTime } from "../utils/date";
@@ -39,6 +41,7 @@ const {
     isMorgensolo,
     isBestillingsverk,
     isBarnekonsert,
+    fewTickets,
     requiresFreeTicket,
     externalTicketUrl,
     isNonConcertEvent,
@@ -232,10 +235,8 @@ const showPrevAndNextArtistNavigationLinks =
               <InfoBox>
                 <div>
                   {isNonConcertEvent ? "Arrangementet" : "Konserten"} er gratis
-                  {title === "Jazzpizza" ? (
+                  {title === "Jazzpizza" && (
                     <span class="italic">(men pizzaen er ikke)</span>
-                  ) : (
-                    "!"
                   )}
                 </div>
               </InfoBox>
@@ -255,6 +256,7 @@ const showPrevAndNextArtistNavigationLinks =
                 <BuyTicketsButton
                   class="flex-0 h-fit w-fit"
                   externalTicketUrl={externalTicketUrl}
+                  fewTickets={fewTickets}
                 />
               )
             }

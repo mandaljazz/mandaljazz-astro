@@ -149,6 +149,10 @@ content:
         label: Utsolgt
         type: boolean
         default: false
+      - name: fewTickets
+        label: Få billetter
+        type: boolean
+        default: false
       - name: sponsoredByBergesenstiftelsen
         label: Støttet av Bergesenstiftelsen
         type: boolean

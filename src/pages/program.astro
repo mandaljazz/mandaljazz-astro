@@ -10,6 +10,7 @@ import classNames from "classnames";
 import { isBefore, isValid } from "date-fns";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
+import FewTicketsTag from "../components/FewTicketsTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
@@ -38,7 +39,7 @@ const artists: Array<{
   })
   .filter((artist) => !artist.frontmatter.hideFromProgram);
 
-const otherEvents: typeof artists = [];
+const otherEvents: Array<(typeof artistEntries)[number]["data"]> = [];
 
 const concertsGroupedByDay = Object.entries(
   groupBy(
@@ -104,6 +105,7 @@ const concertsGroupedByDay = Object.entries(
                       releaseAt,
                       cancelled,
                       soldOut,
+                      fewTickets,
                     },
                   }) => {
                     const isNotReleasedYet =
@@ -197,6 +199,9 @@ const concertsGroupedByDay = Object.entries(
                                 )}
                                 {isFree && <FreeTag size={"small"} />}
                                 {soldOut && <SoldOutTag size={"small"} />}
+                                {fewTickets && (
+                                  <FewTicketsTag size={"small"} />
+                                )}
                               </div>
                             </div>
 
@@ -216,11 +221,12 @@ const concertsGroupedByDay = Object.entries(
                               )}
                               {isFree && <FreeTag size={"small"} />}
                               {soldOut && <SoldOutTag size={"small"} />}
+                              {fewTickets && <FewTicketsTag size={"small"} />}
                             </div>
                           </div>
                         </div>
                         <div class="col-span-1 flex flex-col text-right">
-                          <span>{formatTime(concertStartAt)}</span>
+                          <span>{concertStartAt ? formatTime(concertStartAt) : "TBA"}</span>
                           {concertEndAt && (
                             <span class="whitespace-nowrap text-xs">
                               (ferdig {formatTime(concertEndAt)})

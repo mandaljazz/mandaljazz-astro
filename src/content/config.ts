@@ -76,6 +76,7 @@ const artist = defineCollection({
     releaseAt: z.string().optional(),
     cancelled: z.boolean().default(false),
     soldOut: z.boolean().default(false),
+    fewTickets: z.boolean().default(false),
   }),
 });
 
