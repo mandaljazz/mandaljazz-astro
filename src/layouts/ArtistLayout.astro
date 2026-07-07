@@ -5,7 +5,9 @@ import sortBy from "lodash/sortBy";
 
 import Icon from "astro-icon";
 import { getCollection } from "astro:content";
+import classNames from "classnames";
 import { isBefore } from "date-fns";
+import capitalize from "lodash/capitalize";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
@@ -15,10 +17,13 @@ import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground
 import InfoBox from "../components/InfoBox.astro";
 import Link from "../components/Link.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
-import MovedTag from "../components/MovedTag.astro";
 import Spotify from "../components/Spotify.astro";
 import YouTube from "../components/YouTube.astro";
-import { formatHumanDateTime, formatTime } from "../utils/date";
+import {
+  formatHumanDate,
+  formatHumanDateTime,
+  formatTime,
+} from "../utils/date";
 import Layout from "./Layout.astro";
 
 const {
@@ -188,14 +193,36 @@ const actualConcertStartAt = isMovedConcert
                     size={40}
                   />
                   <div>
-                    <div class="flex flex-row items-center gap-2">
-                      <span>{formatHumanDateTime(actualConcertStartAt)}</span>
+                    <div class="flex flex-row items-center gap-1">
+                      {isMovedConcert && (
+                        <span class="">
+                          {capitalize(formatHumanDate(actualConcertStartAt))}
+                        </span>
+                      )}
                       {isMovedConcert && concertStartAt && (
                         <span class="text-gray-500 text-sm line-through">
                           {formatTime(concertStartAt)}
                         </span>
                       )}
+                      <span
+                        class={classNames({
+                          "-skew-y-3 bg-yellow px-1.5 py-0.5": isMovedConcert,
+                        })}
+                      >
+                        <span
+                          class={classNames({
+                            "block skew-y-3": isMovedConcert,
+                          })}
+                        >
+                          {isMovedConcert
+                            ? formatTime(actualConcertStartAt)
+                            : formatHumanDateTime(actualConcertStartAt)}
+                        </span>
+                      </span>
                     </div>
+                    {isMovedConcert && (
+                      <span class="text-xs">(flyttet pga. VM)</span>
+                    )}
                     {concertEndAt && (
                       <span class="text-xs">
                         {" "}
@@ -203,7 +230,6 @@ const actualConcertStartAt = isMovedConcert
                       </span>
                     )}
                   </div>
-                  {isMovedConcert && <MovedTag size="small" />}
                 </span>
               )
             }

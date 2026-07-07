@@ -19,7 +19,11 @@ import SoldOutTag from "../components/SoldOutTag.astro";
 /* import programPlakat2026 from "../images/profil/2026/Mandaljazz_26_plakat_komplett_navn.jpg"; */
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
-import { formatHumanDate, formatTime } from "../utils/date";
+import {
+  formatHumanDate,
+  formatHumanDateTime,
+  formatTime,
+} from "../utils/date";
 import { imagePathToSrc } from "../utils/images";
 
 const artistEntries = await getCollection("artist");
@@ -142,7 +146,6 @@ const concertsGroupedByDay = Object.entries(
                           {actualConcertStartAt && (
                             <div class="text-right">{`${formatTime(actualConcertStartAt)}${concertEndAt ? `–${formatTime(concertEndAt)}` : ""}`}</div>
                           )}
-                          {isMovedConcert && <MovedTag size="small" />}
                         </div>
                       );
                     }
@@ -227,7 +230,6 @@ const concertsGroupedByDay = Object.entries(
                           <div class="flex flex-row items-start gap-2">
                             <span>{venue}</span>
                             <div class="flex flex-row items-start gap-2 sm:hidden">
-                              {isMovedConcert && <MovedTag size={"small"} />}
                               {isMorgensolo && <MorgensoloTag size={"small"} />}
                               {isBestillingsverk && (
                                 <BestillingsverkTag size={"small"} />
@@ -243,18 +245,33 @@ const concertsGroupedByDay = Object.entries(
                         </div>
                         <div class="col-span-1 flex flex-col items-end text-right">
                           <div class="flex flex-row items-center gap-1">
-                            <span>
-                              {actualConcertStartAt
-                                ? formatTime(actualConcertStartAt)
-                                : "TBA"}
-                            </span>
                             {isMovedConcert && concertStartAt && (
                               <span class="text-gray-500 text-sm line-through">
                                 {formatTime(concertStartAt)}
                               </span>
                             )}
+                            <span
+                              class={classNames({
+                                "-skew-y-3 bg-yellow px-1.5 py-0.5":
+                                  isMovedConcert,
+                              })}
+                            >
+                              <span
+                                class={classNames({
+                                  "block skew-y-3": isMovedConcert,
+                                })}
+                              >
+                                {actualConcertStartAt
+                                  ? formatTime(actualConcertStartAt)
+                                  : "TBA"}
+                              </span>
+                            </span>
                           </div>
-                          {isMovedConcert && <MovedTag size="small" />}
+                          {isMovedConcert && (
+                            <span class="whitespace-nowrap text-xs">
+                              (flyttet pga. VM)
+                            </span>
+                          )}
                           {concertEndAt && (
                             <span class="whitespace-nowrap text-xs">
                               (ferdig {formatTime(concertEndAt)})
