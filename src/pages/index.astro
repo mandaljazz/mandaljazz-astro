@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import partition from "lodash/partition";
 
-import { Image } from "astro:assets";
 import classNames from "classnames";
 import ArtistCard from "../components/ArtistCard.astro";
 import BuyTicketsButton from "../components/BuyTicketsButton.astro";
@@ -86,17 +85,6 @@ const byOrder = (a, b) => {
                     >9.–11. juli 2026</span
                   >
                 </h1>
-                <!-- New date badge -->
-                <div
-                  class="absolute -right-10 -top-6 z-10 sm:-right-10 sm:-top-8"
-                >
-                  <div
-                    class="delay-2500 bg-blue rotate-12 transform rounded-full px-3 py-1 md:px-5 md:py-3 text-beige"
-                  >
-                    <span class="uppercase font-display leading-3">Ny dato</span
-                    >
-                  </div>
-                </div>
               </div>
             </div>
           </div>
