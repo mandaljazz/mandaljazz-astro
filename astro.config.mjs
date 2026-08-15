@@ -9,6 +9,11 @@ import yeskunallumami from "@yeskunall/astro-umami";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    rollupOptions: {
+      external: ["sharp", "sharp-ico"],
+    },
+  },
   site: "https://mandaljazz.no/",
   prefetch: true,
   integrations: [
