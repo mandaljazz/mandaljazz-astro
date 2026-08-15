@@ -3,14 +3,17 @@ import { SEO } from "astro-seo";
 import { getImage } from "astro:assets";
 import { setDefaultOptions } from "date-fns";
 import { nb } from "date-fns/locale";
+
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import NewsletterSection from "../components/NewsletterSection.astro";
 import Sponsors from "../components/Sponsors.astro";
 import faviconSrc from "../images/favicon.png";
 import faviconSvgSrc from "../images/favicon.svg";
+
 import "../styles/fonts.css";
 import "../styles/main.css";
+
 import RandomFunnyLine from "../components/RandomFunnyLine.astro";
 
 setDefaultOptions({ locale: nb });

@@ -13,4 +13,5 @@ export default {
       },
     },
   ],
+  importOrder: ["<BUILTIN_MODULES>", "", "<THIRD_PARTY_MODULES>", "", "^[.]"],
 };

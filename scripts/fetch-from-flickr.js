@@ -1,5 +1,7 @@
 import "dotenv/config";
+
 import fs from "fs";
+
 import { createFlickr } from "flickr-sdk";
 
 const { flickr } = createFlickr(process.env.FLICKR_API_KEY);
