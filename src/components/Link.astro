@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 export interface Props {
   href: string;
   title: string;
@@ -42,12 +42,7 @@ const classes = [
       {external && !unstyled ? (
         <>
           <slot />{" "}
-          <Icon
-            class="icon mb-2 inline"
-            pack="ion"
-            name="open-outline"
-            size={16}
-          />
+          <Icon class="icon mb-2 inline" name="ion:open-outline" size={16} />
         </>
       ) : (
         <slot />

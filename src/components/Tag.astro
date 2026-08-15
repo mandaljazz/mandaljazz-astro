@@ -1,6 +1,6 @@
 ---
 // Unified Tag component
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   className?: string;
@@ -76,6 +76,6 @@ const { bgColor, textColor, icon, label } = variants[variant];
     size === "medium" && "gap-2 rounded-md px-2.5 py-1.5",
   ]}
 >
-  {icon && <Icon pack="ion" name={icon} size={iconSize} />}
+  {icon && <Icon name={`ion:${icon}`} size={iconSize} />}
   {label}
 </div>

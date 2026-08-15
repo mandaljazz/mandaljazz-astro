@@ -6,6 +6,7 @@ import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 
 import yeskunallumami from "@yeskunall/astro-umami";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
     robotsTxt(),
     mdx(),
     lottie(),
+    icon(),
     yeskunallumami({ id: "d43a3a76-eba4-47c6-b19f-8c6499479a8b" }),
   ],
   image: {

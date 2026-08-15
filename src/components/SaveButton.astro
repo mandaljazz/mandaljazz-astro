@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   id: string;
@@ -10,7 +10,7 @@ const { id, namespace } = Astro.props;
 ---
 
 <button class="save-button" id={id} data-namespace={namespace}>
-  <Icon pack="ion" name="star-outline" size={24} />
+  <Icon name="ion:star-outline" size={24} />
 </button>
 
 <script>

@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
 import Link from "../components/Link.astro";
@@ -102,7 +102,7 @@ import { imagePathToSrc } from "../utils/images";
                 target="_blank"
                 aria-label="Besøk Mandaljazz på Facebook"
               >
-                <Icon pack="ion" name="logo-facebook" size={48} /></a
+                <Icon name="ion:logo-facebook" size={48} /></a
               >
             </li>
             <li class="inline-flex h-fit">
@@ -112,7 +112,7 @@ import { imagePathToSrc } from "../utils/images";
                 rel="noopener nofollow"
                 target="_blank"
                 aria-label="Besøk Mandaljazz på Instagram"
-                ><Icon pack="ion" name="logo-instagram" size={48} /></a
+                ><Icon name="ion:logo-instagram" size={48} /></a
               >
             </li>
           </ul>

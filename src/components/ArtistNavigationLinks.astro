@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { getArtistUrl } from "../utils/artist";
 import Link from "./Link.astro";
 
@@ -56,8 +56,7 @@ const {
       <span class="flex flex-row items-center gap-2">
         <Icon
           class="icon transition-transform group-hover:-translate-y-0.5"
-          pack="ion"
-          name="play-back-outline"
+          name="ion:play-back-outline"
           size={40}
         />
         <span class={compact ? "hidden lg:block" : ""}
@@ -88,8 +87,7 @@ const {
         >
         <Icon
           class="icon transition-transform group-hover:-translate-y-0.5"
-          pack="ion"
-          name="play-forward-outline"
+          name="ion:play-forward-outline"
           size={40}
         /></span
       >

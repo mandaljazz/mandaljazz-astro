@@ -3,7 +3,7 @@ import first from "lodash/first";
 import last from "lodash/last";
 import sortBy from "lodash/sortBy";
 
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import classNames from "classnames";
 import { isBefore } from "date-fns";
@@ -186,12 +186,7 @@ const actualConcertStartAt = isMovedConcert
                 <span
                   class={`flex flex-row items-center gap-2 text-lg md:text-xl`}
                 >
-                  <Icon
-                    class="icon"
-                    pack={"ion"}
-                    name={"time-outline"}
-                    size={40}
-                  />
+                  <Icon class="icon" name={"ion:time-outline"} size={40} />
                   <div>
                     <div class="flex flex-row items-center gap-1">
                       {isMovedConcert && (
@@ -241,12 +236,7 @@ const actualConcertStartAt = isMovedConcert
                   title={venue}
                   class={`flex w-fit flex-row items-center gap-2 text-lg transition-transform hover:-rotate-2 md:text-xl`}
                 >
-                  <Icon
-                    class="icon"
-                    pack={"ion"}
-                    name={"location-outline"}
-                    size={40}
-                  />
+                  <Icon class="icon" name={"ion:location-outline"} size={40} />
                   {venue}
                 </Link>
               )

@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
 import jazzlaug2026 from "../images/profil/2026/jazzlaug-top-clip.png";
@@ -83,8 +83,7 @@ const { class: extraClasses, navItems } = Astro.props;
     <button class="hamburger">
       <Icon
         class="p-2 transition-transform group-hover:-translate-y-0.5"
-        pack="ion"
-        name="menu"
+        name="ion:menu"
         size={48}
       /></button
     >

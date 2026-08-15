@@ -1,15 +1,14 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   icon: string;
   flip?: boolean;
-  pack?: string;
   type: "pink" | "red" | "blue" | "beige";
   fluid?: boolean;
 }
 
-const { icon, pack, flip, fluid, type } = Astro.props;
+const { icon, flip, fluid, type } = Astro.props;
 
 const backgroundColor = {
   pink: "bg-pink",
@@ -29,8 +28,7 @@ const backgroundColor = {
     class={`py-2 px-4 my-2 flex flex-row gap-2 items-center text-lg md:text-xl`}
     ><Icon
       class="icon transition-transform group-hover:-translate-y-0.5"
-      pack={pack || "ion"}
-      name={icon}
+      name={`ion:${icon}`}
       size={48}
     /><slot /></span
   >

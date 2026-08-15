@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   title: string;
@@ -15,8 +15,7 @@ const { title } = Astro.props;
     <span>{title}</span><span
       ><Icon
         class="icon transition-transform group-hover:-translate-y-0.5"
-        pack="ion"
-        name="chevron-down"
+        name="ion:chevron-down"
         size={24}
       /></span
     >
