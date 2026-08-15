@@ -46,7 +46,10 @@ const {
   <a
     class={classNames(
       "bg-red block -translate-y-1 rounded-lg text-center font-display text-sm text-beige shadow-solid transition-all duration-500 hover:-translate-y-2 hover:translate-x-1 hover:shadow-solid-hover",
-      { "px-4 py-4 md:text-xl": size === "large", "px-3 py-1.5 md:text-base": size === "small" },
+      {
+        "px-4 py-4 md:text-xl": size === "large",
+        "px-3 py-1.5 md:text-base": size === "small",
+      },
     )}
     href={externalTicketUrl ??
       "https://tikkio.com/events/60317-mandaljazz-2026"}

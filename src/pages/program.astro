@@ -1,20 +1,19 @@
 ---
-import capitalize from "lodash/capitalize";
-import groupBy from "lodash/groupBy";
-import sortBy from "lodash/sortBy";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import classNames from "classnames";
 import { isBefore, isValid } from "date-fns";
+import capitalize from "lodash/capitalize";
+import groupBy from "lodash/groupBy";
+import sortBy from "lodash/sortBy";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
+import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import FewTicketsTag from "../components/FewTicketsTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
-import MovedTag from "../components/MovedTag.astro";
 import MorgensoloTag from "../components/MorgensoloTag.astro";
+import MovedTag from "../components/MovedTag.astro";
 import SoldOutTag from "../components/SoldOutTag.astro";
 /* import programPlakat2026 from "../images/profil/2026/Mandaljazz_26_plakat_komplett_navn.jpg"; */
 import Layout from "../layouts/Layout.astro";

@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
 import path from "node:path";
+import type { APIRoute } from "astro";
 import sharp from "sharp";
 import ico from "sharp-ico";
 

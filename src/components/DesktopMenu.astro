@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-
 import jazzlaug2026 from "../images/profil/2026/jazzlaug-top-clip.png";
 import HeaderDate from "./HeaderDate.astro";
 
@@ -25,7 +24,7 @@ const isActive = (href: string) =>
 
 <div class={`relative ${extraClasses}`}>
   <nav
-    class="menu bg-dark-blue fixed left-0 top-0 flex w-full gap-10 rounded-b-lg px-6 py-4 text-beige shadow-xl items-center"
+    class="menu fixed left-0 top-0 flex w-full items-center gap-10 rounded-b-lg bg-dark-blue px-6 py-4 text-beige shadow-xl"
   >
     <a href="/" class="ml-2 shrink-0 transition-transform hover:-rotate-6"
       ><Image

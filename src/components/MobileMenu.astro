@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-
 import jazzlaug2026 from "../images/profil/2026/jazzlaug-top-clip.png";
 import HeaderDate from "./HeaderDate.astro";
 
@@ -22,7 +21,7 @@ const { class: extraClasses, navItems } = Astro.props;
 
 <div class={`relative ${extraClasses}`}>
   <nav
-    class="off-screen-nav-items bg-dark-blue fixed left-0 top-0 flex w-full -translate-y-full flex-col items-center gap-4 rounded-lg py-24 text-2xl text-beige shadow-xl transition-transform duration-500 ease-in-out"
+    class="off-screen-nav-items fixed left-0 top-0 flex w-full -translate-y-full flex-col items-center gap-4 rounded-lg bg-dark-blue py-24 text-2xl text-beige shadow-xl transition-transform duration-500 ease-in-out"
   >
     {
       navItems.flatMap(({ href, title, items }) => {
@@ -67,7 +66,7 @@ const { class: extraClasses, navItems } = Astro.props;
     }
   </nav>
   <nav
-    class="menu bg-dark-blue fixed top-0 z-10 flex w-full items-center justify-between gap-10 rounded-b-lg px-4 text-beige shadow-xl duration-500"
+    class="menu fixed top-0 z-10 flex w-full items-center justify-between gap-10 rounded-b-lg bg-dark-blue px-4 text-beige shadow-xl duration-500"
   >
     <a href="/" class="m-3"
       ><Image

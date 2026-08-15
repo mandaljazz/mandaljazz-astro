@@ -1,9 +1,9 @@
 /** @type {import("prettier").Config} */
 export default {
   plugins: [
+    "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-astro",
     "prettier-plugin-tailwindcss",
-    "prettier-plugin-astro-organize-imports",
   ],
   overrides: [
     {
@@ -13,5 +13,4 @@ export default {
       },
     },
   ],
-  astroOrganizeImportsMode: "All",
 };
