@@ -19,7 +19,7 @@
     "@yeskunall/astro-umami": "0.0.8",
     "astro-icon": "^1.1.5",
     "classnames": "2.5.1",
-    "date-fns": "4.1.0",
+    "date-fns": "4.4.0",
     "lodash": "4.18.1",
     "lottie-web": "5.13.0",
     "mapbox-gl": "3.27.0"
