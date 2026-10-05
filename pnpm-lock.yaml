@@ -12,8 +12,8 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7
       '@yeskunall/astro-umami':
-        specifier: 0.0.8
-        version: 0.0.8(astro@5.18.2(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0))
+        specifier: 0.0.9
+        version: 0.0.9(astro@5.18.2(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0))
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -1216,8 +1216,8 @@ packages:
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
 
-  '@yeskunall/astro-umami@0.0.8':
-    resolution: {integrity: sha512-oupVTypq4zubEn2LNS3NxaHNA/Kh4sokL4hUNa4UIe/MPGOE/8S6W9mwqdeWUx8c+eboeg7vuh9fqJi7L926Dw==}
+  '@yeskunall/astro-umami@0.0.9':
+    resolution: {integrity: sha512-qjjVxEjOxade46Cj0mZ8r1agBMJP2e6NgCVlbyMEfbREc3Jruptq6No7G8Q+81rATaS3WnrQ/KmH9PpVvnzIpQ==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
 
@@ -3778,7 +3778,7 @@ snapshots:
 
   '@ungap/structured-clone@1.4.0': {}
 
-  '@yeskunall/astro-umami@0.0.8(astro@5.18.2(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0))':
+  '@yeskunall/astro-umami@0.0.9(astro@5.18.2(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0))':
     dependencies:
       astro: 5.18.2(@types/node@24.13.3)(jiti@1.21.7)(rollup@4.63.1)(typescript@5.9.3)(yaml@2.9.0)
 
