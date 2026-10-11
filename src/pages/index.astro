@@ -4,8 +4,8 @@ import classNames from "classnames";
 import partition from "lodash/partition";
 
 import ArtistCard from "../components/ArtistCard.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
-import Spotify from "../components/Spotify.astro";
+// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+// import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
 
@@ -15,8 +15,8 @@ const artistList = artistEntries.map((entry) => ({
   frontmatter: entry.data,
 }));
 
-// Filter to only show current year artists (2026)
-const currentYear = "2026";
+// Filter to only show current year artists (2027)
+const currentYear = "2027";
 const currentYearArtistsNotHidden = artistList.filter((artist) => {
   // Check if slug starts with current year (e.g., "2026/pumpegris")
   return (
@@ -43,7 +43,7 @@ const byOrder = (a, b) => {
 };
 ---
 
-<Layout title="Mandaljazz 2026" description="Jazzfestivalen i Mandal">
+<Layout title="Mandaljazz 2027" description="Jazzfestivalen i Mandal">
   <main class="space-y-24">
     <div
       class="relative flex h-[60vh] max-h-[560px] min-h-[420px] w-full flex-col gap-8 overflow-hidden bg-blue sm:gap-12"
@@ -82,7 +82,7 @@ const byOrder = (a, b) => {
                 >
                   <span
                     class="block rounded-full bg-dark-blue px-6 pb-2 pt-4 text-center text-4xl text-beige sm:text-7xl md:px-12 md:pb-6 md:pt-8"
-                    >9.–11. juli 2026</span
+                    >8.–10. juli 2027</span
                   >
                 </h1>
               </div>
@@ -95,6 +95,7 @@ const byOrder = (a, b) => {
       <div
         class="mx-auto max-w-5xl space-y-4 px-4 sm:space-y-8 sm:px-6 md:px-8 lg:px-16 xl:px-32"
       >
+        <p class="text-center text-4xl">Takk for i år, vi ses neste år!</p>
         <ul
           role="list"
           class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
@@ -147,8 +148,8 @@ const byOrder = (a, b) => {
           }
         </ul>
       </div>
-      <Spotify src="https://open.spotify.com/playlist/08T1vf3NqWTr99yVF8ZKWv" />
-      <BuyTicketsButton class="mx-auto w-fit" />
+      <!-- <Spotify src="https://open.spotify.com/playlist/08T1vf3NqWTr99yVF8ZKWv" /> -->
+      {/* <BuyTicketsButton class="mx-auto w-fit" /> */}
     </div>
   </main>
 </Layout>

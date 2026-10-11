@@ -23,7 +23,7 @@ interface FlickrAlbum {
 export interface Props {
   id: string;
   year: string;
-  image: string;
+  image?: string;
   spotifyUrl?: string;
   flickrAlbumId?: string;
   isFirst?: boolean;
@@ -52,11 +52,15 @@ const album = Object.values(albums).find((album) => album.id === flickrAlbumId);
         )
       }
     </div>
-    <Image
-      src={imagePathToSrc(image)}
-      class="rounded-lg"
-      alt={`Festivalplakat ${year}`}
-    />
+    {
+      image && (
+        <Image
+          src={imagePathToSrc(image)}
+          class="rounded-lg"
+          alt={`Festivalplakat ${year}`}
+        />
+      )
+    }
     <ul class="space-y-4 p-8 text-xl">
       <slot />
     </ul>

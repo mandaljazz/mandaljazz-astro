@@ -9,7 +9,7 @@ import sortBy from "lodash/sortBy";
 
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import FewTicketsTag from "../components/FewTicketsTag.astro";
 import FreeTag from "../components/FreeTag.astro";
 import Link from "../components/Link.astro";
@@ -74,8 +74,8 @@ const concertsGroupedByDay = Object.entries(
 ---
 
 <Layout
-  title="Program // Mandaljazz 2026"
-  description="Programmet til Mandaljazz 2026"
+  title="Program // Mandaljazz 2027"
+  description="Programmet til Mandaljazz 2027"
 >
   <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
     <div class="mx-auto max-w-5xl space-y-16">
@@ -287,7 +287,7 @@ const concertsGroupedByDay = Object.entries(
           );
         })
       }
-      <BuyTicketsButton class="mx-auto w-fit" />
+      {/* <BuyTicketsButton class="mx-auto w-fit" /> */}
       <!-- <Image
         src={programPlakat2026}
         alt="Mandaljazz program 2026"

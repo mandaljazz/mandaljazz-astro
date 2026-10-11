@@ -11,7 +11,7 @@ import sortBy from "lodash/sortBy";
 import ArtistNavigationLinks from "../components/ArtistNavigationLinks.astro";
 import BarnekonsertTag from "../components/BarnekonsertTag.astro";
 import BestillingsverkTag from "../components/BestillingsverkTag.astro";
-import BuyTicketsButton from "../components/BuyTicketsButton.astro";
+// import BuyTicketsButton from "../components/BuyTicketsButton.astro";
 import ImageAndLabel from "../components/ImageAndLabel.astro";
 import ImageWithBlurredBackground from "../components/ImageWithBlurredBackground.astro";
 import InfoBox from "../components/InfoBox.astro";
@@ -126,7 +126,7 @@ const actualConcertStartAt = isMovedConcert
 ---
 
 <Layout
-  title={`${title} // Mandaljazz 2026`}
+  title={`${title} // Mandaljazz 2027`}
   description={`${title} på Mandaljazz! ${tagline}`}
   image={image}
 >
@@ -281,25 +281,21 @@ const actualConcertStartAt = isMovedConcert
             )
           }
           <div class="flex flex-row justify-between">
-            {
-              !isFree && !soldOut && (
+            {/* !isFree && !soldOut && (
                 <BuyTicketsButton
                   class="flex-0 h-fit w-fit"
                   externalTicketUrl={externalTicketUrl}
                   fewTickets={fewTickets}
                 />
-              )
-            }
+              ) */}
             {soldOut && !isFree && <InfoBox>Utsolgt</InfoBox>}
-            {
-              isFree && requiresFreeTicket && (
+            {/* isFree && requiresFreeTicket && (
                 <BuyTicketsButton
                   class="flex-0 h-fit w-fit"
                   isFree
                   externalTicketUrl={externalTicketUrl}
                 />
-              )
-            }
+              ) */}
             {
               sponsoredByBergesenstiftelsen && (
                 <div class="flex flex-col gap-y-1 lg:items-end">
