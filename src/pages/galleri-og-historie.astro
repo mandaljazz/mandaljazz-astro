@@ -6,11 +6,9 @@ import Link from "../components/Link.astro";
 import RainbowDivider from "../components/RainbowDivider.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
+import { currentYear } from "../utils/festival";
 
 const artistEntries = await getCollection("artist");
-
-// The festival year the site is currently promoting (same as index.astro)
-const currentYear = "2027";
 
 // Past festival years with artist content in the collection, newest first
 const contentYears = [

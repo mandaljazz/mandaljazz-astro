@@ -8,6 +8,7 @@ import ArtistCard from "../components/ArtistCard.astro";
 // import Spotify from "../components/Spotify.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
+import { currentYear } from "../utils/festival";
 
 const artistEntries = await getCollection("artist");
 const artistList = artistEntries.map((entry) => ({
@@ -15,8 +16,7 @@ const artistList = artistEntries.map((entry) => ({
   frontmatter: entry.data,
 }));
 
-// Filter to only show current year artists (2027)
-const currentYear = "2027";
+// Filter to only show current year artists
 const currentYearArtistsNotHidden = artistList.filter((artist) => {
   // Check if slug starts with current year (e.g., "2026/pumpegris")
   return (
