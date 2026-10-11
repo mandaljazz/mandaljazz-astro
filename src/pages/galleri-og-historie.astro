@@ -7,11 +7,20 @@ import RainbowDivider from "../components/RainbowDivider.astro";
 import Layout from "../layouts/Layout.astro";
 import { getArtistUrl } from "../utils/artist";
 
-const years = [
-  "2026",
-  "2025",
-  "2024",
-  "2023",
+const artistEntries = await getCollection("artist");
+
+// The festival year the site is currently promoting (same as index.astro)
+const currentYear = "2027";
+
+// Past festival years with artist content in the collection, newest first
+const contentYears = [
+  ...new Set(artistEntries.map((entry) => entry.slug.split("/")[0])),
+]
+  .filter((year) => year < currentYear)
+  .sort((a, b) => Number(b) - Number(a));
+
+// Years before the content collection existed
+const legacyYears = [
   "2022",
   "2021",
   "2020",
@@ -23,7 +32,7 @@ const years = [
   "2014",
 ];
 
-const artistEntries = await getCollection("artist");
+const years = [...contentYears, ...legacyYears];
 const newestYear = years[0];
 const newestYearArtists = artistEntries
   .filter(
