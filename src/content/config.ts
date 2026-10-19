@@ -110,6 +110,16 @@ const sponsors = defineCollection({
   }),
 });
 
+// Standalone pages whose body is edited in PagesCMS. One entry per page,
+// keyed by filename: `om.mdx` backs /om.
+const page = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 export const collections = {
   authors,
   nyheter,
@@ -118,4 +128,5 @@ export const collections = {
   artist,
   accommodations,
   sponsors,
+  page,
 };

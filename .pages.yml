@@ -423,6 +423,39 @@ content:
               Samarbeidspartnere,
             ]
 
+  # Standalone pages whose body is edited in PagesCMS. One entry per page,
+  # keyed by filename: `om.mdx` backs /om.
+  - name: page
+    label: Sider
+    type: collection
+    path: src/content/page
+    filename: "{primary}.mdx"
+    view:
+      fields: [title, description]
+      primary: title
+      sort: [title]
+    fields:
+      - name: title
+        label: Tittel
+        type: string
+        required: true
+      - name: description
+        label: Beskrivelse
+        type: text
+        required: true
+        options:
+          rows: 2
+          maxLength: 150
+      # `body` is the reserved field name that PagesCMS maps to the markdown
+      # below the frontmatter. Astro renders it through <Content />.
+      - name: body
+        label: Innhold
+        type: rich-text
+        options:
+          media: public-images
+          path: public/page
+          extensions: [png, jpg, jpeg, webp, svg, gif]
+
 settings:
   hide: true
   content:
