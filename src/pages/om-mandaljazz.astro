@@ -1,0 +1,23 @@
+---
+import { getEntry, render } from "astro:content";
+
+import Layout from "../layouts/Layout.astro";
+
+// Body lives in src/content/page/om-mandaljazz.mdx so it can be edited in PagesCMS.
+const omMandaljazz = await getEntry("page", "om-mandaljazz");
+if (!omMandaljazz) {
+  throw new Error("Mangler innhold: src/content/page/om-mandaljazz.mdx");
+}
+const { Content } = await render(omMandaljazz);
+---
+
+<Layout title={omMandaljazz.data.title} description={omMandaljazz.data.description}>
+  <main class="px-4 py-24 sm:px-12 sm:py-40 md:px-24 lg:px-32">
+    <div class="mx-auto max-w-5xl space-y-16">
+      <h1 class="text-5xl md:text-7xl">{omMandaljazz.data.title}</h1>
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </main>
+</Layout>
