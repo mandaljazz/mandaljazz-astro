@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-import jazzlaug2026 from "../images/profil/2026/jazzlaug-top-clip.png";
+import { imagePathToSrc } from "../utils/images";
 import HeaderDate from "./HeaderDate.astro";
 
 export interface Props {
@@ -71,7 +71,7 @@ const { class: extraClasses, navItems } = Astro.props;
   >
     <a href="/" class="m-3"
       ><Image
-        src={jazzlaug2026}
+        src={imagePathToSrc("/src/images/profil/logo/tertiary/white.svg")}
         class="h-auto w-7"
         alt="Mandaljazz logo"
         loading="eager"
