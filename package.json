@@ -22,7 +22,7 @@
     "date-fns": "4.4.0",
     "lodash": "4.18.1",
     "lottie-web": "5.13.0",
-    "mapbox-gl": "3.27.0"
+    "mapbox-gl": "3.34.1"
   },
   "devDependencies": {
     "@astrojs/mdx": "4.3.14",

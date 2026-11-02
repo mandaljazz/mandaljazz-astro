@@ -30,8 +30,8 @@ importers:
         specifier: 5.13.0
         version: 5.13.0
       mapbox-gl:
-        specifier: 3.27.0
-        version: 3.27.0
+        specifier: 3.34.1
+        version: 3.34.1
     devDependencies:
       '@astrojs/mdx':
         specifier: 4.3.14
@@ -1700,8 +1700,8 @@ packages:
   magicast@0.5.4:
     resolution: {integrity: sha512-llBEhWm1SacoRwgHUoQJYtwp4PBLF4faQi5TCpIGyGs9n4y5+juI0tDgyKIfpqxckRHaHzouUEph3THklWh03w==}
 
-  mapbox-gl@3.27.0:
-    resolution: {integrity: sha512-K8W9LTTjFEJsg9qsnJbKk+zbXrmSqa+nU1EiFXez5gQ0T0RMtylZUelgg1/RE6vCUMvHX0gaYfWU9g2mTWuA0g==}
+  mapbox-gl@3.34.1:
+    resolution: {integrity: sha512-r4UbcZyEljltuMkMoHhwBSpbWnflHKFBUAfhvjEGxlR2mBjNxI0OBFzrr4AlbHsXnMVPMCWAvdHD5HWtMThWPg==}
 
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
@@ -4166,7 +4166,7 @@ snapshots:
       '@babel/types': 7.29.8
       source-map-js: 1.2.1
 
-  mapbox-gl@3.27.0: {}
+  mapbox-gl@3.34.1: {}
 
   markdown-extensions@2.0.0: {}
 
